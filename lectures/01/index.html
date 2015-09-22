@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction to Data Science and Text Analytics</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introduction to Data Science and Text Analytics">
+  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../../libraries/frameworks/io2012/js/slides" 
+    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="../../libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="../../libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="../../libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="../../libraries/widgets/nvd3/js/fisheye.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introduction to Data Science and Text Analytics</h1>
+    <h2>lecture 01</h2>
+    <p>謝舒凱 Graduate Institute of Linguistics<br/></p>
+  </hgroup>
+    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background</li>
+<li>Text, Text, Text</li>
+<li>Linguistic Data Science</li>
+<li>實例</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><strong><code>Background</code></strong></li>
+<li>Text, Text, Text</li>
+<li>Linguistic Data Science</li>
+<li>實例</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>背景</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><span style="color:blue; font-weight:bold"> 文本分析 (text analysis) </span> 在語言學裡 1950 年代即開始。文本自動分析 (text analytics) 則是受到大數據的影響開始興起。</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h1>Text Analysis and Text Analytics</h1>
+  </hgroup>
+  <article data-timings="">
+    <p>目前的關注主題</p>
+
+<ol>
+<li>text categorization</li>
+<li>text clustering / similarity / association </li>
+<li>Named Entity Extraction / topic modelling / event detection</li>
+<li>Sentiment analysis / Opinion mining</li>
+<li>document summarization</li>
+<li>text and social network</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>應用面</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Historical text mining</li>
+<li>Legal text mining</li>
+<li>Product/comments </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background</li>
+<li><strong><code>Text, Text, Text</code></strong></li>
+<li>Linguistic Data Science</li>
+<li>實例</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>文本長什麼樣子</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background</li>
+<li>Text, Text, Text</li>
+<li><strong><code>Linguistic Data Science</code></strong></li>
+<li>實例</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>一句話激怒語言學家</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>為什麼 BOW 沒用，功能語言學會告訴妳</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>BOW (bag-of-word) appraoch</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>來源：Local, Web, Sensors</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Background</li>
+<li>Text, Text, Text</li>
+<li>Linguistic Data Science</li>
+<li><strong><code>實例</code></strong></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>實例 walk through</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>numeric data </li>
+<li>textual data</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">#R code goes here
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>香水評論</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- 改用台北政府資料
+-->
+
+<pre><code class="r">comments &lt;- read.csv(&quot;../../../data/week2/perfumes_comments.csv&quot;, sep = &quot;\t&quot;, 
+                     dec = &quot;.&quot;, quote = &quot;\&quot;&quot;)
+head(comments)
+summary(comments)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <article data-timings="">
+    <p>測試</p>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>複習</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <p>What is 1 + 1?</p>
+
+<ol>
+<li>1</li>
+<li><em>2</em></li>
+<li>3</li>
+<li>4</li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>This is easy!</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>Really, you don&#39;t know how?</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>作業</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='大綱'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='大綱'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='背景'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Text Analysis and Text Analytics'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='應用面'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='大綱'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='文本長什麼樣子'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='大綱'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='一句話激怒語言學家'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='為什麼 BOW 沒用，功能語言學會告訴妳'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='來源：Local, Web, Sensors'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='大綱'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='實例 walk through'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='香水評論'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='複習'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='作業'>
+         18
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
