@@ -13,8 +13,9 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
 <link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
 <link rel=stylesheet href="../../libraries/widgets/nvd3/css/rNVD3.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
@@ -200,32 +201,73 @@
 
 <slide class="" id="slide-11" style="background:;">
   <hgroup>
-    <h2>一句話介紹語言學是什麼</h2>
+    <h2>One-minute Linguistics</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>語言學要回答<code>語言的習得與發展</code>，<code>結構與功能</code>，<code>神經與心理機制</code>，<code>社會變異與演化過程</code>等。</li>
+<li>經驗/計算語言學 (empirical/computational linguistics) [a.k.a. Natural Language Processing] 用電腦來幫助我們回答上述問題，並產生應用。</li>
+<li>(大數據中的) 語言數據（<strong>語料</strong>）蘊含了<strong>文化歷史記憶，社會心理趨勢，政治輿情傾向，情緒偏好分佈，人格特質與決策行為，疾病前期徵兆等等</strong>。 </li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-12" style="background:;">
   <hgroup>
+    <h2>語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li><code>Linguistic data are ubiqutous</code>, knowledge to be discovered, tendency to be predicted.</li>
+<li>自然語言處理 (Natural Language Processing) and 文本分析技術 (Textual Analytics) are the keys [Why? pressing <code>p</code>]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+  <aside class="note" id="">
+    <section>
+      <p><q></p>
+
+<blockquote>
+<p>Enormous amounts of textual information are becoming available electronically on a daily basis,...... Natural Language Processing (NLP) techniques have been playing an increasing role in extracting and managing entities and relations from text... substantially reducing the overhead of the development process.
+</q></p>
+</blockquote>
+
+    </section>
+  </aside>
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
     <h2>Linguistic Foundations of Text Analytics</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>&lt;img src=assets/img/linguistic.knowledge.jpg style=&quot;width: 750px&quot;&gt;
-&lt;span class=&quot;footnote&quot;&gt;Source: [Adapted from (Pinker, 1999)]&lt;/span&gt;
-</code></pre>
+    <iframe src="assets/img/linguistic.knowledge.jpg" width="800" height="500" scrolling="no" frameBorder="0"></iframe>
 
-<hr>
-
-<h2>一句話激怒語言學家</h2>
+<p><span class="footnote">Data source: [Adapted from (Pinker, 1999)]</span></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>一句話激怒語言學家</h2>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p>&quot;Every time I fire a linguist, the performance of the speech recognizer goes up&quot;, (Frederick Jelinek 1932-2010, IBM and Johns Hopkins.)</p>
+
+<p>Deep machine learning requires only shallow linguistic processing ?</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>為什麼 BOW 沒用，功能語言學會告訴妳</h2>
   </hgroup>
@@ -238,7 +280,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>來源：Local, Web, Sensors</h2>
   </hgroup>
@@ -248,7 +290,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:#FFFAF0;">
+<slide class="" id="slide-17" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -264,7 +306,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>3 個 Why：Linux (command line tools) + R/Programming + Git</h2>
   </hgroup>
@@ -289,7 +331,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>指令列工具與 Linux</h2>
   </hgroup>
@@ -315,7 +357,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>活用組合之後會加速工作</h2>
   </hgroup>
@@ -327,9 +369,9 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
-    <h2>課堂練習</h2>
+    <h2>課堂練習 [1]</h2>
   </hgroup>
   <article data-timings="">
     <p>抓一篇 Alice in wonderland 來試試。</p>
@@ -338,7 +380,25 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>R? Python? or Both?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>初學者從實用面來決定</p>
+
+<ul>
+<li>免費線上課程 (e.g., <a href="">DataCamp</a>; <a href="">Coursera DS series</a>, etc)</li>
+<li>相關套件與社群支持。發揮妳的自學精神！</li>
+</ul>
+
+<p><img src=assets/img/datacamp.png style="width: 550px"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>資料科學實作</h2>
   </hgroup>
@@ -356,7 +416,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>文本的熱門關注：評論</h2>
   </hgroup>
@@ -376,7 +436,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>香水評論</h2>
   </hgroup>
@@ -400,7 +460,7 @@ summary(comments)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <article data-timings="">
     <pre><code class="r">library(FactoMineR)
 res.textual &lt;- textual(comments, num.text = 3, contingence.by = 1, sep.word = &quot;;&quot;)
@@ -412,7 +472,7 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <article data-timings="">
     <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
@@ -420,7 +480,7 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>複習</h2>
   </hgroup>
@@ -454,14 +514,14 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>作業 (20150924)</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>讀這篇，寫下你的問題。</li>
-<li>TA</li>
+<li>讀這章，寫下你的問題。</li>
+<li>from TA</li>
 <li>(bonus) 妳覺得最好的分組方法（數學，遐想法皆可）</li>
 </ol>
 
@@ -535,98 +595,116 @@ res.textual$cont.table[,1:10]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='一句話介紹語言學是什麼'>
+        data-slide=11 title='One-minute Linguistics'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Linguistic Foundations of Text Analytics'>
+        data-slide=12 title='語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='為什麼 BOW 沒用，功能語言學會告訴妳'>
+        data-slide=13 title='Linguistic Foundations of Text Analytics'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='來源：Local, Web, Sensors'>
+        data-slide=14 title='一句話激怒語言學家'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='大綱'>
+        data-slide=15 title='為什麼 BOW 沒用，功能語言學會告訴妳'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='3 個 Why：Linux (command line tools) + R/Programming + Git'>
+        data-slide=16 title='來源：Local, Web, Sensors'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='指令列工具與 Linux'>
+        data-slide=17 title='大綱'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='活用組合之後會加速工作'>
+        data-slide=18 title='3 個 Why：Linux (command line tools) + R/Programming + Git'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='課堂練習'>
+        data-slide=19 title='指令列工具與 Linux'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='資料科學實作'>
+        data-slide=20 title='活用組合之後會加速工作'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='文本的熱門關注：評論'>
+        data-slide=21 title='課堂練習 [1]'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='香水評論'>
+        data-slide=22 title='R? Python? or Both?'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='NA'>
+        data-slide=23 title='資料科學實作'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='NA'>
+        data-slide=24 title='文本的熱門關注：評論'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='複習'>
+        data-slide=25 title='香水評論'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='作業 (20150924)'>
+        data-slide=26 title='NA'>
          26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='NA'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='複習'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='作業 (20150924)'>
+         29
       </a>
     </li>
   </ul>
@@ -638,32 +716,21 @@ res.textual$cont.table[,1:10]
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  <script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
+  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
 <script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
 <script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
-<script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
 
-  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        processEscapes: true
-      }
-    });
-  </script>
-  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script> -->
-  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
-</script>
-<script>  
+  <script>  
   $(function (){ 
     $("#example").popover(); 
     $("[rel='tooltip']").tooltip(); 
   });  
   </script>  
+  
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>

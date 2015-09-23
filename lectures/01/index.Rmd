@@ -7,7 +7,7 @@ url      : {lib: "../../libraries", assets: "../../assets"}
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 lecnum   : "01"
-widgets  : [mathjax, quiz, bootstrap]    # {mathjax, quiz, bootstrap}
+widgets     : [bootstrap, quiz, interactive]  # {mathjax, shiny, bootstrap}
 ext_widgets: {rCharts: [libraries/widgets/nvd3]}
 knit     : slidify::knit2slides
 bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
@@ -94,21 +94,42 @@ github      : {user: loperntu, repo: lads}
 4. 實作
 
 ---
-## 一句話介紹語言學是什麼
+## One-minute Linguistics
+
+- 語言學要回答`語言的習得與發展`，`結構與功能`，`神經與心理機制`，`社會變異與演化過程`等。
+- 經驗/計算語言學 (empirical/computational linguistics) [a.k.a. Natural Language Processing] 用電腦來幫助我們回答上述問題，並產生應用。
+- (大數據中的) 語言數據（**語料**）蘊含了**文化歷史記憶，社會心理趨勢，政治輿情傾向，情緒偏好分佈，人格特質與決策行為，疾病前期徵兆等等**。 
+
+
+--- 
+## 語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science
+
+> - `Linguistic data are ubiqutous`, knowledge to be discovered, tendency to be predicted.
+> - 自然語言處理 (Natural Language Processing) and 文本分析技術 (Textual Analytics) are the keys [Why? pressing `p`]
+
+*** =pnotes
+<q>
+> Enormous amounts of textual information are becoming available electronically on a daily basis,...... Natural Language Processing (NLP) techniques have been playing an increasing role in extracting and managing entities and relations from text... substantially reducing the overhead of the development process.
+</q>
+
+
 
 
 ---
 ## Linguistic Foundations of Text Analytics
 
-```
-<img src=assets/img/linguistic.knowledge.jpg style="width: 750px">
-<span class="footnote">Source: [Adapted from (Pinker, 1999)]</span>
-```
+
+<iframe src="assets/img/linguistic.knowledge.jpg" width="800" height="500" scrolling="no" frameBorder="0"></iframe>
+
+<span class="footnote">Data source: [Adapted from (Pinker, 1999)]</span>
+
+
 ---
 ## 一句話激怒語言學家
 
+> "Every time I fire a linguist, the performance of the speech recognizer goes up", (Frederick Jelinek 1932-2010, IBM and Johns Hopkins.)
 
-
+Does Deep machine learning only require shallow linguistic processing ?
 
 ---
 ## 為什麼 BOW 沒用，功能語言學會告訴妳
@@ -175,9 +196,24 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 
 
 ---
-## 課堂練習
+## 課堂練習 [1]
 
 抓一篇 Alice in wonderland 來試試。
+
+
+
+
+---
+## R? Python? or Both? 
+
+初學者從實用面來決定
+
+- 免費線上課程 (e.g., [DataCamp](); [Coursera DS series](), etc)
+- 相關套件與社群支持。發揮妳的自學精神！
+
+<img src=assets/img/datacamp.png style="width: 550px">
+
+
 
 
 
@@ -273,7 +309,7 @@ Really, you don't know how?
 ---
 ## 作業 (20150924)
 
-1. 讀這篇，寫下你的問題。
+1. 讀這章，寫下你的問題。
 2. from TA
 3. (bonus) 妳覺得最好的分組方法（數學，遐想法皆可）
 
