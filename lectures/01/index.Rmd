@@ -7,7 +7,7 @@ url      : {lib: "../../libraries", assets: "../../assets"}
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 lecnum   : "01"
-widgets     : [bootstrap, quiz, interactive]  # {mathjax, shiny, bootstrap}
+widgets     : [bootstrap, quiz, interactive, mathjax]  # {mathjax, shiny, bootstrap}
 ext_widgets: {rCharts: [libraries/widgets/nvd3]}
 knit     : slidify::knit2slides
 bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
@@ -34,52 +34,92 @@ github      : {user: loperntu, repo: lads}
 ---
 ## 背景
 
-- <span style="color:blue; font-weight:bold"> 文本分析 (text analysis) </span> 在語言學裡 1950 年代即開始。文本自動分析 (text analytics) 則是受到大數據的影響開始興起。
-
-- 
+- **文本分析 (text analysis)**  在語言學裡 1950 年代即開始。<span style="color:blue; font-weight:bold">文本自動分析 (text analytics) </span> 則是受到大數據的影響在近幾年開始興起。
+  - Data typology: *structured, semi-structured, unstructured data*.
+  - Unstructured data refers to 'data that either does not have a pre-defined data model and/or does not fit well into relational tables', estimately represents c.a. 85% of enterprise data.
 
 ---
-# Text Analysis and Text Analytics
-目前的關注主題
+## 基本概念 
 
-1. text categorization
-2. text clustering / similarity / association 
+- 三組人馬： (Text analytics | Text mining) 、 (NLP | Linguistics) 、 (Machine Learning | Statistics)
+
+- Text analytics ($\simeq$ text mining) can be viewed as a set of **(computational) linguistic (NLP)** and **(statistical) machine learning** techniques that model and discover the information content of textual data for diffirent purposes (e.g., business intelligence, research, or investigation).
+
+- Textual **data**, textual **information**, textual **knowledge**.
+  - [Data Science] Linguistic/textual `data` processing
+  - [Natural Language Processing] Linguistic/textual `information` processing
+  - [Semantics, Ontologies, AI and Language Understanding] Linguistic/textual `knowledge` processing
+
+---
+### 人機處理資料的複雜度 (Das, 2013)
+
+<img src="assets/img/data.png" alt="Drawing" style="width: 500px;"/>
+<img src="assets/img/data1.png" alt="Drawing" style="width: 500px;"/>
+
+---
+## Text Analytics 目前的關注主題
+
+1. Text categorization
+2. Text clustering / similarity / association 
 3. Named Entity Extraction / topic modelling / event detection
 4. Sentiment analysis / Opinion mining
-5. document summarization
-6. text and social network
+5. Text summarization
+6. Text in the social network
 
 
+---
+## `Data <> Story` : Automated Data Scienctist
+
+個人以為會發生的趨勢與需求
+
+- Making structured data from unstructured data (and vice versa).
+<img src="assets/img/data2.png" alt="Drawing" style="width: 400px;"/>
+<img src="assets/img/data3.png" alt="Drawing" style="width: 400px;"/>
+
+
+- Marrying structured and unstructured data
+<img src="assets/img/data4.png" alt="Drawing" style="width: 400px;"/>
+
+<span class="footnote"> Source: (Hurwitz, J et al., 2013)</span>
 
 
 ---
 ## 商業應用
 
-> 文本挖掘（Text analytics）是透過軟體或其他商業流程來進行自然語言處理，從社群、網站、商業文字中找尋有用資訊。自然語言處理（Natural Language Processing，所寫 NLP）是人機互動的關鍵，簡單來說就是讓電腦了解人的語言，然後將訊息轉化成一於電腦處理的形式以便儲存及利用。<http://buzzorange.com/techorange/2015/06/08/text-analytics/>
+> 文本挖掘（Text analytics）是透過軟體或其他商業流程來進行自然語言處理，從社群、網站、商業文字中找尋有用資訊。自然語言處理（Natural Language Processing，縮寫 NLP）是人機互動的關鍵，簡單來說就是讓電腦了解人的語言，然後將訊息轉化成一於電腦處理的形式以便儲存及利用。<http://buzzorange.com/techorange/2015/06/08/text-analytics/>
 
 ---
-## 人文歷史應用
+## 人文歷史、社會科學與生醫研究
 
-- Historical text mining
-- Legal text mining
-- Product/comments 
+- [Text-mining as a Research Tool in the Humanities and Social Sciences](http://www.slideshare.net/rybesh/textmining-as-a-research-tool-in-the-humanities-and-social-sciences)
+- [Historical text mining](http://fredgibbs.net/extras/text-mining-digital-poster/)
+- [Legal text mining](https://legalinformatics.wordpress.com/tag/text-mining-of-legal-documents/)
+- Biochemical, medical text mining, .... 請自行 google
+
+
 
 ---
-## 也可以改造政府
+## 噢，也可以改造政府
 
 `DataTaipei`: R client for Data.Taipei
-
 功能：
+- 搜尋下載台北市政府的開放資料
+- 下載的資料集會透過 <http://data.taipei> 提供的功能轉換為表格
 
-－搜尋台北市政府的開放資料
-－下載台北市政府的開放資料
-－下載的資料集會透過 <http://data.taipei> 提供的功能轉換為表格
+[開放政府資料](http://www.slideshare.net/autang/open-data-governance)
+
+---
+## 或者影響選舉
+
+<img src="assets/img/2012.png" alt="Drawing" style="width: 500px;"/>
+Narrative network of US. 2012.
 
 
 ---
-## 外遇資料都可以分析
+## 欸，也可以分析外遇資料
 
-`人文思考`：數據時代的個人隱私
+- Ashley Madison (*婚外情媒合專營網站*) hacked .... (in the dark web)
+- `人文思考`：數據時代的個人隱私
 
 
 --- bg:#FFFAF0
@@ -91,30 +131,77 @@ github      : {user: loperntu, repo: lads}
 
 
 ---
-# 文本長什麼樣子
+## 文本長什麼樣子
 
 - Texts 文本 / Documents 文件
-- Markup 標誌 / Annotation 標記
+- Markup 標誌 / Tag 標籤 / Annotation 標記
+- Header / Footer
+- etc.
 
 ---
 ## 法律文件
 
-
----
-## 美食評論
+<img src="assets/img/legal.jpg" alt="Drawing" style="width: 500px;"/>
 
 
 ---
 ## 批踢踢
 
+<img src="assets/img/ptt.jpg" alt="Drawing" style="width: 500px;"/>
 
+<http://lopen.linguistics.ntu.edu.tw/PTT>
+
+---
+## 文本的熱門關注：
+
+`評論、美食、產品、電影、書籍、課程、施政、`？
 
 
 
 ---
-## 文本的多重來源：Local, Web, Sensors
+## 一般做 Text mining / Data Science 的誤解
+- 以為文本來源單一
+- 以為文本軸度單一
 
 
+---
+## 文本的多重來源
+
+- Sources of texts: blogs, reviews, interactions on social media, etc.
+- <span style="color:blue; font-weight:bold"> Local, Web, Sensors </span>
+
+
+---
+## 文本分析的階層
+
+由<span style="color:blue; font-weight:bold">自然語言表徵</span>的兩個軸度
+
+* [**語言軸**] 語料 corpus data、語言資訊 information、語言知識 knowledge
+* [**概念軸**] 事實 facts、概念 concepts、領域知識本體 domain ontologies/taxonomies
+
+
+---
+## 語言軸度分析
+
+- **Phonetic.phonological** analysis
+- **Lexical.morphological** analysis
+- **Syntactic.constructional** analysis
+- **Semantic.Pragmatics** analysis
+- **Discourse.interaction** analysis
+
+
+
+---
+## 概念軸度
+
+- **Terms** (keywords)
+- **Named Entities**
+- **Facts**: Also called **relationships**, which indicate the who/what/where relationships between two entities.
+- **Events**: While some experts use the terms fact, relationship, and event interchangeably, others distinguish between events and facts, stating that events usually contain a time dimension and often cause facts to change. Examples include a change in management within a company or the status of a sales process.
+- **Concepts** 
+- **Sentiments**: viewpoints or emotions in the underlying text. 
+
+`Taxonomies`
 
 
 
@@ -135,7 +222,7 @@ github      : {user: loperntu, repo: lads}
 
 
 --- 
-## 語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science
+## 語言分析處理與統計是資料科學的兩把刀 
 
 > - `Linguistic data are ubiqutous`, knowledge to be discovered, tendency to be predicted.
 > - 自然語言處理 (Natural Language Processing) and 文本分析技術 (Textual Analytics) are the keys [Why? pressing `p`]
@@ -168,6 +255,7 @@ Does Deep machine learning only require shallow linguistic processing ?
 ## 為什麼 BOW 沒用，功能語言學會告訴妳
 
 - BOW (bag-of-word) appraoch
+- emotion chunk ("你這種人")
 
 
 
@@ -207,7 +295,7 @@ Does Deep machine learning only require shallow linguistic processing ?
 
 - 事實上有許多商業軟體工具與線上服務
   * [Text analysis online](http://textanalysisonline.com/)
-  * [Semantia](), [Text Analysis APIs on Mashape](https://market.mashape.com/textanalysis/textanalysis), [NLP APIs on BOSONNLP]()
+  * [Semantria](https://semantria.com/), [Text Analysis APIs on Mashape](https://market.mashape.com/textanalysis/textanalysis), [NLP APIs on BOSONNLP](http://bosonnlp.com/)
 - 但是
   * Coding is the new literacy
   * 求人不如求己(＝我沒有錢但是我有青春)
@@ -254,7 +342,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 
 初學者從實用面來決定
 
-- 免費線上課程 (e.g., [DataCamp](); [Coursera DS series](), etc)
+- 免費線上課程 (e.g., [DataCamp](https://www.datacamp.com/); [Coursera DS series](https://www.coursera.org/specialization/jhudatascience/1), etc)
 - 相關套件與社群支持。發揮妳的自學精神！
 
 <img src=assets/img/datacamp.png style="width: 550px">
@@ -272,15 +360,14 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 * 社會感測器 (twitter, ptt, weibo) 傳回即時的產品評論文本資料 (textual data)
 
 ---
-## 文本的熱門關注：評論
-美食、產品、電影、書籍、課程、施政）
+## 記住這個流程:
 
-> 記住這個流程:
+> 
 - Pre-processing
 - Exploratory data analysis (statistic summary/graphical representation)
 - (Linguistic annotation and analysis)
-- Predictive modeling
-- Report (`Data <> Story`)
+- Predictive modeling (regression, classification, clustering)
+- Reproducible, infographic Report (`Data <> Story`)
 
 
 
@@ -330,22 +417,22 @@ ggplot(diamonds, aes(carat, price))+geom_point(color="firebrick")
 
 --- &radio
 
-## 複習
+## 思考題 
 
-What is 1 + 1?
+課內分組最好的解法從哪裡來？
 
-1. 1
-2. _2_
-3. 3
-4. 4
+1. _語言學_
+2. 數學
+3. 統計學
+4. 心理學
 
 *** .hint
 
-This is easy!
+我也沒有標準答案
 
 *** .explanation
 
-Really, you don't know how?
+為什麼？因為我是語言學家 XD
 
 
 ---
@@ -353,7 +440,7 @@ Really, you don't know how?
 
 1. 讀這章，寫下你的問題。
 2. from TA
-3. (bonus) 妳覺得最好的分組方法（數學，遐想法皆可）
+3. (bonus) 妳覺得最好的分組方法（數學，遐想皆可）
 
 
 

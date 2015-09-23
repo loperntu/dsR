@@ -88,8 +88,12 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p><span style="color:blue; font-weight:bold"> 文本分析 (text analysis) </span> 在語言學裡 1950 年代即開始。文本自動分析 (text analytics) 則是受到大數據的影響開始興起。</p></li>
-<li></li>
+<li><strong>文本分析 (text analysis)</strong>  在語言學裡 1950 年代即開始。<span style="color:blue; font-weight:bold">文本自動分析 (text analytics) </span> 則是受到大數據的影響在近幾年開始興起。
+
+<ul>
+<li>Data typology: <em>structured, semi-structured, unstructured data</em>.</li>
+<li>Unstructured data refers to &#39;data that either does not have a pre-defined data model and/or does not fit well into relational tables&#39;, estimately represents c.a. 85% of enterprise data.</li>
+</ul></li>
 </ul>
 
   </article>
@@ -98,19 +102,20 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h1>Text Analysis and Text Analytics</h1>
+    <h2>基本概念</h2>
   </hgroup>
   <article data-timings="">
-    <p>目前的關注主題</p>
+    <ul>
+<li><p>三組人馬： (Text analytics | Text mining) 、 (NLP | Linguistics) 、 (Machine Learning | Statistics)</p></li>
+<li><p>Text analytics (\(\simeq\) text mining) can be viewed as a set of <strong>(computational) linguistic (NLP)</strong> and <strong>(statistical) machine learning</strong> techniques that model and discover the information content of textual data for diffirent purposes (e.g., business intelligence, research, or investigation).</p></li>
+<li><p>Textual <strong>data</strong>, textual <strong>information</strong>, textual <strong>knowledge</strong>.</p>
 
-<ol>
-<li>text categorization</li>
-<li>text clustering / similarity / association </li>
-<li>Named Entity Extraction / topic modelling / event detection</li>
-<li>Sentiment analysis / Opinion mining</li>
-<li>document summarization</li>
-<li>text and social network</li>
-</ol>
+<ul>
+<li>[Data Science] Linguistic/textual <code>data</code> processing</li>
+<li>[Natural Language Processing] Linguistic/textual <code>information</code> processing</li>
+<li>[Semantics, Ontologies, AI and Language Understanding] Linguistic/textual <code>knowledge</code> processing</li>
+</ul></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -118,12 +123,11 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>商業應用</h2>
+    <h3>人機處理資料的複雜度 (Das, 2013)</h3>
   </hgroup>
   <article data-timings="">
-    <blockquote>
-<p>文本挖掘（Text analytics）是透過軟體或其他商業流程來進行自然語言處理，從社群、網站、商業文字中找尋有用資訊。自然語言處理（Natural Language Processing，所寫 NLP）是人機互動的關鍵，簡單來說就是讓電腦了解人的語言，然後將訊息轉化成一於電腦處理的形式以便儲存及利用。<a href="http://buzzorange.com/techorange/2015/06/08/text-analytics/">http://buzzorange.com/techorange/2015/06/08/text-analytics/</a></p>
-</blockquote>
+    <p><img src="assets/img/data.png" alt="Drawing" style="width: 500px;"/>
+<img src="assets/img/data1.png" alt="Drawing" style="width: 500px;"/></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -131,14 +135,17 @@
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h2>人文歷史應用</h2>
+    <h2>Text Analytics 目前的關注主題</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Historical text mining</li>
-<li>Legal text mining</li>
-<li>Product/comments </li>
-</ul>
+    <ol>
+<li>Text categorization</li>
+<li>Text clustering / similarity / association </li>
+<li>Named Entity Extraction / topic modelling / event detection</li>
+<li>Sentiment analysis / Opinion mining</li>
+<li>Text summarization</li>
+<li>Text in the social network</li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -146,16 +153,20 @@
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>也可以改造政府</h2>
+    <h2><code>Data &lt;&gt; Story</code> : Automated Data Scienctist</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>DataTaipei</code>: R client for Data.Taipei</p>
+    <p>個人以為會發生的趨勢與需求</p>
 
-<p>功能：</p>
+<ul>
+<li><p>Making structured data from unstructured data (and vice versa).
+<img src="assets/img/data2.png" alt="Drawing" style="width: 400px;"/>
+<img src="assets/img/data3.png" alt="Drawing" style="width: 400px;"/></p></li>
+<li><p>Marrying structured and unstructured data
+<img src="assets/img/data4.png" alt="Drawing" style="width: 400px;"/></p></li>
+</ul>
 
-<p>－搜尋台北市政府的開放資料
-－下載台北市政府的開放資料
-－下載的資料集會透過 <a href="http://data.taipei">http://data.taipei</a> 提供的功能轉換為表格</p>
+<p><span class="footnote"> Source: (Hurwitz, J et al., 2013)</span></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -163,16 +174,79 @@
 
 <slide class="" id="slide-8" style="background:;">
   <hgroup>
-    <h2>外遇資料都可以分析</h2>
+    <h2>商業應用</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>人文思考</code>：數據時代的個人隱私</p>
+    <blockquote>
+<p>文本挖掘（Text analytics）是透過軟體或其他商業流程來進行自然語言處理，從社群、網站、商業文字中找尋有用資訊。自然語言處理（Natural Language Processing，縮寫 NLP）是人機互動的關鍵，簡單來說就是讓電腦了解人的語言，然後將訊息轉化成一於電腦處理的形式以便儲存及利用。<a href="http://buzzorange.com/techorange/2015/06/08/text-analytics/">http://buzzorange.com/techorange/2015/06/08/text-analytics/</a></p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:#FFFAF0;">
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>人文歷史、社會科學與生醫研究</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://www.slideshare.net/rybesh/textmining-as-a-research-tool-in-the-humanities-and-social-sciences">Text-mining as a Research Tool in the Humanities and Social Sciences</a></li>
+<li><a href="http://fredgibbs.net/extras/text-mining-digital-poster/">Historical text mining</a></li>
+<li><a href="https://legalinformatics.wordpress.com/tag/text-mining-of-legal-documents/">Legal text mining</a></li>
+<li>Biochemical, medical text mining, .... 請自行 google</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>噢，也可以改造政府</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>DataTaipei</code>: R client for Data.Taipei
+功能：</p>
+
+<ul>
+<li>搜尋下載台北市政府的開放資料</li>
+<li>下載的資料集會透過 <a href="http://data.taipei">http://data.taipei</a> 提供的功能轉換為表格</li>
+</ul>
+
+<p><a href="http://www.slideshare.net/autang/open-data-governance">開放政府資料</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>或者影響選舉</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/2012.png" alt="Drawing" style="width: 500px;"/>
+Narrative network of US. 2012.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>欸，也可以分析外遇資料</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Ashley Madison (<em>婚外情媒合專營網站</em>) hacked .... (in the dark web)</li>
+<li><code>人文思考</code>：數據時代的個人隱私</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -188,61 +262,139 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h1>文本長什麼樣子</h1>
+    <h2>文本長什麼樣子</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>Texts 文本 / Documents 文件</li>
-<li>Markup 標誌 / Annotation 標記</li>
+<li>Markup 標誌 / Tag 標籤 / Annotation 標記</li>
+<li>Header / Footer</li>
+<li>etc.</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>法律文件</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><img src="assets/img/legal.jpg" alt="Drawing" style="width: 500px;"/></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2>美食評論</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>批踢踢</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><img src="assets/img/ptt.jpg" alt="Drawing" style="width: 500px;"/></p>
+
+<p><a href="http://lopen.linguistics.ntu.edu.tw/PTT">http://lopen.linguistics.ntu.edu.tw/PTT</a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
-    <h2>文本的多重來源：Local, Web, Sensors</h2>
+    <h2>文本的熱門關注：</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><code>評論、美食、產品、電影、書籍、課程、施政、</code>？</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:#FFFAF0;">
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>一般做 Text mining / Data Science 的誤解</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>以為文本來源單一</li>
+<li>以為文本軸度單一</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>文本的多重來源</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Sources of texts: blogs, reviews, interactions on social media, etc.</li>
+<li><span style="color:blue; font-weight:bold"> Local, Web, Sensors </span></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>文本分析的階層</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>由<span style="color:blue; font-weight:bold">自然語言表徵</span>的兩個軸度</p>
+
+<ul>
+<li>[<strong>語言軸</strong>] 語料 corpus data、語言資訊 information、語言知識 knowledge</li>
+<li>[<strong>概念軸</strong>] 事實 facts、概念 concepts、領域知識本體 domain ontologies/taxonomies</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>語言軸度分析</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Phonetic.phonological</strong> analysis</li>
+<li><strong>Lexical.morphological</strong> analysis</li>
+<li><strong>Syntactic.constructional</strong> analysis</li>
+<li><strong>Semantic.Pragmatics</strong> analysis</li>
+<li><strong>Discourse.interaction</strong> analysis</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>概念軸度</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Terms</strong> (keywords)</li>
+<li><strong>Named Entities</strong></li>
+<li><strong>Facts</strong>: Also called <strong>relationships</strong>, which indicate the who/what/where relationships between two entities.</li>
+<li><strong>Events</strong>: While some experts use the terms fact, relationship, and event interchangeably, others distinguish between events and facts, stating that events usually contain a time dimension and often cause facts to change. Examples include a change in management within a company or the status of a sales process.</li>
+<li><strong>Concepts</strong> </li>
+<li><strong>Sentiments</strong>: viewpoints or emotions in the underlying text. </li>
+</ul>
+
+<p><code>Taxonomies</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -258,7 +410,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>One-minute Linguistics</h2>
   </hgroup>
@@ -273,9 +425,9 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
-    <h2>語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science</h2>
+    <h2>語言分析處理與統計是資料科學的兩把刀</h2>
   </hgroup>
   <article data-timings="">
     <ul class = "build incremental">
@@ -298,7 +450,7 @@
   </aside>
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Linguistic Foundations of Text Analytics</h2>
   </hgroup>
@@ -311,7 +463,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>一句話激怒語言學家</h2>
   </hgroup>
@@ -326,20 +478,21 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>為什麼 BOW 沒用，功能語言學會告訴妳</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>BOW (bag-of-word) appraoch</li>
+<li>emotion chunk (&quot;你這種人&quot;)</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <hgroup>
     <h2>說謊還是人比較厲害</h2>
   </hgroup>
@@ -356,7 +509,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:#FFFAF0;">
+<slide class="" id="slide-30" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -372,7 +525,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-31" style="background:;">
   <hgroup>
     <h2>3 個 Why：Linux (command line tools) + R/Programming + Git</h2>
   </hgroup>
@@ -382,7 +535,7 @@
 
 <ul>
 <li><a href="http://textanalysisonline.com/">Text analysis online</a></li>
-<li><a href="">Semantia</a>, <a href="https://market.mashape.com/textanalysis/textanalysis">Text Analysis APIs on Mashape</a>, <a href="">NLP APIs on BOSONNLP</a></li>
+<li><a href="https://semantria.com/">Semantria</a>, <a href="https://market.mashape.com/textanalysis/textanalysis">Text Analysis APIs on Mashape</a>, <a href="http://bosonnlp.com/">NLP APIs on BOSONNLP</a></li>
 </ul></li>
 <li>但是
 
@@ -397,7 +550,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-32" style="background:;">
   <hgroup>
     <h2>指令列工具與 Linux</h2>
   </hgroup>
@@ -423,7 +576,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>活用組合之後會加速工作</h2>
   </hgroup>
@@ -435,7 +588,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>課堂練習 [1]</h2>
   </hgroup>
@@ -446,7 +599,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>R? Python? or Both?</h2>
   </hgroup>
@@ -454,7 +607,7 @@ wc -l stmtn10-trimmed.txt
     <p>初學者從實用面來決定</p>
 
 <ul>
-<li>免費線上課程 (e.g., <a href="">DataCamp</a>; <a href="">Coursera DS series</a>, etc)</li>
+<li>免費線上課程 (e.g., <a href="https://www.datacamp.com/">DataCamp</a>; <a href="https://www.coursera.org/specialization/jhudatascience/1">Coursera DS series</a>, etc)</li>
 <li>相關套件與社群支持。發揮妳的自學精神！</li>
 </ul>
 
@@ -464,7 +617,7 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
+<slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>資料科學實作</h2>
   </hgroup>
@@ -480,29 +633,24 @@ wc -l stmtn10-trimmed.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
-    <h2>文本的熱門關注：評論</h2>
+    <h2>記住這個流程:</h2>
   </hgroup>
   <article data-timings="">
-    <p>美食、產品、電影、書籍、課程、施政）</p>
-
-<blockquote>
-<p>記住這個流程:</p>
-
-<ul>
+    <ul class = "build incremental">
 <li>Pre-processing</li>
 <li>Exploratory data analysis (statistic summary/graphical representation)</li>
 <li>(Linguistic annotation and analysis)</li>
-<li>Predictive modeling</li>
-<li>Report (<code>Data &lt;&gt; Story</code>)</li>
+<li>Predictive modeling (regression, classification, clustering)</li>
+<li>Reproducible, infographic Report (<code>Data &lt;&gt; Story</code>)</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <hgroup>
     <h2>香水評論</h2>
   </hgroup>
@@ -526,7 +674,7 @@ summary(comments)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-39" style="background:;">
   <article data-timings="">
     <pre><code class="r">library(FactoMineR)
 res.textual &lt;- textual(comments, num.text = 3, contingence.by = 1, sep.word = &quot;;&quot;)
@@ -538,7 +686,7 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:;">
+<slide class="" id="slide-40" style="background:;">
   <article data-timings="">
     <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
 
@@ -546,20 +694,20 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-41" style="background:;">
   <hgroup>
-    <h2>複習</h2>
+    <h2>思考題</h2>
   </hgroup>
   <article data-timings="">
     
 <div class="quiz quiz-single well ">
-  <p>What is 1 + 1?</p>
+  <p>課內分組最好的解法從哪裡來？</p>
 
 <ol>
-<li>1</li>
-<li><em>2</em></li>
-<li>3</li>
-<li>4</li>
+<li><em>語言學</em></li>
+<li>數學</li>
+<li>統計學</li>
+<li>心理學</li>
 </ol>
 
   <button class="quiz-submit btn btn-primary">Submit</button>
@@ -568,11 +716,11 @@ res.textual$cont.table[,1:10]
   <button class="quiz-clear btn btn-danger">Clear</button>
   
   <div class="quiz-hint">
-  <p>This is easy!</p>
+  <p>我也沒有標準答案</p>
 
 </div>
 <div class="quiz-explanation">
-  <p>Really, you don&#39;t know how?</p>
+  <p>為什麼？因為我是語言學家 XD</p>
 
 </div>
 </div>
@@ -580,7 +728,7 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h2>作業 (20150924)</h2>
   </hgroup>
@@ -588,7 +736,7 @@ res.textual$cont.table[,1:10]
     <ol>
 <li>讀這章，寫下你的問題。</li>
 <li>from TA</li>
-<li>(bonus) 妳覺得最好的分組方法（數學，遐想法皆可）</li>
+<li>(bonus) 妳覺得最好的分組方法（數學，遐想皆可）</li>
 </ol>
 
   </article>
@@ -619,188 +767,236 @@ res.textual$cont.table[,1:10]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Text Analysis and Text Analytics'>
+        data-slide=4 title='基本概念'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='商業應用'>
+        data-slide=5 title='人機處理資料的複雜度 (Das, 2013)'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='人文歷史應用'>
+        data-slide=6 title='Text Analytics 目前的關注主題'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='也可以改造政府'>
+        data-slide=7 title='<code>Data &lt;&gt; Story</code> : Automated Data Scienctist'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='外遇資料都可以分析'>
+        data-slide=8 title='商業應用'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='大綱'>
+        data-slide=9 title='人文歷史、社會科學與生醫研究'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='文本長什麼樣子'>
+        data-slide=10 title='噢，也可以改造政府'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='法律文件'>
+        data-slide=11 title='或者影響選舉'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='美食評論'>
+        data-slide=12 title='欸，也可以分析外遇資料'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='批踢踢'>
+        data-slide=13 title='大綱'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='文本的多重來源：Local, Web, Sensors'>
+        data-slide=14 title='文本長什麼樣子'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='大綱'>
+        data-slide=15 title='法律文件'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='One-minute Linguistics'>
+        data-slide=16 title='批踢踢'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='語言分析與處理是資料科學的第二把刀 Linguistic analysis and Data Science'>
+        data-slide=17 title='文本的熱門關注：'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Linguistic Foundations of Text Analytics'>
+        data-slide=18 title='一般做 Text mining / Data Science 的誤解'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='一句話激怒語言學家'>
+        data-slide=19 title='文本的多重來源'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='為什麼 BOW 沒用，功能語言學會告訴妳'>
+        data-slide=20 title='文本分析的階層'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='說謊還是人比較厲害'>
+        data-slide=21 title='語言軸度分析'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='大綱'>
+        data-slide=22 title='概念軸度'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='3 個 Why：Linux (command line tools) + R/Programming + Git'>
+        data-slide=23 title='大綱'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='指令列工具與 Linux'>
+        data-slide=24 title='One-minute Linguistics'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='活用組合之後會加速工作'>
+        data-slide=25 title='語言分析處理與統計是資料科學的兩把刀'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='課堂練習 [1]'>
+        data-slide=26 title='Linguistic Foundations of Text Analytics'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='R? Python? or Both?'>
+        data-slide=27 title='一句話激怒語言學家'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='資料科學實作'>
+        data-slide=28 title='為什麼 BOW 沒用，功能語言學會告訴妳'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='文本的熱門關注：評論'>
+        data-slide=29 title='說謊還是人比較厲害'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='香水評論'>
+        data-slide=30 title='大綱'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='NA'>
+        data-slide=31 title='3 個 Why：Linux (command line tools) + R/Programming + Git'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='NA'>
+        data-slide=32 title='指令列工具與 Linux'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='複習'>
+        data-slide=33 title='活用組合之後會加速工作'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='作業 (20150924)'>
+        data-slide=34 title='課堂練習 [1]'>
          34
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=35 title='R? Python? or Both?'>
+         35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='資料科學實作'>
+         36
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=37 title='記住這個流程:'>
+         37
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=38 title='香水評論'>
+         38
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=39 title='NA'>
+         39
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=40 title='NA'>
+         40
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=41 title='思考題'>
+         41
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=42 title='作業 (20150924)'>
+         42
       </a>
     </li>
   </ul>
@@ -827,7 +1023,21 @@ res.textual$cont.table[,1:10]
   });  
   </script>  
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
