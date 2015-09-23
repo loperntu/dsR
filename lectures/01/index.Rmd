@@ -438,9 +438,8 @@ ggplot(diamonds, aes(carat, price))+geom_point(color="firebrick")
 ---
 ## 作業 (20150924)
 
-1. 讀這章，寫下你的問題。
-2. from TA
-3. (bonus) 妳覺得最好的分組方法（數學，遐想皆可）
+1. from TA
+2. 最好的分組方法（數學，遐想皆可）
 
 
 
