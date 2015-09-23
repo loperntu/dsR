@@ -36,6 +36,8 @@ github      : {user: loperntu, repo: lads}
 
 - <span style="color:blue; font-weight:bold"> 文本分析 (text analysis) </span> 在語言學裡 1950 年代即開始。文本自動分析 (text analytics) 則是受到大數據的影響開始興起。
 
+- 
+
 ---
 # Text Analysis and Text Analytics
 目前的關注主題
@@ -48,8 +50,15 @@ github      : {user: loperntu, repo: lads}
 6. text and social network
 
 
+
+
 ---
-## 應用面
+## 商業應用
+
+> 文本挖掘（Text analytics）是透過軟體或其他商業流程來進行自然語言處理，從社群、網站、商業文字中找尋有用資訊。自然語言處理（Natural Language Processing，所寫 NLP）是人機互動的關鍵，簡單來說就是讓電腦了解人的語言，然後將訊息轉化成一於電腦處理的形式以便儲存及利用。<http://buzzorange.com/techorange/2015/06/08/text-analytics/>
+
+---
+## 人文歷史應用
 
 - Historical text mining
 - Legal text mining
@@ -67,6 +76,12 @@ github      : {user: loperntu, repo: lads}
 －下載的資料集會透過 <http://data.taipei> 提供的功能轉換為表格
 
 
+---
+## 外遇資料都可以分析
+
+`人文思考`：數據時代的個人隱私
+
+
 --- bg:#FFFAF0
 ## 大綱
 1. Background
@@ -76,13 +91,31 @@ github      : {user: loperntu, repo: lads}
 
 
 ---
-## 文本長什麼樣子
+# 文本長什麼樣子
+
+- Texts 文本 / Documents 文件
+- Markup 標誌 / Annotation 標記
+
+---
+## 法律文件
+
+
+---
+## 美食評論
+
+
+---
+## 批踢踢
+
 
 
 
 
 ---
-## 來源：Local, Web, Sensors
+## 文本的多重來源：Local, Web, Sensors
+
+
+
 
 
 
@@ -139,7 +172,20 @@ Does Deep machine learning only require shallow linguistic processing ?
 
 
 ---
-## 來源：Local, Web, Sensors
+## 說謊還是人比較厲害
+
+
+<iframe width="160" height="100" src="https://www.youtube.com/embed/H0-WkpmTPrM" frameborder="0" allowfullscreen></iframe>
+
+<!--
+<iframe width="160" height="100" src="http://www.youtube.com/embed/ij5BmD4tU5c" frameborder="0" allowfullscreen></iframe>
+-->
+
+<span class="footnote"> The language of lying [Noah Zandon]()</span>
+
+
+
+
 
 
 
@@ -225,20 +271,16 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 * 工廠感測器 (sensors) ／銷售／實驗室產生的數值資料 (numeric data)
 * 社會感測器 (twitter, ptt, weibo) 傳回即時的產品評論文本資料 (textual data)
 
-
-- numeric data 
-- textual data
-
 ---
 ## 文本的熱門關注：評論
 美食、產品、電影、書籍、課程、施政）
 
 > 記住這個流程:
-    Pre-processing
-    Exploratory data analysis (statistic summary/graphical representation)
-    (Linguistic annotation and analysis)
-    Predictive modeling
-    Report (`Data <> Story`)
+- Pre-processing
+- Exploratory data analysis (statistic summary/graphical representation)
+- (Linguistic annotation and analysis)
+- Predictive modeling
+- Report (`Data <> Story`)
 
 
 
@@ -246,9 +288,9 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 ## 香水評論
 
 ```
-wget http://www.sensorywithr.org/wp-content/uploads/2014/06/perfumes_comments.csv
-iconv -f ISO-8859-15 -t UTF-8 perfumes_comments.csv > perfumes_comments_utf8.csv
-csvlook perfumes_comments_utf8.csv | head
+> wget http://www.sensorywithr.org/wp-content/uploads/2014/06/perfumes_comments.csv
+> iconv -f ISO-8859-15 -t UTF-8 perfumes_comments.csv > perfumes_comments_utf8.csv
+> csvlook perfumes_comments_utf8.csv | head
 ```
 
 R way
