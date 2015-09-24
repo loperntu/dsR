@@ -293,6 +293,7 @@ Does Deep machine learning only require shallow linguistic processing ?
 ---
 ## 3 個 Why：Linux (command line tools) + R/Programming + Git
 
+
 - 事實上有許多商業軟體工具與線上服務
   * [Text analysis online](http://textanalysisonline.com/)
   * [Semantria](https://semantria.com/), [Text Analysis APIs on Mashape](https://market.mashape.com/textanalysis/textanalysis), [NLP APIs on BOSONNLP](http://bosonnlp.com/)
@@ -305,7 +306,7 @@ Does Deep machine learning only require shallow linguistic processing ?
 ---
 ## 指令列工具與 Linux
 
-- Embedded system is everywhere (Check RPi)
+- 嵌入裝置與雲端伺服器工作的必須 (Check Raspberry Pi/Amazon EC2)
 - 可以簡單解決的，就不要用複雜的方式。
 
 [Jane Andrews, The Stories Mother Nature Told Her Children](https://archive.org/details/thestoriesmother05792gut)
@@ -354,7 +355,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 ---
 ## 資料科學實作
 
-想像一個場景：妳的公司開發了一種智慧型香水。作為一個 Data Scientist，妳要面對的資料類型：
+想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型：
 
 * 工廠感測器 (sensors) ／銷售／實驗室產生的數值資料 (numeric data)
 * 社會感測器 (twitter, ptt, weibo) 傳回即時的產品評論文本資料 (textual data)
@@ -372,7 +373,20 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 
 
 ---
-## 香水評論
+### 先提醒：作圖比較觀察很重要
+
+```{r, echo=5}
+library(ggplot2)
+data(diamonds)
+diamonds<-diamonds[sample(1:nrow(diamonds),2000),]
+ggplot(diamonds, aes(carat, price, col = color, shape = cut)) +
+    geom_point(color="firebrick")
+```
+
+
+
+---
+## 評論樣本觀察
 
 ```
 > wget http://www.sensorywithr.org/wp-content/uploads/2014/06/perfumes_comments.csv
@@ -391,26 +405,22 @@ summary(comments)
 Source: [sensorywithr](www.sensorywithr.org/chapt-4-when-products-are-depicted-by-comments/)
 
 ---
+## 進一步資料探索也取決於動機或假設是什麼
 
 ```{r, results='hide'}
-
 library(FactoMineR)
 res.textual <- textual(comments, num.text = 3, contingence.by = 1, sep.word = ";")
 names(res.textual)
 res.textual$cont.table[,1:10]
-
+apply(res.textual$cont.table[,1:10], MARGIN = 2, FUN = sum)
 ```
+
+
 
 
 ---
-
-
-```{r, echo=5}
-library(ggplot2)
-data(diamonds)
-diamonds<-diamonds[sample(1:nrow(diamonds),2000),]
-ggplot(diamonds, aes(carat, price))+geom_point(color="firebrick")
-```
+## "Social Listening"
+`twitteR` demo
 
 
 
@@ -438,8 +448,9 @@ ggplot(diamonds, aes(carat, price))+geom_point(color="firebrick")
 ---
 ## 作業 (20150924)
 
-1. from TA
-2. 最好的分組方法（數學，遐想皆可）
+1. 邊讀邊做 Linux tutorials (放在 CEIBA/課程網頁)
+2. TA 出的作業
+3. (bonus: 20%) 最好的分組方法（數學，遐想皆可）
 
 
 

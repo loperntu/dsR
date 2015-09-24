@@ -556,7 +556,7 @@ Narrative network of US. 2012.</p>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Embedded system is everywhere (Check RPi)</li>
+<li>嵌入裝置與雲端伺服器工作的必須 (Check Raspberry Pi/Amazon EC2)</li>
 <li>可以簡單解決的，就不要用複雜的方式。</li>
 </ul>
 
@@ -622,7 +622,7 @@ wc -l stmtn10-trimmed.txt
     <h2>資料科學實作</h2>
   </hgroup>
   <article data-timings="">
-    <p>想像一個場景：妳的公司開發了一種智慧型香水。作為一個 Data Scientist，妳要面對的資料類型：</p>
+    <p>想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型：</p>
 
 <ul>
 <li>工廠感測器 (sensors) ／銷售／實驗室產生的數值資料 (numeric data)</li>
@@ -652,7 +652,18 @@ wc -l stmtn10-trimmed.txt
 
 <slide class="" id="slide-38" style="background:;">
   <hgroup>
-    <h2>香水評論</h2>
+    <h3>先提醒：作圖比較觀察很重要</h3>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-39" style="background:;">
+  <hgroup>
+    <h2>評論樣本觀察</h2>
   </hgroup>
   <article data-timings="">
     <pre><code>&gt; wget http://www.sensorywithr.org/wp-content/uploads/2014/06/perfumes_comments.csv
@@ -674,27 +685,34 @@ summary(comments)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-39" style="background:;">
+<slide class="" id="slide-40" style="background:;">
+  <hgroup>
+    <h2>進一步資料探索也取決於動機或假設是什麼</h2>
+  </hgroup>
   <article data-timings="">
     <pre><code class="r">library(FactoMineR)
 res.textual &lt;- textual(comments, num.text = 3, contingence.by = 1, sep.word = &quot;;&quot;)
 names(res.textual)
 res.textual$cont.table[,1:10]
+apply(res.textual$cont.table[,1:10], MARGIN = 2, FUN = sum)
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-41" style="background:;">
+  <hgroup>
+    <h2>&quot;Social Listening&quot;</h2>
+  </hgroup>
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+    <p><code>twitteR</code> demo</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-42" style="background:;">
   <hgroup>
     <h2>思考題</h2>
   </hgroup>
@@ -728,14 +746,15 @@ res.textual$cont.table[,1:10]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-42" style="background:;">
+<slide class="" id="slide-43" style="background:;">
   <hgroup>
     <h2>作業 (20150924)</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>from TA</li>
-<li>最好的分組方法（數學，遐想皆可）</li>
+<li>邊讀邊做 Linux tutorials (放在 CEIBA/課程網頁)</li>
+<li>TA 出的作業</li>
+<li>(bonus: 20%) 最好的分組方法（數學，遐想皆可）</li>
 </ol>
 
   </article>
@@ -970,32 +989,38 @@ res.textual$cont.table[,1:10]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='香水評論'>
+        data-slide=38 title='先提醒：作圖比較觀察很重要'>
          38
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='NA'>
+        data-slide=39 title='評論樣本觀察'>
          39
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='NA'>
+        data-slide=40 title='進一步資料探索也取決於動機或假設是什麼'>
          40
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='思考題'>
+        data-slide=41 title='&quot;Social Listening&quot;'>
          41
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=42 title='作業 (20150924)'>
+        data-slide=42 title='思考題'>
          42
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=43 title='作業 (20150924)'>
+         43
       </a>
     </li>
   </ul>
