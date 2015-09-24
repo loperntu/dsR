@@ -319,8 +319,10 @@ less -N stmtn10.txt
 sed '2206,2525d' stmtn10.txt > stmtn10-nofooter.txt
 sed '1,40d' stmtn10-nofooter.txt > stmtn10-trimmed.txt
 wc -l stmtn10-trimmed.txt
-
+grep -n "giant" stmtn10-trimmed.txt
 ```
+
+[參考](http://williamjturkel.net/2013/06/15/basic-text-analysis-with-command-line-tools-in-linux/) 
 
 ---
 ## 活用組合之後會加速工作
@@ -333,7 +335,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 ---
 ## 課堂練習 [1]
 
-抓一篇 Alice in wonderland 來試試。
+抓一篇 Alice's Adventures in Wonderland by Lewis Carroll 來試試。
 
 
 
@@ -355,7 +357,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 ---
 ## 資料科學實作
 
-想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型：
+想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型可能有：
 
 * 工廠感測器 (sensors) ／銷售／實驗室產生的數值資料 (numeric data)
 * 社會感測器 (twitter, ptt, weibo) 傳回即時的產品評論文本資料 (textual data)

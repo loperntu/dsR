@@ -569,8 +569,10 @@ less -N stmtn10.txt
 sed &#39;2206,2525d&#39; stmtn10.txt &gt; stmtn10-nofooter.txt
 sed &#39;1,40d&#39; stmtn10-nofooter.txt &gt; stmtn10-trimmed.txt
 wc -l stmtn10-trimmed.txt
-
+grep -n &quot;giant&quot; stmtn10-trimmed.txt
 </code></pre>
+
+<p><a href="http://williamjturkel.net/2013/06/15/basic-text-analysis-with-command-line-tools-in-linux/">參考</a> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -593,7 +595,7 @@ wc -l stmtn10-trimmed.txt
     <h2>課堂練習 [1]</h2>
   </hgroup>
   <article data-timings="">
-    <p>抓一篇 Alice in wonderland 來試試。</p>
+    <p>抓一篇 Alice&#39;s Adventures in Wonderland by Lewis Carroll 來試試。</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -622,7 +624,7 @@ wc -l stmtn10-trimmed.txt
     <h2>資料科學實作</h2>
   </hgroup>
   <article data-timings="">
-    <p>想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型：</p>
+    <p>想像一個場景：妳的公司開發了一種智慧型 XX。作為一個 Data Scientist，妳要面對的資料類型可能有：</p>
 
 <ul>
 <li>工廠感測器 (sensors) ／銷售／實驗室產生的數值資料 (numeric data)</li>
