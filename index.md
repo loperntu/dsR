@@ -1,7 +1,7 @@
 ---
 title       : LADS
 author      : Shu-Kai Hsieh
-framework   : minimal  {io2012, html5slides, shower, dzslides, ...}
+framework   : minimal # {io2012, html5slides, shower, dzslides}
 hitheme     : solarized_light
 mode        : selfcontained
 github      : {user: loperntu, repo: lads, branch: gh-pages}
