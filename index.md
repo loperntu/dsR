@@ -1,7 +1,7 @@
 ---
 title       : LADS
 author      : Shu-Kai Hsieh
-framework   : minimal # {io2012, html5slides, shower, dzslides}
+framework   : minimal 
 hitheme     : solarized_light
 mode        : selfcontained
 github      : {user: loperntu, repo: lads, branch: gh-pages}
@@ -32,7 +32,7 @@ Week | Date   | Topic         | Lab
 -----|:------:| ---           | ---
 1    | 09/17  | Orientation   | 
 2    | 09/24  | Introduction to Data Science and Text Analytics    | RStudio.Agilearning 
-3    | 10/01  | Introduction to Data Science and Text Analytics    | 
+3    | 10/01  | Introduction to Data Science and Text Analytics    | Linux.command-line
 4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | 
 5    | 10/15	| Preparing / Preprocessing text and linguistics ABC |
 6    | 10/22	| Exploratory data analysis and Infographics         |
