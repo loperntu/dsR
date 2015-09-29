@@ -63,7 +63,7 @@ This is the output from running the above code chunk.
 5. [Lecture 04](lectures/04/index.html)
 
 課程投影片講解基本概念，進階內容可參考 
-- [語言分析與資料科學](https://www.gitbook.com/book/loperntu/lads/details) 。
+- [語言分析與資料科學](https://www.gitbook.com/book/loperntu/ladsbook/details) 。
 <!-- link to loperntu/ladsbook repository
 --> 
 - [開放語料庫：製程與分析](https://www.gitbook.com/book/loperntu/copens/details)
