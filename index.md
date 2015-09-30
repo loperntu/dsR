@@ -35,11 +35,11 @@ Week | Date   | Topic         | Lab
 3    | 10/01  | Introduction to Data Science and Text Analytics    | Linux.command-line
 4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 1-4](https://www.datacamp.com/courses/free-introduction-to-r)
 5    | 10/15	| Preparing / Preprocessing text and linguistics ABC | R programming: chapter 5-7
-6    | 10/22	| Exploratory data analysis and Infographics         |
-7    | 10/29  | Exploratory data analysis and Infographics         |
-8    | 11/05	| Corpus and natural language processing             |
-9    | 11/12	| Corpus and natural language processing             |
-10   | 11/19	| Text classification and clustering                 |
+6    | 10/22	| Exploratory data analysis and Infographics         | Data Manipulation: chapter 1-2
+7    | 10/29  | Exploratory data analysis and Infographics         | Data Visualization: chapter 1-3
+8    | 11/05	| Corpus and natural language processing             | Data Visualization: chapter 4-5
+9    | 11/12	| Corpus and natural language processing             | R and Statistics: course one (five chapters)
+10   | 11/19	| Text classification and clustering                 | R and Statistics: course five (three chapters)
 11 	 | 11/26	| `mini-Hackathon`                                   | **開始規劃期末展演**
 12 	 | 12/03	| Text classification and clustering                 |
 13 	 | 12/10	| Topic modeling                                     |
