@@ -193,23 +193,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
-  <hgroup>
-    <h3>人機處理資料的複雜度 (Das, 2013)</h3>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Marrying structured and unstructured data
-<img src="assets/img/data4.png" alt="Drawing" style="width: 400px;"/></li>
-</ul>
-
-<p><span class="footnote"> Source: (Hurwitz, J et al., 2013)</span></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-9" style="background:#FFFAF0;">
+<slide class="" id="slide-8" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -225,7 +209,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>做一個例子看看：回想一下這個流程</h2>
   </hgroup>
@@ -255,7 +239,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>做一個例子看看：回想一下這個流程</h2>
   </hgroup>
@@ -278,7 +262,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>Text Analytics in Action</h2>
   </hgroup>
@@ -299,7 +283,7 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -324,7 +308,7 @@ txt &lt;- Corpus(vs)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -350,7 +334,7 @@ txtns &lt;- tm_map(txt[1], removeWords, stopwords(&quot;english&quot;))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -420,7 +404,7 @@ hard      0.22</p>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -435,7 +419,7 @@ plot(dtm, terms = findFreqTerms(dtm, lowfreq = 5)[1:10], corThreshold = 0.5)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -461,7 +445,7 @@ df &lt;- data.frame(term = names(term.freq), freq = term.freq)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>歐巴馬的國情咨文</h2>
   </hgroup>
@@ -489,7 +473,7 @@ wordcloud(names(freq), freq, min.freq=10)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>那馬英九呢</h2>
   </hgroup>
@@ -524,7 +508,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:#FFFAF0;">
+<slide class="" id="slide-19" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -540,7 +524,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>再提醒：文本分析的深度</h2>
   </hgroup>
@@ -557,7 +541,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>目前的 Text Mining，有事嗎？</h2>
   </hgroup>
@@ -573,7 +557,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:#FFFAF0;">
+<slide class="" id="slide-22" style="background:#FFFAF0;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -589,7 +573,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>預習</h2>
   </hgroup>
@@ -600,7 +584,7 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>作業 (20150931)</h2>
   </hgroup>
@@ -664,13 +648,13 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='人機處理資料的複雜度 (Das, 2013)'>
+        data-slide=8 title='大綱'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='大綱'>
+        data-slide=9 title='做一個例子看看：回想一下這個流程'>
          9
       </a>
     </li>
@@ -682,13 +666,13 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='做一個例子看看：回想一下這個流程'>
+        data-slide=11 title='Text Analytics in Action'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Text Analytics in Action'>
+        data-slide=12 title='歐巴馬的國情咨文'>
          12
       </a>
     </li>
@@ -724,50 +708,44 @@ ma.corpus &lt;- tm_map(txt.c, removeWords,stopwordsCN())
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='歐巴馬的國情咨文'>
+        data-slide=18 title='那馬英九呢'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='那馬英九呢'>
+        data-slide=19 title='大綱'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='大綱'>
+        data-slide=20 title='再提醒：文本分析的深度'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='再提醒：文本分析的深度'>
+        data-slide=21 title='目前的 Text Mining，有事嗎？'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='目前的 Text Mining，有事嗎？'>
+        data-slide=22 title='大綱'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='大綱'>
+        data-slide=23 title='預習'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='預習'>
+        data-slide=24 title='作業 (20150931)'>
          24
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='作業 (20150931)'>
-         25
       </a>
     </li>
   </ul>

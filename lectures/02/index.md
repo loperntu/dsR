@@ -113,16 +113,6 @@ w3m -dump http://www.gnu.org/gnu/manifesto.html | wc
 
 
 
----
-### 人機處理資料的複雜度 (Das, 2013)
-
-- Marrying structured and unstructured data
-<img src="assets/img/data4.png" alt="Drawing" style="width: 400px;"/>
-
-<span class="footnote"> Source: (Hurwitz, J et al., 2013)</span>
-
-
-
 
 --- bg:#FFFAF0
 ## 大綱
