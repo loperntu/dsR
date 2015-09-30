@@ -37,8 +37,8 @@ Week | Date   | Topic         | Lab
 1    | 09/17  | Orientation   | 
 2    | 09/24  | Introduction to Data Science and Text Analytics    | RStudio.Agilearning 
 3    | 10/01  | Introduction to Data Science and Text Analytics    | Linux.command-line
-4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | 
-5    | 10/15	| Preparing / Preprocessing text and linguistics ABC |
+4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 1-4](https://www.datacamp.com/courses/free-introduction-to-r)
+5    | 10/15	| Preparing / Preprocessing text and linguistics ABC | R programming: chapter 5-7
 6    | 10/22	| Exploratory data analysis and Infographics         |
 7    | 10/29  | Exploratory data analysis and Infographics         |
 8    | 11/05	| Corpus and natural language processing             |
