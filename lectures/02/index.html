@@ -428,7 +428,7 @@ plot(dtm, terms = findFreqTerms(dtm, lowfreq = 5)[1:10], corThreshold = 0.5)
 <li>inspect frequent words</li>
 </ul>
 
-<pre><code class="r">(freq.terms &lt;- findFreqTerms(dtm, lowfreq = 15))
+<pre><code class="r">(freq.terms &lt;- findFreqTerms(tdm, lowfreq = 15))
 </code></pre>
 
 <pre><code>##  [1] &quot;-&quot;        &quot;a&quot;        &quot;analysis&quot; &quot;and&quot;      &quot;at&quot;       &quot;data&quot;    
@@ -436,7 +436,7 @@ plot(dtm, terms = findFreqTerms(dtm, lowfreq = 5)[1:10], corThreshold = 0.5)
 ## [13] &quot;r&quot;        &quot;slides&quot;   &quot;the&quot;      &quot;to&quot;       &quot;with&quot;
 </code></pre>
 
-<pre><code class="r">term.freq &lt;- rowSums(as.matrix(dtm))
+<pre><code class="r">term.freq &lt;- rowSums(as.matrix(tdm))
 term.freq &lt;- subset(term.freq, term.freq &gt;= 15)
 df &lt;- data.frame(term = names(term.freq), freq = term.freq)
 </code></pre>
