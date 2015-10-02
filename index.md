@@ -25,7 +25,7 @@ github      : {user: loperntu, repo: lads, branch: gh-pages}
 
 
 ## 課綱
-[詳細一點的版本](syllabus.pdf)
+[詳細一點的版本](syllabus.pdf) 城市
 
 
 Week | Date   | Topic         | Lab
