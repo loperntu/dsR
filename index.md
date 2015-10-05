@@ -24,8 +24,8 @@ github      : {user: loperntu, repo: lads, branch: gh-pages}
 - 學習簡易的自然語言處理與機器學習預測模式, 並應用在自己關心的領域。
 
 
-## 課綱
-[詳細一點的版本](syllabus.pdf) 城市
+## 課綱城市
+[詳細一點的版本](syllabus.pdf) 
 
 
 Week | Date   | Topic         | Lab
