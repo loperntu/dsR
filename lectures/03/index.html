@@ -70,11 +70,90 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>回顧以下</h2>
+    <h2>回味一下</h2>
   </hgroup>
   <article data-timings="">
+    <p>用 linux 指令 </p>
+
+<ul>
+<li>建立目錄 <code>~/lads/data/week4</code></li>
+<li>抓 Charles Dickens 的 Oliver Twist (<code>http://www.gutenberg.org/cache/epub/730/pg730.txt</code>) 丟到這個目錄，改檔案名字為 <code>dickens.txt</code></li>
+<li>移除文本中的 header 及 footer，存成 <code>dickens-clean.txt</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>一種作法</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
+less -N dickens.txt
+# 利用 G 和上下頁鍵
+sed &#39;1,150d&#39; dickens.txt &gt; dickens-noheader.txt
+sed &#39;3422,18682d&#39; dickens-noheader.txt &gt; dickens-clean.txt
+</code></pre>
+
+<p><a href="http://linux.vbird.org/linux_basic/0220filemanager.php#less">鳥哥的 linux 私房菜</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>再多練習一下 (分組做)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>用 linux 指令</p>
+
+<ul>
+<li>全部去標點去數字去空白，並改成小寫之後建立詞頻表</li>
+<li>這個詞頻表中有一個詞彙 <code>bumble</code> 吸引了我們的注意，請用 <code>grep</code> 指令列出在它 `dickens-clean.txt｀所在的地方（順便加上行數，與給它加上顏色如何）</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>一種作法</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
+
+<pre><code>tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | tr [:upper:] [:lower:] | tr -d &#39;\r&#39;|tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; dickens-wordfreq.txt
+grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <article data-timings="">
     <ul>
-<li>用 linux 指令清理文本雜訊</li>
+<li>load, tokenize and search</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>簡言之</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>在還不會用 R 處理時，可以利用linux 指令或是 R 套件提供的功能來做前處理。</p>
+
+<ul>
+<li>大小寫</li>
+<li>標點符號</li>
 </ul>
 
 <p>[@jockers2014]</p>
@@ -83,7 +162,74 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Crawler</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>萬一網站沒有提供好心的 text /csv 檔？</li>
+<li>萬一我想要動態持續抓檔 (<strong>monitoring corpus</strong>)？</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Pre-processing for Text Analytics</li>
+<li><strong><code>Linguistics 101</code></strong></li>
+<li>Crash course for R</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>中文斷詞（分詞）問題</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>許多人把它當成是處理階段，而不是「問題」或是「假說」</li>
+<li>造成的大數據大雜訊的效應 [@hsieh]</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>解法</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>自備詞表 domain lexicon</li>
+<li>unsupervised learning</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>中文的詞類概念</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h1>Reference</h1>
   </hgroup>
@@ -105,14 +251,74 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='回顧以下'>
+        data-slide=2 title='回味一下'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Reference'>
+        data-slide=3 title='一種作法'>
          3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='再多練習一下 (分組做)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='一種作法'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='簡言之'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Crawler'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='大綱'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='中文斷詞（分詞）問題'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='解法'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='中文的詞類概念'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Reference'>
+         13
       </a>
     </li>
   </ul>
