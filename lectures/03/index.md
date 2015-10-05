@@ -33,7 +33,8 @@ github      : {user: loperntu, repo: lads}
 ---
 ## 一種作法 
 
-```
+
+```bash
 curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
 less -N dickens.txt
 # 利用 G 和上下頁鍵
@@ -57,8 +58,12 @@ sed '3422,18682d' dickens-noheader.txt > dickens-clean.txt
 ## 一種作法 
 (請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)
 
-```
-tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | tr [:upper:] [:lower:] | tr -d '\r'|tr -d '\r'| tr ' ' '\n' | sort | uniq -c | sort -r > dickens-wordfreq.txt
+
+```bash
+tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | 
+tr [:upper:] [:lower:] | tr -d '\r'|tr -d '\r'| tr ' ' '\n' | 
+sort | uniq -c | sort -r > dickens-wordfreq.txt
+
 grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 ```
 

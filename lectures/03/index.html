@@ -90,7 +90,7 @@
     <h2>一種作法</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
+    <pre><code class="bash">curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
 less -N dickens.txt
 # 利用 G 和上下頁鍵
 sed &#39;1,150d&#39; dickens.txt &gt; dickens-noheader.txt
@@ -126,7 +126,10 @@ sed &#39;3422,18682d&#39; dickens-noheader.txt &gt; dickens-clean.txt
   <article data-timings="">
     <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
 
-<pre><code>tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | tr [:upper:] [:lower:] | tr -d &#39;\r&#39;|tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; dickens-wordfreq.txt
+<pre><code class="bash">tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | 
+tr [:upper:] [:lower:] | tr -d &#39;\r&#39;|tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
+sort | uniq -c | sort -r &gt; dickens-wordfreq.txt
+
 grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </code></pre>
 
