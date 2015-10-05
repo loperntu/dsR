@@ -1,5 +1,5 @@
 ---
-title       : LADS
+title       : Linguistic Analysis and Data Science
 author      : Shu-Kai Hsieh
 framework   : minimal 
 hitheme     : solarized_light

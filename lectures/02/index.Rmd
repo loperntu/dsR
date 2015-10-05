@@ -6,7 +6,7 @@ mode     : selfcontained # {standalone, draft}
 url      : {lib: "../../libraries", assets: "../../assets"}
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-lecnum   : "01"
+lecnum   : "02"
 widgets     : [bootstrap, quiz, interactive, mathjax]  # {mathjax, shiny, bootstrap}
 ext_widgets: {rCharts: [libraries/widgets/nvd3]}
 knit     : slidify::knit2slides
