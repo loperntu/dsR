@@ -69,13 +69,11 @@ writeLines(links)
 
 ## 助教講義、習題與作業
 
-```{r echo = F, results = 'asis'}
-labs = dir('labs', full = TRUE)
-links = paste0(seq_along(labs), ". ", 
-  "[Week ", basename(labs), "]", "(", labs, "/index.html)"
-)
-writeLines(links)
-```
+- [Week.1]
+- [Week.2]
+- [Week.3]
+- [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
+
 
 
 ## 課程教材

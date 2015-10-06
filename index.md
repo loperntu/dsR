@@ -63,8 +63,11 @@ Week | Date   | Topic         | Lab
 
 ## 助教講義、習題與作業
 
-1. [Week 01](labs/01/index.html)
-2. [Week 02](labs/02/index.html)
+- [Week.1]
+- [Week.2]
+- [Week.3]
+- [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
+
 
 
 ## 課程教材
