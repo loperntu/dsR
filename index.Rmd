@@ -55,6 +55,15 @@ Week | Date   | Topic         | Lab
 
 
 
+## 教練團
+
+```
+謝舒凱 (Aber) <shukaihsieh@ntu.edu.tw>
+施孟賢 (Simon) <simon.xian@gmail.com>
+張瑜芸 (Taco) <yuyun.unita@gmail.com>
+```
+
+
 ## 課程投影片 
 
 
