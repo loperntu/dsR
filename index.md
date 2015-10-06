@@ -76,7 +76,7 @@ Week | Date   | Topic         | Lab
 
 
 ## 課程同學自發活動
-- [課堂共筆]()
+- [課堂共筆](https://hackpad.com/G2xpgmB77bL)
 - [學習共筆](https://lads2015fall.hackpad.com/)
 - [臉書社團](https://www.facebook.com/groups/652099794893097/)
 
