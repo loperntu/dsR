@@ -10,16 +10,19 @@
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-        <link rel=stylesheet href="./assets/css/gh-buttons.css"></link>
+        <link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="./assets/css/gh-buttons.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
-    
+    <script src="libraries/widgets/nvd3/js/d3.v2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min.js"></script>
+
   </head>
   <body>
     <div class="wrapper">
 <header>
   <h1>Linguistic Analysis and Data Science</h1>
-  <p></p>
+  <p>LDAs</p>
   <p class="view">
     <a href="http://github.com/loperntu/lads">
      View the Project on GitHub <small>loperntu/lads</small>
@@ -177,7 +180,7 @@
 
 <h2>教練團</h2>
 
-<pre><code>謝舒凱 (Aber) &lt;shukaihsieh@ntu.edu.tw&gt;
+<pre><code class="coffee">謝舒凱 (Aber) &lt;shukaihsieh@ntu.edu.tw&gt;
 施孟賢 (Simon) &lt;simon.xian@gmail.com&gt;
 張瑜芸 (Taco) &lt;yuyun.unita@gmail.com&gt;
 </code></pre>
@@ -224,6 +227,173 @@
 <li>跨學門協作：學著跟別人吵架後和好。</li>
 </ol>
 
+<h2>作業分數分佈圖</h2>
+<p>test</p>
+
+<div id = 'score' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawscore()
+    });
+    function drawscore(){  
+      var opts = {
+ "dom": "score",
+"width":    600,
+"height":    400,
+"x": "Hair",
+"y": "Freq",
+"group": "Eye",
+"type": "multiBarChart",
+"id": "score" 
+},
+        data = [
+ {
+ "Hair": "Black",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             32 
+},
+{
+ "Hair": "Brown",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             53 
+},
+{
+ "Hair": "Red",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Black",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             11 
+},
+{
+ "Hair": "Brown",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             50 
+},
+{
+ "Hair": "Red",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             30 
+},
+{
+ "Hair": "Black",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Brown",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             25 
+},
+{
+ "Hair": "Red",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              5 
+},
+{
+ "Hair": "Black",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Brown",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":             15 
+},
+{
+ "Hair": "Red",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              8 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
+
 <h2>Capstone projects</h2>
 
 <ul>
@@ -251,6 +421,9 @@
     <script src="libraries/frameworks/minimal/javascripts/scale.fix.js"></script>
   </body>
   <!-- Load Javascripts for Widgets -->
+  
+  <script src='libraries/widgets/nvd3/js/d3.v2.js'></script>
+  <script src='libraries/widgets/nvd3/js/nv.d3.min.js'></script>
   
   <!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>

@@ -1,11 +1,16 @@
 ---
-title       : Linguistic Analysis and Data Science
-author      : Shu-Kai Hsieh
-framework   : minimal 
-hitheme     : solarized_light
-mode        : selfcontained
-github      : {user: loperntu, repo: lads, branch: gh-pages}
+title: Linguistic Analysis and Data Science
+subtitle: LDAs
+author: Shu-Kai Hsieh
+github: {user: loperntu, repo: lads, branch: "gh-pages"}
+framework: minimal
+mode: selfcontained
+ext_widgets: {rCharts: ["libraries/nvd3"]}
+hitheme: solarized_light
+logo: assets/img/plurk_hapax.png
 ---
+
+
 
 # 語言分析與資料科學入門
 
@@ -57,7 +62,7 @@ Week | Date   | Topic         | Lab
 
 ## 教練團
 
-```
+```coffee
 謝舒凱 (Aber) <shukaihsieh@ntu.edu.tw>
 施孟賢 (Simon) <simon.xian@gmail.com>
 張瑜芸 (Taco) <yuyun.unita@gmail.com>
@@ -102,6 +107,22 @@ writeLines(links)
 1. 自主學習：老師是教練，妳才是主角。
 2. 跨學門協作：學著跟別人吵架後和好。
 
+
+-----
+## 作業分數分佈圖
+
+```{r echo = F, message = F, cache = F}
+require(rCharts)
+options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
+knitr::opts_chunk$set(comment = NA, results = 'asis', tidy = T, message = F, warning = F)
+```
+
+
+```{r, echo=FALSE}
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
+n1$print("score")
+```
 
 
 ## Capstone projects

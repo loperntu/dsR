@@ -1,11 +1,16 @@
 ---
-title       : Linguistic Analysis and Data Science
-author      : Shu-Kai Hsieh
-framework   : minimal 
-hitheme     : solarized_light
-mode        : selfcontained
-github      : {user: loperntu, repo: lads, branch: gh-pages}
+title: Linguistic Analysis and Data Science
+subtitle: LDAs
+author: Shu-Kai Hsieh
+github: {user: loperntu, repo: lads, branch: "gh-pages"}
+framework: minimal
+mode: selfcontained
+ext_widgets: {rCharts: ["libraries/nvd3"]}
+hitheme: solarized_light
+logo: assets/img/plurk_hapax.png
 ---
+
+
 
 # 語言分析與資料科學入門
 
@@ -53,7 +58,7 @@ Week | Date   | Topic         | Lab
 
 ## 教練團
 
-```
+```coffee
 謝舒凱 (Aber) <shukaihsieh@ntu.edu.tw>
 施孟賢 (Simon) <simon.xian@gmail.com>
 張瑜芸 (Taco) <yuyun.unita@gmail.com>
@@ -96,6 +101,176 @@ Week | Date   | Topic         | Lab
 1. 自主學習：老師是教練，妳才是主角。
 2. 跨學門協作：學著跟別人吵架後和好。
 
+
+-----
+## 作業分數分佈圖
+
+
+test
+
+
+<div id = 'score' class = 'rChart nvd3'></div>
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawscore()
+    });
+    function drawscore(){  
+      var opts = {
+ "dom": "score",
+"width":    600,
+"height":    400,
+"x": "Hair",
+"y": "Freq",
+"group": "Eye",
+"type": "multiBarChart",
+"id": "score" 
+},
+        data = [
+ {
+ "Hair": "Black",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             32 
+},
+{
+ "Hair": "Brown",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             53 
+},
+{
+ "Hair": "Red",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Brown",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Black",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             11 
+},
+{
+ "Hair": "Brown",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             50 
+},
+{
+ "Hair": "Red",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Blond",
+"Eye": "Blue",
+"Sex": "Male",
+"Freq":             30 
+},
+{
+ "Hair": "Black",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             10 
+},
+{
+ "Hair": "Brown",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":             25 
+},
+{
+ "Hair": "Red",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Hazel",
+"Sex": "Male",
+"Freq":              5 
+},
+{
+ "Hair": "Black",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              3 
+},
+{
+ "Hair": "Brown",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":             15 
+},
+{
+ "Hair": "Red",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              7 
+},
+{
+ "Hair": "Blond",
+"Eye": "Green",
+"Sex": "Male",
+"Freq":              8 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
 
 
 ## Capstone projects

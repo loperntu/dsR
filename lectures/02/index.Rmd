@@ -14,7 +14,6 @@ bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
 github      : {user: loperntu, repo: lads}
 
 
-
 --- bg:#FFFAF0
 ## 大綱
 1. DS at the command line
