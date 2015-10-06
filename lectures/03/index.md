@@ -39,7 +39,7 @@ curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
 less -N dickens.txt
 # 利用 G 和上下頁鍵
 sed '1,150d' dickens.txt > dickens-noheader.txt
-sed '3422,18682d' dickens-noheader.txt > dickens-clean.txt
+sed '18682,19052d' dickens-noheader.txt > dickens-clean.txt
 ```
 
 [鳥哥的 linux 私房菜](http://linux.vbird.org/linux_basic/0220filemanager.php#less)
@@ -50,7 +50,7 @@ sed '3422,18682d' dickens-noheader.txt > dickens-clean.txt
 用 linux 指令
 
 - 全部去標點去數字去空白，並改成小寫之後建立詞頻表
-- 這個詞頻表中有一個詞彙 `bumble` 吸引了我們的注意，請用 `grep` 指令列出在它 `dickens-clean.txt｀所在的地方（順便加上行數，與給它加上顏色如何）
+- 這個詞頻表中有一個詞彙 `bumble` 吸引了我們的目光，請用 `grep` 指令列出在它 `dickens-clean.txt`所在的地方（順便加上行數，與給它點顏色如何）
 
 
 
@@ -69,26 +69,45 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 
 
 
-
 ---
-- load, tokenize and search
+## 離題一下
+
+這件事這樣方法花了妳多少時間 (less than ONE second!!)
+
+<img style='border: 1px solid;' width=100% src='./assets/img/time.png'></img>
+
 
 
 ---
 ## 簡言之
-在還不會用 R 處理時，可以利用linux 指令或是 R 套件提供的功能來做前處理。
+在還不會用 R 處理時，可以利用 linux 指令或是 R 套件提供的功能來做前處理。
 
-- 大小寫
-- 標點符號
-
-
-
-[@jockers2014]
+1. 大小寫轉換
+2. 標點符號移除
+3. 數字移除
+3. URLs 移除
+4. <span style="color:green; font-weight:bold"> 表情符號 </span>
+5. <span style="color:green; font-weight:bold"> 停用詞移除 (stop words removal) </span>
+6. <span style="color:green; font-weight:bold"> 詞目化 (lemmatization)、詞幹化 (stemmming) </span>
+7. <span style="color:green; font-weight:bold"> 分詞 (tokenization)
+8. <span style="color:green; font-weight:bold"> 詞類自動標記 (POS tagging) </span>
 
 
 ---
-## Crawler
 
+<img style='border: 1px solid;' height=42% width=70% src='./assets/img/wait.jpg'>
+</img>
+
+
+###### [pic source]<http://home.gamer.com.tw/TrackBack.php?sn=717348>
+
+
+
+
+---
+## Corpus and Crawler
+
+- 萬一我要處理的文本超過一個檔案
 - 萬一網站沒有提供好心的 text /csv 檔？
 - 萬一我想要動態持續抓檔 (**monitoring corpus**)？
 
@@ -102,6 +121,21 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 3. Crash course for R
 
 
+
+---
+## Linguistics 101
+
+- 這個階段先碰到了 **構詞學** (morphology)
+
+
+---
+## Lemma
+
+
+---
+## stem
+
+
 ---
 ## 中文斷詞（分詞）問題
 
@@ -110,7 +144,10 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 
 
 
+--
+## pipeline
 
+jieba.R
 
 
 ---
@@ -122,6 +159,25 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 
 ---
 ## 中文的詞類概念
+
+
+
+
+--- bg:#FFFAF0
+
+1. Pre-processing for Text Analytics
+2. Linguistics 101
+3. __``Crash course for R``__
+
+---
+##
+
+`week4.r`
+
+
+
+---
+## Homework Bonus (20151008)
 
 
 ---

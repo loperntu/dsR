@@ -24,7 +24,7 @@ github      : {user: loperntu, repo: lads, branch: gh-pages}
 - 學習簡易的自然語言處理與機器學習預測模式, 並應用在自己關心的領域。
 
 
-## 課綱城市
+## 課綱
 [詳細一點的版本](syllabus.pdf) 
 
 
@@ -51,10 +51,8 @@ Week | Date   | Topic         | Lab
 
 
 
-## 課程講義 | 習題 | 作業
+## 課程投影片 
 
-
-This is the output from running the above code chunk.
 
 1. [Lecture 00](lectures/00/index.html)
 2. [Lecture 01](lectures/01/index.html)
@@ -62,9 +60,25 @@ This is the output from running the above code chunk.
 4. [Lecture 03](lectures/03/index.html)
 5. [Lecture 04](lectures/04/index.html)
 
-課程投影片講解基本概念，進階內容可參考 
+
+## 助教講義、習題與作業
+
+1. [Week 01](labs/01/index.html)
+2. [Week 02](labs/02/index.html)
+
+
+## 課程教材
+
+在課程投影片中講解基本概念，如果有興趣了解進階內容，可參考以下線上教材
+
 - [語言分析與資料科學](https://www.gitbook.com/book/loperntu/ladsbook/details) 
 - [開放語料庫：製程與分析](https://www.gitbook.com/book/loperntu/copens/details)
+
+
+## 課程同學自發活動
+- [課堂共筆]()
+- [學習共筆](https://lads2015fall.hackpad.com/)
+- [臉書社團](https://www.facebook.com/groups/652099794893097/)
 
 
 ## 課程精神

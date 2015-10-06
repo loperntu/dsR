@@ -94,7 +94,7 @@
 less -N dickens.txt
 # 利用 G 和上下頁鍵
 sed &#39;1,150d&#39; dickens.txt &gt; dickens-noheader.txt
-sed &#39;3422,18682d&#39; dickens-noheader.txt &gt; dickens-clean.txt
+sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
 </code></pre>
 
 <p><a href="http://linux.vbird.org/linux_basic/0220filemanager.php#less">鳥哥的 linux 私房菜</a></p>
@@ -112,7 +112,7 @@ sed &#39;3422,18682d&#39; dickens-noheader.txt &gt; dickens-clean.txt
 
 <ul>
 <li>全部去標點去數字去空白，並改成小寫之後建立詞頻表</li>
-<li>這個詞頻表中有一個詞彙 <code>bumble</code> 吸引了我們的注意，請用 <code>grep</code> 指令列出在它 `dickens-clean.txt｀所在的地方（順便加上行數，與給它加上顏色如何）</li>
+<li>這個詞頻表中有一個詞彙 <code>bumble</code> 吸引了我們的目光，請用 <code>grep</code> 指令列出在它 <code>dickens-clean.txt</code>所在的地方（順便加上行數，與給它點顏色如何）</li>
 </ul>
 
   </article>
@@ -138,10 +138,13 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </slide>
 
 <slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>離題一下</h2>
+  </hgroup>
   <article data-timings="">
-    <ul>
-<li>load, tokenize and search</li>
-</ul>
+    <p>這件事這樣方法花了妳多少時間 (less than ONE second!!)</p>
+
+<p><img style='border: 1px solid;' width=100% src='./assets/img/time.png'></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -152,25 +155,42 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     <h2>簡言之</h2>
   </hgroup>
   <article data-timings="">
-    <p>在還不會用 R 處理時，可以利用linux 指令或是 R 套件提供的功能來做前處理。</p>
+    <p>在還不會用 R 處理時，可以利用 linux 指令或是 R 套件提供的功能來做前處理。</p>
 
-<ul>
-<li>大小寫</li>
-<li>標點符號</li>
-</ul>
-
-<p>[@jockers2014]</p>
+<ol>
+<li>大小寫轉換</li>
+<li>標點符號移除</li>
+<li>數字移除</li>
+<li>URLs 移除</li>
+<li><span style="color:green; font-weight:bold"> 表情符號 </span></li>
+<li><span style="color:green; font-weight:bold"> 停用詞移除 (stop words removal) </span></li>
+<li><span style="color:green; font-weight:bold"> 詞目化 (lemmatization)、詞幹化 (stemmming) </span></li>
+<li><span style="color:green; font-weight:bold"> 分詞 (tokenization)</li>
+<li><span style="color:green; font-weight:bold"> 詞類自動標記 (POS tagging) </span></li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-8" style="background:;">
+  <article data-timings="">
+    <p><img style='border: 1px solid;' height=42% width=70% src='./assets/img/wait.jpg'>
+</img></p>
+
+<h6>[pic source]<a href="http://home.gamer.com.tw/TrackBack.php?sn=717348">http://home.gamer.com.tw/TrackBack.php?sn=717348</a></h6>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>Crawler</h2>
+    <h2>Corpus and Crawler</h2>
   </hgroup>
   <article data-timings="">
     <ul>
+<li>萬一我要處理的文本超過一個檔案</li>
 <li>萬一網站沒有提供好心的 text /csv 檔？</li>
 <li>萬一我想要動態持續抓檔 (<strong>monitoring corpus</strong>)？</li>
 </ul>
@@ -179,7 +199,7 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -194,7 +214,40 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Linguistics 101</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>這個階段先碰到了 <strong>構詞學</strong> (morphology)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Lemma</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>stem</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>中文斷詞（分詞）問題</h2>
   </hgroup>
@@ -204,11 +257,17 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 <li>造成的大數據大雜訊的效應 [@hsieh]</li>
 </ul>
 
+<h2></h2>
+
+<h2>pipeline</h2>
+
+<p>jieba.R</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>解法</h2>
   </hgroup>
@@ -222,7 +281,7 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>中文的詞類概念</h2>
   </hgroup>
@@ -232,7 +291,39 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-17" style="background:#FFFAF0;">
+  <article data-timings="">
+    <ol>
+<li>Pre-processing for Text Analytics</li>
+<li>Linguistics 101</li>
+<li><strong><code>Crash course for R</code></strong></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <article data-timings="">
+    <p>##</p>
+
+<p><code>week4.r</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Homework Bonus (20151008)</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h1>Reference</h1>
   </hgroup>
@@ -278,7 +369,7 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='NA'>
+        data-slide=6 title='離題一下'>
          6
       </a>
     </li>
@@ -290,38 +381,80 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Crawler'>
+        data-slide=8 title='NA'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='大綱'>
+        data-slide=9 title='Corpus and Crawler'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='中文斷詞（分詞）問題'>
+        data-slide=10 title='大綱'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='解法'>
+        data-slide=11 title='Linguistics 101'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='中文的詞類概念'>
+        data-slide=12 title='Lemma'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Reference'>
+        data-slide=13 title='stem'>
          13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='中文斷詞（分詞）問題'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='解法'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='中文的詞類概念'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='NA'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='NA'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Homework Bonus (20151008)'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Reference'>
+         20
       </a>
     </li>
   </ul>
