@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Introduction to Data Science and Text Analytics</title>
+  <title>Linguistic Analysis and Data Science</title>
   <meta charset="utf-8">
-  <meta name="description" content="Introduction to Data Science and Text Analytics">
+  <meta name="description" content="Linguistic Analysis and Data Science">
   <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -38,7 +38,7 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Introduction to Data Science and Text Analytics</h1>
+    <h1>Linguistic Analysis and Data Science</h1>
     <h2>lecture 03</h2>
     <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
   </hgroup>
@@ -171,6 +171,71 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </slide>
 
 <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>中文文本到詞頻表的管線處理 pipeline</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>建立一個 jieba.R，放到處理資料的目錄下</li>
+</ul>
+
+<pre><code class="r"># thanks to simon
+library(jiebaR)
+txt = scan(&#39;stdin&#39;, what = &#39;char&#39;)
+words_vector = worker() &lt;= txt
+words_char = paste(words_vector, collapse = &#39; &#39;)
+cat(words_char)
+</code></pre>
+
+<ul>
+<li>測一下魯迅</li>
+</ul>
+
+<pre><code class="bash">curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
+cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | 
+sort | uniq -c | sort -r &gt; luxun-wordfreq.txt
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>問題：御姐愛不愛</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>新詞 (neologisms) 的複雜遠超過想像：可參見 <a href="loperntu.github.io/asialex2015">Hsieh 2015 AsiaLex invited talk</a></li>
+<li>自訂詞表是第一步</li>
+</ul>
+
+<pre><code class="r">ShowDictPath()  ### Show dict path, find and edit the &quot;user.dict.utf8&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>從 <code>GQ.txt</code> 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(<code>user.dict.utf8</code>)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。</p>
+
+<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; GQ-wordfreq.txt
+grep &#39;卡娃伊&#39; GQ.txt
+grep &#39;卡娃伊&#39; GQ-wordfreq.txt
+# 增添卡娃伊到詞表之後重跑一次第一行..................
+grep &#39;卡娃伊&#39; GQ-wordfreq.txt
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
   <article data-timings="">
     <p><img style='border: 1px solid;' height=42% width=70% src='./assets/img/wait.jpg'>
 </img></p>
@@ -181,22 +246,28 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Corpus and Crawler</h2>
+    <h2>Corpus and Crawler Issues</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>萬一我要處理的文本超過一個檔案</li>
+    <p>還有。。。</p>
+
+<ul>
+<li>萬一我要處理的文本超過一個檔案？</li>
 <li>萬一網站沒有提供好心的 text /csv 檔？</li>
 <li>萬一我想要動態持續抓檔 (<strong>monitoring corpus</strong>)？</li>
 </ul>
+
+<blockquote>
+<p>Stay tuned, 並請期待本課程線上書籍。</p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -211,7 +282,7 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Linguistics 101</h2>
   </hgroup>
@@ -224,47 +295,24 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2>Lemma</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:;">
-  <hgroup>
-    <h2>stem</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>中文斷詞（分詞）問題</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>許多人把它當成是處理階段，而不是「問題」或是「假說」</li>
-<li>造成的大數據大雜訊的效應 [@hsieh]</li>
+<li>造成的大數據大雜訊的效應 (Hsieh, 2015)</li>
 </ul>
 
-<h2></h2>
-
-<h2>pipeline</h2>
-
-<p>jieba.R</p>
+<p><img style='border: 1px solid;' height = 22% width = 50% src='../../assets/img/plurk_hapax.png'>
+</img></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>解法</h2>
   </hgroup>
@@ -274,16 +322,6 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 <li>unsupervised learning</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h2>中文的詞類概念</h2>
-  </hgroup>
-  <article data-timings="">
-    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -301,10 +339,11 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </slide>
 
 <slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Learn R in 10 Minutes</h2>
+  </hgroup>
   <article data-timings="">
-    <p>##</p>
-
-<p><code>week4.r</code></p>
+    <p>Check <code>week4.R</code> in ceiba (revised from <a href="http://learnxinyminutes.com/docs/r/">http://learnxinyminutes.com/docs/r/</a>)</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -315,17 +354,10 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     <h2>Homework Bonus (20151008)</h2>
   </hgroup>
   <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+    <ul>
+<li>建立妳認為最適合台灣中文的<strong>停用詞表</strong>與<strong>表情符號表</strong> (Ceiba 有幾個現成的提供參考)，並說明理由與作法。可以參考諸如 [Automatic Construction of Chinese Stop Word List] 學術論文。(20 分)</li>
+</ul>
 
-<slide class="" id="slide-20" style="background:;">
-  <hgroup>
-    <h1>Reference</h1>
-  </hgroup>
-  <article data-timings="">
-    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -378,55 +410,55 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='NA'>
+        data-slide=8 title='中文文本到詞頻表的管線處理 pipeline'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Corpus and Crawler'>
+        data-slide=9 title='問題：御姐愛不愛'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='大綱'>
+        data-slide=10 title='Exercise'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Linguistics 101'>
+        data-slide=11 title='NA'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Lemma'>
+        data-slide=12 title='Corpus and Crawler Issues'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='stem'>
+        data-slide=13 title='大綱'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='中文斷詞（分詞）問題'>
+        data-slide=14 title='Linguistics 101'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='解法'>
+        data-slide=15 title='中文斷詞（分詞）問題'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='中文的詞類概念'>
+        data-slide=16 title='解法'>
          16
       </a>
     </li>
@@ -438,7 +470,7 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='NA'>
+        data-slide=18 title='Learn R in 10 Minutes'>
          18
       </a>
     </li>
@@ -446,12 +478,6 @@ grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
       <a href="#" target="_self" rel='tooltip' 
         data-slide=19 title='Homework Bonus (20151008)'>
          19
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Reference'>
-         20
       </a>
     </li>
   </ul>

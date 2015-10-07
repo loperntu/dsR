@@ -106,7 +106,7 @@ Week | Date   | Topic         | Lab
 ## 作業分數分佈圖
 
 
-test
+
 
 
 <div id = 'score' class = 'rChart nvd3'></div>

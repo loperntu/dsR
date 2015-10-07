@@ -1,5 +1,5 @@
 ---
-title    : Introduction to Data Science and Text Analytics
+title    : Linguistic Analysis and Data Science
 subtitle : lecture 03
 author   : 謝舒凱 Graduate Institute of Linguistics, NTU
 mode     : selfcontained # {standalone, draft}
@@ -93,6 +93,61 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 8. <span style="color:green; font-weight:bold"> 詞類自動標記 (POS tagging) </span>
 
 
+
+
+---
+## 中文文本到詞頻表的管線處理 pipeline
+
+- 建立一個 jieba.R，放到處理資料的目錄下
+
+
+```r
+# thanks to simon
+library(jiebaR)
+txt = scan('stdin', what = 'char')
+words_vector = worker() <= txt
+words_char = paste(words_vector, collapse = ' ')
+cat(words_char)
+```
+
+- 測一下魯迅
+
+
+```bash
+curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
+cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | 
+sort | uniq -c | sort -r > luxun-wordfreq.txt
+```
+
+
+
+---
+## 問題：御姐愛不愛
+
+- 新詞 (neologisms) 的複雜遠超過想像：可參見 [Hsieh 2015 AsiaLex invited talk](loperntu.github.io/asialex2015)
+- 自訂詞表是第一步
+
+
+```r
+ShowDictPath()  ### Show dict path, find and edit the "user.dict.utf8"
+```
+
+
+---
+## Exercise
+
+從 `GQ.txt` 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(``user.dict.utf8``)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。
+
+
+```bash
+cat GQ.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r > GQ-wordfreq.txt
+grep '卡娃伊' GQ.txt
+grep '卡娃伊' GQ-wordfreq.txt
+# 增添卡娃伊到詞表之後重跑一次第一行..................
+grep '卡娃伊' GQ-wordfreq.txt
+```
+
+
 ---
 
 <img style='border: 1px solid;' height=42% width=70% src='./assets/img/wait.jpg'>
@@ -105,11 +160,16 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 
 
 ---
-## Corpus and Crawler
+## Corpus and Crawler Issues
 
-- 萬一我要處理的文本超過一個檔案
+還有。。。
+
+- 萬一我要處理的文本超過一個檔案？
 - 萬一網站沒有提供好心的 text /csv 檔？
 - 萬一我想要動態持續抓檔 (**monitoring corpus**)？
+
+> Stay tuned, 並請期待本課程線上書籍。
+
 
 
 
@@ -129,25 +189,15 @@ grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 
 
 ---
-## Lemma
-
-
----
-## stem
-
-
----
 ## 中文斷詞（分詞）問題
 
 - 許多人把它當成是處理階段，而不是「問題」或是「假說」
-- 造成的大數據大雜訊的效應 [@hsieh]
+- 造成的大數據大雜訊的效應 (Hsieh, 2015)
+
+<img style='border: 1px solid;' height = 22% width = 50% src='../../assets/img/plurk_hapax.png'>
+</img>
 
 
-
---
-## pipeline
-
-jieba.R
 
 
 ---
@@ -155,10 +205,6 @@ jieba.R
 
 - 自備詞表 domain lexicon
 - unsupervised learning
-
-
----
-## 中文的詞類概念
 
 
 
@@ -170,18 +216,18 @@ jieba.R
 3. __``Crash course for R``__
 
 ---
-##
+## Learn R in 10 Minutes
 
-`week4.r`
-
+Check `week4.R` in ceiba (revised from <http://learnxinyminutes.com/docs/r/>)
 
 
 ---
 ## Homework Bonus (20151008)
 
+- 建立妳認為最適合台灣中文的**停用詞表**與**表情符號表** (Ceiba 有幾個現成的提供參考)，並說明理由與作法。可以參考諸如 [Automatic Construction of Chinese Stop Word List] 學術論文。(20 分)
 
----
-# Reference
+
+
 
 
 
