@@ -60,9 +60,7 @@ sed '18682,19052d' dickens-noheader.txt > dickens-clean.txt
 
 
 ```bash
-tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] |tr -d '\r'| tr ' ' '\n' | 
-sort | uniq -c | sort -r > dickens-wordfreq.txt
+tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | tr [:upper:] [:lower:] |tr -d '\r'| tr ' ' '\n' | sort | uniq -c | sort -r > dickens-wordfreq.txt
 
 grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 ```
@@ -115,8 +113,7 @@ cat(words_char)
 
 ```bash
 curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
-cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | 
-sort | uniq -c | sort -r > luxun-wordfreq.txt
+cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r > luxun-wordfreq.txt
 ```
 
 
