@@ -124,8 +124,8 @@ sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
     <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
 
 <pre><code class="bash">tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
-sort | uniq -c | sort -r -g &gt; dickens-wordfreq.txt
+tr [:upper:] [:lower:] | tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | 
+sort -r &gt; dickens-wordfreq.txt
 
 grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </code></pre>
@@ -192,8 +192,7 @@ cat(words_char)
 </ul>
 
 <pre><code class="bash">curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
-cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | 
-sort | uniq -c | sort -r -g &gt; luxun-wordfreq.txt
+cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; luxun-wordfreq.txt
 </code></pre>
 
   </article>
