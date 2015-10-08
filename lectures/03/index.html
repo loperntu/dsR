@@ -124,8 +124,8 @@ sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
     <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
 
 <pre><code class="bash">tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d &#39;\r&#39;|tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
-sort | uniq -c | sort -r &gt; dickens-wordfreq.txt
+tr [:upper:] [:lower:] | tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
+sort | uniq -c | sort -r -g &gt; dickens-wordfreq.txt
 
 grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
 </code></pre>
@@ -193,7 +193,7 @@ cat(words_char)
 
 <pre><code class="bash">curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
 cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | 
-sort | uniq -c | sort -r &gt; luxun-wordfreq.txt
+sort | uniq -c | sort -r -g &gt; luxun-wordfreq.txt
 </code></pre>
 
   </article>
@@ -224,7 +224,7 @@ sort | uniq -c | sort -r &gt; luxun-wordfreq.txt
   <article data-timings="">
     <p>從 <code>GQ.txt</code> 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(<code>user.dict.utf8</code>)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。</p>
 
-<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; GQ-wordfreq.txt
+<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r -g &gt; GQ-wordfreq.txt
 grep &#39;卡娃伊&#39; GQ.txt
 grep &#39;卡娃伊&#39; GQ-wordfreq.txt
 # 增添卡娃伊到詞表之後重跑一次第一行..................
