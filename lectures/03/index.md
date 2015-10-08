@@ -187,10 +187,12 @@ grep '卡娃伊' GQ-wordfreq.txt
 
 - 這個階段先碰到了 **構詞學** (morphology)
 
+> In linguistics, morphology is the identification, analysis and description of the structure of a given language's morphemes and other linguistic units, such as root words, affixes, parts of speech, intonations and stresses, or implied context. (wiki)
 
 ---
 ## 中文斷詞（分詞）問題
 
+- 先想像「字」「詞」有何不同？(下次細談)
 - 許多人把它當成是處理階段，而不是「問題」或是「假說」
 - 造成的大數據大雜訊的效應 (Hsieh, 2015)
 
@@ -201,7 +203,7 @@ grep '卡娃伊' GQ-wordfreq.txt
 
 
 ---
-## 解法
+## 目前解法
 
 - 自備詞表 domain lexicon
 - unsupervised learning
