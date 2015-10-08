@@ -221,8 +221,11 @@ Check `week4.R` in ceiba (revised from <http://learnxinyminutes.com/docs/r/>)
 ## Homework Bonus (20151008)
 
 - 建立妳認為最適合台灣中文的**停用詞表**與**表情符號表** (Ceiba 有幾個現成的提供參考)，並說明理由與作法。可以參考諸如 [Automatic Construction of Chinese Stop Word List] 學術論文。(20 分)
+  - 「的」通常都在各種停用詞表中，但是多一點語言學素養，你就知道問題沒那麼簡單。
 
-
+```
+舉個例子：「馬的政府」「老闆對我們是很 nice 的」「好der」
+```
 
 
 
