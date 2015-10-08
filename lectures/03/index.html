@@ -124,7 +124,7 @@ sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
     <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
 
 <pre><code class="bash">tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d &#39;\r&#39;|tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
+tr [:upper:] [:lower:] |tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | 
 sort | uniq -c | sort -r &gt; dickens-wordfreq.txt
 
 grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt

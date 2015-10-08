@@ -61,7 +61,7 @@ sed '18682,19052d' dickens-noheader.txt > dickens-clean.txt
 
 ```bash
 tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d '\r'|tr -d '\r'| tr ' ' '\n' | 
+tr [:upper:] [:lower:] |tr -d '\r'| tr ' ' '\n' | 
 sort | uniq -c | sort -r > dickens-wordfreq.txt
 
 grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
