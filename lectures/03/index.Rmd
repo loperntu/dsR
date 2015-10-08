@@ -59,8 +59,8 @@ sed '18682,19052d' dickens-noheader.txt > dickens-clean.txt
 
 ```{bash,eval=FALSE}
 tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d '\r'|tr -d '\r'| tr ' ' '\n' | 
-sort | uniq -c | sort -r > dickens-wordfreq.txt
+tr [:upper:] [:lower:] | tr -d '\r'| tr ' ' '\n' | 
+sort | uniq -c | sort -r -g > dickens-wordfreq.txt
 
 grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 ```
@@ -112,7 +112,7 @@ cat(words_char)
 ```{bash,eval=FALSE}
 curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
 cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | 
-sort | uniq -c | sort -r > luxun-wordfreq.txt
+sort | uniq -c | sort -r -g > luxun-wordfreq.txt
 ```
 
 
@@ -134,7 +134,7 @@ ShowDictPath()  ### Show dict path, find and edit the "user.dict.utf8"
 從 `GQ.txt` 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(``user.dict.utf8``)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。
 
 ```{bash, eval=FALSE}
-cat GQ.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r > GQ-wordfreq.txt
+cat GQ.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r -g > GQ-wordfreq.txt
 grep '卡娃伊' GQ.txt
 grep '卡娃伊' GQ-wordfreq.txt
 # 增添卡娃伊到詞表之後重跑一次第一行..................
