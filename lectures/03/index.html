@@ -223,7 +223,7 @@ cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c |
   <article data-timings="">
     <p>從 <code>GQ.txt</code> 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(<code>user.dict.utf8</code>)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。</p>
 
-<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r &gt; GQ-wordfreq.txt
+<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r -g &gt; GQ-wordfreq.txt
 grep &#39;卡娃伊&#39; GQ.txt
 grep &#39;卡娃伊&#39; GQ-wordfreq.txt
 # 增添卡娃伊到詞表之後重跑一次第一行..................
