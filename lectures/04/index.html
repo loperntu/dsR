@@ -39,7 +39,7 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Linguistic Analysis and Data Science</h1>
-    <h2>lecture 03</h2>
+    <h2>lecture 04</h2>
     <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
   </hgroup>
     <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
@@ -67,13 +67,17 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>中文的詞類概念</h2>
+    <h2>Lemmatization and Stemming</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>詞類 (Parts of Speech) 是根據不同程度的句法訊息分類下的結果。</li>
-<li>可以從 8 大詞類到</li>
+<li>the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. E.g., <code>to walk</code>, <code>walked</code>, <code>walking</code>.</li>
+<li>lemmatization is closely related to stemming. </li>
 </ul>
+
+<blockquote>
+<p>The difference is that a stemmer operates on a single word without knowledge of the context, and therefore cannot discriminate between words which have different meanings depending on part of speech.</p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
@@ -81,10 +85,174 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
+    <h2>Example</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Tokenization</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Chinese Word Segmentation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Wordhood in Chinese</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Chinese Word Segmentation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>中文分詞（斷詞）Chinese word segmentation 可以看成是 tokenization 的一個特例，但是涉及更深一層的語言與認知互動。</p></li>
+<li><p>中文分詞演算法從早期的 <code>最大匹配查找</code>一直到隨著巨量訓練語料庫出現後的各種<code>統計機器學習模式</code> (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果不管語言學的討論)</p></li>
+<li><p>主要面對的兩大問題是</p>
+
+<ul>
+<li>結構性的歧義消解</li>
+<li>OOV 識別 </li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>結構性的歧義</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>OOV 識別</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>名字識別</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>中文人名識別規則來寫看看</h3>
+
+<ol>
+<li><p>組合規律</p></li>
+<li><p>前後規律</p>
+
+<ul>
+<li>前面出現： <code>校長</code>、<code>老闆</code></li>
+<li>後面出現：<code>老師</code>、<code>教授</code>、<code>小姐</code>、｀先生｀</li>
+</ul></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>讓 <code>jiebaR</code> 認得妳的名字。</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>詞類 (Parts of Speech)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>詞類是根據不同程度的句法訊息分類下的結果。</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>中文的詞類概念</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>可以從 8 大詞類到</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>POS Granularity</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><code>jseg.py</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
     <h2>為什麼詞類對於文本解析很重要？</h2>
   </hgroup>
   <article data-timings="">
     <h2>- 說謊語言行為</h2>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Pronoun 的跨語言比較 總統語料庫</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Bonus</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>中文專有名詞辨識器 (姓名、地名、機構名、etc)</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -102,14 +270,92 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='中文的詞類概念'>
+        data-slide=2 title='Lemmatization and Stemming'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='為什麼詞類對於文本解析很重要？'>
+        data-slide=3 title='Example'>
          3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Tokenization'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Chinese Word Segmentation'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Chinese Word Segmentation'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='結構性的歧義'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='OOV 識別'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='名字識別'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Exercise'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='詞類 (Parts of Speech)'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='中文的詞類概念'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='POS Granularity'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='為什麼詞類對於文本解析很重要？'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Exercise'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Bonus'>
+         16
       </a>
     </li>
   </ul>
