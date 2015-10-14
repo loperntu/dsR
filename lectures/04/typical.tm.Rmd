@@ -6,9 +6,6 @@ output: html_document
 ---
 
 
-
-
-
 ## 文本發掘基本：流程複習
 
 ---
@@ -33,8 +30,7 @@ output: html_document
 
 - 安裝並載入可能用得到的套件
 
-
-```r
+```{r, message=FALSE}
 library(tm) # Popular framework for text mining.
 library(SnowballC) # Provides wordStem() for stemming.  
 library(RColorBrewer) # Generate palette of colours for plots.
@@ -45,8 +41,7 @@ library(wordcloud)
 
 - 建立給 `tm` 用的 **語料庫物件**
 
-
-```r
+```{r}
 file.path <- list.files("../data/week5/usP/", "*.*")
 usP <- Corpus(VectorSource(file.path))
 #class(usP)
@@ -59,8 +54,7 @@ usP <- Corpus(VectorSource(file.path))
 
   - `tm map()` 這個函式所帶的各種參數可以執行不同的前處理工作。
 
-
-```r
+```{r}
 # getTransformations()
 usP <- tm_map(usP, removeNumbers)
 usP <- tm_map(usP, removePunctuation)
@@ -73,41 +67,64 @@ usP <- tm_map(usP, stemDocument)
 
   - 我們也可以利用 `content_transformer()` 來自訂想要的前處理函式。
   
-
-```r
+```{r}  
 # 把 \n 刪掉
 removal <- content_transformer(function(x, pattern) gsub(pattern, "", x)) 
 usP <- tm_map(usP, removal, "\n")
 inspect(usP[2])
-```
 
-```
-## <<VCorpus (documents: 1, metadata (corpus/indexed): 0/0)>>
-## 
-## [[1]]
-## <<PlainTextDocument (metadata: 7)>>
-## Washington
-```
-
-```r
 # 替換 
 #toString <- content_transformer(function(x, from, to) gsub(from, to, x))
 #usP <- tm_map(usP, toString, "specific transform", "ST")
 #usP <- tm_map(usP, toString, "other specific transform", "OST")
 ```
 
-  － 詞類標記
+#### 詞類標記
   
+- 可以用 `koRpus` 或 `openNLP` 來處理歐美語言。
+- 中文可用 `jiebaR` (粗粒度) `jseg.py` (細粒度) 
 
-```r
+
+
+```{bash,eval=FALSE}
+sed -n '6,13p' dickens-clean.txt > dickens-sample.txt
+```
+
+
+
+```{r,eval=FALSE}
+####### 
+## Use koRpus package
+## 但要自行安裝 Tree Tagger
+
+# The koRpus package uses the TreeTagger for POS tagging
+library(koRpus)
+
+### perform POS tagging
+
+text.tagged <- treetag("../data/week5/dickens-sample.txt",
+                       treetagger = "manual", 
+                       lang="en",
+                       TT.options = list(path="~/Linguistic.Data.Science/tools/TreeTagger/",
+                                         preset="en"))
+
+
+
+# inspect text.tagged
+options(width=150)
+text.tagged@TT.res
+
+```
+
+
+```{r}
 library(NLP)
 library(openNLP)
 library(openNLPmodels.en)
 ```
 
 
-
-```r
+```{r,eval=FALSE}
 # dickens-sample.txt
 dickens <- readLines(file.choose())
 dickens.1 <- paste(dickens, collapse = " ")
@@ -130,36 +147,9 @@ usP.pos <- subset(usP_annotations.pos, type =="word")
 tags <- sapply(usP.pos$features, `[[`, "POS")
 tags
 table(tags)
+
+
 ```
-
-
-```r
-####### 
-## Use koRpus package
-## 但要自行安裝 Tree Tagger
-
-# The koRpus package uses the TreeTagger for POS tagging
-library(koRpus)
-
-### perform POS tagging
-#text.tagged <- treetag("C:\\03-MyProjects\\PosTagging\\TestCorpus/text1.txt", treetagger="manual", lang="en",
-#                       TT.options=list(path="C:\\TreeTagger", preset="en"))
-
-text.tagged <- treetag("../data/week5/dickens-sample.txt",
-                       treetagger = "manual", 
-                       lang="en",
-                       TT.options = list(path="~/Linguistic.Data.Science/tools/TreeTagger/",
-                                         preset="en"))
-
-
-
-# inspect text.tagged
-options(width=150)
-text.tagged@TT.res
-```
-
-- 進階一點的前處理
-
 
 
 

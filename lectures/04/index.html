@@ -99,7 +99,7 @@
 <ul>
 <li>Given a character sequence (and a pre-defined unit), tokenization is the task of chopping it up into pieces, called <strong>tokens</strong>. </li>
 <li>A tokenizer divides text into a sequence of tokens, which in many cases correspond to &quot;words&quot;.</li>
-<li>Tokenization often serve as the initial phase in NLP, i.e., locating word boundaries. But challenges in tokenization depends on the type of language.</li>
+<li>Tokenization often serve as the initial phase in NLP, i.e., locating <strong>word boundaries</strong>. But challenges in tokenization depends on the type of language.</li>
 </ul>
 
   </article>
@@ -133,8 +133,9 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>中文分詞演算法從早期的 <code>最大匹配查找</code>一直到隨著巨量訓練語料庫出現後的各種<code>統計機器學習模式</code> (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果不管語言學的討論)</p></li>
-<li><p>主要面對的兩大問題是</p>
+<li><p>中文分詞演算法從早期的 <code>最大匹配查找算法</code>一直到隨著巨量訓練語料庫出現後的各種 <code>統計機器學習模式</code> (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果先不管語言學的各種討論)</p></li>
+<li><p>台灣 (<a href="http://rocling.iis.sinica.edu.tw/CKIP/paper/wordsegment_standard.pdf">中研院</a>)，中國 (<a href="http://sighan.cs.uchicago.edu/bakeoff2005/data/pku_spec.pdf">北京大學</a>) 和北美 (<a href="http://www.cis.upenn.edu/%7Echinese/segguide.3rd.ch.pdf">U.Penn</a>) 的標準都不太一樣。</p></li>
+<li><p>假定有標準答案（亦即我們有都一致同意的分詞準則），那麼主要面對的兩大問題是</p>
 
 <ul>
 <li>結構性的歧義消解</li>
@@ -151,17 +152,39 @@
     <h2>結構性的歧義</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3>Structural Ambiguity</h3>
+
+<ul>
+<li>歧義現象是自然語言的常態，有好幾種類別（詞彙，結構，邏輯域）。</li>
+<li>結構類型是中文分詞關注的現象，又粗略可分幾種：
+
+<ul>
+<li><strong>組合型歧義</strong>：<code>這個門把手壞了</code> vs <code>請把手拿開</code>。</li>
+<li><strong>交集型歧義</strong>：<code>化妝/和/服裝</code> vs <code>化妝/和服/裝</code>。</li>
+</ul></li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>OOV 識別</h2>
+    <h2>未登錄詞識別</h2>
   </hgroup>
   <article data-timings="">
-    
+    <h3>OOV (Out-of-Vocabulary) Recognition</h3>
+
+<ul>
+<li><p>包括新詞、術語等未收錄在字典裡面的「詞」。至少包括了：</p>
+
+<ul>
+<li>數字</li>
+<li>命名實體 (named entity)：人名、地名、機構名等等。</li>
+<li>離合詞、詞塊。</li>
+</ul></li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -171,7 +194,7 @@
     <h2>名字識別</h2>
   </hgroup>
   <article data-timings="">
-    <h3>中文人名識別規則來寫看看</h3>
+    <h3>字典沒有，就要寫識別規則讓機器來辨識</h3>
 
 <ol>
 <li><p>組合規律</p></li>
@@ -179,7 +202,7 @@
 
 <ul>
 <li>前面出現： <code>校長</code>、<code>老闆</code></li>
-<li>後面出現：<code>老師</code>、<code>教授</code>、<code>小姐</code>、｀先生｀</li>
+<li>後面出現：<code>老師</code>、<code>教授</code>、<code>小姐</code>、<code>先生</code></li>
 </ul></li>
 </ol>
 
@@ -192,7 +215,11 @@
     <h2>Exercise</h2>
   </hgroup>
   <article data-timings="">
-    <p>讓 <code>jiebaR</code> 認得妳的名字。</p>
+    <h3>搜尋一下某人的名字，看看出現的語境。妳可以多一些規則嗎？</h3>
+
+<blockquote>
+<p>附帶一提：人名的自動辨識與分群 (person name identification/clustering) 也是個 NLP 研究領域，更難一點的還有轉譯人名的問題 (transliterated person name identification).</p>
+</blockquote>
 
   </article>
   <!-- Presenter Notes -->
@@ -204,7 +231,8 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>詞類是根據不同程度的句法訊息分類下的結果。</li>
+<li>詞類是根據不同程度的句法功能分類下的結果。</li>
+<li>兼類 (polyfunctionality) 與動詞名物化。</li>
 </ul>
 
   </article>
@@ -217,7 +245,8 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>可以從 8 大詞類到</li>
+<li>(很重要！) 沒有構詞標記與屈折形態變化不等於沒有語法！！！</li>
+<li>可以從 8 大詞類到 <a href="http://rocling.iis.sinica.edu.tw/CKIP/tr/9305_2013%20revision.pdf">27大類</a></li>
 </ul>
 
   </article>
@@ -225,12 +254,13 @@
 </slide>
 
 <slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>為什麼詞類對於文本解析很重要？</h2>
+  </hgroup>
   <article data-timings="">
-    <p>##</p>
+    <p>舉一個例子：常識抽取對於情緒分析的重要</p>
 
-<pre><code class="bash">sed -n &#39;6,13p&#39; dickens-clean.txt &gt; dickens-sample.txt
-
-</code></pre>
+<p><span style="color:red; font-weight:bold">“我昨天深夜在鐵工廠看到一個小女孩” </span></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -238,46 +268,11 @@
 
 <slide class="" id="slide-13" style="background:;">
   <hgroup>
-    <h2>POS Granularity</h2>
+    <h2>綜合協作練習 as Bonus (20151015) 20%</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>jseg.py</code></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-14" style="background:;">
-  <hgroup>
-    <h2>為什麼詞類對於文本解析很重要？</h2>
-  </hgroup>
-  <article data-timings="">
-    <h2>- 說謊語言行為</h2>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>綜合協作練習</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>Pronoun 的跨語言比較 總統語料庫</p>
-
-<p>利用 <code>tm</code>/<code>tmcn</code> 等套件，把中英文的前處理跑過一次。
-參考 <a href="">typical.tm.Rmd</a> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h2>Bonus</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>中文專有名詞辨識器 (姓名、地名、機構名、etc)</p>
+    <p>利用 <code>tm</code>/<code>tmcn</code> 等套件，把中英文的前處理跑過一次。
+參考 <a href="typical.tm.html">typical.tm.Rmd</a> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -325,7 +320,7 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='OOV 識別'>
+        data-slide=7 title='未登錄詞識別'>
          7
       </a>
     </li>
@@ -355,32 +350,14 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='NA'>
+        data-slide=12 title='為什麼詞類對於文本解析很重要？'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='POS Granularity'>
+        data-slide=13 title='綜合協作練習 as Bonus (20151015) 20%'>
          13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='為什麼詞類對於文本解析很重要？'>
-         14
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='綜合協作練習'>
-         15
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Bonus'>
-         16
       </a>
     </li>
   </ul>

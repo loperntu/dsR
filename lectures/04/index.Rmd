@@ -46,7 +46,7 @@ github      : {user: loperntu, repo: lads}
 
 - Given a character sequence (and a pre-defined unit), tokenization is the task of chopping it up into pieces, called **tokens**. 
 - A tokenizer divides text into a sequence of tokens, which in many cases correspond to "words".
-- Tokenization often serve as the initial phase in NLP, i.e., locating word boundaries. But challenges in tokenization depends on the type of language.
+- Tokenization often serve as the initial phase in NLP, i.e., locating **word boundaries**. But challenges in tokenization depends on the type of language.
 
 
 
@@ -66,91 +66,87 @@ github      : {user: loperntu, repo: lads}
 ---
 ## Chinese Word Segmentation 
 
+- 中文分詞演算法從早期的 `最大匹配查找算法`一直到隨著巨量訓練語料庫出現後的各種 `統計機器學習模式` (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果先不管語言學的各種討論)
 
+- 台灣 ([中研院](http://rocling.iis.sinica.edu.tw/CKIP/paper/wordsegment_standard.pdf))，中國 ([北京大學](http://sighan.cs.uchicago.edu/bakeoff2005/data/pku_spec.pdf)) 和北美 ([U.Penn](http://www.cis.upenn.edu/~chinese/segguide.3rd.ch.pdf)) 的標準都不太一樣。
 
-- 中文分詞演算法從早期的 `最大匹配查找`一直到隨著巨量訓練語料庫出現後的各種`統計機器學習模式` (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果不管語言學的討論)
-
-- 主要面對的兩大問題是
+- 假定有標準答案（亦即我們有都一致同意的分詞準則），那麼主要面對的兩大問題是
     - 結構性的歧義消解
     - OOV 識別 
 
 ---
-## 結構性的歧義
+## 結構性的歧義 
+### Structural Ambiguity
+
+- 歧義現象是自然語言的常態，有好幾種類別（詞彙，結構，邏輯域）。
+- 結構類型是中文分詞關注的現象，又粗略可分幾種：
+  * **組合型歧義**：`這個門把手壞了` vs `請把手拿開`。
+  * **交集型歧義**：`化妝/和/服裝` vs `化妝/和服/裝`。
+  
 
 
 ---
-## OOV 識別 
+## 未登錄詞識別 
+### OOV (Out-of-Vocabulary) Recognition
+
+- 包括新詞、術語等未收錄在字典裡面的「詞」。至少包括了：
+
+    - 數字
+    - 命名實體 (named entity)：人名、地名、機構名等等。
+    - 離合詞、詞塊。
 
 
 ---
 ## 名字識別 
-### 中文人名識別規則來寫看看
+### 字典沒有，就要寫識別規則讓機器來辨識
 
 1. 組合規律
     
 2. 前後規律
   - 前面出現： `校長`、`老闆`
-  - 後面出現：`老師`、`教授`、`小姐`、｀先生｀
+  - 後面出現：`老師`、`教授`、`小姐`、`先生`
   
 
 
 ---
 ## Exercise
 
-讓 `jiebaR` 認得妳的名字。
+### 搜尋一下某人的名字，看看出現的語境。妳可以多一些規則嗎？
 
+> 附帶一提：人名的自動辨識與分群 (person name identification/clustering) 也是個 NLP 研究領域，更難一點的還有轉譯人名的問題 (transliterated person name identification).
 
 
 ---
 ## 詞類 (Parts of Speech) 
 
-- 詞類是根據不同程度的句法訊息分類下的結果。
+- 詞類是根據不同程度的句法功能分類下的結果。
+- 兼類 (polyfunctionality) 與動詞名物化。
 
 ---
 ## 中文的詞類概念
 
+- (很重要！) 沒有構詞標記與屈折形態變化不等於沒有語法！！！
+- 可以從 8 大詞類到 [27大類](http://rocling.iis.sinica.edu.tw/CKIP/tr/9305_2013%20revision.pdf)
 
-- 可以從 8 大詞類到
-
-
----
-##
-
-```{bash,eval=FALSE}
-sed -n '6,13p' dickens-clean.txt > dickens-sample.txt
-
-```
-
----
-## POS Granularity
-
-`jseg.py`
 
 
 ---
 ## 為什麼詞類對於文本解析很重要？
 
-- 說謊語言行為
-- 
+舉一個例子：常識抽取對於情緒分析的重要
+
+<span style="color:red; font-weight:bold">“我昨天深夜在鐵工廠看到一個小女孩” </span>
+
+
+ 
 
 
 
 ---
-## 綜合協作練習
-
-Pronoun 的跨語言比較 總統語料庫
+## 綜合協作練習 as Bonus (20151015) 20%
 
 利用 `tm`/`tmcn` 等套件，把中英文的前處理跑過一次。
-參考 [typical.tm.Rmd]() 
-
-
-
-
-
----
-## Bonus
-
-中文專有名詞辨識器 (姓名、地名、機構名、etc)
+參考 [typical.tm.Rmd](typical.tm.html) 
 
 
 

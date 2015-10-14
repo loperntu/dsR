@@ -13,8 +13,7 @@
     media="only screen and (max-device-width: 480px)" >
   <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
   <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/gh-buttons.css"></link>
-<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
@@ -135,8 +134,7 @@ inspect(usP[2])
 <pre><code>## &lt;&lt;VCorpus (documents: 1, metadata (corpus/indexed): 0/0)&gt;&gt;
 ## 
 ## [[1]]
-## &lt;&lt;PlainTextDocument (metadata: 7)&gt;&gt;
-## Washington
+## NULL
 </code></pre>
 
 <pre><code class="r"># 替換 
@@ -145,7 +143,37 @@ inspect(usP[2])
 #usP &lt;- tm_map(usP, toString, &quot;other specific transform&quot;, &quot;OST&quot;)
 </code></pre>
 
-<p>－ 詞類標記</p>
+<h4>詞類標記</h4>
+
+<ul>
+<li>可以用 <code>koRpus</code> 或 <code>openNLP</code> 來處理歐美語言。</li>
+<li>中文可用 <code>jiebaR</code> (粗粒度) <code>jseg.py</code> (細粒度) </li>
+</ul>
+
+<pre><code class="bash">sed -n &#39;6,13p&#39; dickens-clean.txt &gt; dickens-sample.txt
+</code></pre>
+
+<pre><code class="r">####### 
+## Use koRpus package
+## 但要自行安裝 Tree Tagger
+
+# The koRpus package uses the TreeTagger for POS tagging
+library(koRpus)
+
+### perform POS tagging
+
+text.tagged &lt;- treetag(&quot;../data/week5/dickens-sample.txt&quot;,
+                       treetagger = &quot;manual&quot;, 
+                       lang=&quot;en&quot;,
+                       TT.options = list(path=&quot;~/Linguistic.Data.Science/tools/TreeTagger/&quot;,
+                                         preset=&quot;en&quot;))
+
+
+
+# inspect text.tagged
+options(width=150)
+text.tagged@TT.res
+</code></pre>
 
 <pre><code class="r">library(NLP)
 library(openNLP)
@@ -175,34 +203,6 @@ tags &lt;- sapply(usP.pos$features, `[[`, &quot;POS&quot;)
 tags
 table(tags)
 </code></pre>
-
-<pre><code class="r">####### 
-## Use koRpus package
-## 但要自行安裝 Tree Tagger
-
-# The koRpus package uses the TreeTagger for POS tagging
-library(koRpus)
-
-### perform POS tagging
-#text.tagged &lt;- treetag(&quot;C:\\03-MyProjects\\PosTagging\\TestCorpus/text1.txt&quot;, treetagger=&quot;manual&quot;, lang=&quot;en&quot;,
-#                       TT.options=list(path=&quot;C:\\TreeTagger&quot;, preset=&quot;en&quot;))
-
-text.tagged &lt;- treetag(&quot;../data/week5/dickens-sample.txt&quot;,
-                       treetagger = &quot;manual&quot;, 
-                       lang=&quot;en&quot;,
-                       TT.options = list(path=&quot;~/Linguistic.Data.Science/tools/TreeTagger/&quot;,
-                                         preset=&quot;en&quot;))
-
-
-
-# inspect text.tagged
-options(width=150)
-text.tagged@TT.res
-</code></pre>
-
-<ul>
-<li>進階一點的前處理</li>
-</ul>
 
 <h2>中文處理</h2>
 
