@@ -62,7 +62,7 @@ sed '18682,19052d' dickens-noheader.txt > dickens-clean.txt
 ```bash
 tr -d [:punct:] < dickens-clean.txt | tr -d [:digit:] | 
 tr [:upper:] [:lower:] | tr -d '\r'| tr ' ' '\n' | sort | uniq -c | 
-sort -r > dickens-wordfreq.txt
+sort -r -g > dickens-wordfreq.txt
 
 grep -E -n --color=auto "(B|b)umble" dickens-clean.txt
 ```
@@ -115,7 +115,7 @@ cat(words_char)
 
 ```bash
 curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
-cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r > luxun-wordfreq.txt
+cat luxun.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c -g | sort -r > luxun-wordfreq.txt
 ```
 
 
@@ -139,7 +139,7 @@ ShowDictPath()  ### Show dict path, find and edit the "user.dict.utf8"
 
 
 ```bash
-cat GQ.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r > GQ-wordfreq.txt
+cat GQ.txt | Rscript jieba.R | tr ' ' '\n' | sort | uniq -c | sort -r -g > GQ-wordfreq.txt
 grep '卡娃伊' GQ.txt
 grep '卡娃伊' GQ-wordfreq.txt
 # 增添卡娃伊到詞表之後重跑一次第一行..................

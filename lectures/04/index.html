@@ -70,14 +70,20 @@
     <h2>Lemmatization and Stemming</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. E.g., <code>to walk</code>, <code>walked</code>, <code>walking</code>.</li>
-<li>lemmatization is closely related to stemming. </li>
+    <p>垂直處理</p>
+
+<ul>
+<li><span style="color:blue; font-weight:bold">Lemmatization</span> is the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. E.g., <code>to walk</code>, <code>walked</code>, <code>walking</code>.</li>
+<li>Lemmatization is closely related to <span style="color:blue; font-weight:bold">stemming</span>. </li>
 </ul>
 
 <blockquote>
 <p>The difference is that a stemmer operates on a single word without knowledge of the context, and therefore cannot discriminate between words which have different meanings depending on part of speech.</p>
 </blockquote>
+
+<ul>
+<li>主要是有屈折變化 (inflectional) 的語言才有這個處理問題。</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -85,20 +91,38 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Example</h2>
+    <h2>Tokenization</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>水平處理</p>
+
+<ul>
+<li>Given a character sequence (and a pre-defined unit), tokenization is the task of chopping it up into pieces, called <strong>tokens</strong>. </li>
+<li>A tokenizer divides text into a sequence of tokens, which in many cases correspond to &quot;words&quot;.</li>
+<li>Tokenization often serve as the initial phase in NLP, i.e., locating word boundaries. But challenges in tokenization depends on the type of language.</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Tokenization</h2>
+    <h2>Chinese Word Segmentation</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li><p>中文分詞（斷詞）Chinese word segmentation 可以看成是 tokenization 的一個特例，但是涉及更深一層的語言與認知互動。</p></li>
+<li><p>因為 (漢語) 語言分析的基本單位沒有你想的那麼穩固， 自然語言處理先卡關才引起注意。</p>
+
+<ul>
+<li>e.g., <code>昨天阿里巴巴創辦人馬雲端上新的網路服務</code></li>
+</ul></li>
+<li><p>但是 Wordhood 的問題不是漢語才有。</p></li>
+</ul>
+
+<p><img style='border: 1px solid;' width=50% src='./assets/img/words.png'></img></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -109,20 +133,6 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Wordhood in Chinese</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>Chinese Word Segmentation</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>中文分詞（斷詞）Chinese word segmentation 可以看成是 tokenization 的一個特例，但是涉及更深一層的語言與認知互動。</p></li>
 <li><p>中文分詞演算法從早期的 <code>最大匹配查找</code>一直到隨著巨量訓練語料庫出現後的各種<code>統計機器學習模式</code> (e.g., Conditional Ramdom Field) 已經有很大的進展。(如果不管語言學的討論)</p></li>
 <li><p>主要面對的兩大問題是</p>
 
@@ -136,7 +146,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>結構性的歧義</h2>
   </hgroup>
@@ -146,7 +156,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>OOV 識別</h2>
   </hgroup>
@@ -156,7 +166,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>名字識別</h2>
   </hgroup>
@@ -177,7 +187,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Exercise</h2>
   </hgroup>
@@ -188,7 +198,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>詞類 (Parts of Speech)</h2>
   </hgroup>
@@ -201,7 +211,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>中文的詞類概念</h2>
   </hgroup>
@@ -209,6 +219,18 @@
     <ul>
 <li>可以從 8 大詞類到</li>
 </ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <article data-timings="">
+    <p>##</p>
+
+<pre><code class="bash">sed -n &#39;6,13p&#39; dickens-clean.txt &gt; dickens-sample.txt
+
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -238,10 +260,13 @@
 
 <slide class="" id="slide-15" style="background:;">
   <hgroup>
-    <h2>Exercise</h2>
+    <h2>綜合協作練習</h2>
   </hgroup>
   <article data-timings="">
     <p>Pronoun 的跨語言比較 總統語料庫</p>
+
+<p>利用 <code>tm</code>/<code>tmcn</code> 等套件，把中英文的前處理跑過一次。
+參考 <a href="">typical.tm.Rmd</a> </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -276,13 +301,13 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Example'>
+        data-slide=3 title='Tokenization'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Tokenization'>
+        data-slide=4 title='Chinese Word Segmentation'>
          4
       </a>
     </li>
@@ -294,43 +319,43 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Chinese Word Segmentation'>
+        data-slide=6 title='結構性的歧義'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='結構性的歧義'>
+        data-slide=7 title='OOV 識別'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='OOV 識別'>
+        data-slide=8 title='名字識別'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='名字識別'>
+        data-slide=9 title='Exercise'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Exercise'>
+        data-slide=10 title='詞類 (Parts of Speech)'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='詞類 (Parts of Speech)'>
+        data-slide=11 title='中文的詞類概念'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='中文的詞類概念'>
+        data-slide=12 title='NA'>
          12
       </a>
     </li>
@@ -348,7 +373,7 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Exercise'>
+        data-slide=15 title='綜合協作練習'>
          15
       </a>
     </li>
