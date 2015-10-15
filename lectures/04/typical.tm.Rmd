@@ -1,12 +1,12 @@
 ---
-title: "Text Analytics: Pre-processing Exercise"
-author: "Shu-Kai Hsieh, National Taiwan Uni."
+title: "Text Analytics: Pre-processing Memo"
+author: "LADs class, National Taiwan University."
 date: "2015 年 10 月 15 日"
 output: html_document
 ---
 
 
-## 文本發掘基本：流程複習
+## 文本發掘基本前處理流程
 
 ---
 
@@ -16,6 +16,7 @@ output: html_document
 - 了解中英文文本的前處理工作
 - 基本的語料探索分析
 
+> 注意：當妳跟 R 的關係愈來愈好的時候，不一定要依賴 tm 
 
 #### 語料文本：總統的語言
 
@@ -23,7 +24,7 @@ output: html_document
 - 台灣總統元旦與國慶文告 
 
 > 注意：Text Analytics 是人機合作的藝術，不一定要依賴大數據。
-> 想一個比較的點。當成第一份小組合作作業。
+
 
 
 ---
@@ -33,10 +34,6 @@ output: html_document
 ```{r, message=FALSE}
 library(tm) # Popular framework for text mining.
 library(SnowballC) # Provides wordStem() for stemming.  
-library(RColorBrewer) # Generate palette of colours for plots.
-library(ggplot2)
-library(Rgraphviz) # Correlation plots.
-library(wordcloud)
 ```
 
 - 建立給 `tm` 用的 **語料庫物件**
@@ -79,17 +76,18 @@ inspect(usP[2])
 #usP <- tm_map(usP, toString, "other specific transform", "OST")
 ```
 
+------
+
 #### 詞類標記
   
-- 可以用 `koRpus` 或 `openNLP` 來處理歐美語言。
-- 中文可用 `jiebaR` (粗粒度) `jseg.py` (細粒度) 
+- 可以用 `koRpus` (要先安裝 `TreeTagger`) ,`openNLP` 或 Stanford `CoreNLP` 來處理歐美語言。
+- 中文可用 `jiebaR` (複雜詞類) `jseg.py` (簡化詞類)。（助教會教）
 
 
 
 ```{bash,eval=FALSE}
 sed -n '6,13p' dickens-clean.txt > dickens-sample.txt
 ```
-
 
 
 ```{r,eval=FALSE}
@@ -116,49 +114,13 @@ text.tagged@TT.res
 
 ```
 
+-------
+### 進階處理
 
-```{r}
-library(NLP)
-library(openNLP)
-library(openNLPmodels.en)
-```
+建立文本的 dtm (document-term matrix) 表徵，方便
 
-
-```{r,eval=FALSE}
-# dickens-sample.txt
-dickens <- readLines(file.choose())
-dickens.1 <- paste(dickens, collapse = " ")
-
-
-## For many kinds of text processing it is sufficient, even preferable to use base R classes. But for NLP we are obligated to use the String class. We need to convert our bio variable to a string.
-dickens.2 <- as.String(dickens.1)
-
-
-sent_anno <- Maxent_Sent_Token_Annotator()
-word_anno <- Maxent_Word_Token_Annotator()
-
-# These annotators form a “pipeline” for annotating the text in our dickens.2 variable.
-usP_annotations <- annotate(usP,list(sent_anno, word_anno))
-head(usP_annotations,5)
-pos_anno <- Maxent_POS_Tag_Annotator()
-
-usP_annotations.pos <- annotate(usP_annotations, pos_anno, usP_annotations)
-usP.pos <- subset(usP_annotations.pos, type =="word")
-tags <- sapply(usP.pos$features, `[[`, "POS")
-tags
-table(tags)
-
-
-```
-
-
-
-
-## 中文處理
-
-- 注意編碼
-- 斷詞與詞類標記
-
+- 詞頻表
+- 餵給不同的機器學習模式(classification, clustering, etc)
 
 
 
