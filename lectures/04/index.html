@@ -67,18 +67,26 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Lemmatization and Stemming</h2>
+    <h2>Lemmatization and Stemmization</h2>
   </hgroup>
   <article data-timings="">
     <p>垂直處理</p>
 
 <ul>
-<li><span style="color:blue; font-weight:bold">Lemmatization</span> is the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. E.g., <code>to walk</code>, <code>walked</code>, <code>walking</code>.</li>
-<li>Lemmatization is closely related to <span style="color:blue; font-weight:bold">stemming</span>. </li>
+<li><p>morpheme, stem, root, lexeme, lemma, word</p></li>
+<li><p><span style="color:blue; font-weight:bold">Stemmization (stemmer)</span> 要把詞綴與詞幹分開 reduces the words to the root (via suffix stripping). e.g., fished&quot;, and &quot;fisher&quot; to &quot;fish&quot;.</p>
+
+<ul>
+<li>irregular verbs (e.g., run, ran)? </li>
+</ul></li>
+<li><p><span style="color:blue; font-weight:bold">Lemmatization (lemmatizer)</span> 要把 lemma 找出來（所以要動用到語法訊息）does similar thing, but the part of speech is first detected prior to attempting to find the root since for some languages, the stemming rules change depending on a word&#39;s part of speech.</p></li>
 </ul>
 
 <blockquote>
-<p>The difference is that a stemmer operates on a single word without knowledge of the context, and therefore cannot discriminate between words which have different meanings depending on part of speech.</p>
+<p>看例子 (wiki)
+1. The word &quot;better&quot; has &quot;good&quot; as its lemma. This link is missed by stemming, as it requires a dictionary look-up.
+2. The word &quot;walk&quot; is the base form for word &quot;walking&quot;, and hence this is matched in both stemming and lemmatisation.
+3. The word &quot;meeting&quot; can be either the base form of a noun or a form of a verb (&quot;to meet&quot;) depending on the context, e.g., &quot;in our last meeting&quot; or &quot;We are meeting again tomorrow&quot;. Unlike stemming, lemmatisation can in principle select the appropriate lemma depending on the context.</p>
 </blockquote>
 
 <ul>
@@ -310,7 +318,7 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Lemmatization and Stemming'>
+        data-slide=2 title='Lemmatization and Stemmization'>
          2
       </a>
     </li>

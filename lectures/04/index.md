@@ -28,13 +28,22 @@ github      : {user: loperntu, repo: lads}
 
 
 ---
-## Lemmatization and Stemming
+## Lemmatization and Stemmization
 垂直處理
 
-- <span style="color:blue; font-weight:bold">Lemmatization</span> is the process of grouping together the different inflected forms of a word so they can be analyzed as a single item. E.g., `to walk`, `walked`, `walking`.
-- Lemmatization is closely related to <span style="color:blue; font-weight:bold">stemming</span>. 
 
-> The difference is that a stemmer operates on a single word without knowledge of the context, and therefore cannot discriminate between words which have different meanings depending on part of speech.
+- morpheme, stem, root, lexeme, lemma, word
+
+- <span style="color:blue; font-weight:bold">Stemmization (stemmer)</span> 要把詞綴與詞幹分開 reduces the words to the root (via suffix stripping). e.g., fished", and "fisher" to "fish".
+  - irregular verbs (e.g., run, ran)? 
+
+- <span style="color:blue; font-weight:bold">Lemmatization (lemmatizer)</span> 要把 lemma 找出來（所以要動用到語法訊息）does similar thing, but the part of speech is first detected prior to attempting to find the root since for some languages, the stemming rules change depending on a word's part of speech.
+
+> 看例子 (wiki)
+> 1. The word "better" has "good" as its lemma. This link is missed by stemming, as it requires a dictionary look-up.
+> 2. The word "walk" is the base form for word "walking", and hence this is matched in both stemming and lemmatisation.
+> 3. The word "meeting" can be either the base form of a noun or a form of a verb ("to meet") depending on the context, e.g., "in our last meeting" or "We are meeting again tomorrow". Unlike stemming, lemmatisation can in principle select the appropriate lemma depending on the context.
+
 
 - 主要是有屈折變化 (inflectional) 的語言才有這個處理問題。
 
