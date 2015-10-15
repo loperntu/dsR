@@ -111,7 +111,7 @@ github      : {user: loperntu, repo: lads}
 ---
 ## Exercise
 
-### 搜尋一下某人的名字，看看出現的語境。妳可以多一些規則嗎？
+### 搜尋一下某人的名字，看看出現的語境。妳可以想出多一些規則嗎？
 
 > 附帶一提：人名的自動辨識與分群 (person name identification/clustering) 也是個 NLP 研究領域，更難一點的還有轉譯人名的問題 (transliterated person name identification).
 
@@ -137,16 +137,23 @@ github      : {user: loperntu, repo: lads}
 
 <span style="color:red; font-weight:bold">“我昨天深夜在鐵工廠看到一個小女孩” </span>
 
-
- 
-
-
-
 ---
-## 綜合協作練習 as Bonus (20151015) 20%
+## 前處理綜合協作練習 as Group Bonus (20151015) 
+### <span style="color:green; font-weight:bold">總統的語言行為</span>
 
-利用 `tm`/`tmcn` 等套件，把中英文的前處理跑過一次。
-參考 [typical.tm.Rmd](typical.tm.html) 
+- 希望每組都能做，加碼 30分/person ！
+- 資料放在[這裏](https://www.dropbox.com/sh/pbbsla84bq6o678/AACtO1WjaMIxVh97eyWO81yNa?dl=0) 的 `usP` 和 `twP`。
+  * 注意：可能有 noise.
+- 小組討論出想要看到的現象，用 R code 實作，附上說明存成 Rmd。
+  
+  * 那個美國總統最多話 (tokens)，用字量最豐富 (types) ？
+  * 那個台灣總統使用最多的第一人稱代名詞 (我，我們)？
+  * 所有總統都用到的名詞表？
+  * . . . . . . . . . . . . . . . . . . . 
+
+
+
+> 可參考 [typical.tm.Rmd](typical.tm.Rmd) 
 
 
 
