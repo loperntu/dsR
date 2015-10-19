@@ -22,17 +22,12 @@ github      : {user: loperntu, repo: lads}
 
 
 
-
-
-
-
-
 ---
 ## Lemmatization and Stemmization
 垂直處理
 
 
-- morpheme, stem, root, lexeme, lemma, word
+- morpheme, stem, root, lexeme, lemma, word 的關係（見黑板）
 
 - <span style="color:blue; font-weight:bold">Stemmization (stemmer)</span> 要把詞綴與詞幹分開 reduces the words to the root (via suffix stripping). e.g., fished", and "fisher" to "fish".
   - irregular verbs (e.g., run, ran)? 

@@ -83,6 +83,7 @@ Week | Date   | Topic         | Lab
 - [Week.3](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/1001-agilearning_install.pptx)
 - [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
 - [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
+-[[Week.6.1]]()
 
 
 ## 課程教材

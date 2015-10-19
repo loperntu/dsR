@@ -91,6 +91,7 @@ writeLines(links)
 - [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
 
 
+
 ## 課程教材
 
 在課程投影片中講解基本概念，如果有興趣了解進階內容，可參考以下線上教材
