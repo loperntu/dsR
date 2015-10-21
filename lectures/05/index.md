@@ -81,10 +81,20 @@ Sys.sleep(time=0.1)
 ---
 ## 文本分析可以告訴妳的
 
-政治人物的語言分析（bonus 同學請上台）
 
-<span style="color:green; font-weight:bold"> 表情符號 Emoji </span> 也滲入了文本。
 
+- 文本中的溝通系統日趨多元複雜 (multimodality)
+  - <span style="color:green; font-weight:bold"> 表情符號 Emoji </span> 也滲入了文本。
+  - Laughter
+
+  ```
+  ha ha
+  ha ha ha
+  he he he
+  heh heh
+  hee hee hee ha ha ha hoooooo hoo
+  ```
+  - 語氣詞
 
 ---
 ## Text Linguistics
@@ -93,6 +103,11 @@ Sys.sleep(time=0.1)
 
 - 大眾心理學的東西參考就好
   - [常說「所以說～」還拉高尾音的人，個性歇斯底里](http://www.storm.mg/lifestyle/60285)
+
+
+
+---
+## 政治人物的語言分析（bonus 同學請上台）
 
 
 ---
