@@ -23,13 +23,15 @@ github      : {user: loperntu, repo: lads}
 ---
 ## 資料探索分析 
 
-- 前處理完之後才開始進入分析工作。
-- 資料探索分析 (exploratory data analysis) 是資料科學分析歷程很重要的一環，目的是適當的來來回回檢視資料以取得合理的假說。
-- 涉及到 **資料操控 (data manipulation)、資料視覺化 (data visualization) 技巧與統計分析 (statistics) **。
+- **前處理**完之後才開始進入分析工作。
+
+- 資料探索分析 (exploratory data analysis) 是資料科學分析歷程很重要的一環，目的是<span style="color:blue; font-weight:bold">適當的來來回回檢視資料以取得合理的假說</span>。
+
+- 這個過程涉及到 **資料操控** (data manipulation)、**資料視覺化** (data visualization) 技巧與**統計分析** (statistics)。
 
 
 ---
-## 舉個例子
+## 舉個數值性資料的例子
 
 ```
 n <-100
@@ -46,8 +48,8 @@ Sys.sleep(time=0.1)
 ---
 ## 那文本資料呢？
 
-給定文本資料，除了轉成`數據資料`之外，我們還想要知道
-- 這個人的個性
+給定文本資料，除了轉成`數據資料`之外，我們還想要知道文本如何反映出
+- 作者的個性
 - 這群人是否喜歡這個政見？
 - ...
 
@@ -55,9 +57,14 @@ Sys.sleep(time=0.1)
 
 
 ---
-## 想像力練習 (分組做)
+## 文本分析想像力練習 (分組做)
 
-我們想要知道。。。。。
+- 三組同學派代表來文本接龍。
+
+<img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-3.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-4.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-5.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-6.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-7.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-8.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-9.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-10.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-11.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" />
+
+
+
 
 
 
@@ -72,12 +79,20 @@ Sys.sleep(time=0.1)
 
 
 ---
-## 語言分析可以告訴妳的
+## 文本分析可以告訴妳的
 
-政治人物的語言分析（bonus）
+政治人物的語言分析（bonus 同學請上台）
 
-<span style="color:green; font-weight:bold"> 表情符號 </span>
+<span style="color:green; font-weight:bold"> 表情符號 Emoji </span> 也滲入了文本。
 
+
+---
+## Text Linguistics
+
+<http://grammar.about.com/od/tz/g/Text-Linguistics.htm>
+
+- 大眾心理學的東西參考就好
+  - [常說「所以說～」還拉高尾音的人，個性歇斯底里](http://www.storm.mg/lifestyle/60285)
 
 
 ---
@@ -89,8 +104,9 @@ Sys.sleep(time=0.1)
 
 
 ---
-## 推薦一本好書
+## 推薦一本教科書
 
+> 想要多瞭解 `語言/文本分析`， 圖片搜尋 `how to analyse texts linguistically`
 
 <img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img>
 
@@ -98,6 +114,6 @@ Sys.sleep(time=0.1)
 ---
 ## Homework Bonus (20151022)
 
-
+BTW, 可以參考 [`RMarkdown cheatsheet`](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 
 

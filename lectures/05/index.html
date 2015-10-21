@@ -70,9 +70,9 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>前處理完之後才開始進入分析工作。</li>
-<li>資料探索分析 (exploratory data analysis) 是資料科學分析歷程很重要的一環，目的是適當的來來回回檢視資料以取得合理的假說。</li>
-<li>涉及到 **資料操控 (data manipulation)、資料視覺化 (data visualization) 技巧與統計分析 (statistics) **。</li>
+<li><p><strong>前處理</strong>完之後才開始進入分析工作。</p></li>
+<li><p>資料探索分析 (exploratory data analysis) 是資料科學分析歷程很重要的一環，目的是<span style="color:blue; font-weight:bold">適當的來來回回檢視資料以取得合理的假說</span>。</p></li>
+<li><p>這個過程涉及到 <strong>資料操控</strong> (data manipulation)、<strong>資料視覺化</strong> (data visualization) 技巧與<strong>統計分析</strong> (statistics)。</p></li>
 </ul>
 
   </article>
@@ -81,7 +81,7 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>舉個例子</h2>
+    <h2>舉個數值性資料的例子</h2>
   </hgroup>
   <article data-timings="">
     <pre><code>n &lt;-100
@@ -104,10 +104,10 @@ Sys.sleep(time=0.1)
     <h2>那文本資料呢？</h2>
   </hgroup>
   <article data-timings="">
-    <p>給定文本資料，除了轉成<code>數據資料</code>之外，我們還想要知道</p>
+    <p>給定文本資料，除了轉成<code>數據資料</code>之外，我們還想要知道文本如何反映出</p>
 
 <ul>
-<li>這個人的個性</li>
+<li>作者的個性</li>
 <li>這群人是否喜歡這個政見？</li>
 <li class='..</li>'></ul>
 
@@ -117,10 +117,14 @@ Sys.sleep(time=0.1)
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>想像力練習 (分組做)</h2>
+    <h2>文本分析想像力練習 (分組做)</h2>
   </hgroup>
   <article data-timings="">
-    <p>我們想要知道。。。。。</p>
+    <ul>
+<li>三組同學派代表來文本接龍。</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-3.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-4.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-5.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-6.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-7.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-8.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-9.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-10.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-11.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -142,18 +146,37 @@ Sys.sleep(time=0.1)
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>語言分析可以告訴妳的</h2>
+    <h2>文本分析可以告訴妳的</h2>
   </hgroup>
   <article data-timings="">
-    <p>政治人物的語言分析（bonus）</p>
+    <p>政治人物的語言分析（bonus 同學請上台）</p>
 
-<p><span style="color:green; font-weight:bold"> 表情符號 </span></p>
+<p><span style="color:green; font-weight:bold"> 表情符號 Emoji </span> 也滲入了文本。</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Text Linguistics</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="http://grammar.about.com/od/tz/g/Text-Linguistics.htm">http://grammar.about.com/od/tz/g/Text-Linguistics.htm</a></p>
+
+<ul>
+<li>大眾心理學的東西參考就好
+
+<ul>
+<li><a href="http://www.storm.mg/lifestyle/60285">常說「所以說～」還拉高尾音的人，個性歇斯底里</a></li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Exploratory Textual Data Analysis</h2>
   </hgroup>
@@ -167,23 +190,28 @@ Sys.sleep(time=0.1)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>推薦一本好書</h2>
+    <h2>推薦一本教科書</h2>
   </hgroup>
   <article data-timings="">
-    <p><img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img></p>
+    <blockquote>
+<p>想要多瞭解 <code>語言/文本分析</code>， 圖片搜尋 <code>how to analyse texts linguistically</code></p>
+</blockquote>
+
+<p><img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>Homework Bonus (20151022)</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>BTW, 可以參考 <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf"><code>RMarkdown cheatsheet</code></a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -206,7 +234,7 @@ Sys.sleep(time=0.1)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='舉個例子'>
+        data-slide=3 title='舉個數值性資料的例子'>
          3
       </a>
     </li>
@@ -218,7 +246,7 @@ Sys.sleep(time=0.1)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='想像力練習 (分組做)'>
+        data-slide=5 title='文本分析想像力練習 (分組做)'>
          5
       </a>
     </li>
@@ -230,26 +258,32 @@ Sys.sleep(time=0.1)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='語言分析可以告訴妳的'>
+        data-slide=7 title='文本分析可以告訴妳的'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Exploratory Textual Data Analysis'>
+        data-slide=8 title='Text Linguistics'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='推薦一本好書'>
+        data-slide=9 title='Exploratory Textual Data Analysis'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Homework Bonus (20151022)'>
+        data-slide=10 title='推薦一本教科書'>
          10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Homework Bonus (20151022)'>
+         11
       </a>
     </li>
   </ul>
