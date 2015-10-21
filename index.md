@@ -41,10 +41,10 @@ Week | Date   | Topic         | Lab
 4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 1-4](https://www.datacamp.com/courses/free-introduction-to-r)
 5    | 10/15	| Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 5-7](https://www.datacamp.com/courses/free-introduction-to-r)
 6    | 10/22	| Exploratory data analysis and Infographics         | Data Manipulation: [chapter 1-2](https://www.datacamp.com/courses/data-table-data-manipulation-r-tutorial)
-7    | 10/29  | Exploratory data analysis and Infographics         | Data Visualization: [chapter 1-3](https://www.datacamp.com/courses/ggvis-data-visualization-r-tutorial)
-8    | 11/05	| Corpus and natural language processing             | Data Visualization: [chapter 4-5](https://www.datacamp.com/courses/ggvis-data-visualization-r-tutorial)
+7    | 10/29  | Exploratory data analysis and Infographics         | Data Visualization: [1-3;7-10](https://www.youtube.com/playlist?list=PLqzoL9-eJTNDsdghuYR70d01YVGIBs29N)
+8    | 11/05	| Corpus and natural language processing             | Textual data manipulation: [Regular Expression](https://youtu.be/q8SzNKib5-4)
 9    | 11/12	| Corpus and natural language processing             | R and Statistics: [course one (five chapters)](https://www.datacamp.com/introduction-to-statistics)
-10   | 11/19	| Text classification and clustering                 | R and Statistics: [course five (three chapters)](https://www.datacamp.com/introduction-to-statistics)
+10   | 11/19	| Text classification and clustering                 | 
 11 	 | 11/26	| `mini-Hackathon`                                   | **開始規劃期末展演**
 12 	 | 12/03	| Text classification and clustering                 |
 13 	 | 12/10	| Topic modeling                                     |
@@ -83,7 +83,7 @@ Week | Date   | Topic         | Lab
 - [Week.3](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/1001-agilearning_install.pptx)
 - [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
 - [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
--[[Week.6.1]]()
+
 
 
 ## 課程教材
