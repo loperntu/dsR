@@ -115,18 +115,7 @@ writeLines(links)
 -----
 ## 作業分數分佈圖
 
-```{r echo = F, message = F, cache = F}
-require(rCharts)
-options(RCHART_WIDTH = 600, RCHART_HEIGHT = 400)
-knitr::opts_chunk$set(comment = NA, results = 'asis', tidy = T, message = F, warning = F)
-```
 
-
-```{r, echo=FALSE}
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
-n1$print("score")
-```
 
 
 ## Capstone projects
@@ -137,6 +126,8 @@ n1$print("score")
 - 第四組
 - 第五組
 - 第六組
+- 第七組
+- 第八組
 
 <a href='lectures/00/index.html#9'>
 <img style='border: 1px solid;' width=100% src='./assets/img/neocilin.png'></img>
