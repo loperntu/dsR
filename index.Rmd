@@ -87,10 +87,6 @@ Week | Date   | Topic         | Lab
 - [Lecture 04](lectures/04/index.html)
 - [Lecture 05](lectures/05/index.html)
 
-
-
-6.[Lecture 05](lectures/05/index.html)
-
 ## 助教講義、習題與作業
 
 [評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
