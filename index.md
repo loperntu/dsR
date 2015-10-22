@@ -68,12 +68,18 @@ Week | Date   | Topic         | Lab
 ## 課程投影片 
 
 
-1. [Lecture 00](lectures/00/index.html)
-2. [Lecture 01](lectures/01/index.html)
-3. [Lecture 02](lectures/02/index.html)
-4. [Lecture 03](lectures/03/index.html)
-5. [Lecture 04](lectures/04/index.html)
 
+
+- [Lecture 00](lectures/00/index.html)
+- [Lecture 01](lectures/01/index.html)
+- [Lecture 02](lectures/02/index.html)
+- [Lecture 03](lectures/03/index.html)
+- [Lecture 04](lectures/04/index.html)
+- [Lecture 05](lectures/05/index.html)
+
+
+
+6.[Lecture 05](lectures/05/index.html)
 
 ## 助教講義、習題與作業
 

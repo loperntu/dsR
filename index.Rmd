@@ -73,13 +73,23 @@ Week | Date   | Topic         | Lab
 
 
 ```{r echo = F, results = 'asis'}
-lectures = dir('lectures', full = TRUE)
-links = paste0(seq_along(lectures), ". ", 
-  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
-)
-writeLines(links)
+#lectures = dir('lectures', full = TRUE)
+#links = paste0(seq_along(lectures), ". ", 
+#  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
+#)
+#writeLines(links)
 ```
 
+- [Lecture 00](lectures/00/index.html)
+- [Lecture 01](lectures/01/index.html)
+- [Lecture 02](lectures/02/index.html)
+- [Lecture 03](lectures/03/index.html)
+- [Lecture 04](lectures/04/index.html)
+- [Lecture 05](lectures/05/index.html)
+
+
+
+6.[Lecture 05](lectures/05/index.html)
 
 ## 助教講義、習題與作業
 
