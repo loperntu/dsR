@@ -76,10 +76,7 @@ Week | Date   | Topic         | Lab
 - [Lecture 03](lectures/03/index.html)
 - [Lecture 04](lectures/04/index.html)
 - [Lecture 05](lectures/05/index.html)
-
-
-
-6.[Lecture 05](lectures/05/index.html)
+- [Lecture 06](lectures/06/index.html)
 
 ## 助教講義、習題與作業
 
@@ -90,7 +87,7 @@ Week | Date   | Topic         | Lab
 - [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
 - [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
 - [[Week.6.1]](https://goo.gl/SjV4iq) / [[Week 6.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise3-data_table.html)
-
+- [[Week.7.1]](http://goo.gl/08t01z) / [[Week 7.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise4-plot.html)
 
 
 ## 課程教材
@@ -108,15 +105,18 @@ Week | Date   | Topic         | Lab
 
 
 ## 課程精神
-1. 自主學習：老師是教練，妳才是主角。
-2. 跨學門協作：學著跟別人吵架後和好。
+1. 自主學習
+2. 跨學門協作
 
 
 -----
 ## 作業分數分佈圖
 
 
-
+---
+## 小組作業觀摩
+- **bonus.1** [G1](group.bonus/b3G1.html)/[G4](group.bonus/b3G4.html)/[G6](group.bonus/b3G6.html)/[G7](group.bonus/b3G7.html)/[G8]((group.bonus/b3G8.html)
+- **bonus.2** [G5](group.bonus/b3G5.html)/[G6](group.bonus/b3G6.html)
 
 ## Capstone projects
 
