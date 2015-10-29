@@ -176,12 +176,6 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
 - 標記者的同意率量度 (inter-annotator agreement)
 
 
----
-## 
-
-- 用 RStudio 來開啟與編輯 xml 文件 (`data/week7/sonnet130.xml`)。（也可以用其他支援 xml 的編輯器, e.g., `Atom` 或 線上轉檔工具 <http://codebeautify.org/xmlviewer>） 
-
-
 
 
 
