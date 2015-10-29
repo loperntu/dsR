@@ -22,26 +22,27 @@ github      : {user: loperntu, repo: lads}
 2. Crash course for R: Visualization
 
 ---
-## 數值資料探索分析
+## 我們現在在哪裡？
 
-[numeric.EDA](LDP35_ExploratoryDataAnalysis.pdf)
+<img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img>
+
+[pic.source](https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg)
 
 ---
-## 文本資料探索分析
+## 文本資料探索分析: A missing part
 
 - Textual statistics (local and global)
 - Textual data transformatio: from textual information to numerical vectors
 - Corpus-based analysis and manual annotation (e.g., conversation structure) 
 
-參考 [text statistics]
+參考課程教材
 
 
 
 --- bg:#FFFAF0
-## 大綱
 
 1. Exploratory Data Analysis
-2. Corpus and linguistic annotation
+2. __**Corpus and linguistic annotation**__
 2. Crash course for R: Visualization
 
 ---
@@ -198,18 +199,15 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
 ---
 ## Basic and Interactive Plots
 
-- 取決於什麼樣的資料型態與要看什麼樣的關係。
-- 製圖流程判斷
-- The main objective of a visualization is to grab the attention of its audience and make the optimal use of the data available. The audience should be able to get most of its information from the visualization itself.
-
-<img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img>
-
+- 取決於什麼樣的資料型態與要看什麼樣的關係，還有，妳要給讀者怎麼樣的印象與訊息。
+- 製圖類型有流程判斷 (i.e., *how to choose which type of graph to use*)
+- R 的作圖能力一流，不要浪費掉。基本指令熟悉後，可考慮 `ggplot2`, `googleVis`, `rChart` 等等套件。 
+- 作圖複雜度隨著研究應用的需求提高（e.g., 多變量，互動，動畫模擬，網路，地圖等等）
 
 ---
 ## Scatter plot
 
-- Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data.
-- (add elements such as text, labels, and lines.)
+- Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data. (try adding elements such as text, labels, and lines.)
 
 
 ```r
@@ -221,41 +219,35 @@ plot(cars)
 ---
 ## Advanced scatter plot
 
+<img src="assets/img/scatter.jpg" alt="Drawing" style="width: 400px;"/>
+<img src="assets/img/scatter1.png" alt="Drawing" style="width: 450px;"/>
 
 ---
-## 3D scatter
+## 3D scatter 也可以
 
+<img src="assets/img/scatter2.jpg" alt="Drawing" style="width: 500px;"/>
 
----
-## Bar chart
-
-
-
-
----
-## Interactive Bar chart
 
 
 ---
 ## Map 也沒問題
 
+`googleVis` 的 `gvisGeoMap()`
+<img src="assets/img/googleVis.png" alt="Drawing" style="width: 500px;"/>
 
-
----
-## 3D 動畫都可以
-
-- higher dimensions or multivariate data
-
+source: <http://blog.liang2.tw/2013-RConf-ggplot2-intro/>
 
 ---
-## 網路資料很輕鬆
+## 簡言之
 
+- 多利用網路資料學習，因為在技術層次教科書已經跟不上。
+- 台灣 R 社群 (R User Group) 發展愈來愈好，可加入多學習 
 
 
 ---
 ## 重點來了：文本資料怎麼辦
 
-- 我們想要利用視覺化技術探勘文本中的訊息、趨勢、模式變化。
+- 我們想要利用視覺化技術探勘文本中的訊息、趨勢、模式變化。例如
   - 批踢踢語料中呈現的鄉民行為與社會網路
   - 不同作者的書寫風格
   - （選前選後的）政治觀點、主張、價值比較
@@ -297,20 +289,19 @@ plot(cars)
 ![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
 
 ---
+## (中文) 字型與符碼選擇
 
 
-```
-## Error in eval(expr, envir, enclos): 沒有這個函數 "windowsFonts"
-```
-
-```
-## Warning in mclapply(unname(content(x)), termFreq, control): all scheduled
-## cores encountered errors in user code
+```r
+#windowsFonts(JP = windowsFont("MS Mincho"))
+#par(family = "JP")
+par(family = "STKaiti")
+wordcloud(doc, scale= c(2,0.5))
 ```
 
-```
-## Error in UseMethod("meta", x): 沒有適用的方法可將 'meta' 套用到 "character" 類別的物件
-```
+還有[改符號的](http://beader.me/2014/01/09/font-in-r-plot/)
+<img src="assets/img/font.png" alt="Drawing" style="width: 500px;"/>
+
 
 ---
 ## 文字雲也可以比較

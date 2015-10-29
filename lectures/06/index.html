@@ -67,10 +67,12 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>數值資料探索分析</h2>
+    <h2>我們現在在哪裡？</h2>
   </hgroup>
   <article data-timings="">
-    <p><a href="LDP35_ExploratoryDataAnalysis.pdf">numeric.EDA</a></p>
+    <p><img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img></p>
+
+<p><a href="https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg">pic.source</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -78,7 +80,7 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>文本資料探索分析</h2>
+    <h2>文本資料探索分析: A missing part</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -87,20 +89,17 @@
 <li>Corpus-based analysis and manual annotation (e.g., conversation structure) </li>
 </ul>
 
-<p>參考 [text statistics]</p>
+<p>參考課程教材</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-4" style="background:#FFFAF0;">
-  <hgroup>
-    <h2>大綱</h2>
-  </hgroup>
   <article data-timings="">
     <ol>
 <li>Exploratory Data Analysis</li>
-<li>Corpus and linguistic annotation</li>
+<li><strong><strong>Corpus and linguistic annotation</strong></strong></li>
 <li>Crash course for R: Visualization</li>
 </ol>
 
@@ -351,12 +350,11 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   </hgroup>
   <article data-timings="">
     <ul>
-<li>取決於什麼樣的資料型態與要看什麼樣的關係。</li>
-<li>製圖流程判斷</li>
-<li>The main objective of a visualization is to grab the attention of its audience and make the optimal use of the data available. The audience should be able to get most of its information from the visualization itself.</li>
+<li>取決於什麼樣的資料型態與要看什麼樣的關係，還有，妳要給讀者怎麼樣的印象與訊息。</li>
+<li>製圖類型有流程判斷 (i.e., <em>how to choose which type of graph to use</em>)</li>
+<li>R 的作圖能力一流，不要浪費掉。基本指令熟悉後，可考慮 <code>ggplot2</code>, <code>googleVis</code>, <code>rChart</code> 等等套件。 </li>
+<li>作圖複雜度隨著研究應用的需求提高（e.g., 多變量，互動，動畫模擬，網路，地圖等等）</li>
 </ul>
-
-<p><img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -368,8 +366,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data.</li>
-<li>(add elements such as text, labels, and lines.)</li>
+<li>Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data. (try adding elements such as text, labels, and lines.)</li>
 </ul>
 
 <pre><code class="r">plot(cars)
@@ -386,81 +383,59 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
     <h2>Advanced scatter plot</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><img src="assets/img/scatter.jpg" alt="Drawing" style="width: 400px;"/>
+<img src="assets/img/scatter1.png" alt="Drawing" style="width: 450px;"/></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-23" style="background:;">
   <hgroup>
-    <h2>3D scatter</h2>
+    <h2>3D scatter 也可以</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><img src="assets/img/scatter2.jpg" alt="Drawing" style="width: 500px;"/></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-24" style="background:;">
   <hgroup>
-    <h2>Bar chart</h2>
+    <h2>Map 也沒問題</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><code>googleVis</code> 的 <code>gvisGeoMap()</code>
+<img src="assets/img/googleVis.png" alt="Drawing" style="width: 500px;"/></p>
+
+<p>source: <a href="http://blog.liang2.tw/2013-RConf-ggplot2-intro/">http://blog.liang2.tw/2013-RConf-ggplot2-intro/</a></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-25" style="background:;">
   <hgroup>
-    <h2>Interactive Bar chart</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-26" style="background:;">
-  <hgroup>
-    <h2>Map 也沒問題</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-27" style="background:;">
-  <hgroup>
-    <h2>3D 動畫都可以</h2>
+    <h2>簡言之</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>higher dimensions or multivariate data</li>
+<li>多利用網路資料學習，因為在技術層次教科書已經跟不上。</li>
+<li>台灣 R 社群 (R User Group) 發展愈來愈好，可加入多學習 </li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
-  <hgroup>
-    <h2>網路資料很輕鬆</h2>
-  </hgroup>
-  <article data-timings="">
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-29" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>重點來了：文本資料怎麼辦</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p>我們想要利用視覺化技術探勘文本中的訊息、趨勢、模式變化。</p>
+<li><p>我們想要利用視覺化技術探勘文本中的訊息、趨勢、模式變化。例如</p>
 
 <ul>
 <li>批踢踢語料中呈現的鄉民行為與社會網路</li>
@@ -480,7 +455,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Word Cloud</h2>
   </hgroup>
@@ -496,7 +471,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>也可以丟詞頻表</h2>
   </hgroup>
@@ -507,7 +482,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:;">
+<slide class="" id="slide-29" style="background:;">
   <article data-timings="">
     <pre><code>## Warning in file(con, &quot;r&quot;): 無法開啟檔案 &#39;obama.txt&#39; ：No such file or
 ## directory
@@ -522,23 +497,25 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:;">
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>(中文) 字型與符碼選擇</h2>
+  </hgroup>
   <article data-timings="">
-    <pre><code>## Error in eval(expr, envir, enclos): 沒有這個函數 &quot;windowsFonts&quot;
+    <pre><code class="r">#windowsFonts(JP = windowsFont(&quot;MS Mincho&quot;))
+#par(family = &quot;JP&quot;)
+par(family = &quot;STKaiti&quot;)
+wordcloud(doc, scale= c(2,0.5))
 </code></pre>
 
-<pre><code>## Warning in mclapply(unname(content(x)), termFreq, control): all scheduled
-## cores encountered errors in user code
-</code></pre>
-
-<pre><code>## Error in UseMethod(&quot;meta&quot;, x): 沒有適用的方法可將 &#39;meta&#39; 套用到 &quot;character&quot; 類別的物件
-</code></pre>
+<p>還有<a href="http://beader.me/2014/01/09/font-in-r-plot/">改符號的</a>
+<img src="assets/img/font.png" alt="Drawing" style="width: 500px;"/></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:;">
+<slide class="" id="slide-31" style="background:;">
   <hgroup>
     <h2>文字雲也可以比較</h2>
   </hgroup>
@@ -635,7 +612,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
+<slide class="" id="slide-32" style="background:;">
   <hgroup>
     <h2>用 correlation plot 來觀察文本差異</h2>
   </hgroup>
@@ -645,7 +622,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-36" style="background:;">
+<slide class="" id="slide-33" style="background:;">
   <hgroup>
     <h2>詞組樹</h2>
   </hgroup>
@@ -660,7 +637,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>再講一個 motion chart</h2>
   </hgroup>
@@ -671,7 +648,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>Data Science Analytics (makes advances like never before)</h2>
   </hgroup>
@@ -679,7 +656,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
      
 <div class='row-fluid'>
   <div class='span5'>
-    <form id="knitForm38" data-cell="38">
+    <form id="knitForm35" data-cell="35">
       <pre><code class="r">require(googleVis)
 load(&quot;mot/mot.RData&quot;)
 </code></pre>
@@ -707,38 +684,38 @@ Modal &lt;- gvisMotionChart(convdata,
 <pre><code>## Error in plot(Modal): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: 錯誤: 找不到物件 &#39;Modal&#39;
 </code></pre>
 
-      <div id='aceeditor38' style="height:px;"></div>
+      <div id='aceeditor35' style="height:px;"></div>
       <div class='interactive btn-toolbar pull-left'>
         <div class='btn-group'>
-          <a class='btn btn-small action-button' id='runCode38' data-action='runCode'
-            data-cell='38' rel='tooltip' data-title='Run Code'>
+          <a class='btn btn-small action-button' id='runCode35' data-action='runCode'
+            data-cell='35' rel='tooltip' data-title='Run Code'>
             <i class='icon-play'></i>
           </a>
-          <a class='btn btn-small iBtn' id='testCode38' data-action='testCode'
-             data-cell='38' rel='tooltip' data-title='Test Code'>
+          <a class='btn btn-small iBtn' id='testCode35' data-action='testCode'
+             data-cell='35' rel='tooltip' data-title='Test Code'>
             <i class='icon-check'></i>
           </a>
-          <a class='btn btn-small iBtn' id='clearResult38' data-action='clearResult'
-             data-cell='38' rel='tooltip' data-title='Clear Output'>
+          <a class='btn btn-small iBtn' id='clearResult35' data-action='clearResult'
+             data-cell='35' rel='tooltip' data-title='Clear Output'>
             <i class="icon-remove"></i>
           </a>
-          <a class='btn  btn-small iBtn' id='getHint38' rel='tooltip' 
+          <a class='btn  btn-small iBtn' id='getHint35' rel='tooltip' 
             data-title="Get Hint" data-action='getHint'
-            data-cell='38' data-hint="">
+            data-cell='35' data-hint="">
             <i class="icon-bookmark"></i>
           </a>
         </div>
       </div>    </form>
   </div>
   <div class='span7'>
-    <div id="knitResult38" class='shiny-html-output'></div>
+    <div id="knitResult35" class='shiny-html-output'></div>
   </div>
 </div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-39" style="background:;">
+<slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>從多變量量化語言學角度下的文本視覺化</h2>
   </hgroup>
@@ -751,7 +728,7 @@ Modal &lt;- gvisMotionChart(convdata,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-40" style="background:;">
+<slide class="" id="slide-37" style="background:;">
   <hgroup>
     <h2>Homework Bonus (20151022)</h2>
   </hgroup>
@@ -761,7 +738,7 @@ Modal &lt;- gvisMotionChart(convdata,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-41" style="background:;">
+<slide class="" id="slide-38" style="background:;">
   <hgroup>
     <h2>Reference</h2>
   </hgroup>
@@ -784,19 +761,19 @@ Modal &lt;- gvisMotionChart(convdata,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='數值資料探索分析'>
+        data-slide=2 title='我們現在在哪裡？'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='文本資料探索分析'>
+        data-slide=3 title='文本資料探索分析: A missing part'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='大綱'>
+        data-slide=4 title='NA'>
          4
       </a>
     </li>
@@ -910,116 +887,98 @@ Modal &lt;- gvisMotionChart(convdata,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='3D scatter'>
+        data-slide=23 title='3D scatter 也可以'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Bar chart'>
+        data-slide=24 title='Map 也沒問題'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Interactive Bar chart'>
+        data-slide=25 title='簡言之'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Map 也沒問題'>
+        data-slide=26 title='重點來了：文本資料怎麼辦'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='3D 動畫都可以'>
+        data-slide=27 title='Word Cloud'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='網路資料很輕鬆'>
+        data-slide=28 title='也可以丟詞頻表'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='重點來了：文本資料怎麼辦'>
+        data-slide=29 title='NA'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='Word Cloud'>
+        data-slide=30 title='(中文) 字型與符碼選擇'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='也可以丟詞頻表'>
+        data-slide=31 title='文字雲也可以比較'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='NA'>
+        data-slide=32 title='用 correlation plot 來觀察文本差異'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='NA'>
+        data-slide=33 title='詞組樹'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='文字雲也可以比較'>
+        data-slide=34 title='再講一個 motion chart'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='用 correlation plot 來觀察文本差異'>
+        data-slide=35 title='Data Science Analytics (makes advances like never before)'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='詞組樹'>
+        data-slide=36 title='從多變量量化語言學角度下的文本視覺化'>
          36
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='再講一個 motion chart'>
+        data-slide=37 title='Homework Bonus (20151022)'>
          37
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Data Science Analytics (makes advances like never before)'>
+        data-slide=38 title='Reference'>
          38
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=39 title='從多變量量化語言學角度下的文本視覺化'>
-         39
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=40 title='Homework Bonus (20151022)'>
-         40
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=41 title='Reference'>
-         41
       </a>
     </li>
   </ul>
