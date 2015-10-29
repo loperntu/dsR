@@ -97,7 +97,7 @@ Week | Date   | Topic         | Lab
 - [語言分析與資料科學](https://www.gitbook.com/book/loperntu/ladsbook/details) 
 - [開放語料庫：製程與分析](https://www.gitbook.com/book/loperntu/copens/details)
 
-
+p
 ## 課程同學自發活動
 - [課堂共筆](https://hackpad.com/G2xpgmB77bL)
 - [學習共筆](https://lads2015fall.hackpad.com/)
@@ -116,7 +116,7 @@ Week | Date   | Topic         | Lab
 ---
 ## 小組作業觀摩
 - **bonus.1** [G1](group.bonus/b3G1.html)/[G4](group.bonus/b3G4.html)/[G6](group.bonus/b3G6.html)/[G7](group.bonus/b3G7.html)/[G8]((group.bonus/b3G8.html)
-- **bonus.2** [G5](group.bonus/b3G5.html)/[G6](group.bonus/b3G6.html)
+- **bonus.2** [G5](group.bonus/b4G5.html)/[G6](group.bonus/b4G6.html)
 
 ## Capstone projects
 
