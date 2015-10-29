@@ -273,20 +273,6 @@ source: <http://blog.liang2.tw/2013-RConf-ggplot2-intro/>
 
 ![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
 
----
-## 
-
-
-```
-## Warning in file(con, "r"): 無法開啟檔案 'obama.txt' ：No such file or
-## directory
-```
-
-```
-## Error in file(con, "r"): 無法開啟連結
-```
-
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
 
 ---
 ## (中文) 字型與符碼選擇
@@ -306,178 +292,33 @@ wordcloud(doc, scale= c(2,0.5))
 ---
 ## 文字雲也可以比較
 
-- To construct a comparison cloud, we require the data to be in the form of a term matrix. The tm package provides us with the `TermDocumentMatrix()` function that constructs a term document matrix:
-- 比較馬英九與蔣經國
+- To construct a comparison cloud, we require the data to be in the form of a term matrix. The `tm` package provides us with the `TermDocumentMatrix()` function that constructs a term document matrix:
 
 
+```r
+colnames(data) <- c("bush","obama")
+comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,"Set1"))
 ```
-## Error in DirSource("speech/"): empty directory
-```
-
-```
-## Error in DirSource("speech/"): empty directory
-```
-
-```
-## Warning in tm_map(data, content_transformer(tolower)): 重新啟動插斷的約定求
-## 值
-```
-
-```
-## Error in tm_map(data, content_transformer(tolower)): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in tm_map(data, removePunctuation): 重新啟動插斷的約定求值
-```
-
-```
-## Warning in tm_map(data, removePunctuation): 重新啟動插斷的約定求值
-```
-
-```
-## Error in tm_map(data, removePunctuation): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in tm_map(data, removeNumbers): 重新啟動插斷的約定求值
-```
-
-```
-## Warning in tm_map(data, removeNumbers): 重新啟動插斷的約定求值
-```
-
-```
-## Error in tm_map(data, removeNumbers): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in tm_map(data, removeWords, stopwords("english")): 重新啟動插斷的
-## 約定求值
-```
-
-```
-## Warning in tm_map(data, removeWords, stopwords("english")): 重新啟動插斷的
-## 約定求值
-```
-
-```
-## Error in tm_map(data, removeWords, stopwords("english")): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in tm_map(data, removeWords, c("applause", "Applause",
-## "APPLAUSE", : 重新啟動插斷的約定求值
-```
-
-```
-## Warning in tm_map(data, removeWords, c("applause", "Applause",
-## "APPLAUSE", : 重新啟動插斷的約定求值
-```
-
-```
-## Error in tm_map(data, removeWords, c("applause", "Applause", "APPLAUSE", : 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in TermDocumentMatrix(data): 重新啟動插斷的約定求值
-```
-
-```
-## Warning in TermDocumentMatrix(data): 重新啟動插斷的約定求值
-```
-
-```
-## Error in TermDocumentMatrix(data): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Error in as.matrix(data): error in evaluating the argument 'x' in selecting a method for function 'as.matrix': 錯誤: 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in colnames(data) <- c("bush", "obama"): 重新啟動插斷的約定求值
-```
-
-```
-## Warning in colnames(data) <- c("bush", "obama"): 重新啟動插斷的約定求值
-```
-
-```
-## Error in colnames(data) <- c("bush", "obama"): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
-```
-## Warning in ncol(term.matrix): 重新啟動插斷的約定求值
-```
-
-```
-## Warning in ncol(term.matrix): 重新啟動插斷的約定求值
-```
-
-```
-## Error in ncol(term.matrix): 無法開啟檔案 '/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb' ：No such file or directory
-```
-
+<img src="assets/img/cloud.jpg" alt="Drawing" style="width: 400px;"/>
 
 
 ---
 ## 用 correlation plot 來觀察文本差異
 
+<img src="assets/img/coplot.jpg" alt="Drawing" style="width: 500px;"/>
 
 ---
 ## 詞組樹
 
-- A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words.
+- A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words. <https://www.jasondavies.com/wordtree/>
 
-<https://www.jasondavies.com/wordtree/>
-
+<img src="assets/img/tree.jpg" alt="Drawing" style="width: 850px;"/>
 
 
 ---
 ## 再講一個 motion chart
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/6LUjgHPhxRw" frameborder="0" allowfullscreen></iframe>
-
---- &interactive
-
-## Data Science Analytics (makes advances like never before)
-
-
-```r
-require(googleVis)
-load("mot/mot.RData")
-```
-
-```
-## Warning in readChar(con, 5L, useBytes = TRUE): 無法開啟壓縮過的檔案 'mot/
-## mot.RData'，可能的原因是 'No such file or directory'
-```
-
-```
-## Error in readChar(con, 5L, useBytes = TRUE): 無法開啟連結
-```
-
-```r
-#head(convdata)
-#head(compdata)
-Modal <- gvisMotionChart(convdata, 
-                         idvar="VERB", 
-                         timeva="DECADE") 
-```
-
-```
-## Error in match(vars, names(data)): 找不到物件 'convdata'
-```
-
-```r
-plot(Modal) 
-```
-
-```
-## Error in plot(Modal): error in evaluating the argument 'x' in selecting a method for function 'plot': 錯誤: 找不到物件 'Modal'
-```
-
 
 
 ---
@@ -493,13 +334,15 @@ Visualization of textual data (Ludovic Lebart and Marie Piron)
 ---
 ## Homework Bonus (20151022)
 
+(預告) 期中 Hackathon 會是以政治領域資料為主的實作。
 
+- 可以選定媒體或社群文本中的「人物」，「主題」，或是「事件」，甚至是歷年來的大選前時段的新聞資料，建立一個文本語料庫。 
 
 
 ---
 ## Reference
 
 Graham Wilcock. 2009. *Introduction to Linguistic Annotation and Text Analytics*.
-
+Atmajitsinh Gohil. 2015. *R Data Visualization Cookbook*. 
 
 

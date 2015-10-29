@@ -483,21 +483,6 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
 </slide>
 
 <slide class="" id="slide-29" style="background:;">
-  <article data-timings="">
-    <pre><code>## Warning in file(con, &quot;r&quot;): 無法開啟檔案 &#39;obama.txt&#39; ：No such file or
-## directory
-</code></pre>
-
-<pre><code>## Error in file(con, &quot;r&quot;): 無法開啟連結
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"> </p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-30" style="background:;">
   <hgroup>
     <h2>(中文) 字型與符碼選擇</h2>
   </hgroup>
@@ -515,98 +500,31 @@ wordcloud(doc, scale= c(2,0.5))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:;">
+<slide class="" id="slide-30" style="background:;">
   <hgroup>
     <h2>文字雲也可以比較</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>To construct a comparison cloud, we require the data to be in the form of a term matrix. The tm package provides us with the <code>TermDocumentMatrix()</code> function that constructs a term document matrix:</li>
-<li>比較馬英九與蔣經國</li>
+<li>To construct a comparison cloud, we require the data to be in the form of a term matrix. The <code>tm</code> package provides us with the <code>TermDocumentMatrix()</code> function that constructs a term document matrix:</li>
 </ul>
 
-<pre><code>## Error in DirSource(&quot;speech/&quot;): empty directory
+<pre><code class="r">colnames(data) &lt;- c(&quot;bush&quot;,&quot;obama&quot;)
+comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quot;Set1&quot;))
 </code></pre>
 
-<pre><code>## Error in DirSource(&quot;speech/&quot;): empty directory
-</code></pre>
+<p><img src="assets/img/cloud.jpg" alt="Drawing" style="width: 400px;"/></p>
 
-<pre><code>## Warning in tm_map(data, content_transformer(tolower)): 重新啟動插斷的約定求
-## 值
-</code></pre>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-<pre><code>## Error in tm_map(data, content_transformer(tolower)): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removePunctuation): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removePunctuation): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in tm_map(data, removePunctuation): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeNumbers): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeNumbers): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in tm_map(data, removeNumbers): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeWords, stopwords(&quot;english&quot;)): 重新啟動插斷的
-## 約定求值
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeWords, stopwords(&quot;english&quot;)): 重新啟動插斷的
-## 約定求值
-</code></pre>
-
-<pre><code>## Error in tm_map(data, removeWords, stopwords(&quot;english&quot;)): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeWords, c(&quot;applause&quot;, &quot;Applause&quot;,
-## &quot;APPLAUSE&quot;, : 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in tm_map(data, removeWords, c(&quot;applause&quot;, &quot;Applause&quot;,
-## &quot;APPLAUSE&quot;, : 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in tm_map(data, removeWords, c(&quot;applause&quot;, &quot;Applause&quot;, &quot;APPLAUSE&quot;, : 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in TermDocumentMatrix(data): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in TermDocumentMatrix(data): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in TermDocumentMatrix(data): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Error in as.matrix(data): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;as.matrix&#39;: 錯誤: 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in colnames(data) &lt;- c(&quot;bush&quot;, &quot;obama&quot;): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in colnames(data) &lt;- c(&quot;bush&quot;, &quot;obama&quot;): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in colnames(data) &lt;- c(&quot;bush&quot;, &quot;obama&quot;): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Warning in ncol(term.matrix): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Warning in ncol(term.matrix): 重新啟動插斷的約定求值
-</code></pre>
-
-<pre><code>## Error in ncol(term.matrix): 無法開啟檔案 &#39;/Users/shukai/Dropbox/Linguistic.Analysis.and.Data.Science/lads/lectures/06/.cache/unnamed-chunk-7_0355621af3e31629bb64af054af5fcf9.rdb&#39; ：No such file or directory
-</code></pre>
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>用 correlation plot 來觀察文本差異</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/img/coplot.jpg" alt="Drawing" style="width: 500px;"/></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -614,30 +532,20 @@ wordcloud(doc, scale= c(2,0.5))
 
 <slide class="" id="slide-32" style="background:;">
   <hgroup>
-    <h2>用 correlation plot 來觀察文本差異</h2>
+    <h2>詞組樹</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words. <a href="https://www.jasondavies.com/wordtree/">https://www.jasondavies.com/wordtree/</a></li>
+</ul>
+
+<p><img src="assets/img/tree.jpg" alt="Drawing" style="width: 850px;"/></p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-33" style="background:;">
-  <hgroup>
-    <h2>詞組樹</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words.</li>
-</ul>
-
-<p><a href="https://www.jasondavies.com/wordtree/">https://www.jasondavies.com/wordtree/</a></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>再講一個 motion chart</h2>
   </hgroup>
@@ -648,74 +556,7 @@ wordcloud(doc, scale= c(2,0.5))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:;">
-  <hgroup>
-    <h2>Data Science Analytics (makes advances like never before)</h2>
-  </hgroup>
-  <article data-timings="">
-     
-<div class='row-fluid'>
-  <div class='span5'>
-    <form id="knitForm35" data-cell="35">
-      <pre><code class="r">require(googleVis)
-load(&quot;mot/mot.RData&quot;)
-</code></pre>
-
-<pre><code>## Warning in readChar(con, 5L, useBytes = TRUE): 無法開啟壓縮過的檔案 &#39;mot/
-## mot.RData&#39;，可能的原因是 &#39;No such file or directory&#39;
-</code></pre>
-
-<pre><code>## Error in readChar(con, 5L, useBytes = TRUE): 無法開啟連結
-</code></pre>
-
-<pre><code class="r">#head(convdata)
-#head(compdata)
-Modal &lt;- gvisMotionChart(convdata, 
-                         idvar=&quot;VERB&quot;, 
-                         timeva=&quot;DECADE&quot;) 
-</code></pre>
-
-<pre><code>## Error in match(vars, names(data)): 找不到物件 &#39;convdata&#39;
-</code></pre>
-
-<pre><code class="r">plot(Modal) 
-</code></pre>
-
-<pre><code>## Error in plot(Modal): error in evaluating the argument &#39;x&#39; in selecting a method for function &#39;plot&#39;: 錯誤: 找不到物件 &#39;Modal&#39;
-</code></pre>
-
-      <div id='aceeditor35' style="height:px;"></div>
-      <div class='interactive btn-toolbar pull-left'>
-        <div class='btn-group'>
-          <a class='btn btn-small action-button' id='runCode35' data-action='runCode'
-            data-cell='35' rel='tooltip' data-title='Run Code'>
-            <i class='icon-play'></i>
-          </a>
-          <a class='btn btn-small iBtn' id='testCode35' data-action='testCode'
-             data-cell='35' rel='tooltip' data-title='Test Code'>
-            <i class='icon-check'></i>
-          </a>
-          <a class='btn btn-small iBtn' id='clearResult35' data-action='clearResult'
-             data-cell='35' rel='tooltip' data-title='Clear Output'>
-            <i class="icon-remove"></i>
-          </a>
-          <a class='btn  btn-small iBtn' id='getHint35' rel='tooltip' 
-            data-title="Get Hint" data-action='getHint'
-            data-cell='35' data-hint="">
-            <i class="icon-bookmark"></i>
-          </a>
-        </div>
-      </div>    </form>
-  </div>
-  <div class='span7'>
-    <div id="knitResult35" class='shiny-html-output'></div>
-  </div>
-</div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-36" style="background:;">
+<slide class="" id="slide-34" style="background:;">
   <hgroup>
     <h2>從多變量量化語言學角度下的文本視覺化</h2>
   </hgroup>
@@ -728,22 +569,28 @@ Modal &lt;- gvisMotionChart(convdata,
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-37" style="background:;">
+<slide class="" id="slide-35" style="background:;">
   <hgroup>
     <h2>Homework Bonus (20151022)</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p>(預告) 期中 Hackathon 會是以政治領域資料為主的實作。</p>
+
+<ul>
+<li>可以選定媒體或社群文本中的「人物」，「主題」，或是「事件」，甚至是歷年來的大選前時段的新聞資料，建立一個文本語料庫。 </li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-38" style="background:;">
+<slide class="" id="slide-36" style="background:;">
   <hgroup>
     <h2>Reference</h2>
   </hgroup>
   <article data-timings="">
-    <p>Graham Wilcock. 2009. <em>Introduction to Linguistic Annotation and Text Analytics</em>.</p>
+    <p>Graham Wilcock. 2009. <em>Introduction to Linguistic Annotation and Text Analytics</em>.
+Atmajitsinh Gohil. 2015. <em>R Data Visualization Cookbook</em>. </p>
 
   </article>
   <!-- Presenter Notes -->
@@ -923,62 +770,50 @@ Modal &lt;- gvisMotionChart(convdata,
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='NA'>
+        data-slide=29 title='(中文) 字型與符碼選擇'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='(中文) 字型與符碼選擇'>
+        data-slide=30 title='文字雲也可以比較'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='文字雲也可以比較'>
+        data-slide=31 title='用 correlation plot 來觀察文本差異'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='用 correlation plot 來觀察文本差異'>
+        data-slide=32 title='詞組樹'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='詞組樹'>
+        data-slide=33 title='再講一個 motion chart'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='再講一個 motion chart'>
+        data-slide=34 title='從多變量量化語言學角度下的文本視覺化'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Data Science Analytics (makes advances like never before)'>
+        data-slide=35 title='Homework Bonus (20151022)'>
          35
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=36 title='從多變量量化語言學角度下的文本視覺化'>
+        data-slide=36 title='Reference'>
          36
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=37 title='Homework Bonus (20151022)'>
-         37
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=38 title='Reference'>
-         38
       </a>
     </li>
   </ul>

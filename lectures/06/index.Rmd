@@ -281,20 +281,6 @@ wordcloud("I also want to thank all the members of Congress and myadministration
 wordcloud(c("inequality","law","policy","unemploy","job","Economy","Democracy","Republicans","challenge","congress","America","growth"),freq=c(26,9,2,7,30,26,1,4,3,9,57,9), min.freq = 0, col = "red")
 ```
 
----
-## 
-
-```{r, echo=FALSE}
-library(tm)
-file <- readLines("obama.txt")
-doc <- Corpus(VectorSource(file))
-doc <- tm_map(doc, tolower)
-doc <- tm_map(doc, removePunctuation)
-doc <- tm_map(doc, removeNumbers)
-doc <- tm_map(doc, removeWords,stopwords("english"))
-doc <- tm_map(doc, removeWords,c("applause","must", "will","know"))
-wordcloud(as.character(doc), scale= c(2,0.5))
-```
 
 ---
 ## (中文) 字型與符碼選擇
@@ -313,61 +299,32 @@ wordcloud(doc, scale= c(2,0.5))
 ---
 ## 文字雲也可以比較
 
-- To construct a comparison cloud, we require the data to be in the form of a term matrix. The tm package provides us with the `TermDocumentMatrix()` function that constructs a term document matrix:
-- 比較馬英九與蔣經國
+- To construct a comparison cloud, we require the data to be in the form of a term matrix. The `tm` package provides us with the `TermDocumentMatrix()` function that constructs a term document matrix:
 
-```{r, echo=FALSE}
-files <- DirSource("speech/")
-# generate a corpus using the Corpus() function
-data <- Corpus(DirSource("speech/"))
-data <- tm_map(data, content_transformer(tolower))
-data <- tm_map(data, removePunctuation)
-data <- tm_map(data, removeNumbers)
-data <- tm_map(data, removeWords, stopwords("english"))
-data <- tm_map(data,removeWords,c("applause","Applause","APPLAUSE", "And","But","will","must"))
-
-data <- TermDocumentMatrix(data)
-data <- as.matrix(data)
-# By default, the tm package will label each column in the matrix with its filename along with the .txt extension. To avoid this, we rename our columns using the colnames() function:
+```{r, ,eval=FALSE}
 colnames(data) <- c("bush","obama")
 comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,"Set1"))
 ```
-
+<img src="assets/img/cloud.jpg" alt="Drawing" style="width: 400px;"/>
 
 
 ---
 ## 用 correlation plot 來觀察文本差異
 
+<img src="assets/img/coplot.jpg" alt="Drawing" style="width: 500px;"/>
 
 ---
 ## 詞組樹
 
-- A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words.
+- A phrase tree or a word tree provides useful insight into text as it provides a context and not just the frequency of words. <https://www.jasondavies.com/wordtree/>
 
-<https://www.jasondavies.com/wordtree/>
-
+<img src="assets/img/tree.jpg" alt="Drawing" style="width: 850px;"/>
 
 
 ---
 ## 再講一個 motion chart
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/6LUjgHPhxRw" frameborder="0" allowfullscreen></iframe>
-
---- &interactive
-
-## Data Science Analytics (makes advances like never before)
-
-```{r opts.label = 'interactive', results = 'asis'}
-require(googleVis)
-load("mot/mot.RData")
-#head(convdata)
-#head(compdata)
-Modal <- gvisMotionChart(convdata, 
-                         idvar="VERB", 
-                         timeva="DECADE") 
-plot(Modal) 
-```
-
 
 
 ---
@@ -383,13 +340,15 @@ Visualization of textual data (Ludovic Lebart and Marie Piron)
 ---
 ## Homework Bonus (20151022)
 
+(預告) 期中 Hackathon 會是以政治領域資料為主的實作。
 
+- 可以選定媒體或社群文本中的「人物」，「主題」，或是「事件」，甚至是歷年來的大選前時段的新聞資料，建立一個文本語料庫。 
 
 
 ---
 ## Reference
 
 Graham Wilcock. 2009. *Introduction to Linguistic Annotation and Text Analytics*.
-
+Atmajitsinh Gohil. 2015. *R Data Visualization Cookbook*. 
 
 
