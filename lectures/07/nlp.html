@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>R 自然語言處理</title>
+  <meta charset="utf-8">
+  <meta name="description" content="R 自然語言處理">
+  <meta name="author" content="Shu-Kai Hsieh">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>R 自然語言處理</h1>
+    <h2></h2>
+    <p>Shu-Kai Hsieh<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>安裝前置作業</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>電腦中裝好了 <code>Java Developer&#39;s Kit (JDK)</code></li>
+</ul>
+
+<pre><code class="r">install.packages(c(&quot;rJava&quot;, &quot;NLP&quot;, &quot;openNLP&quot;, &quot;RWeka&quot;, &quot;qdap&quot;))
+</code></pre>
+
+<ul>
+<li>要處理什麼語言通常要下載該語言的 language models</li>
+</ul>
+
+<pre><code class="r">install.packages(&quot;openNLPmodels.en&quot;,
+                 repos = &quot;http://datacube.wu.ac.at/&quot;,
+                 type = &quot;source&quot;)
+</code></pre>
+
+<h2>前處理</h2>
+
+<pre><code class="r">dickens &lt;- readLines(&quot;../../../data/week8/dickens-clean.txt&quot;)
+#print(dickens)
+</code></pre>
+
+<p>We can combine all of these character vectors into a single character vector using the paste() function, adding a space between each of them.</p>
+
+<pre><code class="r">dickens.1 &lt;- paste(dickens, collapse = &quot; &quot;)
+</code></pre>
+
+<h2>詞與句子的自動標示</h2>
+
+<pre><code class="r">library(NLP)
+library(openNLP)
+library(RWeka)
+</code></pre>
+
+<ul>
+<li><code>NLP</code> 套件要求所處理的文本先轉成 <code>String</code> 類別。</li>
+</ul>
+
+<pre><code class="r">dickens.1 &lt;- as.String(dickens.1)
+</code></pre>
+
+<ul>
+<li>之後就可以建立套件中的各種 <strong>tagger</strong> (許多套件的函式稱之為 <strong>annotator</strong>)，並且用管線概念串結起來。</li>
+</ul>
+
+<pre><code class="r">word_ann &lt;- Maxent_Word_Token_Annotator()
+sent_ann &lt;- Maxent_Sent_Token_Annotator()
+dickens_tagged &lt;- annotate(dickens.1, list(sent_ann, word_ann))
+</code></pre>
+
+<pre><code>## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class &quot;c(&quot;Simple_Sent_Token_Annotator&quot;, &quot;Annotator&quot;)&quot; to a data.frame
+</code></pre>
+
+<pre><code class="r">#要等一下子，結果是 annotation object
+#class(dickens_tagged) 
+head(dickens_tagged)
+</code></pre>
+
+<pre><code>##  id type     start end  features
+##   1 sentence     1  522 constituents=&lt;&lt;integer,110&gt;&gt;
+##   2 sentence   525 1038 constituents=&lt;&lt;integer,100&gt;&gt;
+##   3 sentence  1041 1343 constituents=&lt;&lt;integer,58&gt;&gt;
+##   4 sentence  1346 1726 constituents=&lt;&lt;integer,68&gt;&gt;
+##   5 sentence  1729 1951 constituents=&lt;&lt;integer,42&gt;&gt;
+##   6 sentence  1954 2180 constituents=&lt;&lt;integer,46&gt;&gt;
+</code></pre>
+
+<ul>
+<li><code>NLP</code> 的 <code>AnnotatedPlainTextDocument()</code> 施用後，就可用 <code>sents()</code>, <code>words()</code> 來抽取句子和字。</li>
+</ul>
+
+<pre><code class="r">dickens_doc &lt;- AnnotatedPlainTextDocument(dickens.1, dickens_tagged)
+#sents(dickens_doc)
+head(words(dickens_doc),10)
+</code></pre>
+
+<pre><code>##  [1] &quot;CHAPT&quot;     &quot;R I  &quot;     &quot;REATS &quot;    &quot;F THE PLA&quot; &quot;E &quot;       
+##  [6] &quot;H&quot;         &quot;RE OLIV&quot;   &quot;R TW&quot;      &quot;I&quot;         &quot;T WAS&quot;
+</code></pre>
+
+<h2>自動詞類標記</h2>
+
+<pre><code class="r"># tagPOS()
+</code></pre>
+
+<h2>專用名詞自動標示</h2>
+
+<ul>
+<li>在自然語言處理中叫做<strong>命名實體辨識</strong> (Named Entity Recognition (NER))</li>
+<li><code>OpenNLP</code> 套件可以提供辨識 <code>date</code>, <code>location</code>, <code>money</code>, <code>organization</code>, <code>percentage</code>, <code>person</code>, and <code>time</code> (<code>misc</code>). </li>
+<li>建立 tagger 的方式類似</li>
+</ul>
+
+<pre><code class="r">person_ann &lt;- Maxent_Entity_Annotator(kind = &quot;person&quot;)
+location_ann &lt;- Maxent_Entity_Annotator(kind = &quot;location&quot;)
+organization_ann &lt;- Maxent_Entity_Annotator(kind = &quot;organization&quot;)
+</code></pre>
+
+<ul>
+<li>重新建立一個管線作業</li>
+</ul>
+
+<pre><code class="r">dickens.pipe &lt;- list(sent_ann,
+                     word_ann,
+                     person_ann,
+                     location_ann,
+                     organization_ann)
+dickens_tagged.2 &lt;- annotate(dickens.1, dickens.pipe)
+</code></pre>
+
+<pre><code>## Error in as.data.frame.default(x[[i]], optional = TRUE): cannot coerce class &quot;c(&quot;Simple_Sent_Token_Annotator&quot;, &quot;Annotator&quot;)&quot; to a data.frame
+</code></pre>
+
+<pre><code class="r">dickens_doc.2 &lt;- AnnotatedPlainTextDocument(dickens.1, dickens_tagged.2)
+</code></pre>
+
+<p>在抽取部分必須自己寫函式</p>
+
+<pre><code class="r"># Extract entities from an AnnotatedPlainTextDocument
+entities &lt;- function(doc, kind) {
+  s &lt;- doc$content
+  a &lt;- annotations(doc)[[1]]
+  if(hasArg(kind)) {
+    k &lt;- sapply(a$features, `[[`, &quot;kind&quot;)
+    s[a[k == kind]]
+  } else {
+    s[a[a$type == &quot;entity&quot;]]
+  }
+}
+</code></pre>
+
+<p>這樣我們可以用 <code>entities()</code> 來抽取專名，類型則由 <code>kind=</code> 來指定。</p>
+
+<pre><code class="r">entities(dickens_doc.2, kind = &quot;person&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;sibly befall&quot; &quot;d and &quot;       &quot;ed rat&quot;       &quot;ract; &quot;
+</code></pre>
+
+<h2>句法信息自動剖析與標示 (Parser)</h2>
+
+<h2>Chunker</h2>
+
+<h1>萬一要處理的是語料庫</h1>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='安裝前置作業'>
+         1
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
