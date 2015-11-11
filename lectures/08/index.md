@@ -1,6 +1,6 @@
 ---
 title    : Linguistic Analysis and Data Science
-subtitle : lecture 07
+subtitle : lecture 08
 author   : 謝舒凱 Graduate Institute of Linguistics, NTU
 mode     : selfcontained # {standalone, draft}
 url      : {lib: "../../libraries", assets: "../../assets"}
@@ -17,71 +17,79 @@ github      : {user: loperntu, repo: lads}
 --- bg:#FFFAF0
 ## 大綱
 
-1. __**Corpus and NLP** for Text Analytics__ 
-2. Crash course for R: Regular Expression
+1. __**Statistics and Machine Learning 101**__
+2. Text classification using `RTextTools`
+
+
+
+---bg:#FFFAF0
+## Review
+
+
+- Preparing / Preprocessing text and data. Text is unstructured or partially structured data that must be prepared for analysis. We extract features from text. We define measures. Quantitative data are often messy or missing. They may require transformation prior to analysis. Data preparation consumes much of a data scientist’s time.
+
+- Exploratory data analysis and Infographics (data visualization for the purpose of discovery. We look for groups in data, find outliers, identify common dimensions, patterns, and trends.)
+
+- __**Prediction models**__ (Regression; Classification and Clustering; ) and __**Evaluations**__  (Recommender systems, collaborative filtering, association rules, optimization methods based on linguistic heuristics, as well as a myriad of methods for regression, classification, and clustering fall under the rubric of **machine learning**).
+
 
 ---
-## 自然語言處理
-
-- 嘗試模擬人類語言理解與處理知識的技術。
-- 在這領域其他語言的套件應該比 R 還豐富 (e.g., python 的 `nltk`)
-- NLP-powered Text Analytics 已經是主流，看看這個[例子](http://textanalysisonline.com/)
-
-<img style = 'border: 1px solid;' width = 60%; src='./assets/img/tm.nlp.png'></img>
-
-> BUT it is possible to use libraries written in those lower-level and hence faster languages, while writing your code in R and taking advantage of its functional programming style and its many other libraries for data analysis.
+## 統計
 
 
----
-## 不要忘記自然語言處理是 AI-complete
-
-- 到現在人都還不完全了解人。
-- 語言的豐富性平日可以多多觀察：隱喻譬喻、諷刺幽默、情緒說謊、語用脈絡、
-個體群體差異、社會文化變異、甚至討價還價、談情說愛、、。
-
-<img style='border: 1px solid;'width=80% src='./assets/img/tm.cws.png' align="middle">
-
+<img style = 'border: 1px solid;' width = 70%; src='./assets/img/tm_sta.png'></img>
 
 
 
 ---
-## 自然語言處理：實例練習
+## 文本統計 (Textual Statistics)
 
-見 [nlp.Rmd](nlp.Rmd)
+- 文本統計學的知識
+- 相似與關聯為例
 
----
-## Stanford CoreNLP 
 
-- [線上演示](http://nlp.stanford.edu:8080/corenlp/process)
 
-- [安裝](https://github.com/cran/coreNLP) [第一線的研究團隊](http://nlp.stanford.edu/software/corenlp.shtml)
-
-- `coreNLP` package: Wrappers Around Stanford CoreNLP Tools (Java library). Methods provided: <span style="color:green; font-weight:bold">tokenisation, part of speech tagging, lemmatisation, named entity recognition, coreference
-detection and sentiment analysis</span>
 
 
 ---
-## 試試看
+## 機器學習
+
+- AI 的一個子領域。（參見林軒田老師的線上課程）
+- 監督式 supervised vs. 非監督式 unsupervised
+  - 可以用中文斷詞問題來想
+- [圖解法入門](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)：基本概念與決策樹
 
 
-```r
-# works from CRAN !
-install.packages("coreNLP")
-# wget http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip
-download.file("http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip")
-unzip("stanford-corenlp-full-2015-04-20.zip")
-library(coreNLP)
-initCoreNLP("stanford-corenlp-full-2015-04-20/")
-FB = c("Facebook is looking for new ways to get users to share more, 
-rather than just consume content, in a push that seemingly puts it in more 
-direct rivalry with Twitter.")
-output = annotateString(FB)
-getToken(output)[,c(1:3,6:7)]
-getParse(output)
-getDependency(output)
-getSentiment(output)
-getCoreference(output)
-```
+
+---
+## 機器學習：效能評估的基本量度
+
+- Recall is the amount of data captured and actually processed by the text analytics engines. Capturing everything is important because critical feedback could be hidden in the content you haven't looked at. This is accomplished by categorizing all data into topics. Clarabridge has highly accurate, customized topic models to ensure that you are capturing everything – for a high degree of recall.
+- Precision refers to how accurately your customer feedback is categorized into the topics within the model. Looking at all the data in the world isn't helpful if the data isn't sorted into the right buckets to find insights. Fortunately, the Clarabridge methodology also boasts very high precision.
+
+- F-score
+
+---
+## Annotation and Feature Engineering 
+
+- Study of recorded human communication
+- Summary and quantitative analysis of communicated messages
+- Researcher looks for patterns/themes in text; <span style="color:green; font-weight:bold">develops `code frame` to categorize text.</span>
+- Essentially, variables are extracted from text: Based on scientific method; establishes objectivity via inter-coder reliability.
+
+
+
+---
+## Annotation and Feature Engineering: Pros and Cons
+
+優點
+- flexible; theoretically-motivated annotation/code frame effrots
+- can apply to texts, speech, video, etc.
+- 可以用來解決一般機器學習系統 high precision low recall 的問題。把潛在的語意與情緒發掘出來。
+
+缺點
+- manually intensive
+- thus can be expensive
 
 
 ---
@@ -93,52 +101,51 @@ getCoreference(output)
 
 <img style='border: 1px solid;'width=45% src='./assets/img/qdap.png' align="middle">
 
+---
+## 手工標記資料  
 
+- 最簡單可以用 **Excel** 來做：
+  - One (or more) column(s) for text data； One column for topic label (as `gold standard`)
+  - 通常至少有多於 3000 份標好的文件。
+
+- 大型的專案要考慮到永續、相容、交換等問題，建議使用標記系統。
+  - 語料庫和語言處理社群 `GATE`  
+  - 質性研究社群 `CAT (Coding Analysis Toolkit)`
+  - [lopetator](http://lopen.linguistics.ntu.edu.tw:8001/lope.anno/)
+
+- labeling 和 annotation 的差異之後再談。
+
+---
+## 基本流程
+
+- [`create_matrix`] Import your hand-coded data into R
+- [`create_corpus`] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data)
+- [`train model(s)`] Choose machine learning algorithm(s) to train a model
+- [`build classification model(s)`] Test on the (out-of-sample) test data; establish accuracy criteria 了解成效。
+- [`apply classification model(s)`] Use model to classify novel data
+- [`create analytics`] 把自動分錯的資料找出來 Manually label data that do not meet accuracy criteria
 
 
 --- bg:#FFFAF0
-## 大綱
 
-1. Corpus and NLP
-2. __**Crash course for R: Regular Expression**__ 
+1. Statistics and Machine Learning 101
+2. __**Text classification using `RTextTools`**__
+
+
+
+--- 
+## 文本分類
+
+- `RTextTools` 可自動化某些標記工作，與監督式文本自動分類。簡單，但是有記憶體問題，中文支援有問題。
+- "One-stop-shop for conducting supervised machine learning with textual data" 邊看[這篇](http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf)邊做看看
+
 
 
 
 ---
-## Exercise: R Regular Expression
+## Kaggle for Midterm.Mini-Hackathon
 
-[網路資料很多](http://www.endmemo.com/program/R/grep.php)
-請同學上台練習。
-
----
-## keyword 分佈的練習
-
-
-```r
-comments <- read.table("perfumes_comments.csv", header = TRUE, 
-                       sep = "\t", dec = ".", quote = "\"")
-```
-
-```
-## Warning in file(file, "rt"): 無法開啟檔案 'perfumes_comments.csv' ：No such
-## file or directory
-```
-
-```
-## Error in file(file, "rt"): 無法開啟連結
-```
-
-```r
-summary(comments)
-# random rows of the data set
-x <- sample(nrow(comments), 10, replace = FALSE)
-comments[x,]
-
-strong <-grepl("strong",comments$Comment, ignore.case = TRUE)
-sum(strong)/nrow(comments)
-sweet <-grepl("sweet|soft",comments$Comment, ignore.case = TRUE)
-sum(sweet)/nrow(comments)
-```
-
+- Kaggle: the home of data science [連結](kaggle.Rmd)
+- 本週自己再看看 kaggle 怎麼運作。 
 
 

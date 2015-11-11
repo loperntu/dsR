@@ -1,7 +1,7 @@
 ---
 title: "Kaggle.R. Warm-up Exercise"
-author: "DataCamp"
-date: "2015.11.10"
+author: "Shu-Kai Hsieh"
+date: "2015年11月10日"
 output: html_document
 ---
 
@@ -17,7 +17,8 @@ Those that have seen the movie know that some individuals were more likely to su
 
 Let's start with loading in the training and testing set into your R environment. You will use the training set to build your model, and the test set to validate it. The data is stored on the web as csv files; their URLs are already available as character strings in the sample code. You can load this data with the `read.csv()` function: simply pass the URL.
 
-```{r}
+
+```r
 # Import the training set: train
 train_url <- "http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/train.csv"
 train <- read.csv(train_url)
@@ -34,22 +35,55 @@ Before starting with the actual analysis, it's important to understand the struc
 
 - How many people in your training set survived the disaster with the Titanic? 
 
-```{r}
+
+```r
 # Passengers that survived vs passengers that passed away
 table(train$Survived)
+```
 
+```
+## 
+##   0   1 
+## 549 342
+```
+
+```r
 # As proportions
 prop.table(table(train$Survived))
+```
+
+```
+## 
+##         0         1 
+## 0.6161616 0.3838384
 ```
 
 - Males \& females that survived vs males \& females that passed away
 
 
-```{r}
+
+```r
 # two-way comparison on the number of males and females that survived
 table(train$Sex, train$Survived)
+```
+
+```
+##         
+##            0   1
+##   female  81 233
+##   male   468 109
+```
+
+```r
 # row-wise or column-wise proportions using 'margin'
 prop.table(table(train$Sex, train$Survived), margin = 1)
+```
+
+```
+##         
+##                  0         1
+##   female 0.2579618 0.7420382
+##   male   0.8110919 0.1889081
 ```
 
 It looks like it makes sense to predict that all females will survive, and all men will die?
@@ -61,7 +95,8 @@ Q: it's probable children were saved first.
 
 You can test this by creating a new column with a categorical variable child. child will take the value 1 in case age is < 18, and a value of 0 in case age is >=18. To add this new variable you need to do two things (i) create a new column, and (ii) provide the values for each observation (i.e., row) based on the age of the passenger.
 
-```{r}
+
+```r
 # Create the column child, and indicate whether child or no child
 
 train$child <- NA
@@ -69,7 +104,13 @@ train$child[train$Age < 18] <- 1
 train$child[train$Age >= 18] <- 0
 
 prop.table(table(train$child, train$Survived), 1)
+```
 
+```
+##    
+##             0         1
+##   0 0.6189684 0.3810316
+##   1 0.4601770 0.5398230
 ```
 
 While less obviously than gender, age also seems to have an impact on survival. 
@@ -86,7 +127,8 @@ In one of the previous exercises you discovered that, in your training set, fema
 You use your test set for validating your predictions. You might have seen that, contrary to the training set, the test set has no Survived column. You add such a column using your predicted values. Next, **when uploading your results, Kaggle will use this variable (= your predictions) to score your performance.**
 
 
-```{r}
+
+```r
 # Create a copy of test: test_one
 test_one <- test
 
@@ -111,7 +153,8 @@ Conceptually, the decision tree algorithm starts with all the data at the root n
 To create your first decision tree, you'll make use of R's `rpart` package. R packages are a collection of functions, data and compiled code that make your life easier. Namely, instead of needing to write the algo yourself you just use the rpart R package and its included decision tree algorithm.
 
 
-```{r}
+
+```r
 library(rpart)
 ```
 
@@ -133,7 +176,8 @@ my_tree <- rpart(Survived ~ Sex + Age,
 Build a decision tree `my_tree_two` to predict survival based on the variables `Passenger Class, Sex, Age, Number of Siblings/Spouses Aboard, Number of Parents/Children Aboard, Passenger Fare` and `Port of Embarkation`.
 
 
-```{r,results='hide'}
+
+```r
 # Build the decision tree
 my_tree <- rpart(Survived~Pclass + Sex + Age + SibSp + Fare + Embarked,
                  data = train,
@@ -144,7 +188,10 @@ plot(my_tree)
 text(my_tree)
 ```
 
-```{r,eval=FALSE}
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
+
+
+```r
 # Load in the packages to create a fancified version of your tree
 
 library(rattle)
@@ -163,7 +210,8 @@ Based on your decision tree, what variables play the most important role to dete
 - To send a submission to Kaggle you need to predict the survival rates for the observations in the test set.
 
 
-```{r}
+
+```r
 # Make your prediction using the test set
 my_prediction <- predict(my_tree, test, type = "class")
 
@@ -172,7 +220,13 @@ my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_predicti
 
 # Check that your data frame has 418 entries
 nrow(my_solution)
+```
 
+```
+## [1] 418
+```
+
+```r
 # Write your solution to a csv file with the name my_solution.csv,ready for submission. Do not forget to set the row.names argument to FALSE, and the file argument to "my_solution.csv".
 write.csv(my_solution, file = "my_solution.csv", row.names = FALSE)
 ```
@@ -194,7 +248,8 @@ Stated otherwise, if we set cp to zero (= no stopping of splits) and minsplit to
 
 However, if you submit this solution to Kaggle your score will be lower than the score of a simple model based on e.g. gender. Why? Because you went too far when setting the rules for the decisions trees. You created very specific rules based on the data in the training set that are hence only relevant for the training set but that cannot be generalized to unknows sets. You overfitted. So when creating decision trees, always be aware of this danger! 
 
-```{r,eval=FALSE}
+
+```r
 # Create a new decision tree my_tree_three
 my_tree_2 <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
                        data = train, 
@@ -203,7 +258,6 @@ my_tree_2 <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embark
 
 # Visualize your new decision tree
 fancyRpartPlot(my_tree_2)
-
 ```
 
 
@@ -215,7 +269,8 @@ fancyRpartPlot(my_tree_2)
 
 - 舉例：假定我們認為在船上的家庭人口數較多時，沈船時因為要找到所有人的時間較多，存活的機會因而較低。那麼我們就可假定 `family_size` (在資料中可由 `SibSp` 和 `Parch` 決定) 這樣的變項。
 
-```{r}
+
+```r
 # create a new train set with the new variable
 train_two <- train
 train_two$family_size <- train$SibSp + train$Parch + 1
@@ -227,7 +282,10 @@ my_tree_3 <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embark
 
 # Visualize your new decision tree
 fancyRpartPlot(my_tree_3)
+```
 
+```
+## Error in eval(expr, envir, enclos): 沒有這個函數 "fancyRpartPlot"
 ```
 
 

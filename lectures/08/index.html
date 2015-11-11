@@ -39,7 +39,7 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Linguistic Analysis and Data Science</h1>
-    <h2>lecture 07</h2>
+    <h2>lecture 08</h2>
     <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
   </hgroup>
     <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
@@ -56,30 +56,24 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li><strong><strong>Corpus and NLP</strong> for Text Analytics</strong> </li>
-<li>Crash course for R: Regular Expression</li>
+<li><strong><strong>Statistics and Machine Learning 101</strong></strong></li>
+<li>Text classification using <code>RTextTools</code></li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-2" style="background:;">
+<slide class="" id="slide-2" style="background:#FFFAF0;">
   <hgroup>
-    <h2>自然語言處理</h2>
+    <h2>Review</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>嘗試模擬人類語言理解與處理知識的技術。</li>
-<li>在這領域其他語言的套件應該比 R 還豐富 (e.g., python 的 <code>nltk</code>)</li>
-<li>NLP-powered Text Analytics 已經是主流，看看這個<a href="http://textanalysisonline.com/">例子</a></li>
+<li><p>Preparing / Preprocessing text and data. Text is unstructured or partially structured data that must be prepared for analysis. We extract features from text. We define measures. Quantitative data are often messy or missing. They may require transformation prior to analysis. Data preparation consumes much of a data scientist’s time.</p></li>
+<li><p>Exploratory data analysis and Infographics (data visualization for the purpose of discovery. We look for groups in data, find outliers, identify common dimensions, patterns, and trends.)</p></li>
+<li><p><strong><strong>Prediction models</strong></strong> (Regression; Classification and Clustering; ) and <strong><strong>Evaluations</strong></strong>  (Recommender systems, collaborative filtering, association rules, optimization methods based on linguistic heuristics, as well as a myriad of methods for regression, classification, and clustering fall under the rubric of <strong>machine learning</strong>).</p></li>
 </ul>
-
-<p><img style = 'border: 1px solid;' width = 60%; src='./assets/img/tm.nlp.png'></img></p>
-
-<blockquote>
-<p>BUT it is possible to use libraries written in those lower-level and hence faster languages, while writing your code in R and taking advantage of its functional programming style and its many other libraries for data analysis.</p>
-</blockquote>
 
   </article>
   <!-- Presenter Notes -->
@@ -87,16 +81,10 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>不要忘記自然語言處理是 AI-complete</h2>
+    <h2>統計</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>到現在人都還不完全了解人。</li>
-<li>語言的豐富性平日可以多多觀察：隱喻譬喻、諷刺幽默、情緒說謊、語用脈絡、
-個體群體差異、社會文化變異、甚至討價還價、談情說愛、、。</li>
-</ul>
-
-<p><img style='border: 1px solid;'width=80% src='./assets/img/tm.cws.png' align="middle"></p>
+    <p><img style = 'border: 1px solid;' width = 70%; src='./assets/img/tm_sta.png'></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -104,10 +92,13 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>自然語言處理：實例練習</h2>
+    <h2>文本統計 (Textual Statistics)</h2>
   </hgroup>
   <article data-timings="">
-    <p>見 <a href="nlp.Rmd">nlp.Rmd</a></p>
+    <ul>
+<li>文本統計學的知識</li>
+<li>相似與關聯為例</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -115,14 +106,17 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>Stanford CoreNLP</h2>
+    <h2>機器學習</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><p><a href="http://nlp.stanford.edu:8080/corenlp/process">線上演示</a></p></li>
-<li><p><a href="https://github.com/cran/coreNLP">安裝</a> <a href="http://nlp.stanford.edu/software/corenlp.shtml">第一線的研究團隊</a></p></li>
-<li><p><code>coreNLP</code> package: Wrappers Around Stanford CoreNLP Tools (Java library). Methods provided: <span style="color:green; font-weight:bold">tokenisation, part of speech tagging, lemmatisation, named entity recognition, coreference
-detection and sentiment analysis</span></p></li>
+<li>AI 的一個子領域。（參見林軒田老師的線上課程）</li>
+<li>監督式 supervised vs. 非監督式 unsupervised
+
+<ul>
+<li>可以用中文斷詞問題來想</li>
+</ul></li>
+<li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">圖解法入門</a>：基本概念與決策樹</li>
 </ul>
 
   </article>
@@ -131,32 +125,60 @@ detection and sentiment analysis</span></p></li>
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h2>試試看</h2>
+    <h2>機器學習：效能評估的基本量度</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r"># works from CRAN !
-install.packages(&quot;coreNLP&quot;)
-# wget http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip
-download.file(&quot;http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip&quot;)
-unzip(&quot;stanford-corenlp-full-2015-04-20.zip&quot;)
-library(coreNLP)
-initCoreNLP(&quot;stanford-corenlp-full-2015-04-20/&quot;)
-FB = c(&quot;Facebook is looking for new ways to get users to share more, 
-rather than just consume content, in a push that seemingly puts it in more 
-direct rivalry with Twitter.&quot;)
-output = annotateString(FB)
-getToken(output)[,c(1:3,6:7)]
-getParse(output)
-getDependency(output)
-getSentiment(output)
-getCoreference(output)
-</code></pre>
+    <ul>
+<li>Recall is the amount of data captured and actually processed by the text analytics engines. Capturing everything is important because critical feedback could be hidden in the content you haven&#39;t looked at. This is accomplished by categorizing all data into topics. Clarabridge has highly accurate, customized topic models to ensure that you are capturing everything – for a high degree of recall.</li>
+<li><p>Precision refers to how accurately your customer feedback is categorized into the topics within the model. Looking at all the data in the world isn&#39;t helpful if the data isn&#39;t sorted into the right buckets to find insights. Fortunately, the Clarabridge methodology also boasts very high precision.</p></li>
+<li><p>F-score</p></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Annotation and Feature Engineering</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Study of recorded human communication</li>
+<li>Summary and quantitative analysis of communicated messages</li>
+<li>Researcher looks for patterns/themes in text; <span style="color:green; font-weight:bold">develops <code>code frame</code> to categorize text.</span></li>
+<li>Essentially, variables are extracted from text: Based on scientific method; establishes objectivity via inter-coder reliability.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Annotation and Feature Engineering: Pros and Cons</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>優點</p>
+
+<ul>
+<li>flexible; theoretically-motivated annotation/code frame effrots</li>
+<li>can apply to texts, speech, video, etc.</li>
+<li>可以用來解決一般機器學習系統 high precision low recall 的問題。把潛在的語意與情緒發掘出來。</li>
+</ul>
+
+<p>缺點</p>
+
+<ul>
+<li>manually intensive</li>
+<li>thus can be expensive</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>語言學的研究觀察帶動 NLP 研究的層次</h2>
   </hgroup>
@@ -173,58 +195,84 @@ getCoreference(output)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:#FFFAF0;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>大綱</h2>
+    <h2>手工標記資料</h2>
   </hgroup>
   <article data-timings="">
+    <ul>
+<li><p>最簡單可以用 <strong>Excel</strong> 來做：</p>
+
+<ul>
+<li>One (or more) column(s) for text data； One column for topic label (as <code>gold standard</code>)</li>
+<li>通常至少有多於 3000 份標好的文件。</li>
+</ul></li>
+<li><p>大型的專案要考慮到永續、相容、交換等問題，建議使用標記系統。</p>
+
+<ul>
+<li>語料庫和語言處理社群 <code>GATE</code><br></li>
+<li>質性研究社群 <code>CAT (Coding Analysis Toolkit)</code></li>
+<li><a href="http://lopen.linguistics.ntu.edu.tw:8001/lope.anno/">lopetator</a></li>
+</ul></li>
+<li><p>labeling 和 annotation 的差異之後再談。</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>基本流程</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>[<code>create_matrix</code>] Import your hand-coded data into R</li>
+<li>[<code>create_corpus</code>] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data)</li>
+<li>[<code>train model(s)</code>] Choose machine learning algorithm(s) to train a model</li>
+<li>[<code>build classification model(s)</code>] Test on the (out-of-sample) test data; establish accuracy criteria 了解成效。</li>
+<li>[<code>apply classification model(s)</code>] Use model to classify novel data</li>
+<li>[<code>create analytics</code>] 把自動分錯的資料找出來 Manually label data that do not meet accuracy criteria</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:#FFFAF0;">
+  <article data-timings="">
     <ol>
-<li>Corpus and NLP</li>
-<li><strong><strong>Crash course for R: Regular Expression</strong></strong> </li>
+<li>Statistics and Machine Learning 101</li>
+<li><strong><strong>Text classification using <code>RTextTools</code></strong></strong></li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
-    <h2>Exercise: R Regular Expression</h2>
+    <h2>文本分類</h2>
   </hgroup>
   <article data-timings="">
-    <p><a href="http://www.endmemo.com/program/R/grep.php">網路資料很多</a>
-請同學上台練習。</p>
+    <ul>
+<li><code>RTextTools</code> 可自動化某些標記工作，與監督式文本自動分類。簡單，但是有記憶體問題，中文支援有問題。</li>
+<li>&quot;One-stop-shop for conducting supervised machine learning with textual data&quot; 邊看<a href="http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf">這篇</a>邊做看看</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h2>keyword 分佈的練習</h2>
+    <h2>Kaggle for Midterm.Mini-Hackathon</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">comments &lt;- read.table(&quot;perfumes_comments.csv&quot;, header = TRUE, 
-                       sep = &quot;\t&quot;, dec = &quot;.&quot;, quote = &quot;\&quot;&quot;)
-</code></pre>
-
-<pre><code>## Warning in file(file, &quot;rt&quot;): 無法開啟檔案 &#39;perfumes_comments.csv&#39; ：No such
-## file or directory
-</code></pre>
-
-<pre><code>## Error in file(file, &quot;rt&quot;): 無法開啟連結
-</code></pre>
-
-<pre><code class="r">summary(comments)
-# random rows of the data set
-x &lt;- sample(nrow(comments), 10, replace = FALSE)
-comments[x,]
-
-strong &lt;-grepl(&quot;strong&quot;,comments$Comment, ignore.case = TRUE)
-sum(strong)/nrow(comments)
-sweet &lt;-grepl(&quot;sweet|soft&quot;,comments$Comment, ignore.case = TRUE)
-sum(sweet)/nrow(comments)
-</code></pre>
+    <ul>
+<li>Kaggle: the home of data science <a href="kaggle.Rmd">連結</a></li>
+<li>本週自己再看看 kaggle 怎麼運作。 </li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -242,56 +290,80 @@ sum(sweet)/nrow(comments)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='自然語言處理'>
+        data-slide=2 title='Review'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='不要忘記自然語言處理是 AI-complete'>
+        data-slide=3 title='統計'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='自然語言處理：實例練習'>
+        data-slide=4 title='文本統計 (Textual Statistics)'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Stanford CoreNLP'>
+        data-slide=5 title='機器學習'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='試試看'>
+        data-slide=6 title='機器學習：效能評估的基本量度'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='語言學的研究觀察帶動 NLP 研究的層次'>
+        data-slide=7 title='Annotation and Feature Engineering'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='大綱'>
+        data-slide=8 title='Annotation and Feature Engineering: Pros and Cons'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Exercise: R Regular Expression'>
+        data-slide=9 title='語言學的研究觀察帶動 NLP 研究的層次'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='keyword 分佈的練習'>
+        data-slide=10 title='手工標記資料'>
          10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='基本流程'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='文本分類'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Kaggle for Midterm.Mini-Hackathon'>
+         14
       </a>
     </li>
   </ul>
