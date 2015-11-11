@@ -87,8 +87,8 @@ Week | Date   | Topic         | Lab
 - [Lecture 04](lectures/04/index.html)
 - [Lecture 05](lectures/05/index.html)
 - [Lecture 06](lectures/06/index.html)
-－[Lecture 07](lectures/07/index.html)
-－[Lecture 08](lectures/08/index.html)
+- [Lecture 07](lectures/07/index.html)
+- [Lecture 08](lectures/08/index.html)
 
 ## 助教講義、習題與作業
 
@@ -101,6 +101,7 @@ Week | Date   | Topic         | Lab
 - [[Week.6.1]](https://goo.gl/SjV4iq) / [[Week. 6.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise3-data_table.html)
 - [[Week.7.1]](http://goo.gl/08t01z) / [[Week. 7.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise4-plot.html)
 - [[Week.8.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise5-regexp.html#1)
+- [[Week.9.2]]()
 
 ## 課程教材
 
