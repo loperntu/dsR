@@ -1,0 +1,237 @@
+---
+title: "Kaggle.R. Warm-up Exercise"
+author: "Shu-Kai Hsieh"
+date: "2015年11月10日"
+output: html_document
+---
+
+## Kaggle, Machine Learning and R
+
+- explore how to tackle Kaggle's Titanic competition using R and Machine Learning
+
+When the Titanic sank, 1502 of the 2224 passengers and crew got killed. One of the main reasons for this high level of casualties was the lack of lifeboats on this self-proclaimed "unsinkable" ship.
+
+Those that have seen the movie know that some individuals were more likely to survive the sinking (lucky Rose) than others (poor Jack). In this course you will learn how to apply machine learning techniques to predict a passenger's chance of surviving using R. 
+
+### Loading the data
+
+Let's start with loading in the training and testing set into your R environment. You will use the training set to build your model, and the test set to validate it. The data is stored on the web as csv files; their URLs are already available as character strings in the sample code. You can load this data with the `read.csv()` function: simply pass the URL.
+
+```{r}
+# Import the training set: train
+train_url <- "http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/train.csv"
+train <- read.csv(train_url)
+  
+# Import the testing set: test
+test_url <- "http://s3.amazonaws.com/assets.datacamp.com/course/Kaggle/test.csv"
+test <- read.csv(test_url)
+```
+
+
+### Exploring the data
+
+Before starting with the actual analysis, it's important to understand the structure of your data. Both test and train are data frames. Using `str(train)` first.
+
+- How many people in your training set survived the disaster with the Titanic? 
+
+```{r}
+# Passengers that survived vs passengers that passed away
+table(train$Survived)
+
+# As proportions
+prop.table(table(train$Survived))
+```
+
+- Males \& females that survived vs males \& females that passed away
+
+
+```{r}
+# two-way comparison on the number of males and females that survived
+table(train$Sex, train$Survived)
+# row-wise or column-wise proportions using 'margin'
+prop.table(table(train$Sex, train$Survived), margin = 1)
+```
+
+It looks like it makes sense to predict that all females will survive, and all men will die?
+
+
+- Does age play a role?
+
+Q: it's probable children were saved first.
+
+You can test this by creating a new column with a categorical variable child. child will take the value 1 in case age is < 18, and a value of 0 in case age is >=18. To add this new variable you need to do two things (i) create a new column, and (ii) provide the values for each observation (i.e., row) based on the age of the passenger.
+
+```{r}
+# Create the column child, and indicate whether child or no child
+
+train$child <- NA
+train$child[train$Age < 18] <- 1
+train$child[train$Age >= 18] <- 0
+
+prop.table(table(train$child, train$Survived), 1)
+
+```
+
+While less obviously than gender, age also seems to have an impact on survival. 
+
+
+加一點圖和統計
+
+
+- Making your first predictions
+
+
+In one of the previous exercises you discovered that, in your training set, females had over 50\% chance of surviving and males less than 50\%. Hence, you could use this information for your first prediction: all females in the test set survive and all males in the test set die.
+
+You use your test set for validating your predictions. You might have seen that, contrary to the training set, the test set has no Survived column. You add such a column using your predicted values. Next, **when uploading your results, Kaggle will use this variable (= your predictions) to score your performance.**
+
+
+```{r}
+# Create a copy of test: test_one
+test_one <- test
+
+# Initialize a Survived column to 0
+test_one$Survived <- 0
+
+# Set Survived to 1 if Sex equals "female"
+test_one$Survived[test_one$Sex =="female"] <-1
+```
+
+
+
+
+## decision trees
+
+In the previous chapter you did all the slicing and dicing yourself to find subsets that have a higher chance of surviving. A decision tree automates this process for you, and outputs a flowchart-like structure that is easy to interpret.
+
+
+Conceptually, the decision tree algorithm starts with all the data at the root node and scans all the variables for the best one to split on. Once a variable is chosen, you do the split and go down one level (or one node) and repeat. The final nodes at the bottom of the decision tree are known as terminal nodes, and the majority vote of the observations in that node determine how to predict for new observations that end up in that terminal node.
+
+
+To create your first decision tree, you'll make use of R's `rpart` package. R packages are a collection of functions, data and compiled code that make your life easier. Namely, instead of needing to write the algo yourself you just use the rpart R package and its included decision tree algorithm.
+
+
+```{r}
+library(rpart)
+```
+
+
+
+1. Creating your first decision tree
+
+```
+my_tree <- rpart(Survived ~ Sex + Age, 
+                 data = train, 
+                 method ="class")
+```
+
+  - `formula`: The variable of interest, and the variables used for prediction. You write this down as formula = Survived ~ Sex + Age.
+  - `data`: The data set used to build the decision tree (here train).
+  - `method`: Type of prediction you want. Here you predict a categorical variable (dead or alive), so you're classifying: method = "class".
+
+
+Build a decision tree `my_tree_two` to predict survival based on the variables `Passenger Class, Sex, Age, Number of Siblings/Spouses Aboard, Number of Parents/Children Aboard, Passenger Fare` and `Port of Embarkation`.
+
+
+```{r,results='hide'}
+# Build the decision tree
+my_tree <- rpart(Survived~Pclass + Sex + Age + SibSp + Fare + Embarked,
+                 data = train,
+                 method = "class")
+
+# Visualize the decision tree using plot() and text()
+plot(my_tree)
+text(my_tree)
+```
+
+```{r,eval=FALSE}
+# Load in the packages to create a fancified version of your tree
+
+library(rattle)
+library(rpart.plot)
+library(RColorBrewer)
+
+# Time to plot your fancy tree
+fancyRpartPlot(my_tree)
+```
+
+Based on your decision tree, what variables play the most important role to determine whether or not a passenger will survive? `Sex, Age, Passenger Class, Number of Siblings/Spouses Aboard, Fare`.
+
+
+## Predict and Submit to Kaggle
+
+- To send a submission to Kaggle you need to predict the survival rates for the observations in the test set.
+
+
+```{r}
+# Make your prediction using the test set
+my_prediction <- predict(my_tree, test, type = "class")
+
+# Create a data frame with two columns: PassengerId & Survived. Survived contains your predictions. Make sure the solution is in line with the standards set forth by Kaggle.
+my_solution <- data.frame(PassengerId = test$PassengerId, Survived = my_prediction)
+
+# Check that your data frame has 418 entries
+nrow(my_solution)
+
+# Write your solution to a csv file with the name my_solution.csv,ready for submission. Do not forget to set the row.names argument to FALSE, and the file argument to "my_solution.csv".
+write.csv(my_solution, file = "my_solution.csv", row.names = FALSE)
+```
+
+
+
+- Overfitting, the iceberg of decision trees
+
+If you submitted the solution of the previous exercise, you got a result that outperformes a solution using purely gender. Hurray! 
+
+
+Maybe we can improve even more by making a more complex model? In rpart, the depth of our model is defined by two parameters:
+
+  - the cp parameter determines when the splitting up of the decision tree stops.
+  - the minsplit parameter monitors the amount of observations in a bucket. If a certain threshold is not reached (e.g minimum 10 passengers) no further splitting can be done.
+
+Stated otherwise, if we set cp to zero (= no stopping of splits) and minsplit to 2 (= smallest bucket possible) we will create a super model! Or not? You can see the visualization by typing `fancyRpartPlot(super_model)`. Looking complex, right? 
+
+
+However, if you submit this solution to Kaggle your score will be lower than the score of a simple model based on e.g. gender. Why? Because you went too far when setting the rules for the decisions trees. You created very specific rules based on the data in the training set that are hence only relevant for the training set but that cannot be generalized to unknows sets. You overfitted. So when creating decision trees, always be aware of this danger! 
+
+```{r,eval=FALSE}
+# Create a new decision tree my_tree_three
+my_tree_2 <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked,
+                       data = train, 
+                       method = "class", 
+                       control = rpart.control(minsplit = 50, cp = 0))
+
+# Visualize your new decision tree
+fancyRpartPlot(my_tree_2)
+
+```
+
+
+## Re-engineering our Titanic data set
+
+- Data Science is an art that benefits from a human element. **Feature engineering**: creatively engineering your own features by combining the different existing variables. 
+
+- FE 需要語言與領域知識 (linguistic and domain knowledge) 的洞見。
+
+- 舉例：假定我們認為在船上的家庭人口數較多時，沈船時因為要找到所有人的時間較多，存活的機會因而較低。那麼我們就可假定 `family_size` (在資料中可由 `SibSp` 和 `Parch` 決定) 這樣的變項。
+
+```{r}
+# create a new train set with the new variable
+train_two <- train
+train_two$family_size <- train$SibSp + train$Parch + 1
+
+# Create a new decision tree my_tree_three
+my_tree_3 <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + family_size,
+                   data = train_two, 
+                   method="class")
+
+# Visualize your new decision tree
+fancyRpartPlot(my_tree_3)
+
+```
+
+
+
+
+
+

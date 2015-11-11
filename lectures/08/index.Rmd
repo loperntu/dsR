@@ -1,0 +1,101 @@
+---
+title    : Linguistic Analysis and Data Science
+subtitle : lecture 08
+author   : 謝舒凱 Graduate Institute of Linguistics, NTU
+mode     : selfcontained # {standalone, draft}
+url      : {lib: "../../libraries", assets: "../../assets"}
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+lecnum   : "03"
+widgets     : [bootstrap, quiz, interactive, mathjax]  # {mathjax, shiny, bootstrap}
+ext_widgets: {rCharts: [libraries/widgets/nvd3]}
+knit     : slidify::knit2slides
+bibliography: /Users/shukai/LOPE_LexInfo/BIB/corpus.bib
+github      : {user: loperntu, repo: lads}
+
+
+--- bg:#FFFAF0
+## 大綱
+
+1. Statistics 
+2. Machine Learning
+
+
+---
+## 統計
+
+- 嘗試模擬人類語言理解與處理知識的技術。
+- 在這領域其他語言的套件應該比 R 還豐富 (e.g., python 的 `nltk`)
+- NLP-powered Text Analytics 已經是主流，看看這個[例子](http://textanalysisonline.com/)
+
+<img style = 'border: 1px solid;' width = 60%; src='./assets/img/tm.nlp.png'></img>
+
+> BUT it is possible to use libraries written in those lower-level and hence faster languages, while writing your code in R and taking advantage of its functional programming style and its many other libraries for data analysis.
+
+
+---
+## 不要忘記自然語言處理是 AI-complete
+
+- 到現在人都還不完全了解人。
+- 語言的豐富性平日可以多多觀察：隱喻譬喻、諷刺幽默、情緒說謊、語用脈絡、
+個體群體差異、社會文化變異、甚至討價還價、談情說愛、、。
+
+<img style='border: 1px solid;'width=80% src='./assets/img/tm.cws.png' align="middle">
+
+
+
+
+---
+## 機器學習
+
+見 [nlp.Rmd](nlp.Rmd)
+
+---
+## Stanford CoreNLP 
+
+- [線上演示](http://nlp.stanford.edu:8080/corenlp/process)
+
+- [安裝](https://github.com/cran/coreNLP) [第一線的研究團隊](http://nlp.stanford.edu/software/corenlp.shtml)
+
+- `coreNLP` package: Wrappers Around Stanford CoreNLP Tools (Java library). Methods provided: <span style="color:green; font-weight:bold">tokenisation, part of speech tagging, lemmatisation, named entity recognition, coreference
+detection and sentiment analysis</span>
+
+
+---
+## Annotation and Feature Engineering
+
+```{r,eval=FALSE}
+
+```
+
+
+---
+## 語言學的研究觀察帶動 NLP 研究的層次
+
+- 互動言談的研究就是需要標記的好例子
+- 對訪談質性研究的協助 (*coding* similar to *annotation* in qualitative research)
+- [`qdap`](http://trinker.github.io/qdap/): (Quantitative Discourse Analysis Package) is an R package designed to assist in quantitative discourse analysis.
+
+<img style='border: 1px solid;'width=45% src='./assets/img/qdap.png' align="middle">
+
+
+
+
+---
+## Exercise: R Regular Expression
+
+[網路資料很多](http://www.endmemo.com/program/R/grep.php)
+請同學上台練習。
+
+---
+## keyword 分佈的練習
+
+
+
+
+---
+## Kaggle for Midterm.Mini-Hackathon
+
+- Kaggle: the home of data science
+
+

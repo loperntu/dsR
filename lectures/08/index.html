@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linguistic Analysis and Data Science</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Linguistic Analysis and Data Science">
+  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../../libraries/frameworks/io2012/js/slides" 
+    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="../../libraries/widgets/nvd3/js/d3.v2.min.js"></script>
+<script src="../../libraries/widgets/nvd3/js/nv.d3.min.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Linguistic Analysis and Data Science</h1>
+    <h2>lecture 07</h2>
+    <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
+  </hgroup>
+    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><strong><strong>Corpus and NLP</strong> for Text Analytics</strong> </li>
+<li>Crash course for R: Regular Expression</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>自然語言處理</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>嘗試模擬人類語言理解與處理知識的技術。</li>
+<li>在這領域其他語言的套件應該比 R 還豐富 (e.g., python 的 <code>nltk</code>)</li>
+<li>NLP-powered Text Analytics 已經是主流，看看這個<a href="http://textanalysisonline.com/">例子</a></li>
+</ul>
+
+<p><img style = 'border: 1px solid;' width = 60%; src='./assets/img/tm.nlp.png'></img></p>
+
+<blockquote>
+<p>BUT it is possible to use libraries written in those lower-level and hence faster languages, while writing your code in R and taking advantage of its functional programming style and its many other libraries for data analysis.</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>不要忘記自然語言處理是 AI-complete</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>到現在人都還不完全了解人。</li>
+<li>語言的豐富性平日可以多多觀察：隱喻譬喻、諷刺幽默、情緒說謊、語用脈絡、
+個體群體差異、社會文化變異、甚至討價還價、談情說愛、、。</li>
+</ul>
+
+<p><img style='border: 1px solid;'width=80% src='./assets/img/tm.cws.png' align="middle"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>自然語言處理：實例練習</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>見 <a href="nlp.Rmd">nlp.Rmd</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Stanford CoreNLP</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p><a href="http://nlp.stanford.edu:8080/corenlp/process">線上演示</a></p></li>
+<li><p><a href="https://github.com/cran/coreNLP">安裝</a> <a href="http://nlp.stanford.edu/software/corenlp.shtml">第一線的研究團隊</a></p></li>
+<li><p><code>coreNLP</code> package: Wrappers Around Stanford CoreNLP Tools (Java library). Methods provided: <span style="color:green; font-weight:bold">tokenisation, part of speech tagging, lemmatisation, named entity recognition, coreference
+detection and sentiment analysis</span></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>試試看</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># works from CRAN !
+install.packages(&quot;coreNLP&quot;)
+# wget http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip
+download.file(&quot;http://nlp.stanford.edu/software/stanford-corenlp-full-2015-04-20.zip&quot;)
+unzip(&quot;stanford-corenlp-full-2015-04-20.zip&quot;)
+library(coreNLP)
+initCoreNLP(&quot;stanford-corenlp-full-2015-04-20/&quot;)
+FB = c(&quot;Facebook is looking for new ways to get users to share more, 
+rather than just consume content, in a push that seemingly puts it in more 
+direct rivalry with Twitter.&quot;)
+output = annotateString(FB)
+getToken(output)[,c(1:3,6:7)]
+getParse(output)
+getDependency(output)
+getSentiment(output)
+getCoreference(output)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>語言學的研究觀察帶動 NLP 研究的層次</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>互動言談的研究就是需要標記的好例子</li>
+<li>對訪談質性研究的協助 (<em>coding</em> similar to <em>annotation</em> in qualitative research)</li>
+<li><a href="http://trinker.github.io/qdap/"><code>qdap</code></a>: (Quantitative Discourse Analysis Package) is an R package designed to assist in quantitative discourse analysis.</li>
+</ul>
+
+<p><img style='border: 1px solid;'width=45% src='./assets/img/qdap.png' align="middle"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Corpus and NLP</li>
+<li><strong><strong>Crash course for R: Regular Expression</strong></strong> </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Exercise: R Regular Expression</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="http://www.endmemo.com/program/R/grep.php">網路資料很多</a>
+請同學上台練習。</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>keyword 分佈的練習</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">comments &lt;- read.table(&quot;perfumes_comments.csv&quot;, header = TRUE, 
+                       sep = &quot;\t&quot;, dec = &quot;.&quot;, quote = &quot;\&quot;&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): 無法開啟檔案 &#39;perfumes_comments.csv&#39; ：No such
+## file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): 無法開啟連結
+</code></pre>
+
+<pre><code class="r">summary(comments)
+# random rows of the data set
+x &lt;- sample(nrow(comments), 10, replace = FALSE)
+comments[x,]
+
+strong &lt;-grepl(&quot;strong&quot;,comments$Comment, ignore.case = TRUE)
+sum(strong)/nrow(comments)
+sweet &lt;-grepl(&quot;sweet|soft&quot;,comments$Comment, ignore.case = TRUE)
+sum(sweet)/nrow(comments)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='大綱'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='自然語言處理'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='不要忘記自然語言處理是 AI-complete'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='自然語言處理：實例練習'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Stanford CoreNLP'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='試試看'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='語言學的研究觀察帶動 NLP 研究的層次'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='大綱'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Exercise: R Regular Expression'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='keyword 分佈的練習'>
+         10
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script src='../../libraries/widgets/nvd3/js/d3.v2.js'></script>
+  <script src='../../libraries/widgets/nvd3/js/nv.d3.min.js'></script>
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
