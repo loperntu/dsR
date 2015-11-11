@@ -101,7 +101,7 @@ Week | Date   | Topic         | Lab
 - [[Week.6.1]](https://goo.gl/SjV4iq) / [[Week. 6.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise3-data_table.html)
 - [[Week.7.1]](http://goo.gl/08t01z) / [[Week. 7.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise4-plot.html)
 - [[Week.8.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise5-regexp.html#1)
-- [[Week.9.2]]()
+- [[Week.9.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise6-basic_stat.html#1)
 
 ## 課程教材
 
