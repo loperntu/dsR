@@ -57,17 +57,18 @@ github      : {user: loperntu, repo: lads}
 - AI 的一個子領域。（參見林軒田老師的線上課程）
 - 監督式 supervised vs. 非監督式 unsupervised
   - 可以用中文斷詞問題來想
-- [圖解法入門](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)：基本概念與決策樹
+  - [圖解法入門](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)：基本概念與決策樹
 
 
 
 ---
 ## 機器學習：效能評估的基本量度
 
-- Recall is the amount of data captured and actually processed by the text analytics engines. Capturing everything is important because critical feedback could be hidden in the content you haven't looked at. This is accomplished by categorizing all data into topics. Clarabridge has highly accurate, customized topic models to ensure that you are capturing everything – for a high degree of recall.
-- Precision refers to how accurately your customer feedback is categorized into the topics within the model. Looking at all the data in the world isn't helpful if the data isn't sorted into the right buckets to find insights. Fortunately, the Clarabridge methodology also boasts very high precision.
-
+- Recall 
+- Precision 
 - F-score
+
+<http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html>
 
 ---
 ## Annotation and Feature Engineering 
@@ -92,14 +93,6 @@ github      : {user: loperntu, repo: lads}
 - thus can be expensive
 
 
----
-## 語言學的研究觀察帶動 NLP 研究的層次
-
-- 互動言談的研究就是需要標記的好例子
-- 對訪談質性研究的協助 (*coding* similar to *annotation* in qualitative research)
-- [`qdap`](http://trinker.github.io/qdap/): (Quantitative Discourse Analysis Package) is an R package designed to assist in quantitative discourse analysis.
-
-<img style='border: 1px solid;'width=45% src='./assets/img/qdap.png' align="middle">
 
 ---
 ## 手工標記資料  
@@ -116,7 +109,7 @@ github      : {user: loperntu, repo: lads}
 - labeling 和 annotation 的差異之後再談。
 
 ---
-## 基本流程
+## 機器學習程式實作基本流程
 
 - [`create_matrix`] Import your hand-coded data into R
 - [`create_corpus`] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data)
@@ -137,7 +130,7 @@ github      : {user: loperntu, repo: lads}
 ## 文本分類
 
 - `RTextTools` 可自動化某些標記工作，與監督式文本自動分類。簡單，但是有記憶體問題，中文支援有問題。
-- "One-stop-shop for conducting supervised machine learning with textual data" 邊看[這篇](http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf)邊做看看
+- "One-stop-shop for conducting supervised machine learning with textual data" 邊看[這篇](http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf)邊做看看. [參考程式範例](week9_RTextTools_congress.R)
 
 
 
