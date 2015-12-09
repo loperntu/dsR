@@ -89,6 +89,8 @@ Week | Date   | Topic         | Lab
 - [Lecture 06](lectures/06/index.html)
 - [Lecture 07](lectures/07/index.html)
 - [Lecture 08](lectures/08/index.html)
+- [Lecture 09](lectures/09/index.html)
+- [Lecture 10](lectures/10/index.html)
 
 ## 助教講義、習題與作業
 
