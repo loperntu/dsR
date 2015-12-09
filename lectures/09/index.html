@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Linguistic Analysis and Data Science</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Linguistic Analysis and Data Science">
+  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
+<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../../libraries/frameworks/io2012/js/slides" 
+    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="../../libraries/widgets/nvd3/js/d3.v2.min.js"></script>
+<script src="../../libraries/widgets/nvd3/js/nv.d3.min.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Linguistic Analysis and Data Science</h1>
+    <h2>lecture 09</h2>
+    <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
+  </hgroup>
+    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>More on text classification</li>
+<li>Topic modeling</li>
+<li>Web data collection </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Discussion on your approach in Kaggle</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:#FFFAF0;">
+  <hgroup>
+    <h2>Recap: 機器學習程式實作基本流程</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>[<code>create_matrix</code>] Import your hand-coded data into R</li>
+<li>[<code>create_corpus</code>] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data) (with <code>dtm</code>)</li>
+<li>[<code>train model(s)</code>] Choose machine learning algorithm(s) to train a model</li>
+<li>[<code>build predictive model(s)</code>] Test on the (out-of-sample) test data; establish accuracy criteria 了解成效。</li>
+<li>[<code>apply predictive model(s)</code>] Use model to classify novel data</li>
+<li>[<code>create analytics</code>] 把自動分錯的資料找出來 Manually label data that do not meet accuracy criteria</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>再做一個例子 (Mayor, 2015)</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">URL = &quot;http://www.cs.cornell.edu/people/pabo/movie-review-data/review_polarity.tar.gz&quot;
+download.file(URL,destfile = &quot;./data/reviews.tar.gz&quot;)
+#untar(&quot;./data/reviews.tar.gz&quot;)
+setwd(&quot;./data/reviews/txt_sentoken&quot;)
+
+library(tm)
+SourcePos &lt;- DirSource(file.path(&quot;.&quot;, &quot;pos&quot;), pattern=&quot;cv&quot;)
+SourceNeg &lt;- DirSource(file.path(&quot;.&quot;, &quot;neg&quot;), pattern=&quot;cv&quot;)
+pos &lt;- Corpus(SourcePos)
+neg &lt;- Corpus(SourceNeg)
+reviews &lt;- c(pos, neg)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Preprocessing data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">preprocess = function(
+  corpus, stopwrds = stopwords(&quot;english&quot;)){
+  library(SnowballC)
+  corpus &lt;- tm_map(corpus, content_transformer(tolower))
+  corpus &lt;- tm_map(corpus, removePunctuation)
+  corpus &lt;- tm_map(corpus, content_transformer(removeNumbers))
+  corpus &lt;- tm_map(corpus, removeWords, stopwrds)
+  corpus &lt;- tm_map(corpus, stripWhitespace)
+  corpus &lt;- tm_map(corpus, stemDocument)
+  corpus
+}
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Exploring data</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">processed &lt;- preprocess(reviews)
+term_documentFreq &lt;- TermDocumentMatrix(processed)
+
+asMatrix &lt;- t(as.matrix(term_documentFreq))
+Frequencies &lt;- colSums(asMatrix)
+head(Frequencies[order(Frequencies, decreasing=T)], 5)
+
+Frequencies[Frequencies &gt; 3000]
+
+#Present &lt;- data.frame(asMatrix)
+#Present[Present&gt;0] = 1
+
+DocFrequencies &lt;- colSums(Present)
+head(DocFrequencies[order(DocFrequencies, decreasing=T)], 5)
+DocFrequencies[DocFrequencies &gt; 1400]
+
+
+
+# total &lt;- ncol(asMatrix)
+# moreThanOnce &lt;- sum(DocFrequencies != Frequencies)
+# prop &lt;- moreThanOnce / total
+# moreThanOnce
+# total
+# prop
+
+term_documentTfIdf &lt;- TermDocumentMatrix(processed,
+                                         control = list(weighting = function(x) weightTfIdf(x, normalize = TRUE)))
+
+
+SparseRemoved &lt;- as.matrix(t(removeSparseTerms(
+  term_documentTfIdf, sparse = 0.8)))
+
+ncol(SparseRemoved)
+sum(rowSums(as.matrix(SparseRemoved)) == 0)
+
+colnames(SparseRemoved)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Computing new attributes</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">quality &lt;- c(rep(1,1000),rep(0,1000))
+lengths &lt;- colSums(as.matrix(TermDocumentMatrix(processed)))
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Creating the training and testing data frames</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">DF &lt;- as.data.frame(cbind(quality, lengths, SparseRemoved))
+set.seed(123)
+train = sample(1:2000,1000)
+TrainDF = DF[train,]
+TestDF = DF[-train,]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Text Classification of the reviews</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Naïve Bayes</strong> </li>
+</ul>
+
+<pre><code class="r">library(e1071)
+library(caret) # confusionMatrix is in the caret package
+set.seed(345)
+model &lt;- naiveBayes(TrainDF[-1], as.factor(TrainDF[[1]]))
+classifNB &lt;- predict(model, TrainDF[,-1])
+confusionMatrix(as.factor(TrainDF$quality),classifNB)
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   0   1
+##          0 353 139
+##          1  74 434
+##                                          
+##                Accuracy : 0.787          
+##                  95% CI : (0.7603, 0.812)
+##     No Information Rate : 0.573          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
+##                                          
+##                   Kappa : 0.573          
+##  Mcnemar&#39;s Test P-Value : 1.159e-05      
+##                                          
+##             Sensitivity : 0.8267         
+##             Specificity : 0.7574         
+##          Pos Pred Value : 0.7175         
+##          Neg Pred Value : 0.8543         
+##              Prevalence : 0.4270         
+##          Detection Rate : 0.3530         
+##    Detection Prevalence : 0.4920         
+##       Balanced Accuracy : 0.7921         
+##                                          
+##        &#39;Positive&#39; Class : 0              
+## 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Classification of the reviews</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Support Vector Machines</strong></li>
+</ul>
+
+<pre><code class="r">library(e1071)
+modelSVM &lt;- svm(quality ~ ., data = TrainDF)
+probSVMtrain &lt;- predict(modelSVM, TrainDF[,-1])
+classifSVMtrain &lt;- probSVMtrain
+classifSVMtrain[classifSVMtrain&gt;0.5] = 1
+classifSVMtrain[classifSVMtrain&lt;=0.5] = 0
+confusionMatrix(TrainDF$quality, classifSVMtrain)
+</code></pre>
+
+<pre><code class="r">probSVMtest &lt;- predict(modelSVM, TestDF[,-1])
+classifSVMtest &lt;- probSVMtest
+classifSVMtest[classifSVMtest&gt;0.5] = 1
+classifSVMtest[classifSVMtest&lt;=0.5] = 0
+confusionMatrix(TestDF$quality, classifSVMtest)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Classification of the reviews</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>Deep Learning</strong> </li>
+</ul>
+
+<p><a href="https://dato.com/learn/gallery/notebooks/deep_text_learning.html?_ga=1.58953197.192178516.1447602577">Practical Deep Text Learning tutorial</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>More on extraction of <em>meaning</em></h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Topic modeling <a href="https://eight2late.wordpress.com/2015/09/29/a-gentle-introduction-to-topic-modeling-using-r/">tutorial</a></li>
+<li>Event detection</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Microposts: 當前文本挖掘熱門議題</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Check <a href="http://microposts2016.seas.upenn.edu/topics.html">this CFP</a></p>
+
+<p><img style = 'border: 1px solid;' width = 60%; src='./assets/img/message.png'></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>如何抓資料</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>crawler 好像很厲害，但是遊走法律邊緣 (<strong>trespass to chattels</strong>)</li>
+<li>web scaping 還可以。</li>
+<li>利用 <code>api</code> 則是課堂上應該教的 XD</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Easy web scraping with <code>rvest</code></h2>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p>a new package that makes it easy to scrape (or harvest) data from html web pages, inspired by libraries like beautiful soup. It is designed to work with magrittr so that you can express complex operations as elegant pipelines composed of simple, easily understood pieces.</p>
+</blockquote>
+
+<ul>
+<li>需要有網頁設計概念: <code>rvest</code> + CSS Selector 很厲害。<a href="http://selectorgadget.com"><code>Selectorgadget</code></a>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>舉例</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>scrape some information about <strong>Ex Machina</strong> from IMDB.</li>
+</ul>
+
+<pre><code class="r">library(rvest)
+machina &lt;- html(&quot;http://www.imdb.com/title/tt0470752/&quot;)
+
+# extract the rating 
+machina %&gt;% 
+  html_node(&quot;strong span&quot;) %&gt;%
+  html_text() %&gt;%
+  as.numeric()
+
+# extract the cast
+machina %&gt;%
+  html_nodes(&quot;#titleCast .itemprop span&quot;) %&gt;%
+  html_text()
+
+# The titles and authors of recent message board postings are stored in a the third table on the page. We can use html_node() and [[ to find it, then coerce it to a data frame with html_table():
+
+machina %&gt;%
+  html_nodes(&quot;table&quot;) %&gt;%
+  .[[3]] %&gt;%
+  html_table()
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Collecting NYT news articles via API</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="https://github.com/ropengov/rtimes"><code>rtimes</code></a>: R client for NYTimes API for government data, including the Congress, Article Search, Campaign Finance, and Geographic APIs. The focus is on those that deal with political data, but throwing in Article Search and Geographic for good measure（另外也可用 <code>tm</code> 自家的 plugin <code>tm.plugin.webmining</code>）。</p>
+
+<ul>
+<li>Get your own API keys at <a href="http://developer.nytimes.com/apps/register">http://developer.nytimes.com/apps/register</a>, you&#39;ll need a different key for each API.</li>
+<li>Put these entries in your <code>.Rprofile</code> file for re-use.</li>
+</ul>
+
+<pre><code>options(nytimes_cg_key = &quot;e63b6f8917f30c79521ad7ddba7b9255:11:66687269&quot;) 
+options(nytimes_as_key = &quot;017ecf6cafb56e24947086cc1778ea30:1:66687269&quot;)
+options(nytimes_cf_key = &quot;YOURKEYHERE&quot;)
+options(nytimes_geo_key = &quot;YOURKEYHERE&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>使用很容易</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(rtimes)
+
+# Search for bailout between two dates, Oct 1 2008 and Dec 1 2008
+out &lt;- as_search(q = &quot;bailout&quot;, begin_date = &quot;20081001&quot;, end_date = &#39;20081201&#39;)
+out$data[1:2]
+
+# Search for keyword money, within the Sports and Foreign news desks
+res &lt;- as_search(q = &quot;money&quot;, fq = &#39;news_desk:(&quot;Sports&quot; &quot;Foreign&quot;)&#39;)
+res$data[1:3]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Lab: Collecting data via API</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>各組選一個實作看看 [同一共筆]</p>
+
+<p>-<code>rtimes</code> </p>
+
+<p>-<code>Rfacebook</code></p>
+
+<p>-<code>Rweibo</code></p>
+
+<p>-<code>twitteR</code></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='大綱'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Discussion on your approach in Kaggle'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Recap: 機器學習程式實作基本流程'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='再做一個例子 (Mayor, 2015)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Preprocessing data'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Exploring data'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Computing new attributes'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Creating the training and testing data frames'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Text Classification of the reviews'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Classification of the reviews'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Classification of the reviews'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='More on extraction of <em>meaning</em>'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Microposts: 當前文本挖掘熱門議題'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='如何抓資料'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Easy web scraping with <code>rvest</code>'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='舉例'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Collecting NYT news articles via API'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='使用很容易'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='NA'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Lab: Collecting data via API'>
+         20
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
+<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script src='../../libraries/widgets/nvd3/js/d3.v2.js'></script>
+  <script src='../../libraries/widgets/nvd3/js/nv.d3.min.js'></script>
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

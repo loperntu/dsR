@@ -285,13 +285,18 @@ plot(dtm, terms = findFreqTerms(dtm, lowfreq = 5)[1:10], corThreshold = 0.5)
 ```
 
 ```
-##  [1] "-"        "a"        "analysis" "and"      "at"       "data"    
-##  [7] "for"      "in"       "mining"   "of"       "on"       "package" 
-## [13] "r"        "slides"   "the"      "to"       "with"
+## Error in inherits(x, c("DocumentTermMatrix", "TermDocumentMatrix")): 找不到物件 'tdm'
 ```
 
 ```r
 term.freq <- rowSums(as.matrix(tdm))
+```
+
+```
+## Error in as.matrix(tdm): 找不到物件 'tdm'
+```
+
+```r
 term.freq <- subset(term.freq, term.freq >= 15)
 df <- data.frame(term = names(term.freq), freq = term.freq)
 ```
