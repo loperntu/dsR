@@ -247,8 +247,8 @@ machina %>% html_nodes("table") %>% .[[3]] %>%
 - Put these entries in your `.Rprofile` file for re-use.
 
 ```
-options(nytimes_cg_key = "e63b6f8917f30c79521ad7ddba7b9255:11:66687269") 
-options(nytimes_as_key = "017ecf6cafb56e24947086cc1778ea30:1:66687269")
+options(nytimes_cg_key = "YOURKEYHERE") 
+options(nytimes_as_key = "YOURKEYHERE")
 options(nytimes_cf_key = "YOURKEYHERE")
 options(nytimes_geo_key = "YOURKEYHERE")
 ```
