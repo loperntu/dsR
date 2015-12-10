@@ -18,7 +18,7 @@ github      : {user: loperntu, repo: lads}
 ## 大綱
 
 1. More on text classification
-2. Topic modeling
+2. Topic modeling and Information Extraction
 3. Web data collection 
 
 
@@ -141,7 +141,7 @@ TestDF = DF[-train,]
 
 
 ---
-## Text Classification of the reviews
+## Text classification of the reviews
 - **Naïve Bayes** 
 
 ```{r}
@@ -155,7 +155,7 @@ confusionMatrix(as.factor(TrainDF$quality),classifNB)
 
 
 ---
-## Classification of the reviews
+## Text classification of the reviews
 - **Support Vector Machines**
 
 ```{r,results='hide'}
@@ -178,18 +178,17 @@ confusionMatrix(TestDF$quality, classifSVMtest)
 
 
 ---
-## Classification of the reviews
-- **Deep Learning** 
-
-[Practical Deep Text Learning tutorial](https://dato.com/learn/gallery/notebooks/deep_text_learning.html?_ga=1.58953197.192178516.1447602577)
+## Text classification of the reviews
+- **Deep Learning** (cf. [Practical Deep Text Learning tutorial](https://dato.com/learn/gallery/notebooks/deep_text_learning.html?_ga=1.58953197.192178516.1447602577))
 
 
 
 ---
-## More on extraction of *meaning*
+## More on extraction of *textual semantics*
 
 - Topic modeling [tutorial](https://eight2late.wordpress.com/2015/09/29/a-gentle-introduction-to-topic-modeling-using-r/)
-- Event detection
+- Event detection (trigger, results, etc)
+- And more (i.e., 妳說妳理解文本是什麼意思)
 
 
 
@@ -215,7 +214,7 @@ Check [this CFP](http://microposts2016.seas.upenn.edu/topics.html)
 
 >  a new package that makes it easy to scrape (or harvest) data from html web pages, inspired by libraries like beautiful soup. It is designed to work with magrittr so that you can express complex operations as elegant pipelines composed of simple, easily understood pieces.
 
-- 需要有網頁設計概念: `rvest` + CSS Selector 很厲害。[`Selectorgadget`](http://selectorgadget.com))
+- 需要有網頁設計概念: (`rvest` + CSS Selector)。給入門者的工具 [`Selectorgadget`](http://selectorgadget.com)
 
 ---
 ## 舉例
@@ -224,23 +223,17 @@ Check [this CFP](http://microposts2016.seas.upenn.edu/topics.html)
 ```{r,results='hide'}
 library(rvest)
 machina <- html("http://www.imdb.com/title/tt0470752/")
-
 # extract the rating 
 machina %>% 
-  html_node("strong span") %>%
-  html_text() %>%
+  html_node("strong span") %>% html_text() %>%
   as.numeric()
-
 # extract the cast
-machina %>%
-  html_nodes("#titleCast .itemprop span") %>%
+machina %>% html_nodes("#titleCast .itemprop span") %>%
   html_text()
-
-# The titles and authors of recent message board postings are stored in a the third table on the page. We can use html_node() and [[ to find it, then coerce it to a data frame with html_table():
-
-machina %>%
-  html_nodes("table") %>%
-  .[[3]] %>%
+# The titles and authors of recent message board postings are stored in a the third 
+# table on the page. We can use html_node() and [[ to find it, then coerce it to a 
+# data frame with html_table():
+machina %>% html_nodes("table") %>% .[[3]] %>%
   html_table()
 ```
 
@@ -277,23 +270,29 @@ res <- as_search(q = "money", fq = 'news_desk:("Sports" "Foreign")')
 res$data[1:3]
 ```
 
----
-
-
-
 
 ---
-## Lab: Collecting data via API
+## Lab: Collecting data via API in a collaborative way
 
-各組選一個實作看看 [同一共筆]
+共同選一個主題/關鍵詞/事件，各組選一個 api 實作看看 [同一共筆/資料夾]
 
--`rtimes` 
+- `rtimes` (中文？) 
 
--`Rfacebook`
+- `Rfacebook`
 
--`Rweibo`
+- `Rweibo`
 
--`twitteR`
+- `twitteR`
+
+
+---
+## Group Homework (bonus 30% for midterm kaggle) 
+
+- [The Linguist List](http://linguistlist.org/jobs/browse-jobs.cfm) 提供了大學與產業的各種語言學相關的工作機會。 試著爬回所有的表格資料（甚至連結之文本），
+做簡單的文本分析。例如：
+  - 不同時代的專長趨勢分佈？
+  - 那個工作地點提供最高的薪資？
+
 
 
 

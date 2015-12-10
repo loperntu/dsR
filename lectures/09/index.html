@@ -57,7 +57,7 @@
   <article data-timings="">
     <ol>
 <li>More on text classification</li>
-<li>Topic modeling</li>
+<li>Topic modeling and Information Extraction</li>
 <li>Web data collection </li>
 </ol>
 
@@ -215,7 +215,7 @@ TestDF = DF[-train,]
 
 <slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>Text Classification of the reviews</h2>
+    <h2>Text classification of the reviews</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -264,7 +264,7 @@ confusionMatrix(as.factor(TrainDF$quality),classifNB)
 
 <slide class="" id="slide-10" style="background:;">
   <hgroup>
-    <h2>Classification of the reviews</h2>
+    <h2>Text classification of the reviews</h2>
   </hgroup>
   <article data-timings="">
     <ul>
@@ -293,14 +293,12 @@ confusionMatrix(TestDF$quality, classifSVMtest)
 
 <slide class="" id="slide-11" style="background:;">
   <hgroup>
-    <h2>Classification of the reviews</h2>
+    <h2>Text classification of the reviews</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>Deep Learning</strong> </li>
+<li><strong>Deep Learning</strong> (cf. <a href="https://dato.com/learn/gallery/notebooks/deep_text_learning.html?_ga=1.58953197.192178516.1447602577">Practical Deep Text Learning tutorial</a>)</li>
 </ul>
-
-<p><a href="https://dato.com/learn/gallery/notebooks/deep_text_learning.html?_ga=1.58953197.192178516.1447602577">Practical Deep Text Learning tutorial</a></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -308,12 +306,13 @@ confusionMatrix(TestDF$quality, classifSVMtest)
 
 <slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>More on extraction of <em>meaning</em></h2>
+    <h2>More on extraction of <em>textual semantics</em></h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>Topic modeling <a href="https://eight2late.wordpress.com/2015/09/29/a-gentle-introduction-to-topic-modeling-using-r/">tutorial</a></li>
-<li>Event detection</li>
+<li>Event detection (trigger, results, etc)</li>
+<li>And more (i.e., 妳說妳理解文本是什麼意思)</li>
 </ul>
 
   </article>
@@ -358,7 +357,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
 </blockquote>
 
 <ul>
-<li>需要有網頁設計概念: <code>rvest</code> + CSS Selector 很厲害。<a href="http://selectorgadget.com"><code>Selectorgadget</code></a>)</li>
+<li>需要有網頁設計概念: (<code>rvest</code> + CSS Selector)。給入門者的工具 <a href="http://selectorgadget.com"><code>Selectorgadget</code></a></li>
 </ul>
 
   </article>
@@ -376,23 +375,17 @@ confusionMatrix(TestDF$quality, classifSVMtest)
 
 <pre><code class="r">library(rvest)
 machina &lt;- html(&quot;http://www.imdb.com/title/tt0470752/&quot;)
-
 # extract the rating 
 machina %&gt;% 
-  html_node(&quot;strong span&quot;) %&gt;%
-  html_text() %&gt;%
+  html_node(&quot;strong span&quot;) %&gt;% html_text() %&gt;%
   as.numeric()
-
 # extract the cast
-machina %&gt;%
-  html_nodes(&quot;#titleCast .itemprop span&quot;) %&gt;%
+machina %&gt;% html_nodes(&quot;#titleCast .itemprop span&quot;) %&gt;%
   html_text()
-
-# The titles and authors of recent message board postings are stored in a the third table on the page. We can use html_node() and [[ to find it, then coerce it to a data frame with html_table():
-
-machina %&gt;%
-  html_nodes(&quot;table&quot;) %&gt;%
-  .[[3]] %&gt;%
+# The titles and authors of recent message board postings are stored in a the third 
+# table on the page. We can use html_node() and [[ to find it, then coerce it to a 
+# data frame with html_table():
+machina %&gt;% html_nodes(&quot;table&quot;) %&gt;% .[[3]] %&gt;%
   html_table()
 </code></pre>
 
@@ -443,26 +436,37 @@ res$data[1:3]
 </slide>
 
 <slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Lab: Collecting data via API in a collaborative way</h2>
+  </hgroup>
   <article data-timings="">
-    
+    <p>共同選一個主題/關鍵詞/事件，各組選一個 api 實作看看 [同一共筆/資料夾]</p>
+
+<ul>
+<li><p><code>rtimes</code> (中文？) </p></li>
+<li><p><code>Rfacebook</code></p></li>
+<li><p><code>Rweibo</code></p></li>
+<li><p><code>twitteR</code></p></li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-20" style="background:;">
   <hgroup>
-    <h2>Lab: Collecting data via API</h2>
+    <h2>Group Homework (bonus 30% for midterm kaggle)</h2>
   </hgroup>
   <article data-timings="">
-    <p>各組選一個實作看看 [同一共筆]</p>
+    <ul>
+<li><a href="http://linguistlist.org/jobs/browse-jobs.cfm">The Linguist List</a> 提供了大學與產業的各種語言學相關的工作機會。 試著爬回所有的表格資料（甚至連結之文本），
+做簡單的文本分析。例如：
 
-<p>-<code>rtimes</code> </p>
-
-<p>-<code>Rfacebook</code></p>
-
-<p>-<code>Rweibo</code></p>
-
-<p>-<code>twitteR</code></p>
+<ul>
+<li>不同時代的專長趨勢分佈？</li>
+<li>那個工作地點提供最高的薪資？</li>
+</ul></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -522,25 +526,25 @@ res$data[1:3]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Text Classification of the reviews'>
+        data-slide=9 title='Text classification of the reviews'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Classification of the reviews'>
+        data-slide=10 title='Text classification of the reviews'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Classification of the reviews'>
+        data-slide=11 title='Text classification of the reviews'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='More on extraction of <em>meaning</em>'>
+        data-slide=12 title='More on extraction of <em>textual semantics</em>'>
          12
       </a>
     </li>
@@ -582,13 +586,13 @@ res$data[1:3]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='NA'>
+        data-slide=19 title='Lab: Collecting data via API in a collaborative way'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Lab: Collecting data via API'>
+        data-slide=20 title='Group Homework (bonus 30% for midterm kaggle)'>
          20
       </a>
     </li>
