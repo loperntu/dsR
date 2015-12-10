@@ -84,44 +84,39 @@ preprocess = function(
 ```r
 processed <- preprocess(reviews)
 term_documentFreq <- TermDocumentMatrix(processed)
-
+# use the tdm, we can now get the ten most frequent terms
 asMatrix <- t(as.matrix(term_documentFreq))
 Frequencies <- colSums(asMatrix)
-head(Frequencies[order(Frequencies, decreasing=T)], 5)
-
-Frequencies[Frequencies > 3000]
-
-#Present <- data.frame(asMatrix)
-#Present[Present>0] = 1
-
-DocFrequencies <- colSums(Present)
-head(DocFrequencies[order(DocFrequencies, decreasing=T)], 5)
-DocFrequencies[DocFrequencies > 1400]
+head(Frequencies[order(Frequencies, decreasing=T)], 10)
+# or terms occur more than 2,000 times
+Frequencies[Frequencies > 2000]
+#  tf–idf measure instead of raw freq.
+```
 
 
+---
+## Representing data
 
-# total <- ncol(asMatrix)
-# moreThanOnce <- sum(DocFrequencies != Frequencies)
-# prop <- moreThanOnce / total
-# moreThanOnce
-# total
-# prop
+- The `tf–idf` measure is more meaningful as it increases the weights of terms that occur in many documents, thereby making the classification more reliable. Therefore, use it instead of raw frequencies in a new term-document matrix.
+- Remove sparse terms from the matrix by using the `removeSparseTerms()` function. An argument called sparse which allows a limit to be set for the degree of sparsity of the terms. (0 means that all documents must contain the term, whereas a sparsity of 1 means that none contain the term). We use a value higher than 0.8 to filter out most terms but still have enough terms to perform the analysis.
 
+
+```r
 term_documentTfIdf <- TermDocumentMatrix(processed,
-                                         control = list(weighting = function(x) weightTfIdf(x, normalize = TRUE)))
-
-
-SparseRemoved <- as.matrix(t(removeSparseTerms(
-  term_documentTfIdf, sparse = 0.8)))
-
+                                         control = list(weighting = function(x) 
+                                           weightTfIdf(x, normalize = TRUE)))
+SparseRemoved <- as.matrix(t(removeSparseTerms(term_documentTfIdf, sparse = 0.8)))
+# now many terms are now 
 ncol(SparseRemoved)
-sum(rowSums(as.matrix(SparseRemoved)) == 0)
-
 colnames(SparseRemoved)
 ```
 
 ---
 ## Computing new attributes
+
+- Now, we can use these 202 terms to classify our documents based on whether the reviews are positive or negative. Remember that the rows 1 to 1,000 represent positive reviews, and rows 1,001 to 2,000 negative ones. Create a vector that reflects this.
+
+- The length of the reviews may be related to their positivity or negativity. So also include an attribute that reflects review length in the processed corpus (before the removal of sparse terms):
 
 
 ```r
@@ -132,6 +127,8 @@ lengths <- colSums(as.matrix(TermDocumentMatrix(processed)))
 
 ---
 ## Creating the training and testing data frames
+
+- need to create a data frame that includes the criterion attribute (quality), the length of the reviews, and the term-document matrix
 
 
 ```r
@@ -145,8 +142,9 @@ TestDF = DF[-train,]
 
 ---
 ## Text classification of the reviews
-- **Naïve Bayes** 
-
+**Naïve Bayes** 
+- The partial output here presents the confusion matrix *for the training dataset* and some performance information.
+  
 
 ```r
 library(e1071)
@@ -156,41 +154,17 @@ model <- naiveBayes(TrainDF[-1], as.factor(TrainDF[[1]]))
 classifNB <- predict(model, TrainDF[,-1])
 confusionMatrix(as.factor(TrainDF$quality),classifNB)
 ```
+- examine how well we can classify the test dataset using the mode 
 
-```
-## Confusion Matrix and Statistics
-## 
-##           Reference
-## Prediction   0   1
-##          0 353 139
-##          1  74 434
-##                                          
-##                Accuracy : 0.787          
-##                  95% CI : (0.7603, 0.812)
-##     No Information Rate : 0.573          
-##     P-Value [Acc > NIR] : < 2.2e-16      
-##                                          
-##                   Kappa : 0.573          
-##  Mcnemar's Test P-Value : 1.159e-05      
-##                                          
-##             Sensitivity : 0.8267         
-##             Specificity : 0.7574         
-##          Pos Pred Value : 0.7175         
-##          Neg Pred Value : 0.8543         
-##              Prevalence : 0.4270         
-##          Detection Rate : 0.3530         
-##    Detection Prevalence : 0.4920         
-##       Balanced Accuracy : 0.7921         
-##                                          
-##        'Positive' Class : 0              
-## 
+```r
+classifNB = predict(model, TestDF[,-1])
+confusionMatrix(as.factor(TestDF$quality),classifNB)
 ```
 
 
 ---
 ## Text classification of the reviews
-- **Support Vector Machines**
-
+**Support Vector Machines**: attempt to find a separation between the two classes that is as broad as possible.
 
 ```r
 library(e1071)
@@ -201,7 +175,7 @@ classifSVMtrain[classifSVMtrain>0.5] = 1
 classifSVMtrain[classifSVMtrain<=0.5] = 0
 confusionMatrix(TrainDF$quality, classifSVMtrain)
 ```
-
+- classification using the testing set
 
 ```r
 probSVMtest <- predict(modelSVM, TestDF[,-1])

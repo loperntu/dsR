@@ -144,40 +144,13 @@ reviews &lt;- c(pos, neg)
   <article data-timings="">
     <pre><code class="r">processed &lt;- preprocess(reviews)
 term_documentFreq &lt;- TermDocumentMatrix(processed)
-
+# use the tdm, we can now get the ten most frequent terms
 asMatrix &lt;- t(as.matrix(term_documentFreq))
 Frequencies &lt;- colSums(asMatrix)
-head(Frequencies[order(Frequencies, decreasing=T)], 5)
-
-Frequencies[Frequencies &gt; 3000]
-
-#Present &lt;- data.frame(asMatrix)
-#Present[Present&gt;0] = 1
-
-DocFrequencies &lt;- colSums(Present)
-head(DocFrequencies[order(DocFrequencies, decreasing=T)], 5)
-DocFrequencies[DocFrequencies &gt; 1400]
-
-
-
-# total &lt;- ncol(asMatrix)
-# moreThanOnce &lt;- sum(DocFrequencies != Frequencies)
-# prop &lt;- moreThanOnce / total
-# moreThanOnce
-# total
-# prop
-
-term_documentTfIdf &lt;- TermDocumentMatrix(processed,
-                                         control = list(weighting = function(x) weightTfIdf(x, normalize = TRUE)))
-
-
-SparseRemoved &lt;- as.matrix(t(removeSparseTerms(
-  term_documentTfIdf, sparse = 0.8)))
-
-ncol(SparseRemoved)
-sum(rowSums(as.matrix(SparseRemoved)) == 0)
-
-colnames(SparseRemoved)
+head(Frequencies[order(Frequencies, decreasing=T)], 10)
+# or terms occur more than 2,000 times
+Frequencies[Frequencies &gt; 2000]
+#  tf–idf measure instead of raw freq.
 </code></pre>
 
   </article>
@@ -186,11 +159,21 @@ colnames(SparseRemoved)
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>Computing new attributes</h2>
+    <h2>Representing data</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">quality &lt;- c(rep(1,1000),rep(0,1000))
-lengths &lt;- colSums(as.matrix(TermDocumentMatrix(processed)))
+    <ul>
+<li>The <code>tf–idf</code> measure is more meaningful as it increases the weights of terms that occur in many documents, thereby making the classification more reliable. Therefore, use it instead of raw frequencies in a new term-document matrix.</li>
+<li>Remove sparse terms from the matrix by using the <code>removeSparseTerms()</code> function. An argument called sparse which allows a limit to be set for the degree of sparsity of the terms. (0 means that all documents must contain the term, whereas a sparsity of 1 means that none contain the term). We use a value higher than 0.8 to filter out most terms but still have enough terms to perform the analysis.</li>
+</ul>
+
+<pre><code class="r">term_documentTfIdf &lt;- TermDocumentMatrix(processed,
+                                         control = list(weighting = function(x) 
+                                           weightTfIdf(x, normalize = TRUE)))
+SparseRemoved &lt;- as.matrix(t(removeSparseTerms(term_documentTfIdf, sparse = 0.8)))
+# now many terms are now 
+ncol(SparseRemoved)
+colnames(SparseRemoved)
 </code></pre>
 
   </article>
@@ -199,14 +182,16 @@ lengths &lt;- colSums(as.matrix(TermDocumentMatrix(processed)))
 
 <slide class="" id="slide-8" style="background:;">
   <hgroup>
-    <h2>Creating the training and testing data frames</h2>
+    <h2>Computing new attributes</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">DF &lt;- as.data.frame(cbind(quality, lengths, SparseRemoved))
-set.seed(123)
-train = sample(1:2000,1000)
-TrainDF = DF[train,]
-TestDF = DF[-train,]
+    <ul>
+<li><p>Now, we can use these 202 terms to classify our documents based on whether the reviews are positive or negative. Remember that the rows 1 to 1,000 represent positive reviews, and rows 1,001 to 2,000 negative ones. Create a vector that reflects this.</p></li>
+<li><p>The length of the reviews may be related to their positivity or negativity. So also include an attribute that reflects review length in the processed corpus (before the removal of sparse terms):</p></li>
+</ul>
+
+<pre><code class="r">quality &lt;- c(rep(1,1000),rep(0,1000))
+lengths &lt;- colSums(as.matrix(TermDocumentMatrix(processed)))
 </code></pre>
 
   </article>
@@ -215,47 +200,18 @@ TestDF = DF[-train,]
 
 <slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>Text classification of the reviews</h2>
+    <h2>Creating the training and testing data frames</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li><strong>Naïve Bayes</strong> </li>
+<li>need to create a data frame that includes the criterion attribute (quality), the length of the reviews, and the term-document matrix</li>
 </ul>
 
-<pre><code class="r">library(e1071)
-library(caret) # confusionMatrix is in the caret package
-set.seed(345)
-model &lt;- naiveBayes(TrainDF[-1], as.factor(TrainDF[[1]]))
-classifNB &lt;- predict(model, TrainDF[,-1])
-confusionMatrix(as.factor(TrainDF$quality),classifNB)
-</code></pre>
-
-<pre><code>## Confusion Matrix and Statistics
-## 
-##           Reference
-## Prediction   0   1
-##          0 353 139
-##          1  74 434
-##                                          
-##                Accuracy : 0.787          
-##                  95% CI : (0.7603, 0.812)
-##     No Information Rate : 0.573          
-##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16      
-##                                          
-##                   Kappa : 0.573          
-##  Mcnemar&#39;s Test P-Value : 1.159e-05      
-##                                          
-##             Sensitivity : 0.8267         
-##             Specificity : 0.7574         
-##          Pos Pred Value : 0.7175         
-##          Neg Pred Value : 0.8543         
-##              Prevalence : 0.4270         
-##          Detection Rate : 0.3530         
-##    Detection Prevalence : 0.4920         
-##       Balanced Accuracy : 0.7921         
-##                                          
-##        &#39;Positive&#39; Class : 0              
-## 
+<pre><code class="r">DF &lt;- as.data.frame(cbind(quality, lengths, SparseRemoved))
+set.seed(123)
+train = sample(1:2000,1000)
+TrainDF = DF[train,]
+TestDF = DF[-train,]
 </code></pre>
 
   </article>
@@ -267,9 +223,38 @@ confusionMatrix(as.factor(TrainDF$quality),classifNB)
     <h2>Text classification of the reviews</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li><strong>Support Vector Machines</strong></li>
+    <p><strong>Naïve Bayes</strong> </p>
+
+<ul>
+<li>The partial output here presents the confusion matrix <em>for the training dataset</em> and some performance information.</li>
 </ul>
+
+<pre><code class="r">library(e1071)
+library(caret) # confusionMatrix is in the caret package
+set.seed(345)
+model &lt;- naiveBayes(TrainDF[-1], as.factor(TrainDF[[1]]))
+classifNB &lt;- predict(model, TrainDF[,-1])
+confusionMatrix(as.factor(TrainDF$quality),classifNB)
+</code></pre>
+
+<ul>
+<li>examine how well we can classify the test dataset using the mode </li>
+</ul>
+
+<pre><code class="r">classifNB = predict(model, TestDF[,-1])
+confusionMatrix(as.factor(TestDF$quality),classifNB)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Text classification of the reviews</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Support Vector Machines</strong>: attempt to find a separation between the two classes that is as broad as possible.</p>
 
 <pre><code class="r">library(e1071)
 modelSVM &lt;- svm(quality ~ ., data = TrainDF)
@@ -279,6 +264,10 @@ classifSVMtrain[classifSVMtrain&gt;0.5] = 1
 classifSVMtrain[classifSVMtrain&lt;=0.5] = 0
 confusionMatrix(TrainDF$quality, classifSVMtrain)
 </code></pre>
+
+<ul>
+<li>classification using the testing set</li>
+</ul>
 
 <pre><code class="r">probSVMtest &lt;- predict(modelSVM, TestDF[,-1])
 classifSVMtest &lt;- probSVMtest
@@ -291,7 +280,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>Text classification of the reviews</h2>
   </hgroup>
@@ -304,7 +293,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>More on extraction of <em>textual semantics</em></h2>
   </hgroup>
@@ -319,7 +308,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Microposts: 當前文本挖掘熱門議題</h2>
   </hgroup>
@@ -332,7 +321,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>如何抓資料</h2>
   </hgroup>
@@ -347,7 +336,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>Easy web scraping with <code>rvest</code></h2>
   </hgroup>
@@ -364,7 +353,7 @@ confusionMatrix(TestDF$quality, classifSVMtest)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>舉例</h2>
   </hgroup>
@@ -393,7 +382,7 @@ machina %&gt;% html_nodes(&quot;table&quot;) %&gt;% .[[3]] %&gt;%
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>Collecting NYT news articles via API</h2>
   </hgroup>
@@ -415,7 +404,7 @@ options(nytimes_geo_key = &quot;YOURKEYHERE&quot;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>使用很容易</h2>
   </hgroup>
@@ -435,7 +424,7 @@ res$data[1:3]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Lab: Collecting data via API in a collaborative way</h2>
   </hgroup>
@@ -453,7 +442,7 @@ res$data[1:3]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Group Homework (bonus 30% for midterm kaggle)</h2>
   </hgroup>
@@ -514,19 +503,19 @@ res$data[1:3]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Computing new attributes'>
+        data-slide=7 title='Representing data'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Creating the training and testing data frames'>
+        data-slide=8 title='Computing new attributes'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Text classification of the reviews'>
+        data-slide=9 title='Creating the training and testing data frames'>
          9
       </a>
     </li>
@@ -544,56 +533,62 @@ res$data[1:3]
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='More on extraction of <em>textual semantics</em>'>
+        data-slide=12 title='Text classification of the reviews'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Microposts: 當前文本挖掘熱門議題'>
+        data-slide=13 title='More on extraction of <em>textual semantics</em>'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='如何抓資料'>
+        data-slide=14 title='Microposts: 當前文本挖掘熱門議題'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Easy web scraping with <code>rvest</code>'>
+        data-slide=15 title='如何抓資料'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='舉例'>
+        data-slide=16 title='Easy web scraping with <code>rvest</code>'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Collecting NYT news articles via API'>
+        data-slide=17 title='舉例'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='使用很容易'>
+        data-slide=18 title='Collecting NYT news articles via API'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Lab: Collecting data via API in a collaborative way'>
+        data-slide=19 title='使用很容易'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Group Homework (bonus 30% for midterm kaggle)'>
+        data-slide=20 title='Lab: Collecting data via API in a collaborative way'>
          20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Group Homework (bonus 30% for midterm kaggle)'>
+         21
       </a>
     </li>
   </ul>
