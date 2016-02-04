@@ -135,14 +135,14 @@ Week | Date   | Topic         | Lab
 
 ## Capstone projects
 
-- 第一組
-- 第二組
-- 第三組
-- 第四組
-- 第五組
-- 第六組
-- 第七組
-- 第八組
+- [第一組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G1.pptx)
+- [第二組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G2.pptx)
+- [第三組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G3.pptx)
+- [第四組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G4.pdf)
+- [第五組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G5.pptx)
+- [第六組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G6.pptx)
+- [第七組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G7.pdf)
+- [第八組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G8.pptx)
 
 <a href='lectures/00/index.html#9'>
 <img style='border: 1px solid;' width=100% src='./assets/img/neocilin.png'></img>
