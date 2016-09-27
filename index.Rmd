@@ -78,14 +78,14 @@ Week | Date   | Topic         | Lab
 
 
 ```{r echo = F, results = 'asis'}
-#lectures = dir('lectures', full = TRUE)
-#links = paste0(seq_along(lectures), ". ", 
-#  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
-#)
-#writeLines(links)
+lectures = dir('lectures', full = TRUE)
+links = paste0(seq_along(lectures), ". ", 
+  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
+)
+writeLines(links)
 ```
 
-- [Lecture week2](lectures/00/index.html)
+- [Lecture 00](lectures/00/index.html)
 - [Lecture 01](lectures/01/index.html)
 - [Lecture 02](lectures/02/index.html)
 - [Lecture 03](lectures/03/index.html)

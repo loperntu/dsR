@@ -23,124 +23,54 @@ logo: assets/img/lopen.jpg
 
 `資料科學家`的工作, 可以視為是一個探索、預測與解讀資料意義的互動歷程。而`語言分析`的工作, 在了解文本資料的語意與情緒表現上是重要的關鍵。本課程結合 了目前統計程式設計與自然語言處理技術, 以較為簡潔容易入門的設計與實際操作導引, 希望可以讓毫無相關程式學習基礎的學生在本課程的帶領下, 達到以下的學習目標:
 
-
-- 了解結構與非結構性資料的特性與預處理工作, 特別是針對中文文本中呈現的語言特性的處理方法。
-- <span style="color:green; font-weight:bold">了解中文的語言特性與文本解析 (text analytics) 的基本概念。</span>
+- 瞭解 R 語言的基本知識。
+- 瞭解結構與非結構性資料的特性與預處理工作, 特別是針對中文文本中呈現的語言特性的處理方法。
+- <span style="color:blue; font-weight:bold">了解中文的語言特性與文本解析 (text analytics) 的基本概念。</span>
 - 選擇適當的變數與特徵並加以合理調製, 對之進行描述統計與視覺探勘, 針對不同的問題點與數據類型, 找出適當的圖形表達與統計分析。
 - 學習簡易的自然語言處理與機器學習預測模式, 並應用在自己關心的領域。
+- 學習實作資料科學專案與溝通表達。
 
 
 ## 課綱
-[詳細一點的版本](syllabus.pdf) 
+[詳細一點的版本](dsR2016.pdf) 
 
 
 Week | Date   | Topic         | Lab
 -----|:------:| ---           | ---
-1    | 09/17  | Orientation   | 
-2    | 09/24  | Introduction to Data Science and Text Analytics    | RStudio.Agilearning 
-3    | 10/01  | Introduction to Data Science and Text Analytics    | Linux.command-line
-4    | 10/08  | Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 1-4](https://www.datacamp.com/courses/free-introduction-to-r)
-5    | 10/15	| Preparing / Preprocessing text and linguistics ABC | R programming: [chapter 5-7](https://www.datacamp.com/courses/free-introduction-to-r)
-6    | 10/22	| Exploratory data analysis and Infographics         | Data Manipulation: [chapter 1-2](https://www.datacamp.com/courses/data-table-data-manipulation-r-tutorial)
-7    | 10/29  | Exploratory data analysis and Infographics         | Data Visualization: [1-3;7-10](https://www.youtube.com/playlist?list=PLqzoL9-eJTNDsdghuYR70d01YVGIBs29N)
-8    | 11/05	| Corpus and natural language processing             | Textual data manipulation: [Regular Expression](https://youtu.be/q8SzNKib5-4)
-9    | 11/12	| Corpus and natural language processing             | R and Statistics: [course one (five chapters)](https://www.datacamp.com/introduction-to-statistics)
-10   | 11/19	| Text classification and clustering                 | 
-11 	 | 11/26	| `mini-Hackathon`                                   | **開始規劃期末展演**
-12 	 | 12/03	| Text classification and clustering                 |
-13 	 | 12/10	| Topic modeling                                     |
-14 	 | 12/17	| Sentiment analysis                                 |
-15 	 | 12/24	| Stylometrics and personality detection					   | 
-16 	 | 12/31	| Discussion                              					 | 
-17 	 | 01/07	| Term project presentation (un-conference)					 |
-18 	 | 01/14	| Final **term project and report due**	             |
+1    | 09/15  | 中秋節放假    | 
+2    | 09/22  | Introduction to Data Science and Text Analytics    | `Installing R and Rstudio`
+3    | 09/29  | Introduction to Data Science and Text Analytics    | `data types and structures (vector)`
+4    | 10/06  | Preparing / Obtaining Data | `data structures (matrix, data frame, factor)` 
+5    | 10/13	| Scrubbing Data | `list, Basic I/O`
+6    | 10/20	| Exploratory data analysis and Graphics | `control flow; writing functions`
+7    | 10/27  | Exploratory data analysis and Graphics | `data wrangling with dplyr and tidyr`
+8    | 11/03	| Corpus and Natural Language Processing  | `data manipulation (with regex)`
+9    | 11/10	| Corpus and Statistics	 | R and Statistics: [course one (five chapters)](https://www.datacamp.com/introduction-to-statistics)
+10   | 11/17	| Advanced Graphics                 | 
+11 	 | 11/24	| Machine Learning Basics               | 
+12 	 | 12/01	| Classification and Clustering                 |
+13 	 | 12/08	| **mini-Hackathon**                                     |
+14 	 | 12/15	| Discussion                                |
+15 	 | 12/22	| Sentiment analysis					   | 
+16 	 | 12/29	| Reporting and Presenting Data   | `Web application with Shiny`
+17 	 | 01/04	| Term project competition/presentation |
+18 	 | 01/11	| Final **term project and report due**	             |
 
 
 
 ## 教練團
 
 ```coffee
-謝舒凱 (Aber) <shukaihsieh@ntu.edu.tw>
-施孟賢 (Simon) <simon.xian@gmail.com>
-張瑜芸 (Taco) <yuyun.unita@gmail.com>
+謝舒凱 <shukaihsieh@ntu.edu.tw>
+林士凱 <vn512903@hotmail.com>
+張瑜芸 <yuyun.unita@gmail.com>
+黃資勻 <averocksanne@gmail.com>
+李佳臻 <she767219@gmail.com>
+吳小涵 <c04s84@gmail.com>
 ```
 
 
 ## 課程投影片 
-
-
-
-
-- [Lecture 00](lectures/00/index.html)
-- [Lecture 01](lectures/01/index.html)
-- [Lecture 02](lectures/02/index.html)
-- [Lecture 03](lectures/03/index.html)
-- [Lecture 04](lectures/04/index.html)
-- [Lecture 05](lectures/05/index.html)
-- [Lecture 06](lectures/06/index.html)
-- [Lecture 07](lectures/07/index.html)
-- [Lecture 08](lectures/08/index.html)
-- [Lecture 09](lectures/09/index.html)
-- [Lecture 10](lectures/10/index.html)
-
-## 助教講義、習題與作業
-
-[評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
-
-- [Week.2](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/0924-rstudio_intro.pdf)
-- [Week.3](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/1001-agilearning_install.pptx)
-- [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week. 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
-- [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
-- [[Week.6.1]](https://goo.gl/SjV4iq) / [[Week. 6.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise3-data_table.html)
-- [[Week.7.1]](http://goo.gl/08t01z) / [[Week. 7.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise4-plot.html)
-- [[Week.8.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise5-regexp.html#1)
-- [[Week.9.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise6-basic_stat.html#1)
-
-## 課程教材
-
-在課程投影片中講解基本概念，如果有興趣了解進階內容，可參考以下線上教材
-
-- [語言分析與資料科學](https://www.gitbook.com/book/loperntu/ladsbook/details) 
-- [開放語料庫：製程與分析](https://www.gitbook.com/book/loperntu/copens/details)
-
-
-## 課程同學自發活動
-- [課堂共筆](https://hackpad.com/G2xpgmB77bL)
-- [學習共筆](https://lads2015fall.hackpad.com/)
-- [臉書社團](https://www.facebook.com/groups/652099794893097/)
-
-
-## 課程精神
-1. 自主學習
-2. 跨學門協作
-
-
------
-## 作業分數分佈圖
-
-
----
-## 小組作業觀摩
-- **bonus.1** [G1](group.bonus/b3G1.html)/[G4](group.bonus/b3G4.html)/[G6](group.bonus/b3G6.html)/[G7](group.bonus/b3G7.html)/[G8]((group.bonus/b3G8.html)
-- **bonus.2** [G5](group.bonus/b4G5.html)/[G6](group.bonus/b4G6.html)
-
-## Capstone projects
-
-- [第一組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G1.pptx)
-- [第二組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G2.pptx)
-- [第三組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G3.pptx)
-- [第四組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G4.pdf)
-- [第五組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G5.pptx)
-- [第六組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G6.pptx)
-- [第七組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G7.pdf)
-- [第八組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G8.pptx)
-
-<a href='lectures/00/index.html#9'>
-<img style='border: 1px solid;' width=100% src='./assets/img/neocilin.png'></img>
-</a>
-
-
-
 
 
 
