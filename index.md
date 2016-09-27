@@ -1,18 +1,19 @@
 ---
-title: Linguistic Analysis and Data Science
-subtitle: LDAs
+title:Introducing Data Science with R
+subtitle: dsR
 author: Shu-Kai Hsieh
-github: {user: loperntu, repo: lads, branch: "gh-pages"}
+github: {user: loperntu, repo: dsR, branch: "gh-pages"}
 framework: minimal
 mode: selfcontained
 ext_widgets: {rCharts: ["libraries/nvd3"]}
 hitheme: solarized_light
-logo: assets/img/plurk_hapax.png
+logo: assets/img/lopen.jpg
 ---
 
 
 
-# 語言分析與資料科學入門
+# R 語言與資料科學導論 Introducing Data Science with R
+
 
 <a href="http://prose.io/#{{site.github.user}}/{{site.github.repo}}/edit/gh-pages/index.Rmd" class="button icon edit">Edit Page</a>
 

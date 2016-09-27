@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Linguistic Analysis and Data Science</title>
+  <title>Introducing Data Science with R</title>
   <meta charset="utf-8">
-  <meta name="description" content="Linguistic Analysis and Data Science">
-  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -44,11 +44,11 @@
     <img src="assets/img/lope.png">
   </aside>
   <hgroup class="auto-fadein">
-    <h1>Linguistic Analysis and Data Science</h1>
-    <h2>week.1.warmup</h2>
-    <p>謝舒凱 Graduate Institute of Linguistics<br/>Associate Professor, National Taiwan University</p>
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.2</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
   </hgroup>
-    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
@@ -70,15 +70,17 @@
   
   <article data-timings="">
     <blockquote>
-<p>謝舒凱 Aber 德國杜賓根大學計算語言學博士|中研院語言學研究所博士後研究員|
+<p>謝舒凱 德國杜賓根大學計算語言學博士|中研院語言學研究所博士後研究員|
 台灣大學語言學研究所副教授</p>
 
-<p>施孟賢 Simon 台灣大學語言學博士班</p>
+<p>林士凱 台灣大學化學所碩士；LOPE 實驗室研究助理</p>
 
-<p>張瑜芸 Taco 台灣大學語言學博士班</p>
+<p>張瑜芸 台灣大學語言學博士班</p>
+
+<p>黃資勻 李佳臻 吳小涵 台灣大學語言學碩士班</p>
 </blockquote>
 
-<p><img src = './assets/img/shukai.png' height="100px"></img></p>
+<p><img src = './assets/img/shukai.png' height="60%"></img></p>
 
     
   </article>
@@ -109,11 +111,15 @@
   
   
   <hgroup>
-    <h2>妳活著的時代背景：Data is the KING</h2>
+    <h2>自學＋集體協作的年代</h2>
   </hgroup>
   
   <article data-timings="">
-    <p><img src = './assets/img/bigdata.jpeg' height="300px"></img></p>
+    <p><a href="http://datasciencemasters.org/">http://datasciencemasters.org/</a></p>
+
+<p><a href="https://buzzorange.com/techorange/2016/02/02/plan-to-be-a-data-scientist-in-new-year/">https://buzzorange.com/techorange/2016/02/02/plan-to-be-a-data-scientist-in-new-year/</a></p>
+
+<p><code>syllabus</code></p>
 
     
   </article>
@@ -124,16 +130,11 @@
   
   
   <hgroup>
-    <h2>妳活著的時代背景：不管妳喜不喜歡</h2>
+    <h2>妳活著的時代背景：Data is the KING</h2>
   </hgroup>
   
   <article data-timings="">
-    <p><code>嵌入</code>、<code>穿戴</code>、<code>社群</code>、、、</p>
-
-<ul class = "build incremental">
-<li>當人都變成了巨量數據的集合</li>
-<li>物聯網，車聯網，衣聯網，腦聯網</li>
-</ul>
+    <p><img src = './assets/img/sleep.jpg' height="35%"></img></p>
 
     
   </article>
@@ -141,6 +142,27 @@
 </slide>
 
 <slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>妳活著的時代背景：不管妳喜不喜歡</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><code>行動</code>、<code>嵌入</code>、<code>穿戴</code>、<code>社群</code>、、、</p>
+
+<ul>
+<li>當人都變成了巨量數據的集合:  物聯網，車聯網，衣聯網，腦聯網</li>
+</ul>
+
+<p><img src = './assets/img/lifeatnet.jpg' height="100px"></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -157,7 +179,7 @@
 </blockquote>
 
 <ul>
-<li>Symbolic and Signal data</li>
+<li>主要大類型：Symbolic and Signal data</li>
 </ul>
 
     
@@ -165,7 +187,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -184,40 +206,17 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>Text analytics / Text mining / NLP / Machine Learning 又是啥</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <p>文本數據分析：（DS 的一支）利用 NLP + ML 對於文本數據做各種預測與應用</p>
-
-<ul>
-<li>[<strong>Data Science</strong>] Linguistic/textual <code>data</code> processing</li>
-<li>[<strong>Natural Language Processing</strong>] Linguistic/textual <code>information</code> processing</li>
-<li>[<strong>Semantics, Ontologies, AI and Language Understanding</strong>] Linguistic/textual <code>knowledge</code> processing</li>
-</ul>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
-    <h2>DS 和語言分析有什麼關係</h2>
+    <h2>Data Science Processs Flowchart (2016)</h2>
   </hgroup>
   
   <article data-timings="">
-    <p><img src = './assets/img/textanalytics.png' height="100px"></img></p>
+    <p><code>(source: wiki)</code></p>
 
-<blockquote>
-<p>This course will provide an introduction to this exciting growing cross-disciplinary field. It will teach the basic principles and skills required for analysing textual data in a programmable way: finding linguistic patterns, dimensionality reduction, clustering, classification and prediction. Students will also have the opportunity of learning R and command-line programming.</p>
-</blockquote>
+<p><img src = './assets/img/ds_flow.png' height="100px"></img></p>
 
     
   </article>
@@ -228,11 +227,300 @@
   
   
   <hgroup>
-    <h2>文本分類想像力練習</h2>
+    <h2>OSEMM MODEL</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Obtaining data</li>
+<li>Scrubbing data</li>
+<li>Exploring data</li>
+<li>Modeling data </li>
+<li>Interpreting data </li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Text analytics / Text mining / NLP / Machine Learning 又是啥</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>文本數據分析：利用 NLP + ML 對於文本數據做各種預測與應用</p>
+
+<ul>
+<li>[<strong>Data Science</strong>] Linguistic/textual <code>data</code> processing</li>
+<li>[<strong>Natural Language Processing</strong>] Linguistic/textual <code>information</code> processing</li>
+<li>[<strong>Semantics, Ontologies, AI and Language Understanding</strong>] Linguistic/textual <code>knowledge</code> processing</li>
+</ul>
+
+<p>應用:</p>
+
+<ul>
+<li>線上聲譽 (reputation.com)、市政感想、生醫文獻搜尋 (Quertle)、選情預測、顧客滿意度、</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>DS 和語言／文本分析有什麼關係</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img src = './assets/img/textanalytics.png' height="35%0"></img></p>
+
+<blockquote>
+<p>This course will provide an introduction to this exciting growing cross-disciplinary field. It will teach the basic principles and skills required for analysing textual data in a programmable way: finding linguistic patterns, dimensionality reduction, clustering, classification and prediction. Students will also have the opportunity of learning R (and command-line programming).</p>
+</blockquote>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>DS and BIG data, and Dataclysm</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><strong>資料排氣</strong> (data exhaust): 行車時手機的 GPS 回報所在位置；信用卡購買紀錄；Google 搜尋記錄追蹤；FB 人際互動；智慧電錶記錄能源使用。</li>
+</ul>
+
+<!-- 根據手機上的資料，就能預測距今一年半後 你會出現在何處。精準度為一個小時內，一條街以內。 -->
+
+<ul>
+<li><strong>無所不在的感知器</strong> (sensor) 根據膚電反應（皮膚導電性）測量你對某項活動的興趣或投入程度(Q Sensor)；
+根據你說話的語氣和抑揚頓挫預測與偵測心情起伏 (Cogito);...</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>DS 的潛力</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>發掘知識 / Knowledge Dscovery </li>
+</ul>
+
+<!-- 妳是負責追蹤麥當勞的分析師 有新店要開張，它必須向聯邦通訊委員會申請設立得來速 窗口對講機系統的執照，藉由發照資料，你可以追蹤開店狀況，但妳可能不知道這一點。讓資料找上妳！ -->
+
+<ul>
+<li><p>繁榮商業應用 / Data Science for Business   </p></li>
+<li><p>促進開放政府與開放社會 / Data Science for Social Good</p>
+
+<ul>
+<li><em>PRISM Program</em> 網路全民監控 &lt;&gt; <a href="http://enigma.io">http://enigma.io</a></li>
+<li>(<a href="http://data.gov">http://data.gov</a>) (<a href="http://data.gov.uk">http://data.gov.uk</a>) (<a href="http://data.taipei/opendata">http://data.taipei/opendata</a>)</li>
+<li><a href="https://collegescorecard.ed.gov/">College Scorecard</a> 哪一所大學讓你獲得最高的投資報酬率。</li>
+</ul>
+
+<!-- 食安、能源、運輸、醫療、地產、通訊、教育 --></li>
+<li><p>網路安全與黑資料（源源不絕）</p>
+
+<ul>
+<li>巴拿馬文件</li>
+<li>Ashley Madison</li>
+<li><code>Deep web</code> (暗黑網路)</li>
+</ul></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[思考] 網路安全、個資與黑資料</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <h3>Data is the new oil, privacy is the new currency</h3>
+
+<ul>
+<li>透明</li>
+<li>用 <code>RedLaser</code> 掃描該產品的條碼，它會立即告訴妳此商品在附近商店的售價（代價：給出妳的位置、購物項目）</li>
+<li>願意公布個人資料可以協助理解人口類型、預測大規模流感、控管交通、節省能源、等等。</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[思考] DS and Thick Data</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <h3>資料科學與厚數據：資料科學中的質性研究法</h3>
+
+<ul>
+<li>大數據的量化方法需要經過正規化/標準化的資料處理，無形中剔除數據中隱含的 <code>背景、意義</code> 和 <code>故事</code>。
+（e.g, 斷裂的言談）</li>
+<li>藉助少量樣本、依賴人的學習能力（而非機器學習）、體現數據關係背後的社會文化、行為動機、包容不可被化約的複雜性。(e.g. 眨眼的人類學觀察)</li>
+</ul>
+
+<p><img src = './assets/img/baigong.jpg' height="30%" width="30%"></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>DS: R and/or Python ?</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><a href="http://bigdatadigest.baijia.baidu.com/article/82330">http://bigdatadigest.baijia.baidu.com/article/82330</a></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h1>你要學習與培養的能力</h1>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>程式與邏輯思維</li>
+<li>解題 </li>
+<li>想像力與人本思維</li>
+<li>統計與機器學習（e.g. 深度學習神經網路）</li>
+</ul>
+
+<p><a href="http://www.mastersindatascience.org/careers/data-scientist/">http://www.mastersindatascience.org/careers/data-scientist/</a></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[練習] 文本分類想像力</h2>
   </hgroup>
   
   <article data-timings="">
     
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[練習] Problem-solving techniques</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <!-- - 如果我現在在兜圈子，EmoBOT 會注意到我的憂鬱傾向嗎？ -->
+
+<ul>
+<li>怎麼區分觀影行為以方便區別推薦？</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Capstone project</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <blockquote>
+<p>a multifaceted assignment that serves as a culminating academic and intellectual experience for students, typically during their final year of high school or middle school, or at the end of an academic program or learning-pathway experience. </p>
+</blockquote>
+
+<ul>
+<li>注意：資料互動是下一代的資料科學創新重點。
+
+<ul>
+<li>text &lt;&gt; music; </li>
+</ul></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Capstone project (by 教練團)</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img src = './assets/img/neocilin.png' height="60%" width="60%"></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Homework</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>安裝 <code>R</code> </li>
+<li>安裝 <code>RStudio</code></li>
+<li>填寫 (不到三分鐘) 線上問卷 <a href="https://shukai.typeform.com/to/qgKOV2">https://shukai.typeform.com/to/qgKOV2</a></li>
+</ul>
+
     
   </article>
   <!-- Presenter Notes -->
@@ -256,44 +544,122 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='妳活著的時代背景：Data is the KING'>
+        data-slide=3 title='自學＋集體協作的年代'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='妳活著的時代背景：不管妳喜不喜歡'>
+        data-slide=4 title='妳活著的時代背景：Data is the KING'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Data, Information, Knowledge'>
+        data-slide=5 title='妳活著的時代背景：不管妳喜不喜歡'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Data Science 在做什麼'>
+        data-slide=6 title='Data, Information, Knowledge'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Text analytics / Text mining / NLP / Machine Learning 又是啥'>
+        data-slide=7 title='Data Science 在做什麼'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='DS 和語言分析有什麼關係'>
+        data-slide=8 title='Data Science Processs Flowchart (2016)'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='文本分類想像力練習'>
+        data-slide=9 title='OSEMM MODEL'>
          9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Text analytics / Text mining / NLP / Machine Learning 又是啥'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='DS 和語言／文本分析有什麼關係'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='DS and BIG data, and Dataclysm'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='DS 的潛力'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='[思考] 網路安全、個資與黑資料'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='[思考] DS and Thick Data'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='DS: R and/or Python ?'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='你要學習與培養的能力'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='[練習] 文本分類想像力'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='[練習] Problem-solving techniques'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Capstone project'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Capstone project (by 教練團)'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Homework'>
+         22
       </a>
     </li>
   </ul>

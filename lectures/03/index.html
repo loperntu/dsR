@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Linguistic Analysis and Data Science</title>
+  <title>Introducing Data Science with R</title>
   <meta charset="utf-8">
-  <meta name="description" content="Linguistic Analysis and Data Science">
-  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="../../libraries/frameworks/io2012/js/slides" 
-    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  <script src="../../libraries/widgets/nvd3/js/d3.v2.min.js"></script>
-<script src="../../libraries/widgets/nvd3/js/nv.d3.min.js"></script>
-
+  
 
 </head>
 <body style="opacity: 0">
   <slides class="layout-widescreen">
     
     <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/lopen.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lope.png">
+  </aside>
   <hgroup class="auto-fadein">
-    <h1>Linguistic Analysis and Data Science</h1>
-    <h2>lecture 03</h2>
-    <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.3</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
   </hgroup>
-    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
 </slide>
     
 
     <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:#FFFAF0;">
+    <slide class="" id="slide-1" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Pre-processing for Text Analytics</li>
-<li>Linguistics 101</li>
-<li>Crash course for R</li>
+<li>RStudio</li>
+<li>A glace at Data Science Examples</li>
+<li>Lab session: vectors</li>
 </ol>
 
   </article>
@@ -67,16 +78,14 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>回味一下</h2>
+    <h2>大綱</h2>
   </hgroup>
   <article data-timings="">
-    <p>用 linux 指令 </p>
-
-<ul>
-<li>建立目錄 <code>~/lads/data/week4</code></li>
-<li>抓 Charles Dickens 的 Oliver Twist (<code>http://www.gutenberg.org/cache/epub/730/pg730.txt</code>) 丟到這個目錄，改檔案名字為 <code>dickens.txt</code></li>
-<li>移除文本中的 header 及 footer，存成 <code>dickens-clean.txt</code></li>
-</ul>
+    <ol>
+<li><strong><code>RStudio</code></strong></li>
+<li>A glace at Data Science Example</li>
+<li>Lab session: vectors</li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -84,17 +93,12 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>一種作法</h2>
+    <h2>R</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="bash">curl -s http://www.gutenberg.org/cache/epub/730/pg730.txt -o dickens.txt
-less -N dickens.txt
-# 利用 G 和上下頁鍵
-sed &#39;1,150d&#39; dickens.txt &gt; dickens-noheader.txt
-sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
-</code></pre>
-
-<p><a href="http://linux.vbird.org/linux_basic/0220filemanager.php#less">鳥哥的 linux 私房菜</a></p>
+    <ul>
+<li>The R programming language is used for statistical computing and graphics.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -102,14 +106,15 @@ sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>再多練習一下 (分組做)</h2>
+    <h2>R 的學習</h2>
   </hgroup>
   <article data-timings="">
-    <p>用 linux 指令</p>
+    <h3>自學教材課程</h3>
 
 <ul>
-<li>全部去標點去數字去空白，並改成小寫之後建立詞頻表</li>
-<li>這個詞頻表中有一個詞彙 <code>bumble</code> 吸引了我們的目光，請用 <code>grep</code> 指令列出在它 <code>dickens-clean.txt</code>所在的地方（順便加上行數，與給它點顏色如何）</li>
+<li>[datacamp]</li>
+<li>[datarequest]
+<a href="https://joe11051105.gitbooks.io/r_basic/content/basic_operation/data_attribute.html">別人的筆記</a></li>
 </ul>
 
   </article>
@@ -118,219 +123,19 @@ sed &#39;18682,19052d&#39; dickens-noheader.txt &gt; dickens-clean.txt
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>一種作法</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>(請挑戰最精簡作法$\rightarrow$可以立刻留名在 slide!)</p>
-
-<pre><code class="bash">tr -d [:punct:] &lt; dickens-clean.txt | tr -d [:digit:] | 
-tr [:upper:] [:lower:] | tr -d &#39;\r&#39;| tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | 
-sort -r -g &gt; dickens-wordfreq.txt
-
-grep -E -n --color=auto &quot;(B|b)umble&quot; dickens-clean.txt
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>離題一下</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>這件事這樣方法花了妳多少時間 (less than ONE second!!)</p>
-
-<p><img style='border: 1px solid;' width=100% src='./assets/img/time.png'></img></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>簡言之</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>在還不會用 R 處理時，可以利用 linux 指令或是 R 套件提供的功能來做前處理。</p>
-
-<ol>
-<li>大小寫轉換</li>
-<li>標點符號移除</li>
-<li>數字移除</li>
-<li>URLs 移除</li>
-<li><span style="color:green; font-weight:bold"> 表情符號 </span></li>
-<li><span style="color:green; font-weight:bold"> 停用詞移除 (stop words removal) </span></li>
-<li><span style="color:green; font-weight:bold"> 詞目化 (lemmatization)、詞幹化 (stemmming) </span></li>
-<li><span style="color:green; font-weight:bold"> 分詞 (tokenization)</li>
-<li><span style="color:green; font-weight:bold"> 詞類自動標記 (POS tagging) </span></li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-8" style="background:;">
-  <hgroup>
-    <h2>中文文本到詞頻表的管線處理 pipeline</h2>
+    <h2>RStudio</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>建立一個 jieba.R，放到處理資料的目錄下</li>
-</ul>
-
-<pre><code class="r"># thanks to simon
-library(jiebaR)
-txt = scan(&#39;stdin&#39;, what = &#39;char&#39;)
-words_vector = worker() &lt;= txt
-words_char = paste(words_vector, collapse = &#39; &#39;)
-cat(words_char)
-</code></pre>
-
-<ul>
-<li>測一下魯迅</li>
-</ul>
-
-<pre><code class="bash">curl -s http://www.gutenberg.org/files/27166/27166-0.txt -o luxun.txt
-cat luxun.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c -g | sort -r &gt; luxun-wordfreq.txt
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-9" style="background:;">
-  <hgroup>
-    <h2>問題：御姐愛不愛</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>新詞 (neologisms) 的複雜遠超過想像：可參見 <a href="loperntu.github.io/asialex2015">Hsieh 2015 AsiaLex invited talk</a></li>
-<li>自訂詞表是第一步</li>
-</ul>
-
-<pre><code class="r">ShowDictPath()  ### Show dict path, find and edit the &quot;user.dict.utf8&quot;
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-10" style="background:;">
-  <hgroup>
-    <h2>Exercise</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>從 <code>GQ.txt</code> 找一個不想被斷開的詞(如「卡娃伊」) 加入 jieba 詞表(<code>user.dict.utf8</code>)，重跑一次詞頻表，看看「卡娃伊」在不在裡面。</p>
-
-<pre><code class="bash">cat GQ.txt | Rscript jieba.R | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -r -g &gt; GQ-wordfreq.txt
-grep &#39;卡娃伊&#39; GQ.txt
-grep &#39;卡娃伊&#39; GQ-wordfreq.txt
-# 增添卡娃伊到詞表之後重跑一次第一行..................
-grep &#39;卡娃伊&#39; GQ-wordfreq.txt
-</code></pre>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-11" style="background:;">
-  <article data-timings="">
-    <p><img style='border: 1px solid;' height=42% width=70% src='./assets/img/wait.jpg'>
-</img></p>
-
-<h6>[pic source]<a href="http://home.gamer.com.tw/TrackBack.php?sn=717348">http://home.gamer.com.tw/TrackBack.php?sn=717348</a></h6>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2>Corpus and Crawler Issues</h2>
-  </hgroup>
-  <article data-timings="">
-    <p>還有。。。</p>
-
-<ul>
-<li>萬一我要處理的文本超過一個檔案？</li>
-<li>萬一網站沒有提供好心的 text /csv 檔？</li>
-<li>萬一我想要動態持續抓檔 (<strong>monitoring corpus</strong>)？</li>
-</ul>
-
-<blockquote>
-<p>Stay tuned, 並請期待本課程線上書籍。</p>
-</blockquote>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:;">
-  <hgroup>
-    <h2>大綱</h2>
-  </hgroup>
-  <article data-timings="">
-    <ol>
-<li>Pre-processing for Text Analytics</li>
-<li><strong><code>Linguistics 101</code></strong></li>
-<li>Crash course for R</li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-14" style="background:;">
-  <hgroup>
-    <h2>Linguistics 101</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>這個階段先碰到了 <strong>構詞學</strong> (morphology)</li>
-</ul>
-
-<blockquote>
-<p>In linguistics, morphology is the identification, analysis and description of the structure of a given language&#39;s morphemes and other linguistic units, such as root words, affixes, parts of speech, intonations and stresses, or implied context. (wiki)</p>
-</blockquote>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-15" style="background:;">
-  <hgroup>
-    <h2>中文斷詞（分詞）問題</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>先想像「字」「詞」有何不同？(下次細談)</li>
-<li>許多人把它當成是處理階段，而不是「問題」或是「假說」</li>
-<li>造成的大數據大雜訊的效應 (Hsieh, 2015)</li>
-</ul>
-
-<p><img style='border: 1px solid;' height = 22% width = 50% src='../../assets/img/plurk_hapax.png'>
-</img></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
-  <hgroup>
-    <h2>目前解法</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>自備詞表 domain lexicon</li>
-<li>unsupervised learning</li>
+<li>RStudio is an open source Integrated Development Environment (IDE) for the R platform. </li>
+<li>多利用網站資訊, e.g., <a href="https://www.rstudio.com/resources/cheatsheets/">小抄</a></li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:#FFFAF0;">
+<slide class="" id="slide-6" style="background:#FFFAF0;">
   <article data-timings="">
     <ol>
 <li>Pre-processing for Text Analytics</li>
@@ -342,7 +147,7 @@ grep &#39;卡娃伊&#39; GQ-wordfreq.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>Learn R in 10 Minutes</h2>
   </hgroup>
@@ -353,21 +158,12 @@ grep &#39;卡娃伊&#39; GQ-wordfreq.txt
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
-    <h2>Homework Bonus (20151008)</h2>
+    <h2>Data Science</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>建立妳認為最適合台灣中文的<strong>停用詞表</strong>與<strong>表情符號表</strong> (Ceiba 有幾個現成的提供參考)，並說明理由與作法。可以參考諸如 [Automatic Construction of Chinese Stop Word List] 學術論文。(20 分)
-
-<ul>
-<li>「的」通常都在各種停用詞表中，但是多一點語言學素養，你就知道問題沒那麼簡單。</li>
-</ul></li>
-</ul>
-
-<pre><code>舉個例子：「馬的政府」「老闆對我們是很 nice 的」「好der」
-</code></pre>
+    <p><img src = './assets/img/data-science.png' height="100px"></img></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -385,110 +181,44 @@ grep &#39;卡娃伊&#39; GQ-wordfreq.txt
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='回味一下'>
+        data-slide=2 title='大綱'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='一種作法'>
+        data-slide=3 title='R'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='再多練習一下 (分組做)'>
+        data-slide=4 title='R 的學習'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='一種作法'>
+        data-slide=5 title='RStudio'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='離題一下'>
+        data-slide=6 title='NA'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='簡言之'>
+        data-slide=7 title='Learn R in 10 Minutes'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='中文文本到詞頻表的管線處理 pipeline'>
+        data-slide=8 title='Data Science'>
          8
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='問題：御姐愛不愛'>
-         9
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Exercise'>
-         10
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='NA'>
-         11
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Corpus and Crawler Issues'>
-         12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='大綱'>
-         13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Linguistics 101'>
-         14
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='中文斷詞（分詞）問題'>
-         15
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='目前解法'>
-         16
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='NA'>
-         17
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Learn R in 10 Minutes'>
-         18
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Homework Bonus (20151008)'>
-         19
       </a>
     </li>
   </ul>
@@ -500,21 +230,12 @@ grep &#39;卡娃伊&#39; GQ-wordfreq.txt
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
-<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
-<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
-<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
 
-  <script>  
-  $(function (){ 
-    $("#example").popover(); 
-    $("[rel='tooltip']").tooltip(); 
-  });  
-  </script>  
-  
   <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -527,13 +248,16 @@ grep &#39;卡娃伊&#39; GQ-wordfreq.txt
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script> -->
-  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
 </script>
-<script src='../../libraries/widgets/nvd3/js/d3.v2.js'></script>
-  <script src='../../libraries/widgets/nvd3/js/nv.d3.min.js'></script>
-  
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
    
