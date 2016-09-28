@@ -1,5 +1,5 @@
 ---
-title:Introducing Data Science with R
+title: Introducing Data Science with R
 subtitle: dsR
 author: Shu-Kai Hsieh
 github: {user: loperntu, repo: dsR, branch: "gh-pages"}
@@ -78,11 +78,11 @@ Week | Date   | Topic         | Lab
 
 
 ```{r echo = F, results = 'asis'}
-lectures = dir('lectures', full = TRUE)
-links = paste0(seq_along(lectures), ". ", 
-  "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
-)
-writeLines(links)
+# lectures = dir('lectures', full = TRUE)
+# links = paste0(seq_along(lectures), ". ", 
+#   "[Lecture ", basename(lectures), "]", "(", lectures, "/index.html)"
+# )
+# writeLines(links)
 ```
 
 - [Lecture 00](lectures/00/index.html)

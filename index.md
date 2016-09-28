@@ -1,5 +1,5 @@
 ---
-title:Introducing Data Science with R
+title: Introducing Data Science with R
 subtitle: dsR
 author: Shu-Kai Hsieh
 github: {user: loperntu, repo: dsR, branch: "gh-pages"}
@@ -71,6 +71,80 @@ Week | Date   | Topic         | Lab
 
 
 ## 課程投影片 
+
+
+
+
+- [Lecture 00](lectures/00/index.html)
+- [Lecture 01](lectures/01/index.html)
+- [Lecture 02](lectures/02/index.html)
+- [Lecture 03](lectures/03/index.html)
+- [Lecture 04](lectures/04/index.html)
+- [Lecture 05](lectures/05/index.html)
+- [Lecture 06](lectures/06/index.html)
+- [Lecture 07](lectures/07/index.html)
+- [Lecture 08](lectures/08/index.html)
+- [Lecture 09](lectures/09/index.html)
+- [Lecture 10](lectures/10/index.html)
+
+## 助教講義、習題與作業
+
+[評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
+
+- [Week.2](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/0924-rstudio_intro.pdf)
+- [Week.3](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/1001-agilearning_install.pptx)
+- [[Week.4.1]](http://goo.gl/bQzSYk) /  [[Week. 4.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise1-matrix_factor.html)
+- [[Week.5.1]](http://goo.gl/Ec6hLO) / [[Week 5.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise2-df_list.html)
+- [[Week.6.1]](https://goo.gl/SjV4iq) / [[Week. 6.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise3-data_table.html)
+- [[Week.7.1]](http://goo.gl/08t01z) / [[Week. 7.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise4-plot.html)
+- [[Week.8.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise5-regexp.html#1)
+- [[Week.9.2]](http://lope.linguistics.ntu.edu.tw/courses/data_science/lab_session/exercise6-basic_stat.html#1)
+
+## 課程教材
+
+在課程投影片中講解基本概念，如果有興趣了解進階內容，可參考以下線上教材
+
+- [語言分析與資料科學](https://www.gitbook.com/book/loperntu/ladsbook/details) 
+- [開放語料庫：製程與分析](https://www.gitbook.com/book/loperntu/copens/details)
+
+
+## 課程同學自發活動
+- [課堂共筆](https://hackpad.com/G2xpgmB77bL)
+- [學習共筆](https://lads2015fall.hackpad.com/)
+- [臉書社團](https://www.facebook.com/groups/652099794893097/)
+
+
+## 課程精神
+1. 自主學習
+2. 跨學門協作
+
+
+-----
+## 作業分數分佈圖
+
+
+---
+## 小組作業觀摩
+- **bonus.1** [G1](group.bonus/b3G1.html)/[G4](group.bonus/b3G4.html)/[G6](group.bonus/b3G6.html)/[G7](group.bonus/b3G7.html)/[G8]((group.bonus/b3G8.html)
+- **bonus.2** [G5](group.bonus/b4G5.html)/[G6](group.bonus/b4G6.html)
+
+## Capstone projects
+
+- [第一組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G1.pptx)
+- [第二組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G2.pptx)
+- [第三組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G3.pptx)
+- [第四組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G4.pdf)
+- [第五組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G5.pptx)
+- [第六組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G6.pptx)
+- [第七組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G7.pdf)
+- [第八組](http://lope.linguistics.ntu.edu.tw/courses/data_science/presentation_slides/G8.pptx)
+
+<a href='lectures/00/index.html#9'>
+<img style='border: 1px solid;' width=100% src='./assets/img/neocilin.png'></img>
+</a>
+
+
+
 
 
 

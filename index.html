@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Linguistic Analysis and Data Science</title>
+    <title>Introducing Data Science with R</title>
     <link rel="stylesheet" href="libraries/frameworks/minimal/stylesheets/styles.css">
     <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/solarized_light.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -21,21 +21,21 @@
   <body>
     <div class="wrapper">
 <header>
-  <h1>Linguistic Analysis and Data Science</h1>
-  <p>LDAs</p>
+  <h1>Introducing Data Science with R</h1>
+  <p>dsR</p>
   <p class="view">
-    <a href="http://github.com/loperntu/lads">
-     View the Project on GitHub <small>loperntu/lads</small>
+    <a href="http://github.com/loperntu/dsR">
+     View the Project on GitHub <small>loperntu/dsR</small>
     </a>
   </p>
   <ul class='buttons'>
-    <li><a href="https://github.com/loperntu/lads/zipball/gh-pages">
+    <li><a href="https://github.com/loperntu/dsR/zipball/gh-pages">
       Download <strong>ZIP File</strong>
     </a></li>
-    <li><a href="https://github.com/loperntu/lads/tarball/gh-pages">
+    <li><a href="https://github.com/loperntu/dsR/tarball/gh-pages">
       Download <strong>TAR Ball</strong>
     </a></li>
-    <li><a href="http://github.com/loperntu/lads">
+    <li><a href="http://github.com/loperntu/dsR">
       Fork On <strong>GitHub</strong></a>
     </li>
   </ul>
@@ -44,21 +44,23 @@
 </header>
 
       <section>
-        <h1>語言分析與資料科學入門</h1>
+        <h1>R 語言與資料科學導論 Introducing Data Science with R</h1>
 <p><a href="http://prose.io/#//edit/gh-pages/index.Rmd" class="button icon edit">Edit Page</a></p>
 
 <p><code>資料科學家</code>的工作, 可以視為是一個探索、預測與解讀資料意義的互動歷程。而<code>語言分析</code>的工作, 在了解文本資料的語意與情緒表現上是重要的關鍵。本課程結合 了目前統計程式設計與自然語言處理技術, 以較為簡潔容易入門的設計與實際操作導引, 希望可以讓毫無相關程式學習基礎的學生在本課程的帶領下, 達到以下的學習目標:</p>
 
 <ul>
-<li>了解結構與非結構性資料的特性與預處理工作, 特別是針對中文文本中呈現的語言特性的處理方法。</li>
-<li><span style="color:green; font-weight:bold">了解中文的語言特性與文本解析 (text analytics) 的基本概念。</span></li>
+<li>瞭解 R 語言的基本知識。</li>
+<li>瞭解結構與非結構性資料的特性與預處理工作, 特別是針對中文文本中呈現的語言特性的處理方法。</li>
+<li><span style="color:blue; font-weight:bold">了解中文的語言特性與文本解析 (text analytics) 的基本概念。</span></li>
 <li>選擇適當的變數與特徵並加以合理調製, 對之進行描述統計與視覺探勘, 針對不同的問題點與數據類型, 找出適當的圖形表達與統計分析。</li>
 <li>學習簡易的自然語言處理與機器學習預測模式, 並應用在自己關心的領域。</li>
+<li>學習實作資料科學專案與溝通表達。</li>
 </ul>
 
 <h2>課綱</h2>
 
-<p><a href="syllabus.pdf">詳細一點的版本</a> </p>
+<p><a href="dsR2016.pdf">詳細一點的版本</a> </p>
 
 <table><thead>
 <tr>
@@ -70,109 +72,109 @@
 </thead><tbody>
 <tr>
 <td>1</td>
-<td align="center">09/17</td>
-<td>Orientation</td>
+<td align="center">09/15</td>
+<td>中秋節放假</td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
-<td align="center">09/24</td>
+<td align="center">09/22</td>
 <td>Introduction to Data Science and Text Analytics</td>
-<td>RStudio.Agilearning</td>
+<td><code>Installing R and Rstudio</code></td>
 </tr>
 <tr>
 <td>3</td>
-<td align="center">10/01</td>
+<td align="center">09/29</td>
 <td>Introduction to Data Science and Text Analytics</td>
-<td>Linux.command-line</td>
+<td><code>data types and structures (vector)</code></td>
 </tr>
 <tr>
 <td>4</td>
-<td align="center">10/08</td>
-<td>Preparing / Preprocessing text and linguistics ABC</td>
-<td>R programming: <a href="https://www.datacamp.com/courses/free-introduction-to-r">chapter 1-4</a></td>
+<td align="center">10/06</td>
+<td>Preparing / Obtaining Data</td>
+<td><code>data structures (matrix, data frame, factor)</code></td>
 </tr>
 <tr>
 <td>5</td>
-<td align="center">10/15</td>
-<td>Preparing / Preprocessing text and linguistics ABC</td>
-<td>R programming: <a href="https://www.datacamp.com/courses/free-introduction-to-r">chapter 5-7</a></td>
+<td align="center">10/13</td>
+<td>Scrubbing Data</td>
+<td><code>list, Basic I/O</code></td>
 </tr>
 <tr>
 <td>6</td>
-<td align="center">10/22</td>
-<td>Exploratory data analysis and Infographics</td>
-<td>Data Manipulation: <a href="https://www.datacamp.com/courses/data-table-data-manipulation-r-tutorial">chapter 1-2</a></td>
+<td align="center">10/20</td>
+<td>Exploratory data analysis and Graphics</td>
+<td><code>control flow; writing functions</code></td>
 </tr>
 <tr>
 <td>7</td>
-<td align="center">10/29</td>
-<td>Exploratory data analysis and Infographics</td>
-<td>Data Visualization: <a href="https://www.youtube.com/playlist?list=PLqzoL9-eJTNDsdghuYR70d01YVGIBs29N">1-3;7-10</a></td>
+<td align="center">10/27</td>
+<td>Exploratory data analysis and Graphics</td>
+<td><code>data wrangling with dplyr and tidyr</code></td>
 </tr>
 <tr>
 <td>8</td>
-<td align="center">11/05</td>
-<td>Corpus and natural language processing</td>
-<td>Textual data manipulation: <a href="https://youtu.be/q8SzNKib5-4">Regular Expression</a></td>
+<td align="center">11/03</td>
+<td>Corpus and Natural Language Processing</td>
+<td><code>data manipulation (with regex)</code></td>
 </tr>
 <tr>
 <td>9</td>
-<td align="center">11/12</td>
-<td>Corpus and natural language processing</td>
+<td align="center">11/10</td>
+<td>Corpus and Statistics</td>
 <td>R and Statistics: <a href="https://www.datacamp.com/introduction-to-statistics">course one (five chapters)</a></td>
 </tr>
 <tr>
 <td>10</td>
-<td align="center">11/19</td>
-<td>Text classification and clustering</td>
+<td align="center">11/17</td>
+<td>Advanced Graphics</td>
 <td></td>
 </tr>
 <tr>
 <td>11</td>
-<td align="center">11/26</td>
-<td><code>mini-Hackathon</code></td>
-<td><strong>開始規劃期末展演</strong></td>
+<td align="center">11/24</td>
+<td>Machine Learning Basics</td>
+<td></td>
 </tr>
 <tr>
 <td>12</td>
-<td align="center">12/03</td>
-<td>Text classification and clustering</td>
+<td align="center">12/01</td>
+<td>Classification and Clustering</td>
 <td></td>
 </tr>
 <tr>
 <td>13</td>
-<td align="center">12/10</td>
-<td>Topic modeling</td>
+<td align="center">12/08</td>
+<td><strong>mini-Hackathon</strong></td>
 <td></td>
 </tr>
 <tr>
 <td>14</td>
-<td align="center">12/17</td>
-<td>Sentiment analysis</td>
-<td></td>
-</tr>
-<tr>
-<td>15</td>
-<td align="center">12/24</td>
-<td>Stylometrics and personality detection</td>
-<td></td>
-</tr>
-<tr>
-<td>16</td>
-<td align="center">12/31</td>
+<td align="center">12/15</td>
 <td>Discussion</td>
 <td></td>
 </tr>
 <tr>
+<td>15</td>
+<td align="center">12/22</td>
+<td>Sentiment analysis</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td align="center">12/29</td>
+<td>Reporting and Presenting Data</td>
+<td><code>Web application with Shiny</code></td>
+</tr>
+<tr>
 <td>17</td>
-<td align="center">01/07</td>
-<td>Term project presentation (un-conference)</td>
+<td align="center">01/04</td>
+<td>Term project competition/presentation</td>
 <td></td>
 </tr>
 <tr>
 <td>18</td>
-<td align="center">01/14</td>
+<td align="center">01/11</td>
 <td>Final <strong>term project and report due</strong></td>
 <td></td>
 </tr>
@@ -180,9 +182,12 @@
 
 <h2>教練團</h2>
 
-<pre><code class="coffee">謝舒凱 (Aber) &lt;shukaihsieh@ntu.edu.tw&gt;
-施孟賢 (Simon) &lt;simon.xian@gmail.com&gt;
-張瑜芸 (Taco) &lt;yuyun.unita@gmail.com&gt;
+<pre><code class="coffee">謝舒凱 &lt;shukaihsieh@ntu.edu.tw&gt;
+林士凱 &lt;vn512903@hotmail.com&gt;
+張瑜芸 &lt;yuyun.unita@gmail.com&gt;
+黃資勻 &lt;averocksanne@gmail.com&gt;
+李佳臻 &lt;she767219@gmail.com&gt;
+吳小涵 &lt;c04s84@gmail.com&gt;
 </code></pre>
 
 <h2>課程投影片</h2>
