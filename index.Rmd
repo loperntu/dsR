@@ -93,7 +93,13 @@ Week | Date   | Topic         | Lab
 
 [評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
 
-- [Week.2]()
+- <span style="color:blue; font-weight:bold"> Week.2 </span>
+  - [In-class exercise]()
+  - `Homework`:
+      - 線上課程
+      - 習題
+
+
 
 
 ## 課程教材
