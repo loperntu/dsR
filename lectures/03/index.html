@@ -67,9 +67,9 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li>RStudio</li>
-<li>A glace at Data Science Examples</li>
-<li>Lab session: vectors</li>
+<li>Basic R and RStudio (50min)</li>
+<li>A glace at a data science example (50min)</li>
+<li>Lab session (50min)</li>
 </ol>
 
   </article>
@@ -82,9 +82,9 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li><strong><code>RStudio</code></strong></li>
-<li>A glace at Data Science Example</li>
-<li>Lab session: vectors</li>
+<li><strong><code>Basic R and RStudio</code></strong></li>
+<li>A glace at a data science example</li>
+<li>Lab session</li>
 </ol>
 
   </article>
@@ -97,7 +97,8 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>The R programming language is used for statistical computing and graphics.</li>
+<li>語言 language、編譯 compiler、程式環境 IDE</li>
+<li>The R programming language is (originally) used for statistical computing and graphics.</li>
 </ul>
 
   </article>
@@ -112,9 +113,9 @@
     <h3>自學教材課程</h3>
 
 <ul>
-<li>[datacamp]</li>
-<li>[datarequest]
-<a href="https://joe11051105.gitbooks.io/r_basic/content/basic_operation/data_attribute.html">別人的筆記</a></li>
+<li><a href="http://tryr.codeschool.com/">tryr</a></li>
+<li><a href="https://www.datacamp.com/home">datacamp</a></li>
+<li><a href="https://www.dataquest.io/dashboard">dataquest</a></li>
 </ul>
 
   </article>
@@ -123,25 +124,27 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>RStudio</h2>
+    <h2>RStudio 安裝</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>RStudio is an open source Integrated Development Environment (IDE) for the R platform. </li>
-<li>多利用網站資訊, e.g., <a href="https://www.rstudio.com/resources/cheatsheets/">小抄</a></li>
+<li><code>RStudio Desktop 0.99.903</code> 還是 <a href="https://www.rstudio.com/products/rstudio/download/preview/"><code>Preview v 1.0.27</code></a> (推薦) </li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:#FFFAF0;">
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>RStudio 設定與熟悉</h2>
+  </hgroup>
   <article data-timings="">
-    <ol>
-<li>Pre-processing for Text Analytics</li>
-<li>Linguistics 101</li>
-<li><strong><code>Crash course for R</code></strong></li>
-</ol>
+    <ul>
+<li>版型調整: (Workspace)、(Console)、(Environment and History)、(Files, Plots, Packages, Help, Viewer)</li>
+<li>目錄結構 (dsr: data, scripts, homework, etc) </li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -149,21 +152,374 @@
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>Learn R in 10 Minutes</h2>
+    <h2>RStudio 設定與熟悉</h2>
   </hgroup>
   <article data-timings="">
-    <p>Check <code>week4.R</code> in ceiba (revised from <a href="http://learnxinyminutes.com/docs/r/">http://learnxinyminutes.com/docs/r/</a>)</p>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-8" style="background:;">
   <hgroup>
+    <h2>用 RStudio 還可以做很多事 (to be continued...)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>做 (<a href="http://rmarkdown.rstudio.com/lesson-1.html">可重製 reproducible</a>、<a href="http://rmarkdown.rstudio.com/developer_parameterized_reports.html">可調參數 Parameterized</a>、<a href="http://rmarkdown.rstudio.com/lesson-14.html">互動型 interactive</a>) 筆記(notebook) 與報告 (report)</li>
+<li>做投影片 (presentation) </li>
+<li>做網站 (website) 與 web application (using <code>shiny</code>)</li>
+<li>做「數位報表」(dashboard)</li>
+<li>做專業科學文件 (using \(\LaTeX\)) </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>R 的初體驗</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">data()        # browse pre-loaded data sets
+data(rivers)    # get this one: &quot;Lengths of Major North American Rivers&quot;
+?rivers
+head(rivers)    # peek at the data set
+</code></pre>
+
+<pre><code>## [1] 735 320 325 392 524 450
+</code></pre>
+
+<pre><code class="r">length(rivers)  # how many rivers were measured?
+</code></pre>
+
+<pre><code>## [1] 141
+</code></pre>
+
+<pre><code class="r">summary(rivers) # what are some summary statistics?
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   135.0   310.0   425.0   591.2   680.0  3710.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>R 的初體驗</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># make a histogram
+hist(rivers, col=&quot;blue&quot;, border=&quot;white&quot;, breaks=25) # play around with these parameters
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>In-class Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>換看看顏色 (用 <code>colors()</code>  看 R 認識什麼顏色)</li>
+</ul>
+
+<pre><code class="r">hist(log(rivers), col=&quot;sienna&quot;, border=&quot;white&quot;, breaks=25) 
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>入門小秘訣</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><code>ctrl + l</code> 清除 console 的顯示內容。</li>
+<li><code>rm(list=ls())</code> 清除 workspace 中的變數。</li>
+<li>但請注意：R 也可以在終端機執行：對於日後在雲端伺服器工作者，特別是結合<strong>指令列 (command line)</strong> 很重要。</li>
+<li>隨時知道妳在那裡：<code>getwd()</code> and <code>Set Working Directory</code></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>變數 (variable)、賦值 (assignment)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>R 在給予變數值時是利用<code>&lt;-</code> 而不是其他程式語言中常見的 <code>=</code>。（根據 R 官方文件解釋因為在某些狀況是會出問題）。</li>
+<li>變數命名中，大小寫有所區別。所以 a 與 A 是不同的變數。 </li>
+</ul>
+
+<pre><code class="r">a &lt;- 19
+a
+</code></pre>
+
+<pre><code>## [1] 19
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>資料類型 (Data type) 與基本運算 (basic arithmetic)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>資料類型包含以下幾種，可用 <code>mode</code> 函數判斷</p>
+
+<ul>
+<li><strong>數值型 (numeric)</strong>：實數（可以寫成整數 integers，小數 floating numners，或 科學記述 scientific notations）</li>
+</ul>
+
+<pre><code class="r">b &lt;- 8.31
+mode(b)
+</code></pre>
+
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre>
+
+<ul>
+<li><strong>字符型 (character)</strong>：文字字串，放入 &quot;&quot; 或 &#39;&#39; 中</li>
+</ul>
+
+<pre><code class="r">c &lt;- &#39;coding&#39;
+mode(c)
+</code></pre>
+
+<pre><code>## [1] &quot;character&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>資料類型 (Data type) 與基本運算 (basic arithmetic)</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><strong>邏輯型 (logical)</strong>：<code>TRUE</code>(T) 和 <code>FALSE</code>(F) 兩個值</li>
+</ul>
+
+<pre><code class="r">d &lt;- F
+mode(d)
+</code></pre>
+
+<pre><code>## [1] &quot;logical&quot;
+</code></pre>
+
+<ul>
+<li><strong>複數型 (complex)</strong> :取值包含虛數 \(a+bi\)</li>
+</ul>
+
+<pre><code class="r">e &lt;- 2+3i
+mode(e)
+</code></pre>
+
+<pre><code>## [1] &quot;complex&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>NA and NULL</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>資料類型的判斷與轉換</h2>
+  </hgroup>
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>類型</th>
+<th>意義</th>
+<th>判斷</th>
+<th>轉換</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>numeric</td>
+<td>數值</td>
+<td>is.numeric()</td>
+<td>as.numeric()</td>
+</tr>
+<tr>
+<td>character</td>
+<td>字符</td>
+<td>is.character()</td>
+<td>as.character()</td>
+</tr>
+<tr>
+<td>logical</td>
+<td>邏輯</td>
+<td>is.logical()</td>
+<td>as.logical()</td>
+</tr>
+<tr>
+<td>complex</td>
+<td>複數</td>
+<td>is.complex()</td>
+<td>as.complex()</td>
+</tr>
+<tr>
+<td>NA</td>
+<td>缺失</td>
+<td>is.na()</td>
+<td>as.na()</td>
+</tr>
+</tbody></table>
+
+<pre><code class="r">is.character(b)
+</code></pre>
+
+<pre><code>## [1] FALSE
+</code></pre>
+
+<pre><code class="r">as.character(b)
+</code></pre>
+
+<pre><code>## [1] &quot;8.31&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>資料結構 Data structure</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>一組（2 個以上）相同或不同<strong>資料類型</strong>的資料元素組合在一起形成<strong>資料結構</strong>.</li>
+<li>R 提供 6 個基本的資料結構：<code>vector</code>, <code>matrix</code>, <code>array</code>, <code>factor</code>, <code>list</code>, <code>data frame</code>.</li>
+<li>學習重點在於如何建立 create 與檢索 access</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>向量 Vector</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>建立</h3>
+
+<ul>
+<li><code>c()</code></li>
+<li><code>:</code>  可產生差距為 1 的等差數列向量。</li>
+<li><code>seq()</code> 可產生等差數列向量，差距值可以自行決定。</li>
+<li><code>rep()</code> 可產生重複數值的向量。</li>
+</ul>
+
+<pre><code class="r">g &lt;- c(1,2,3)
+h &lt;- c(&#39;me&#39;,&#39;you&#39;)
+i &lt;- 1:6
+j &lt;- seq(from=1, to=10, by=2)
+k &lt;- rep(1:4, times=3, each=2)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>套件 package：安裝與載入 (發佈在 CRAN 上的套件)</h2>
+  </hgroup>
+  <article data-timings="">
+    <blockquote>
+<p><code>install.packages(&quot;ggplot2&quot;)</code></p>
+</blockquote>
+
+<pre><code class="r">library(ggplot2)
+qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:#FFFAF0;">
+  <article data-timings="">
+    <ol>
+<li>Basic R and RStudio</li>
+<li><strong><code>A glace at a data science example</code></strong></li>
+<li>Lab session</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
     <h2>Data Science</h2>
   </hgroup>
   <article data-timings="">
     <p><img src = './assets/img/data-science.png' height="100px"></img></p>
+
+<p><a href="http://r4ds.had.co.nz/introduction.html">source</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:#FFFAF0;">
+  <article data-timings="">
+    <ol>
+<li>Basic R and RStudio</li>
+<li>A glace at a data science example</li>
+<li><strong><code>Lab session</code></strong></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>如何用 RStudio 寫作業</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Crash course for Rmarkdown and R Notebook</h3>
+
+<ul>
+<li>先瞭解什麼是 <a href="http://rmarkdown.rstudio.com">Markdown</a></li>
+<li>用 <a href="http://rmarkdown.rstudio.com/r_notebooks.html">R Notebook</a> 交作業</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -199,26 +555,122 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='RStudio'>
+        data-slide=5 title='RStudio 安裝'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='NA'>
+        data-slide=6 title='RStudio 設定與熟悉'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Learn R in 10 Minutes'>
+        data-slide=7 title='RStudio 設定與熟悉'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Data Science'>
+        data-slide=8 title='用 RStudio 還可以做很多事 (to be continued...)'>
          8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='R 的初體驗'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='R 的初體驗'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='In-class Exercise'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='入門小秘訣'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='變數 (variable)、賦值 (assignment)'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='資料類型 (Data type) 與基本運算 (basic arithmetic)'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='資料類型 (Data type) 與基本運算 (basic arithmetic)'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='NA and NULL'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='資料類型的判斷與轉換'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='資料結構 Data structure'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='向量 Vector'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='套件 package：安裝與載入 (發佈在 CRAN 上的套件)'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Data Science'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='NA'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='如何用 RStudio 寫作業'>
+         24
       </a>
     </li>
   </ul>
