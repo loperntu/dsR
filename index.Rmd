@@ -93,7 +93,7 @@ Week | Date   | Topic         | Lab
 [評分標準]()
 
 - <span style="color:blue; font-weight:bold"> Week.3 </span>
-  - [In-class exercise and homework](../exercise.homework/week3/week3.nb.html) / [Rmd 檔](../exercise.homework/week3/week3.Rmd)
+  - [In-class exercise and homework](exercise.homework/week3/week3.nb.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
 
 
 
