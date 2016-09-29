@@ -85,7 +85,6 @@ Week | Date   | Topic         | Lab
 # writeLines(links)
 ```
 
-- [Week 02](lectures/02/index.html)
 - [Week 03](lectures/03/index.html)
 
 ## 助教講義、習題與作業
