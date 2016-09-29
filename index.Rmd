@@ -85,16 +85,15 @@ Week | Date   | Topic         | Lab
 # writeLines(links)
 ```
 
-- [Week 01](lectures/00/index.html)
 - [Week 02](lectures/02/index.html)
 - [Week 03](lectures/03/index.html)
 
 ## 助教講義、習題與作業
 
-[評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
+[評分標準]()
 
 - <span style="color:blue; font-weight:bold"> Week.3 </span>
-  - [In-class exercise and homework](../exercise.homework/week3/week3.nb.html)
+  - [In-class exercise and homework](../exercise.homework/week3/week3.nb.html) / [Rmd 檔](../exercise.homework/week3/week3.Rmd)
 
 
 
@@ -108,6 +107,7 @@ Week | Date   | Topic         | Lab
 
 
 ## 課程相關活動
+- [NTU CEIBA](https://ceiba.ntu.edu.tw/1051LING5502)
 - [課堂共筆]()
 - [學習共筆]()
 - [臉書社團](https://www.facebook.com/groups/652099794893097/)
@@ -122,6 +122,7 @@ Week | Date   | Topic         | Lab
 
 
 ## 小組作業觀摩
+
 
 
 ## Capstone projects

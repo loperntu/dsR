@@ -67,8 +67,8 @@
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Basic R and RStudio (50min)</li>
-<li>A glace at a data science example (50min)</li>
+<li>Basic R and RStudio (90min)</li>
+<li>A glace at a data science example (10min)</li>
 <li>Lab session (50min)</li>
 </ol>
 
@@ -77,6 +77,20 @@
 </slide>
 
 <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>課程相關資訊</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Course website (<a href="https://loperntu.github.io/dsR/">https://loperntu.github.io/dsR/</a>)</li>
+<li>Office hour: 週三早上 11:00-12:30 (請先 email 預約 <code>shukaihsieh@ntu.edu.tw</code>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -91,7 +105,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-4" style="background:;">
   <hgroup>
     <h2>R</h2>
   </hgroup>
@@ -105,7 +119,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-5" style="background:;">
   <hgroup>
     <h2>R 的學習</h2>
   </hgroup>
@@ -116,13 +130,14 @@
 <li><a href="http://tryr.codeschool.com/">tryr</a></li>
 <li><a href="https://www.datacamp.com/home">datacamp</a></li>
 <li><a href="https://www.dataquest.io/dashboard">dataquest</a></li>
+<li><a href="https://github.com/datasciencemasters/go/blob/master/r-resources.md">resources</a></li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>RStudio 安裝</h2>
   </hgroup>
@@ -136,7 +151,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>RStudio 設定與熟悉</h2>
   </hgroup>
@@ -150,7 +165,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>RStudio 設定與熟悉</h2>
   </hgroup>
@@ -160,7 +175,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>用 RStudio 還可以做很多事 (to be continued...)</h2>
   </hgroup>
@@ -177,7 +192,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>R 的初體驗</h2>
   </hgroup>
@@ -208,7 +223,7 @@ head(rivers)    # peek at the data set
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>R 的初體驗</h2>
   </hgroup>
@@ -217,13 +232,13 @@ head(rivers)    # peek at the data set
 hist(rivers, col=&quot;blue&quot;, border=&quot;white&quot;, breaks=25) # play around with these parameters
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>In-class Exercise</h2>
   </hgroup>
@@ -235,13 +250,13 @@ hist(rivers, col=&quot;blue&quot;, border=&quot;white&quot;, breaks=25) # play a
 <pre><code class="r">hist(log(rivers), col=&quot;sienna&quot;, border=&quot;white&quot;, breaks=25) 
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+<p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>入門小秘訣</h2>
   </hgroup>
@@ -257,7 +272,7 @@ hist(rivers, col=&quot;blue&quot;, border=&quot;white&quot;, breaks=25) # play a
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>變數 (variable)、賦值 (assignment)</h2>
   </hgroup>
@@ -278,7 +293,7 @@ a
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>資料類型 (Data type) 與基本運算 (basic arithmetic)</h2>
   </hgroup>
@@ -311,7 +326,7 @@ mode(c)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>資料類型 (Data type) 與基本運算 (basic arithmetic)</h2>
   </hgroup>
@@ -342,17 +357,21 @@ mode(e)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>NA and NULL</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>NA (<em>missing</em>)</li>
+<li>NULL (<em>undefined</em>)</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>資料類型的判斷與轉換</h2>
   </hgroup>
@@ -413,7 +432,7 @@ mode(e)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>資料結構 Data structure</h2>
   </hgroup>
@@ -428,7 +447,7 @@ mode(e)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>向量 Vector</h2>
   </hgroup>
@@ -453,7 +472,31 @@ k &lt;- rep(1:4, times=3, each=2)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>向量 Vector</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>檢索 access</h3>
+
+<pre><code class="r">m &lt;- c(2:10)
+m[1]
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<pre><code class="r">m[1:3]
+</code></pre>
+
+<pre><code>## [1] 2 3 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>套件 package：安裝與載入 (發佈在 CRAN 上的套件)</h2>
   </hgroup>
@@ -466,13 +509,13 @@ k &lt;- rep(1:4, times=3, each=2)
 qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
+<p><img src="figure/unnamed-chunk-12-1.png" alt="plot of chunk unnamed-chunk-12"></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:#FFFAF0;">
+<slide class="" id="slide-23" style="background:#FFFAF0;">
   <article data-timings="">
     <ol>
 <li>Basic R and RStudio</li>
@@ -484,20 +527,24 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
-    <h2>Data Science</h2>
+    <h2>Data Science: A glance at a case</h2>
   </hgroup>
   <article data-timings="">
-    <p><img src = './assets/img/data-science.png' height="100px"></img></p>
+    <p><img src = './assets/img/data-science.png' height="100px"></img>
+<a href="http://r4ds.had.co.nz/introduction.html">source</a></p>
 
-<p><a href="http://r4ds.had.co.nz/introduction.html">source</a></p>
+<ul>
+<li>我們用這個例子來討論
+<a href="http://varianceexplained.org/r/trump-tweets/">Text analysis of Trump&#39;s tweets confirms he writes only the (angrier) Android half</a></li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:#FFFAF0;">
+<slide class="" id="slide-25" style="background:#FFFAF0;">
   <article data-timings="">
     <ol>
 <li>Basic R and RStudio</li>
@@ -509,7 +556,7 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>如何用 RStudio 寫作業</h2>
   </hgroup>
@@ -537,31 +584,31 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='大綱'>
+        data-slide=2 title='課程相關資訊'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='R'>
+        data-slide=3 title='大綱'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='R 的學習'>
+        data-slide=4 title='R'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='RStudio 安裝'>
+        data-slide=5 title='R 的學習'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='RStudio 設定與熟悉'>
+        data-slide=6 title='RStudio 安裝'>
          6
       </a>
     </li>
@@ -573,13 +620,13 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='用 RStudio 還可以做很多事 (to be continued...)'>
+        data-slide=8 title='RStudio 設定與熟悉'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='R 的初體驗'>
+        data-slide=9 title='用 RStudio 還可以做很多事 (to be continued...)'>
          9
       </a>
     </li>
@@ -591,25 +638,25 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='In-class Exercise'>
+        data-slide=11 title='R 的初體驗'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='入門小秘訣'>
+        data-slide=12 title='In-class Exercise'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='變數 (variable)、賦值 (assignment)'>
+        data-slide=13 title='入門小秘訣'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='資料類型 (Data type) 與基本運算 (basic arithmetic)'>
+        data-slide=14 title='變數 (variable)、賦值 (assignment)'>
          14
       </a>
     </li>
@@ -621,43 +668,43 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='NA and NULL'>
+        data-slide=16 title='資料類型 (Data type) 與基本運算 (basic arithmetic)'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='資料類型的判斷與轉換'>
+        data-slide=17 title='NA and NULL'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='資料結構 Data structure'>
+        data-slide=18 title='資料類型的判斷與轉換'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='向量 Vector'>
+        data-slide=19 title='資料結構 Data structure'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='套件 package：安裝與載入 (發佈在 CRAN 上的套件)'>
+        data-slide=20 title='向量 Vector'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='NA'>
+        data-slide=21 title='向量 Vector'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Data Science'>
+        data-slide=22 title='套件 package：安裝與載入 (發佈在 CRAN 上的套件)'>
          22
       </a>
     </li>
@@ -669,8 +716,20 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='如何用 RStudio 寫作業'>
+        data-slide=24 title='Data Science: A glance at a case'>
          24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NA'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='如何用 RStudio 寫作業'>
+         26
       </a>
     </li>
   </ul>

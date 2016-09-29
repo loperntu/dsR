@@ -21,9 +21,17 @@ github      : {user: loperntu, repo: dsR}
 
 --- 
 ## 大綱
-1. Basic R and RStudio (50min)
-2. A glace at a data science example (50min)
+1. Basic R and RStudio (90min)
+2. A glace at a data science example (10min)
 3. Lab session (50min)
+
+
+
+---
+## 課程相關資訊
+
+- Course website (https://loperntu.github.io/dsR/)
+- Office hour: 週三早上 11:00-12:30 (請先 email 預約 `shukaihsieh@ntu.edu.tw`)
 
 
 
@@ -50,6 +58,7 @@ github      : {user: loperntu, repo: dsR}
 - [tryr](http://tryr.codeschool.com/)
 - [datacamp](https://www.datacamp.com/home)
 - [dataquest](https://www.dataquest.io/dashboard)
+- [resources](https://github.com/datasciencemasters/go/blob/master/r-resources.md)
 
 
 
@@ -180,6 +189,8 @@ mode(e)
 ---
 ## NA and NULL
 
+- NA (*missing*)
+- NULL (*undefined*)
 
 ---
 ## 資料類型的判斷與轉換  
@@ -262,14 +273,14 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
 
 
 ---
-## Data Science
+## Data Science: A glance at a case 
 
 
 <img src = './assets/img/data-science.png' height="100px"></img>
-
 [source](http://r4ds.had.co.nz/introduction.html)
 
-
+- 我們用這個例子來討論
+[Text analysis of Trump's tweets confirms he writes only the (angrier) Android half](http://varianceexplained.org/r/trump-tweets/)
 
 
 

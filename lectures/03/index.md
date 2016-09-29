@@ -21,9 +21,17 @@ github      : {user: loperntu, repo: dsR}
 
 --- 
 ## 大綱
-1. Basic R and RStudio (50min)
-2. A glace at a data science example (50min)
+1. Basic R and RStudio (90min)
+2. A glace at a data science example (10min)
 3. Lab session (50min)
+
+
+
+---
+## 課程相關資訊
+
+- Course website (https://loperntu.github.io/dsR/)
+- Office hour: 週三早上 11:00-12:30 (請先 email 預約 `shukaihsieh@ntu.edu.tw`)
 
 
 
@@ -50,6 +58,7 @@ github      : {user: loperntu, repo: dsR}
 - [tryr](http://tryr.codeschool.com/)
 - [datacamp](https://www.datacamp.com/home)
 - [dataquest](https://www.dataquest.io/dashboard)
+- [resources](https://github.com/datasciencemasters/go/blob/master/r-resources.md)
 
 
 
@@ -134,7 +143,7 @@ summary(rivers) # what are some summary statistics?
 hist(rivers, col="blue", border="white", breaks=25) # play around with these parameters
 ```
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
 
 ---
 ## In-class Exercise  
@@ -145,7 +154,7 @@ hist(rivers, col="blue", border="white", breaks=25) # play around with these par
 hist(log(rivers), col="sienna", border="white", breaks=25) 
 ```
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
 ---
 ## 入門小秘訣 
@@ -231,6 +240,8 @@ mode(e)
 ---
 ## NA and NULL
 
+- NA (*missing*)
+- NULL (*undefined*)
 
 ---
 ## 資料類型的判斷與轉換  
@@ -286,6 +297,30 @@ j <- seq(from=1, to=10, by=2)
 k <- rep(1:4, times=3, each=2)
 ```
 
+
+---
+## 向量 Vector
+### 檢索 access
+
+
+```r
+m <- c(2:10)
+m[1]
+```
+
+```
+## [1] 2
+```
+
+```r
+m[1:3]
+```
+
+```
+## [1] 2 3 4
+```
+
+
 ---
 ## 套件 package：安裝與載入 (發佈在 CRAN 上的套件)
 
@@ -297,7 +332,7 @@ library(ggplot2)
 qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Width)
 ```
 
-![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
 
 
 
@@ -315,14 +350,14 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
 
 
 ---
-## Data Science
+## Data Science: A glance at a case 
 
 
 <img src = './assets/img/data-science.png' height="100px"></img>
-
 [source](http://r4ds.had.co.nz/introduction.html)
 
-
+- 我們用這個例子來討論
+[Text analysis of Trump's tweets confirms he writes only the (angrier) Android half](http://varianceexplained.org/r/trump-tweets/)
 
 
 
