@@ -1,0 +1,49 @@
+---
+title: "Week3 Lab: 習題與作業"
+author: "姓名 / 學號 / 系所 /"
+output: html_notebook
+---
+
+- 這份文件可以當成習題繳交的樣本。
+
+- [R Notebook](http://rmarkdown.rstudio.com/r_notebooks.html) 是用 [R Markdown](http://rmarkdown.rstudio.com) 編寫的文件。可以把文字與程式及其執行結果顯示在同一頁面。When you execute code within the notebook, the results appear beneath the code. 
+- 執行程式區塊的方式 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter* / *Cmd+Enter*. 
+- 有沒有注意到：存檔時，同時更新內容。
+
+
+```{r}
+plot(cars)
+```
+
+- 增加程式區塊 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I* (win) or *Cmd+Option+I* (mac).
+
+- 繳交 `html` 檔格式，上傳到 `ceiba`。When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+
+
+# 習題一：練習安裝套件與作業繳交格式
+
+> 安裝 `leaflet` 線上互動地圖套件，(利用 google map) 找出你的系所經緯度，
+修改以下的程式，顯示地圖出來。（以下是醉月湖供參考）
+
+```{r, echo=TRUE}
+# install.packages("leaflet")
+library(leaflet)
+moonlake <- leaflet()
+moonlake <- addTiles(moonlake)
+moonlake <- addMarkers(moonlake, lng = 121.537, lat = 25.020, popup="台大醉月湖")
+moonlake
+```
+
+
+# 作業一
+> 建立一個向量 x, 將 1 到 6 的每一個數字依次重複 3 次。
+
+# 作業二：
+> 閱讀與練習線上課程：
+[Datacamp.Unit.1-2](https://www.datacamp.com/courses/free-introduction-to-r)
+
+
+
+
+
+

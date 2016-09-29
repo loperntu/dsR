@@ -75,15 +75,14 @@ Week | Date   | Topic         | Lab
 
 
 
-- [Week 02](lectures/02/index.html)
 - [Week 03](lectures/03/index.html)
 
 ## 助教講義、習題與作業
 
-[評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy.html)
+[評分標準]()
 
 - <span style="color:blue; font-weight:bold"> Week.3 </span>
-  - [In-class exercise and homework](../exercise.homework/week3/week3.nb.html) / [Rmd 檔](../exercise.homework/week3/week3.Rmd)
+  - [In-class exercise and homework](exercise.homework/week3/week3.nb.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
 
 
 
