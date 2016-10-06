@@ -1,0 +1,47 @@
+---
+title: "Lab: Week4"
+output: html_notebook
+---
+
+
+
+# Lab 
+
+
+## Titanic: Data Science / Machine Learning from Disaster
+
+- Titanic was a British passenger liner that sank in 1912 after colliding with an iceberg. Only 31% of passengers survived in this disaster. The goal of this project is to complete the analysis of what sorts of people were likely to survive.
+- Log in [Kaggle](https://www.kaggle.com/) and explore the *Titanic survival prediction challenge*
+
+
+
+## 2016 US Presidential Debates
+
+
+-[Donald Trump's strange speaking style, as explained by linguists](http://www.vox.com/2016/8/18/12423688/donald-trump-speech-style-explained-by-linguists)
+
+- [Full transcripts of the face-off between Clinton & Trump](https://www.kaggle.com/mrisdal/2016-us-presidential-debates)
+
+data manipulation steps to convert the raw transcript text (of the debate) into a more structured/ ordered form, which you can then start analyzing.. we attempt to answer a few simple questions from the data (such as Who spoke more, Who interrupted more, Key discussion points etc).
+
+```{r}
+debate <- read.csv('debate.csv',stringsAsFactors =F,header=T)
+debate <- debate[,1:3]
+holt <- subset(debate,Speaker=='Holt')
+clinton <- subset(debate,Speaker=='Clinton')
+trump <- subset(debate,Speaker=='Trump')
+#vapply(strsplit(trump$Text, "\\W+"), length, integer(1))
+debate_no_aud <- subset(debate,Speaker=='Trump' | Speaker=='Clinton')
+
+
+ggplot(debate_no_aud, aes(x=vapply(strsplit(debate_no_aud$Text, "\\W+"), length, integer(1)))) + geom_histogram(fill="white", colour="black") +
+facet_grid(Speaker ~ .)+xlab('Words')
+```
+
+# Homework
+
+- 了解 kaggle 
+- 閱讀與練習線上課程：(下次測驗)
+[Datacamp.Unit.3-5](https://www.datacamp.com/courses/free-introduction-to-r)； `data.table` 單元
+
+
