@@ -77,18 +77,15 @@ Week | Date   | Topic         | Lab
 
 - [Week 03](lectures/03/index.html)
 - [Week 04](lectures/04/index.html)
+- [Week 05](lectures/05/index.html)
 
 ## 助教講義、習題與作業
 
 [評分標準](http://lope.linguistics.ntu.edu.tw/courses/data_science/grading_policy2016.html)
 
-- <span style="color:blue; font-weight:bold"> Week.3 </span>
-  - [In-class exercise and homework](exercise.homework/week3/week3.nb.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
-
-- <span style="color:blue; font-weight:bold"> Week.4 </span>
-  - [In-class exercise and homework](exercise.homework/week4/week4.nb.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
-
-
+- <span style="color:blue; font-weight:bold"> Week.3 </span>: [In-class exercise and homework](exercise.homework/week3/week3.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
+- <span style="color:blue; font-weight:bold"> Week.4 </span>: [In-class exercise and homework](exercise.homework/week4/week4.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
+- <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
 
 ## 課程教材
 
@@ -118,7 +115,7 @@ Week | Date   | Topic         | Lab
 
 
 ## Capstone projects
-
+- [分組名單](https://docs.google.com/document/d/14aWHW5dNykrC5uGbkq3dLk5wpbSYXQNMsirWVQI2oe0/edit?usp=sharing)
 
 <a href='lectures/00/index.html#9'>
 <img style='border: 1px solid;' width=100% src='./assets/img/neocilin.png'></img>

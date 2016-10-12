@@ -57,13 +57,13 @@ y <- c(1,2,TRUE,FALSE,"a"); mode(y)
 ---
 ## 陣列 Array
 
-```{r echo=FALSE}
+```{r}
 # array(data = NA, dim = length(data), dimnames = NULL)
-z <- c(1:20)
+z <- c(1:30)
 dim1 <- c("a1", "a2","a3")
 dim2 <- c("b1","b2","b3", "b4", "b5")
 dim3 <- c("c1","c2")
-(a <- array(z, dim = c(3,5,2), dimnames = list(dim1,dim2,dim3)))
+a <- array(z, dim = c(3,5,2), dimnames = list(dim1,dim2,dim3))
 ```
 
 
@@ -90,7 +90,7 @@ dim(a)
 # matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) 
 rnames <- c("R1", "R2", "R3", "R4", "R5")
 cnames <- c("C1", "C2", "C3", "C4", "C5")
-m <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
+m1 <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
 # class(m); mode(m)
 ```
 
@@ -98,8 +98,8 @@ m <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
 ---
 ## 矩陣 Matrix
 
-```{r}
-v <- as.vector(m);v
+```{r, eval=FALSE}
+v <- as.vector(m1);v
 # access 
 m1[3,4]
 m1[,3]
@@ -110,10 +110,10 @@ m1[c(1:3),]
 ---
 ## 矩陣 Matrix
 
-```{r,echo=FALSE}
+```{r,eval=FALSE}
 # manipulate: merge and delete
-y <- c(1:10)
-m2 <- matrix(y, nrow = 5, ncol = 2, byrow = F);m2
+(y <- c(1:10))
+m2 <- matrix(y, nrow = 5, ncol = 2);m2
 #(m2 <- matrix(y, nrow = 5, ncol = 2, byrow = F))
 (m3 <- rbind(m2, c(11,12)))
 (m4 <- cbind(m3, c(13:18)))
@@ -125,7 +125,7 @@ m2 <- matrix(y, nrow = 5, ncol = 2, byrow = F);m2
 ## 矩陣 Matrix
 ### 矩陣運算
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 # Transpose the whole matrix
 t(m2)
 
@@ -158,7 +158,7 @@ m2 %*% t(m2)
 
 - `[]`, `$`, `subset()`
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 iris.simple[,1]
 iris.simple$Sepal.Width
 iris.simple$Sepal.Width[2]
@@ -169,7 +169,7 @@ subset(iris.simple, Sepal.Length < 5)
 ---
 ## Data Frame
 
-```{r}
+```{r, eval=FALSE }
 ## cbind(), rbind()
 names(iris.simple)
 names(iris.simple)[1] <- "sepal.length"
@@ -182,10 +182,8 @@ names(iris.simple)[1] <- "sepal.length"
 - 基本運算 
 - 基本統計 `mean(), median(), sum(), min(), max(), sd(), ...`
 
-```{r}
-students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),
-                       c(3,2,2,1,0,-1),
-                       c("H", "G", "G", "R", "S", "G"))
+```{r, eval= FALSE}
+students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),                   c(3,2,2,1,0,-1),c("H", "G", "G", "R", "S", "G"))
 names(students) <- c("name", "year", "house") # name the columns
 class(students)	# "data.frame"
 class(students$year)	# "numeric"
@@ -203,7 +201,7 @@ dim(students)
 ## Factor
 - The factor class is for categorical data, which are commonly seen in data frame.
 - Factors can be ordered (like childrens' grade levels) or unordered (like gender)
-```{r,echo=FALSE}
+```{r,eval=FALSE}
 factor(c("female", "female", "male", NA, "female"))
 # The "levels" are the values the categorical data can take
 # Note that missing data does not enter the levels
@@ -245,7 +243,8 @@ levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 ## Loading datasets from the Internet
 
 ```{r}
-str(read.csv('http://opengeocode.org/download/CCurls.txt'))
+cc <- read.csv('http://opengeocode.org/download/CCurls.txt')
+str(cc)
 ```
 
 - `url` does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the `RCurl` package,
@@ -276,14 +275,14 @@ str(df)
 
 - use the `is.na()` to identify the presence of NA for each column or combinE with the `any()` 
 
-```{r,echo=FALSE}
+```{r, eval=FALSE}
 (missing_dat <- data.frame(col.1=c(1,NA,0,1),col.2=c("M","F",NA,"M")))
 is.na(missing_dat$col.1)
 any(is.na(missing_dat))
 ```
 
 - We can replace the NA with the mean value or we can **remove these NA rows**.
-```{r,echo=FALSE}
+```{r, eval=FALSE}
 (newdata <- na.omit(missing_dat))
 ```
 
@@ -297,7 +296,7 @@ any(is.na(missing_dat))
 ## Reading big files with `data.table`
 
 The `data.table` package is extremely useful — and much, much faster than read.table— for larger files. 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 require(data.table) 
 students <- as.data.table(students)
 students # note the slightly different print-out
@@ -329,7 +328,7 @@ print('oh,my first')
 ## 大綱
 1. Basic R  (80min)
 2. __`A glace at a data science example (20min)`__
-3. Lab session (70min)
+3. Lab session (50min)
 
 
 

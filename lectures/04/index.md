@@ -70,20 +70,13 @@ y <- c(1,2,TRUE,FALSE,"a"); mode(y)
 ## 陣列 Array
 
 
-```
-## , , c1
-## 
-##    b1 b2 b3 b4 b5
-## a1  1  4  7 10 13
-## a2  2  5  8 11 14
-## a3  3  6  9 12 15
-## 
-## , , c2
-## 
-##    b1 b2 b3 b4 b5
-## a1 16 19  2  5  8
-## a2 17 20  3  6  9
-## a3 18  1  4  7 10
+```r
+# array(data = NA, dim = length(data), dimnames = NULL)
+z <- c(1:30)
+dim1 <- c("a1", "a2","a3")
+dim2 <- c("b1","b2","b3", "b4", "b5")
+dim3 <- c("c1","c2")
+a <- array(z, dim = c(3,5,2), dimnames = list(dim1,dim2,dim3))
 ```
 
 
@@ -130,7 +123,7 @@ dim(a)
 # matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) 
 rnames <- c("R1", "R2", "R3", "R4", "R5")
 cnames <- c("C1", "C2", "C3", "C4", "C5")
-m <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
+m1 <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
 # class(m); mode(m)
 ```
 
@@ -140,41 +133,11 @@ m <- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
 
 
 ```r
-v <- as.vector(m);v
-```
-
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-## [24] 24 25
-```
-
-```r
+v <- as.vector(m1);v
 # access 
 m1[3,4]
-```
-
-```
-## [1] 18
-```
-
-```r
 m1[,3]
-```
-
-```
-## r1 r2 r3 r4 r5 
-## 11 12 13 14 15
-```
-
-```r
 m1[c(1:3),]
-```
-
-```
-##    c1 c2 c3 c4 c5
-## r1  1  6 11 16 21
-## r2  2  7 12 17 22
-## r3  3  8 13 18 23
 ```
 
 
@@ -182,42 +145,14 @@ m1[c(1:3),]
 ## 矩陣 Matrix
 
 
-```
-##      [,1] [,2]
-## [1,]    1    6
-## [2,]    2    7
-## [3,]    3    8
-## [4,]    4    9
-## [5,]    5   10
-```
-
-```
-##      [,1] [,2]
-## [1,]    1    6
-## [2,]    2    7
-## [3,]    3    8
-## [4,]    4    9
-## [5,]    5   10
-## [6,]   11   12
-```
-
-```
-##      [,1] [,2] [,3]
-## [1,]    1    6   13
-## [2,]    2    7   14
-## [3,]    3    8   15
-## [4,]    4    9   16
-## [5,]    5   10   17
-## [6,]   11   12   18
-```
-
-```
-##      [,1] [,2] [,3]
-## [1,]    2    7   14
-## [2,]    3    8   15
-## [3,]    4    9   16
-## [4,]    5   10   17
-## [5,]   11   12   18
+```r
+# manipulate: merge and delete
+(y <- c(1:10))
+m2 <- matrix(y, nrow = 5, ncol = 2);m2
+#(m2 <- matrix(y, nrow = 5, ncol = 2, byrow = F))
+(m3 <- rbind(m2, c(11,12)))
+(m4 <- cbind(m3, c(13:18)))
+(m4 <- m4[-1,])
 ```
 
 
@@ -226,19 +161,12 @@ m1[c(1:3),]
 ### 矩陣運算
 
 
-```
-##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    2    3    4    5
-## [2,]    6    7    8    9   10
-```
+```r
+# Transpose the whole matrix
+t(m2)
 
-```
-##      [,1] [,2] [,3] [,4] [,5]
-## [1,]   37   44   51   58   65
-## [2,]   44   53   62   71   80
-## [3,]   51   62   73   84   95
-## [4,]   58   71   84   97  110
-## [5,]   65   80   95  110  125
+# Matrix multiplication
+m2 %*% t(m2)
 ```
 
 
@@ -273,21 +201,11 @@ m1[c(1:3),]
 - `[]`, `$`, `subset()`
 
 
-```
-## [1] 5.1 4.7 5.0
-```
-
-```
-## [1] 3.5 3.2 3.6
-```
-
-```
-## [1] 3.2
-```
-
-```
-##   Sepal.Length Sepal.Width Pedal.Length
-## 2          4.7         3.2          1.3
+```r
+iris.simple[,1]
+iris.simple$Sepal.Width
+iris.simple$Sepal.Width[2]
+subset(iris.simple, Sepal.Length < 5)
 ```
 
 
@@ -298,13 +216,6 @@ m1[c(1:3),]
 ```r
 ## cbind(), rbind()
 names(iris.simple)
-```
-
-```
-## [1] "Sepal.Length" "Sepal.Width"  "Pedal.Length"
-```
-
-```r
 names(iris.simple)[1] <- "sepal.length"
 ```
 
@@ -317,56 +228,15 @@ names(iris.simple)[1] <- "sepal.length"
 
 
 ```r
-students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),
-                       c(3,2,2,1,0,-1),
-                       c("H", "G", "G", "R", "S", "G"))
+students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),                   c(3,2,2,1,0,-1),c("H", "G", "G", "R", "S", "G"))
 names(students) <- c("name", "year", "house") # name the columns
 class(students)	# "data.frame"
-```
-
-```
-## [1] "data.frame"
-```
-
-```r
 class(students$year)	# "numeric"
-```
-
-```
-## [1] "numeric"
-```
-
-```r
 class(students[,3])	# "factor"
-```
-
-```
-## [1] "factor"
-```
-
-```r
 # find the dimensions
 nrow(students)	
-```
-
-```
-## [1] 6
-```
-
-```r
 ncol(students)	
-```
-
-```
-## [1] 3
-```
-
-```r
 dim(students)	
-```
-
-```
-## [1] 6 3
 ```
 
 
@@ -377,21 +247,16 @@ dim(students)
 - The factor class is for categorical data, which are commonly seen in data frame.
 - Factors can be ordered (like childrens' grade levels) or unordered (like gender)
 
-```
-## [1] female female male   <NA>   female
-## Levels: female male
-```
+```r
+factor(c("female", "female", "male", NA, "female"))
+# The "levels" are the values the categorical data can take
+# Note that missing data does not enter the levels
+levels(factor(c("male", "male", "female", NA, "female"))) # "female" "male"
+# If a factor vector has length 1, its levels will have length 1, too
+length(factor("male")) 
 
-```
-## [1] "female" "male"
-```
-
-```
-## [1] 1
-```
-
-```
-## [1] "0-5yrs"  "6-11yrs" "12+ yrs"
+data(infert) # "Infertility after Spontaneous and Induced Abortion"
+levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
 ```
 
 
@@ -425,7 +290,8 @@ dim(students)
 
 
 ```r
-str(read.csv('http://opengeocode.org/download/CCurls.txt'))
+cc <- read.csv('http://opengeocode.org/download/CCurls.txt')
+str(cc)
 ```
 
 ```
@@ -443,6 +309,13 @@ str(read.csv('http://opengeocode.org/download/CCurls.txt'))
 ```r
 # Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
 library(RCurl)
+```
+
+```
+## Loading required package: bitops
+```
+
+```r
 url <- 'https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD'
 df <- read.csv(text = getURL(url))
 str(df)
@@ -475,28 +348,16 @@ str(df)
 - use the `is.na()` to identify the presence of NA for each column or combinE with the `any()` 
 
 
-```
-##   col.1 col.2
-## 1     1     M
-## 2    NA     F
-## 3     0  <NA>
-## 4     1     M
-```
-
-```
-## [1] FALSE  TRUE FALSE FALSE
-```
-
-```
-## [1] TRUE
+```r
+(missing_dat <- data.frame(col.1=c(1,NA,0,1),col.2=c("M","F",NA,"M")))
+is.na(missing_dat$col.1)
+any(is.na(missing_dat))
 ```
 
 - We can replace the NA with the mean value or we can **remove these NA rows**.
 
-```
-##   col.1 col.2
-## 1     1     M
-## 4     1     M
+```r
+(newdata <- na.omit(missing_dat))
 ```
 
 - Substitute or remove 從方法論上來說不一定是好事。
@@ -510,25 +371,12 @@ str(df)
 
 The `data.table` package is extremely useful — and much, much faster than read.table— for larger files. 
 
-```
-##      name year house
-## 1: Cedric    3     H
-## 2:   Fred    2     G
-## 3: George    2     G
-## 4:    Cho    1     R
-## 5:  Draco    0     S
-## 6:  Ginny   -1     G
-```
-
-```
-##     name year house
-## 1: Ginny   -1     G
-```
-
-```
-##      name year house
-## 1:   Fred    2     G
-## 2: George    2     G
+```r
+require(data.table) 
+students <- as.data.table(students)
+students # note the slightly different print-out
+students[name=="Ginny"] # get rows with name == "Ginny"
+students[year==2] # get rows with year == 2
 ```
 
 ---
@@ -560,7 +408,7 @@ print('oh,my first')
 ## 大綱
 1. Basic R  (80min)
 2. __`A glace at a data science example (20min)`__
-3. Lab session (70min)
+3. Lab session (50min)
 
 
 

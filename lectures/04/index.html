@@ -131,19 +131,12 @@ y &lt;- c(1,2,TRUE,FALSE,&quot;a&quot;); mode(y)
     <h2>陣列 Array</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>## , , c1
-## 
-##    b1 b2 b3 b4 b5
-## a1  1  4  7 10 13
-## a2  2  5  8 11 14
-## a3  3  6  9 12 15
-## 
-## , , c2
-## 
-##    b1 b2 b3 b4 b5
-## a1 16 19  2  5  8
-## a2 17 20  3  6  9
-## a3 18  1  4  7 10
+    <pre><code class="r"># array(data = NA, dim = length(data), dimnames = NULL)
+z &lt;- c(1:30)
+dim1 &lt;- c(&quot;a1&quot;, &quot;a2&quot;,&quot;a3&quot;)
+dim2 &lt;- c(&quot;b1&quot;,&quot;b2&quot;,&quot;b3&quot;, &quot;b4&quot;, &quot;b5&quot;)
+dim3 &lt;- c(&quot;c1&quot;,&quot;c2&quot;)
+a &lt;- array(z, dim = c(3,5,2), dimnames = list(dim1,dim2,dim3))
 </code></pre>
 
   </article>
@@ -191,7 +184,7 @@ y &lt;- c(1,2,TRUE,FALSE,&quot;a&quot;); mode(y)
 <pre><code class="r"># matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) 
 rnames &lt;- c(&quot;R1&quot;, &quot;R2&quot;, &quot;R3&quot;, &quot;R4&quot;, &quot;R5&quot;)
 cnames &lt;- c(&quot;C1&quot;, &quot;C2&quot;, &quot;C3&quot;, &quot;C4&quot;, &quot;C5&quot;)
-m &lt;- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
+m1 &lt;- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
 # class(m); mode(m)
 </code></pre>
 
@@ -204,34 +197,11 @@ m &lt;- matrix(1:25, nrow = 5, ncol = 5, dimnames = list(rnames, cnames))
     <h2>矩陣 Matrix</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">v &lt;- as.vector(m);v
-</code></pre>
-
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-## [24] 24 25
-</code></pre>
-
-<pre><code class="r"># access 
+    <pre><code class="r">v &lt;- as.vector(m1);v
+# access 
 m1[3,4]
-</code></pre>
-
-<pre><code>## [1] 18
-</code></pre>
-
-<pre><code class="r">m1[,3]
-</code></pre>
-
-<pre><code>## r1 r2 r3 r4 r5 
-## 11 12 13 14 15
-</code></pre>
-
-<pre><code class="r">m1[c(1:3),]
-</code></pre>
-
-<pre><code>##    c1 c2 c3 c4 c5
-## r1  1  6 11 16 21
-## r2  2  7 12 17 22
-## r3  3  8 13 18 23
+m1[,3]
+m1[c(1:3),]
 </code></pre>
 
   </article>
@@ -243,38 +213,13 @@ m1[3,4]
     <h2>矩陣 Matrix</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>##      [,1] [,2]
-## [1,]    1    6
-## [2,]    2    7
-## [3,]    3    8
-## [4,]    4    9
-## [5,]    5   10
-</code></pre>
-
-<pre><code>##      [,1] [,2]
-## [1,]    1    6
-## [2,]    2    7
-## [3,]    3    8
-## [4,]    4    9
-## [5,]    5   10
-## [6,]   11   12
-</code></pre>
-
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    6   13
-## [2,]    2    7   14
-## [3,]    3    8   15
-## [4,]    4    9   16
-## [5,]    5   10   17
-## [6,]   11   12   18
-</code></pre>
-
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    2    7   14
-## [2,]    3    8   15
-## [3,]    4    9   16
-## [4,]    5   10   17
-## [5,]   11   12   18
+    <pre><code class="r"># manipulate: merge and delete
+(y &lt;- c(1:10))
+m2 &lt;- matrix(y, nrow = 5, ncol = 2);m2
+#(m2 &lt;- matrix(y, nrow = 5, ncol = 2, byrow = F))
+(m3 &lt;- rbind(m2, c(11,12)))
+(m4 &lt;- cbind(m3, c(13:18)))
+(m4 &lt;- m4[-1,])
 </code></pre>
 
   </article>
@@ -288,17 +233,11 @@ m1[3,4]
   <article data-timings="">
     <h3>矩陣運算</h3>
 
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    2    3    4    5
-## [2,]    6    7    8    9   10
-</code></pre>
+<pre><code class="r"># Transpose the whole matrix
+t(m2)
 
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]   37   44   51   58   65
-## [2,]   44   53   62   71   80
-## [3,]   51   62   73   84   95
-## [4,]   58   71   84   97  110
-## [5,]   65   80   95  110  125
+# Matrix multiplication
+m2 %*% t(m2)
 </code></pre>
 
   </article>
@@ -341,17 +280,10 @@ m1[3,4]
 <li><code>[]</code>, <code>$</code>, <code>subset()</code></li>
 </ul>
 
-<pre><code>## [1] 5.1 4.7 5.0
-</code></pre>
-
-<pre><code>## [1] 3.5 3.2 3.6
-</code></pre>
-
-<pre><code>## [1] 3.2
-</code></pre>
-
-<pre><code>##   Sepal.Length Sepal.Width Pedal.Length
-## 2          4.7         3.2          1.3
+<pre><code class="r">iris.simple[,1]
+iris.simple$Sepal.Width
+iris.simple$Sepal.Width[2]
+subset(iris.simple, Sepal.Length &lt; 5)
 </code></pre>
 
   </article>
@@ -365,12 +297,7 @@ m1[3,4]
   <article data-timings="">
     <pre><code class="r">## cbind(), rbind()
 names(iris.simple)
-</code></pre>
-
-<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Pedal.Length&quot;
-</code></pre>
-
-<pre><code class="r">names(iris.simple)[1] &lt;- &quot;sepal.length&quot;
+names(iris.simple)[1] &lt;- &quot;sepal.length&quot;
 </code></pre>
 
   </article>
@@ -387,45 +314,15 @@ names(iris.simple)
 <li>基本統計 <code>mean(), median(), sum(), min(), max(), sd(), ...</code></li>
 </ul>
 
-<pre><code class="r">students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),
-                       c(3,2,2,1,0,-1),
-                       c(&quot;H&quot;, &quot;G&quot;, &quot;G&quot;, &quot;R&quot;, &quot;S&quot;, &quot;G&quot;))
+<pre><code class="r">students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),                   c(3,2,2,1,0,-1),c(&quot;H&quot;, &quot;G&quot;, &quot;G&quot;, &quot;R&quot;, &quot;S&quot;, &quot;G&quot;))
 names(students) &lt;- c(&quot;name&quot;, &quot;year&quot;, &quot;house&quot;) # name the columns
 class(students) # &quot;data.frame&quot;
-</code></pre>
-
-<pre><code>## [1] &quot;data.frame&quot;
-</code></pre>
-
-<pre><code class="r">class(students$year)    # &quot;numeric&quot;
-</code></pre>
-
-<pre><code>## [1] &quot;numeric&quot;
-</code></pre>
-
-<pre><code class="r">class(students[,3]) # &quot;factor&quot;
-</code></pre>
-
-<pre><code>## [1] &quot;factor&quot;
-</code></pre>
-
-<pre><code class="r"># find the dimensions
+class(students$year)    # &quot;numeric&quot;
+class(students[,3]) # &quot;factor&quot;
+# find the dimensions
 nrow(students)  
-</code></pre>
-
-<pre><code>## [1] 6
-</code></pre>
-
-<pre><code class="r">ncol(students)  
-</code></pre>
-
-<pre><code>## [1] 3
-</code></pre>
-
-<pre><code class="r">dim(students)   
-</code></pre>
-
-<pre><code>## [1] 6 3
+ncol(students)  
+dim(students)   
 </code></pre>
 
   </article>
@@ -442,17 +339,15 @@ nrow(students)
 <li>Factors can be ordered (like childrens&#39; grade levels) or unordered (like gender)</li>
 </ul>
 
-<pre><code>## [1] female female male   &lt;NA&gt;   female
-## Levels: female male
-</code></pre>
+<pre><code class="r">factor(c(&quot;female&quot;, &quot;female&quot;, &quot;male&quot;, NA, &quot;female&quot;))
+# The &quot;levels&quot; are the values the categorical data can take
+# Note that missing data does not enter the levels
+levels(factor(c(&quot;male&quot;, &quot;male&quot;, &quot;female&quot;, NA, &quot;female&quot;))) # &quot;female&quot; &quot;male&quot;
+# If a factor vector has length 1, its levels will have length 1, too
+length(factor(&quot;male&quot;)) 
 
-<pre><code>## [1] &quot;female&quot; &quot;male&quot;
-</code></pre>
-
-<pre><code>## [1] 1
-</code></pre>
-
-<pre><code>## [1] &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs&quot;
+data(infert) # &quot;Infertility after Spontaneous and Induced Abortion&quot;
+levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs&quot;
 </code></pre>
 
   </article>
@@ -500,7 +395,8 @@ nrow(students)
     <h2>Loading datasets from the Internet</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">str(read.csv(&#39;http://opengeocode.org/download/CCurls.txt&#39;))
+    <pre><code class="r">cc &lt;- read.csv(&#39;http://opengeocode.org/download/CCurls.txt&#39;)
+str(cc)
 </code></pre>
 
 <pre><code>## &#39;data.frame&#39;:    249 obs. of  5 variables:
@@ -517,7 +413,12 @@ nrow(students)
 
 <pre><code class="r"># Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
 library(RCurl)
-url &lt;- &#39;https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD&#39;
+</code></pre>
+
+<pre><code>## Loading required package: bitops
+</code></pre>
+
+<pre><code class="r">url &lt;- &#39;https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD&#39;
 df &lt;- read.csv(text = getURL(url))
 str(df)
 </code></pre>
@@ -557,26 +458,16 @@ str(df)
 <li><p>use the <code>is.na()</code> to identify the presence of NA for each column or combinE with the <code>any()</code> </p></li>
 </ul>
 
-<pre><code>##   col.1 col.2
-## 1     1     M
-## 2    NA     F
-## 3     0  &lt;NA&gt;
-## 4     1     M
-</code></pre>
-
-<pre><code>## [1] FALSE  TRUE FALSE FALSE
-</code></pre>
-
-<pre><code>## [1] TRUE
+<pre><code class="r">(missing_dat &lt;- data.frame(col.1=c(1,NA,0,1),col.2=c(&quot;M&quot;,&quot;F&quot;,NA,&quot;M&quot;)))
+is.na(missing_dat$col.1)
+any(is.na(missing_dat))
 </code></pre>
 
 <ul>
 <li>We can replace the NA with the mean value or we can <strong>remove these NA rows</strong>.</li>
 </ul>
 
-<pre><code>##   col.1 col.2
-## 1     1     M
-## 4     1     M
+<pre><code class="r">(newdata &lt;- na.omit(missing_dat))
 </code></pre>
 
 <ul>
@@ -594,22 +485,11 @@ str(df)
   <article data-timings="">
     <p>The <code>data.table</code> package is extremely useful — and much, much faster than read.table— for larger files. </p>
 
-<pre><code>##      name year house
-## 1: Cedric    3     H
-## 2:   Fred    2     G
-## 3: George    2     G
-## 4:    Cho    1     R
-## 5:  Draco    0     S
-## 6:  Ginny   -1     G
-</code></pre>
-
-<pre><code>##     name year house
-## 1: Ginny   -1     G
-</code></pre>
-
-<pre><code>##      name year house
-## 1:   Fred    2     G
-## 2: George    2     G
+<pre><code class="r">require(data.table) 
+students &lt;- as.data.table(students)
+students # note the slightly different print-out
+students[name==&quot;Ginny&quot;] # get rows with name == &quot;Ginny&quot;
+students[year==2] # get rows with year == 2
 </code></pre>
 
   </article>
@@ -649,7 +529,7 @@ print(&#39;oh,my first&#39;)
     <ol>
 <li>Basic R  (80min)</li>
 <li><strong><code>A glace at a data science example (20min)</code></strong></li>
-<li>Lab session (70min)</li>
+<li>Lab session (50min)</li>
 </ol>
 
   </article>
