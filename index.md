@@ -1,13 +1,17 @@
 ---
-title: Introducing Data Science with R
-subtitle: dsR
-author: Shu-Kai Hsieh
-github: {user: loperntu, repo: dsR, branch: "gh-pages"}
+title: "Introducing Data Science with R"
+author: "Shu-Kai Hsieh"
 framework: minimal
-mode: selfcontained
-ext_widgets: {rCharts: ["libraries/nvd3"]}
+github:
+  branch: gh-pages
+  repo: dsR
+  user: loperntu
 hitheme: solarized_light
 logo: assets/img/lopen.jpg
+mode: selfcontained
+subtitle: dsR
+ext_widgets:
+  rCharts: libraries/nvd3
 ---
 
 
@@ -85,7 +89,7 @@ Week | Date   | Topic         | Lab
 
 - <span style="color:blue; font-weight:bold"> Week.3 </span>: [In-class exercise and homework](exercise.homework/week3/week3.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
 - <span style="color:blue; font-weight:bold"> Week.4 </span>: [In-class exercise and homework](exercise.homework/week4/week4.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
-- <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
+- <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html)
 
 ## 課程教材
 
