@@ -198,8 +198,14 @@ dim(students)
 
 
 ---
-## Factor
-- The factor class is for categorical data, which are commonly seen in data frame.
+## 因子 Factor
+
+
+- 複習一下統計學中「變量」的分類
+<img style='border: 1px solid;' width=40% src='./assets/img/var.png'></img>
+
+- 在 R 中，分類型和有序型的變量稱作「因子」(factor). 在 data frame 中常看到。
+
 - Factors can be ordered (like childrens' grade levels) or unordered (like gender)
 ```{r,eval=FALSE}
 factor(c("female", "female", "male", NA, "female"))
