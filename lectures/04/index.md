@@ -176,7 +176,7 @@ m2 %*% t(m2)
 ## Data Frame
 
 - A dataframe is similar to the matrix, but in a data frame, the columns can hold data elements of different types.
-- 最常處理的資料結構 the most commonly used data type for most of the analysis.
+- 最常處理的資料結構 the most commonly used data type for most of the analysis. Number of columns equals to number of observed variables; number of rows equals to number of observations.
 
 
 ```r
@@ -228,6 +228,7 @@ names(iris.simple)[1] <- "sepal.length"
 
 
 ```r
+# 練習自己建立一個 data frame
 students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),
                        c(3,2,2,1,0,-1),
                        c("H", "G", "G", "R", "S", "G"))
@@ -246,7 +247,7 @@ dim(students)
 ---
 ## In-class Exercise 
 
-`mtcars` 是個很好的練習用例子。
+`mtcars` 是個很好的練習用例子。（打在 https://goo.gl/yIZnE8 讓我知道）
 
 
 ```r
@@ -261,6 +262,8 @@ summary(mtcars)     # A summary of each column
 ```
 
 
+
+
 ---
 ## 因子 Factor
 
@@ -271,7 +274,7 @@ summary(mtcars)     # A summary of each column
 
 
 ```r
-gender <- c("female", "female", "male", "female")
+gender <- c("female", "female", "male", "female", "male", "female")
 gender.2 <- factor(gender)
 levels(gender.2)
 # If a factor vector has length 1, its levels will have length 1, too
@@ -286,21 +289,18 @@ length(factor("male"))
 
 ```r
 # 變成有序因子
-honor <- c("cum laude","summa cum laude", "magna cum laude", 
-           "cum laude", "magna cum laude","summa cum laude")
+honor <- c("cum laude","summa cum laude", "cum laude", 
+           "summa laude", "magna cum laude","cum laude")
 honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude", 
                                      "summa cum laude"), ordered = TRUE); honor.fac
-```
-
-```
-## [1] cum laude       summa cum laude magna cum laude cum laude      
-## [5] magna cum laude summa cum laude
-## Levels: cum laude < magna cum laude < summa cum laude
 ```
 
 
 ---
 ## In-class Exercise
+
+- 結合上述資料，建立 data frame (無序、分類變數)。
+- 利用 `table()` 建立 contingency table; `prop.table()` 轉成頻率。
 
 
 
@@ -315,58 +315,40 @@ honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude",
  - MS Excel file (`*.xls` or `*.xlsx`)
  - R data object (`*.RData`)
  
- 
-  
-  
+
 - 資料來源 
   - Web (下載；網路爬蟲 Scraping and parsing data from the **web** (raw HTML sources)； Interacting with APIs)
   - 資料庫 database 
 
 
 
----
-## Loading datasets from the Internet
-
-
-```r
-cc <- read.csv('http://opengeocode.org/download/CCurls.txt')
-str(cc)
-```
-
-- `url` does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the `RCurl` package,
-
-
-```r
-# Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
-library(RCurl)
-url <- 'https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD'
-df <- read.csv(text = getURL(url))
-str(df)
-# sort(table(df$Product))
-```
-
 
 
 ---
 ## Preprocessing
 
-- (numerical data) preprocessing: missing data, outliers
-- (textual data) preprocessing
+- In many cases, getting our data in the rectangular arrangement of a matrix or data frame is the first step in preparing it for analysis. 
+- As much as 60\%-80\% of the time Data Scientists spent on data analysis is focused on preparing the data for analysis.
+  
+  - (numerical data) handling missing data, outliers
+  - (textual data) : tokenization/word segmentation
 
 
 
 ---
-## Missing values
+## Missing values 缺失值處理
 
--  In R, a numeric missing value is represented by NA while character missing values are represented by <NA>. 
+-  In R, a numeric missing value is represented by `NA` while character missing values are represented by `<NA>`. 
 
-- use the `is.na()` to identify the presence of NA for each column or combinE with the `any()` 
+- use the `is.na()` to identify the presence of NA for each column or combine with the `any()` 
 
 
 ```r
 (missing_dat <- data.frame(col.1=c(1,NA,0,1),col.2=c("M","F",NA,"M")))
 is.na(missing_dat$col.1)
 any(is.na(missing_dat))
+# 提取非缺失值
+missing_dat[!is.na(missing_dat)]
 ```
 
 - We can replace the NA with the mean value or we can **remove these NA rows**.
@@ -375,19 +357,31 @@ any(is.na(missing_dat))
 (newdata <- na.omit(missing_dat))
 ```
 
-- Substitute or remove 從方法論上來說不一定是好事。
+- 有許多函式都帶有 `na.rm` 參數，設成 TRUE 執行時會自動刪除所有的 NA。但要注意：Substitute or remove 從方法論上來說不一定是好事。
 
+```r
+sum(c(NA, 1,44,23,NA,99), na.rm = TRUE)
+```
 
-
+```
+## [1] 167
+```
 
 
 ---
 ## Reading big files with `data.table`
 
-The `data.table` package is extremely useful — and much, much faster than read.table— for larger files. 
+The `data.table` package is extremely useful — and much, much faster than `read.table` — for larger files. 
 
 ```r
 require(data.table) 
+```
+
+```
+## Loading required package: data.table
+```
+
+```r
 students <- as.data.table(students)
 students # note the slightly different print-out
 students[name=="Ginny"] # get rows with name == "Ginny"

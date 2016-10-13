@@ -202,7 +202,7 @@ dim(students)
 ---
 ## In-class Exercise 
 
-`mtcars` 是個很好的練習用例子。
+`mtcars` 是個很好的練習用例子。（打在 https://goo.gl/yIZnE8 讓我知道）
 
 ```{r, echo=TRUE, results='hide'}
 #mtcars             # The built-in data frame
@@ -213,8 +213,9 @@ ncol(mtcars)        # Number of columns
 names(mtcars)       # The column names
 rownames(mtcars)    # The row names
 summary(mtcars)     # A summary of each column
-
 ```
+
+
 
 
 ---
@@ -225,8 +226,8 @@ summary(mtcars)     # A summary of each column
 - 在 R 中，分類和有序的變數稱作「因子」(factor). 在 data frame 中常看到。
 - Factors 可以視為是一種特殊的向量類型。用 `factor()` 來產生，用 `levels()` 來取得 levels (values the categorical data can take)。
 
-```{r,eval=FALSE}
-gender <- c("female", "female", "male", "female")
+```{r,echo=TRUE, results='hide'}
+gender <- c("female", "female", "male", "female", "male", "female")
 gender.2 <- factor(gender)
 levels(gender.2)
 # If a factor vector has length 1, its levels will have length 1, too
@@ -238,10 +239,10 @@ length(factor("male"))
 ## 因子 Factor
 
 
-```{r}
+```{r,  echo=TRUE, results='hide'}
 # 變成有序因子
-honor <- c("cum laude","summa cum laude", "magna cum laude", 
-           "cum laude", "magna cum laude","summa cum laude")
+honor <- c("cum laude","summa cum laude", "cum laude", 
+           "summa laude", "magna cum laude","cum laude")
 honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude", 
                                      "summa cum laude"), ordered = TRUE); honor.fac
 ```
@@ -249,6 +250,9 @@ honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude",
 
 ---
 ## In-class Exercise
+
+- 結合上述資料，建立 data frame (無序、分類變數)。
+- 利用 `table()` 建立 contingency table; `prop.table()` 轉成頻率。
 
 
 
@@ -263,55 +267,39 @@ honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude",
  - MS Excel file (`*.xls` or `*.xlsx`)
  - R data object (`*.RData`)
  
- 
-  
-  
+
 - 資料來源 
   - Web (下載；網路爬蟲 Scraping and parsing data from the **web** (raw HTML sources)； Interacting with APIs)
   - 資料庫 database 
 
 
 
----
-## Loading datasets from the Internet
-
-```{r, eval=FALSE}
-cc <- read.csv('http://opengeocode.org/download/CCurls.txt')
-str(cc)
-```
-
-- `url` does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the `RCurl` package,
-
-```{r, eval=FALSE}
-# Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
-library(RCurl)
-url <- 'https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD'
-df <- read.csv(text = getURL(url))
-str(df)
-# sort(table(df$Product))
-```
-
 
 
 ---
 ## Preprocessing
 
-- (numerical data) preprocessing: missing data, outliers
-- (textual data) preprocessing
+- In many cases, getting our data in the rectangular arrangement of a matrix or data frame is the first step in preparing it for analysis. 
+- As much as 60\%-80\% of the time Data Scientists spent on data analysis is focused on preparing the data for analysis.
+  
+  - (numerical data) handling missing data, outliers
+  - (textual data) : tokenization/word segmentation
 
 
 
 ---
-## Missing values
+## Missing values 缺失值處理
 
--  In R, a numeric missing value is represented by NA while character missing values are represented by <NA>. 
+-  In R, a numeric missing value is represented by `NA` while character missing values are represented by `<NA>`. 
 
-- use the `is.na()` to identify the presence of NA for each column or combinE with the `any()` 
+- use the `is.na()` to identify the presence of NA for each column or combine with the `any()` 
 
 ```{r, echo=TRUE, results='hide'}
 (missing_dat <- data.frame(col.1=c(1,NA,0,1),col.2=c("M","F",NA,"M")))
 is.na(missing_dat$col.1)
 any(is.na(missing_dat))
+# 提取非缺失值
+missing_dat[!is.na(missing_dat)]
 ```
 
 - We can replace the NA with the mean value or we can **remove these NA rows**.
@@ -319,16 +307,16 @@ any(is.na(missing_dat))
 (newdata <- na.omit(missing_dat))
 ```
 
-- Substitute or remove 從方法論上來說不一定是好事。
-
-
-
+- 有許多函式都帶有 `na.rm` 參數，設成 TRUE 執行時會自動刪除所有的 NA。但要注意：Substitute or remove 從方法論上來說不一定是好事。
+```{r}
+sum(c(NA, 1,44,23,NA,99), na.rm = TRUE)
+```
 
 
 ---
 ## Reading big files with `data.table`
 
-The `data.table` package is extremely useful — and much, much faster than read.table— for larger files. 
+The `data.table` package is extremely useful — and much, much faster than `read.table` — for larger files. 
 ```{r, echo=TRUE, results='hide'}
 require(data.table) 
 students <- as.data.table(students)

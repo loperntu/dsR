@@ -251,7 +251,7 @@ m2 %*% t(m2)
   <article data-timings="">
     <ul>
 <li>A dataframe is similar to the matrix, but in a data frame, the columns can hold data elements of different types.</li>
-<li>最常處理的資料結構 the most commonly used data type for most of the analysis.</li>
+<li>最常處理的資料結構 the most commonly used data type for most of the analysis. Number of columns equals to number of observed variables; number of rows equals to number of observations.</li>
 </ul>
 
 <pre><code class="r"># create, manipulate, access
@@ -314,7 +314,8 @@ names(iris.simple)[1] &lt;- &quot;sepal.length&quot;
 <li>基本統計 <code>mean(), median(), sum(), min(), max(), sd(), ...</code></li>
 </ul>
 
-<pre><code class="r">students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),
+<pre><code class="r"># 練習自己建立一個 data frame
+students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),
                        c(3,2,2,1,0,-1),
                        c(&quot;H&quot;, &quot;G&quot;, &quot;G&quot;, &quot;R&quot;, &quot;S&quot;, &quot;G&quot;))
 names(students) &lt;- c(&quot;name&quot;, &quot;year&quot;, &quot;house&quot;) # name the columns
@@ -336,7 +337,7 @@ dim(students)
     <h2>In-class Exercise</h2>
   </hgroup>
   <article data-timings="">
-    <p><code>mtcars</code> 是個很好的練習用例子。</p>
+    <p><code>mtcars</code> 是個很好的練習用例子。（打在 <a href="https://goo.gl/yIZnE8">https://goo.gl/yIZnE8</a> 讓我知道）</p>
 
 <pre><code class="r">#mtcars             # The built-in data frame
 #help(mtcars)
@@ -364,7 +365,7 @@ summary(mtcars)     # A summary of each column
 <li>Factors 可以視為是一種特殊的向量類型。用 <code>factor()</code> 來產生，用 <code>levels()</code> 來取得 levels (values the categorical data can take)。</li>
 </ul>
 
-<pre><code class="r">gender &lt;- c(&quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;)
+<pre><code class="r">gender &lt;- c(&quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;)
 gender.2 &lt;- factor(gender)
 levels(gender.2)
 # If a factor vector has length 1, its levels will have length 1, too
@@ -381,15 +382,10 @@ length(factor(&quot;male&quot;))
   </hgroup>
   <article data-timings="">
     <pre><code class="r"># 變成有序因子
-honor &lt;- c(&quot;cum laude&quot;,&quot;summa cum laude&quot;, &quot;magna cum laude&quot;, 
-           &quot;cum laude&quot;, &quot;magna cum laude&quot;,&quot;summa cum laude&quot;)
+honor &lt;- c(&quot;cum laude&quot;,&quot;summa cum laude&quot;, &quot;cum laude&quot;, 
+           &quot;summa laude&quot;, &quot;magna cum laude&quot;,&quot;cum laude&quot;)
 honor.fac &lt;- factor(honor, levels =c(&quot;cum laude&quot;, &quot;magna cum laude&quot;, 
                                      &quot;summa cum laude&quot;), ordered = TRUE); honor.fac
-</code></pre>
-
-<pre><code>## [1] cum laude       summa cum laude magna cum laude cum laude      
-## [5] magna cum laude summa cum laude
-## Levels: cum laude &lt; magna cum laude &lt; summa cum laude
 </code></pre>
 
   </article>
@@ -401,7 +397,11 @@ honor.fac &lt;- factor(honor, levels =c(&quot;cum laude&quot;, &quot;magna cum l
     <h2>In-class Exercise</h2>
   </hgroup>
   <article data-timings="">
-    
+    <ul>
+<li>結合上述資料，建立 data frame (無序、分類變數)。</li>
+<li>利用 <code>table()</code> 建立 contingency table; <code>prop.table()</code> 轉成頻率。</li>
+</ul>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -434,24 +434,18 @@ honor.fac &lt;- factor(honor, levels =c(&quot;cum laude&quot;, &quot;magna cum l
 
 <slide class="" id="slide-19" style="background:;">
   <hgroup>
-    <h2>Loading datasets from the Internet</h2>
+    <h2>Preprocessing</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">cc &lt;- read.csv(&#39;http://opengeocode.org/download/CCurls.txt&#39;)
-str(cc)
-</code></pre>
+    <ul>
+<li>In many cases, getting our data in the rectangular arrangement of a matrix or data frame is the first step in preparing it for analysis. </li>
+<li><p>As much as 60\%-80\% of the time Data Scientists spent on data analysis is focused on preparing the data for analysis.</p>
 
 <ul>
-<li><code>url</code> does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the <code>RCurl</code> package,</li>
+<li>(numerical data) handling missing data, outliers</li>
+<li>(textual data) : tokenization/word segmentation</li>
+</ul></li>
 </ul>
-
-<pre><code class="r"># Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
-library(RCurl)
-url &lt;- &#39;https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD&#39;
-df &lt;- read.csv(text = getURL(url))
-str(df)
-# sort(table(df$Product))
-</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -459,31 +453,19 @@ str(df)
 
 <slide class="" id="slide-20" style="background:;">
   <hgroup>
-    <h2>Preprocessing</h2>
+    <h2>Missing values 缺失值處理</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>(numerical data) preprocessing: missing data, outliers</li>
-<li>(textual data) preprocessing</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-21" style="background:;">
-  <hgroup>
-    <h2>Missing values</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>In R, a numeric missing value is represented by NA while character missing values are represented by <NA>. </p></li>
-<li><p>use the <code>is.na()</code> to identify the presence of NA for each column or combinE with the <code>any()</code> </p></li>
+<li><p>In R, a numeric missing value is represented by <code>NA</code> while character missing values are represented by <code>&lt;NA&gt;</code>. </p></li>
+<li><p>use the <code>is.na()</code> to identify the presence of NA for each column or combine with the <code>any()</code> </p></li>
 </ul>
 
 <pre><code class="r">(missing_dat &lt;- data.frame(col.1=c(1,NA,0,1),col.2=c(&quot;M&quot;,&quot;F&quot;,NA,&quot;M&quot;)))
 is.na(missing_dat$col.1)
 any(is.na(missing_dat))
+# 提取非缺失值
+missing_dat[!is.na(missing_dat)]
 </code></pre>
 
 <ul>
@@ -494,22 +476,33 @@ any(is.na(missing_dat))
 </code></pre>
 
 <ul>
-<li>Substitute or remove 從方法論上來說不一定是好事。</li>
+<li>有許多函式都帶有 <code>na.rm</code> 參數，設成 TRUE 執行時會自動刪除所有的 NA。但要注意：Substitute or remove 從方法論上來說不一定是好事。</li>
 </ul>
+
+<pre><code class="r">sum(c(NA, 1,44,23,NA,99), na.rm = TRUE)
+</code></pre>
+
+<pre><code>## [1] 167
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Reading big files with <code>data.table</code></h2>
   </hgroup>
   <article data-timings="">
-    <p>The <code>data.table</code> package is extremely useful — and much, much faster than read.table— for larger files. </p>
+    <p>The <code>data.table</code> package is extremely useful — and much, much faster than <code>read.table</code> — for larger files. </p>
 
 <pre><code class="r">require(data.table) 
-students &lt;- as.data.table(students)
+</code></pre>
+
+<pre><code>## Loading required package: data.table
+</code></pre>
+
+<pre><code class="r">students &lt;- as.data.table(students)
 students # note the slightly different print-out
 students[name==&quot;Ginny&quot;] # get rows with name == &quot;Ginny&quot;
 students[year==2] # get rows with year == 2
@@ -519,7 +512,7 @@ students[year==2] # get rows with year == 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>R scripts and Programming</h2>
   </hgroup>
@@ -544,7 +537,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -559,7 +552,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>Review</h2>
   </hgroup>
@@ -579,7 +572,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Structure of a Data Science Product</h2>
   </hgroup>
@@ -599,7 +592,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Data Carrer Paths</h2>
   </hgroup>
@@ -614,7 +607,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span></h2>
   </hgroup>
@@ -738,62 +731,56 @@ print(&#39;oh,my first&#39;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Loading datasets from the Internet'>
+        data-slide=19 title='Preprocessing'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Preprocessing'>
+        data-slide=20 title='Missing values 缺失值處理'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Missing values'>
+        data-slide=21 title='Reading big files with <code>data.table</code>'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Reading big files with <code>data.table</code>'>
+        data-slide=22 title='R scripts and Programming'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='R scripts and Programming'>
+        data-slide=23 title='大綱'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='大綱'>
+        data-slide=24 title='Review'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Review'>
+        data-slide=25 title='Structure of a Data Science Product'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Structure of a Data Science Product'>
+        data-slide=26 title='Data Carrer Paths'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='Data Carrer Paths'>
+        data-slide=27 title='Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span>'>
          27
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span>'>
-         28
       </a>
     </li>
   </ul>

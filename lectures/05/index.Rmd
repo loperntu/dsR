@@ -25,6 +25,71 @@ github      : {user: loperntu, repo: dsR}
 3. Lab session (50min)
 
 
+---
+## 讀取 Data Frame 常用技巧: `attach() and detach()
+
+- The `attach()` adds the data frame to the R search path. When a variable name is encountered, data frames in the search path are checked in order to locate the variable. The `detach()` removes the data frame from the search path.
+
+```{r,echo=TRUE, results='hide'}
+summary(mtcars$mpg)
+plot(mtcars$mpg, mtcars$disp)
+plot(mtcars$mpg, mtcars$wt)
+```
+
+can be written as
+
+```{r,echo=TRUE, results='hide'}
+attach(mtcars)
+summary(mpg)
+plot(mpg, disp)
+plot(mpg, wt)
+detach(mtcars)
+```
+
+
+---
+## 讀取 Data Frame 常用技巧: with()` and `within()`
+
+- Alternatively, use `with()`. The statements within the {} brackets are evaluated with reference to the mtcars data frame. You don't have to worry about name conflicts here.
+
+```{r,echo=TRUE, results='hide'}
+with(mtcars, {
+       summary(mpg, disp, wt)
+       plot(mpg, disp)
+       plot(mpg, wt)}
+       )
+```
+
+- Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator <<- instead of the standard one <-. It will save the object to the global environment outside of the `with()` call. 
+
+```{r,echo=TRUE, results='hide'}
+with(mtcars, {
+        nokeepstats <- summary(mpg)
+        keepstats <<- summary(mpg)}
+        )
+```
+
+- The `within()` is similar to the `with()` function, but allows you to modify the data frame.
+
+
+---
+## 進階對於 Data Frame 的處理（下週）
+
+generally, it involves:
+
+- Creating new variables
+- Recoding variables
+- Renaming variables
+- Handling with dates and missing values
+- Selecting and dropping variables % plyr and loop: next time
+
+And some more advanced skills
+
+- Sorting dataset
+- Merging dataset (via `plyr` package)
+- Subsetting dataset
+- Aggregation and restructuring data (via `reshape` package)
+
 
 
 ---
@@ -62,18 +127,9 @@ mylist$num
 ```
 
 
----
-## 基本繪圖 
-
-```{r}
-library(ggplot2)
-qplot(x=Sepal.Length, y=Petal.Length, data=iris)
-```
-
-
 
 ---
-## 資料的輸入輸出 Data I/O
+## Data I/O 資料的輸入 
 
 - `read.table()` 是最基本的資料輸入函式。至少有幾個參數要了解：`file, header, sep, stringAsFactors`
 
@@ -81,21 +137,58 @@ qplot(x=Sepal.Length, y=Petal.Length, data=iris)
   - **header**: 邏輯值。設成 TRUE，會將第一個 row 當成變數名。
   - **sep**: 分隔符號。預設為空格。
   - **stringAsFactors**: 預設是將字串的資料類型轉換成 factor 變數。想要字串被當成字串，則設成 FALSE.
-  - **fill**
+  - For data exported from Excel, use `na.strings = c("", "#N/A", "#DIV/0!", "#NUM!")`.
+  - **fill**: Load data file with columns of unequal length. 如果我們的原始檔本身,有不同的 columns 長度,那麼我們用`fill=TRUE`來補上 blank。
 
+
+
+---
+## 給還沒習慣路徑概念的人
+
+```{r, eval=FALSE}
+data <- read.table(file.choose()) # for MAC/Linux
+data <- read.table(choose.files()) # for Windows
+```
+
+---
+## 了解預設值
+
+
+
+
+
+
+
+---
+## Data I/O 資料的輸出 
+
+- `row.names` 和 `col.names` 都是邏輯值。設成 TRUE 則會將 row or column names 一起輸出。
+
+```{r, eval=FALSE}
+write.csv(data, "~/dsR/data.csv",
+          row.names    = FALSE,
+          fileEncoding = "utf8"
+)
+```
 
 
 ---
 ## In-class Exercise [1] 練習讀取外部檔案
 
-Personality
+[Personality](http://personality-project.org/r/#getdata)
 
+```{r, eval=FALSE}
+personality <- read.table(
+  "http://personality-project.org/r/datasets/maps.mixx.epi.bfi.data", 
+  header = TRUE) # or: header = T
+```
 
 
 
 
 ---
-## 文字編碼
+## 文字編碼問題
+### 「編碼」就是將位元組合變成人類可讀文字的規則。
 
 - 在 windows 環境下讀取含有中文字以 utf8 編碼的檔案，有兩種建議做法
 ```{r}
@@ -105,6 +198,21 @@ dat1 <- read.csv("data/ubike-sample-data-utf8.csv", fileEncoding="utf8")
 # B
 f <- file("data/ubike-sample-data-utf8.csv", encoding="utf8" )
 dat1 <- read.csv(f)
+```
+
+- 正體中文資料的編碼： mostly encoded with *utf-8* or *big5*
+
+
+---
+## 基本繪圖 
+
+- `plot()` 是基本作圖函式。
+- `qplot()` 是 `ggplot2` 作圖套件的一個基本作圖函式，基本用法類似，但較美觀?
+
+```{r}
+plot(x = mtcars$mpg, y = mtcars$wt)
+library(ggplot2)
+qplot(mpg, wt, data=mtcars)
 ```
 
 
@@ -128,27 +236,23 @@ sum(is.na(traffic))
 
 
 
+<!-- --- -->
+<!-- ## Textual data preprocessing -->
 
-
-
-
----
-## Textual data preprocessing
-
-- 使用 `jiebaR` (0.81 for R version 3.2.4)
-```{r}
-library(jiebaR)
-##  Using default settings to initialize a worker.
-cutter = worker()
-segment( "給我六個小時砍樹，我會花前四個小時磨斧", cutter)
-```
+<!-- - 使用 `jiebaR` (0.81 for R version 3.2.4) -->
+<!-- ```{r} -->
+<!-- library(jiebaR) -->
+<!-- ##  Using default settings to initialize a worker. -->
+<!-- cutter = worker() -->
+<!-- segment( "給我六個小時砍樹，我會花前四個小時磨斧", cutter) -->
+<!-- ``` -->
 
 
 
 ---
 ## 複習時間
 
-> `Rmarkdown` 等各種問題
+> `Rmarkdown` 等到目前的各種問題
 
 
 
