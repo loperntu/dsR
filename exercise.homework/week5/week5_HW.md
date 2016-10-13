@@ -65,4 +65,8 @@ eng2[1:10,]
 - 自製問卷 (typeform 或 google doc) 與內容，存成 csv 檔。
 - 讀入 R，用你們學到的東西進行 (各種) 探索與分析。 
 
+------
 
+# Datacamp :
+- [Intermediate-R](https://www.datacamp.com/courses/intermediate-r)
+- [Writing functions](https://www.datacamp.com/courses/writing-functions-in-r)
