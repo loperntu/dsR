@@ -36,39 +36,30 @@ summary(mtcars$mpg)
 plot(mtcars$mpg, mtcars$disp)
 ```
 
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
 
 ```r
 plot(mtcars$mpg, mtcars$wt)
 ```
 
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-2.png)
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
 
 can be written as
 
 
 ```r
 attach(mtcars)
-```
-
-```
-## The following object is masked from package:ggplot2:
-## 
-##     mpg
-```
-
-```r
 summary(mpg)
 plot(mpg, disp)
 ```
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
 
 ```r
 plot(mpg, wt)
 ```
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-2.png)
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-2.png)
 
 ```r
 detach(mtcars)
@@ -89,7 +80,7 @@ with(mtcars, {
        )
 ```
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-2.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-2.png)
 
 - Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator <<- instead of the standard one <-. It will save the object to the global environment outside of the `with()` call. 
 
@@ -249,17 +240,12 @@ dat1 <- read.csv(f)
 
 
 ```r
-plot(x = mtcars$mpg, y = mtcars$wt)
-```
-
-![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png)
-
-```r
+#plot(x = mtcars$mpg, y = mtcars$wt)
 library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 ```
 
-![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-2.png)
+![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 
 
 
@@ -269,6 +255,7 @@ qplot(mpg, wt, data=mtcars)
 ## In-class Exercise [2] 練習讀取外部檔案
 
 [臺北市政府資料開放平台](http://data.taipei/opendata/)
+
 [桃園市政府資料開放平台](http://data.tycg.gov.tw/opendata)
 
 
@@ -306,8 +293,8 @@ sum(is.na(traffic))
 
 ---
 ## Homework (見課程網站)
-### 個人作業 [1] (80%)
-### 小組作業 [2] (20%)
+### 個人作業 1 (80%)
+### 小組作業 2 (20%)
 
 
 

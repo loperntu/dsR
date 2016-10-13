@@ -210,7 +210,7 @@ dat1 <- read.csv(f)
 - `qplot()` 是 `ggplot2` 作圖套件的一個基本作圖函式，基本用法類似，但較美觀?
 
 ```{r, echo=TRUE, results='hide'}
-plot(x = mtcars$mpg, y = mtcars$wt)
+#plot(x = mtcars$mpg, y = mtcars$wt)
 library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 ```
@@ -223,6 +223,7 @@ qplot(mpg, wt, data=mtcars)
 ## In-class Exercise [2] 練習讀取外部檔案
 
 [臺北市政府資料開放平台](http://data.taipei/opendata/)
+
 [桃園市政府資料開放平台](http://data.tycg.gov.tw/opendata)
 
 ```{r, eval=FALSE}
@@ -260,8 +261,8 @@ sum(is.na(traffic))
 
 ---
 ## Homework (見課程網站)
-### 個人作業 [1] (80%)
-### 小組作業 [2] (20%)
+### 個人作業 1 (80%)
+### 小組作業 2 (20%)
 
 
 

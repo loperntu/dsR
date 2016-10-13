@@ -96,33 +96,26 @@
 plot(mtcars$mpg, mtcars$disp)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="figure/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <pre><code class="r">plot(mtcars$mpg, mtcars$wt)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="figure/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <p>can be written as</p>
 
 <pre><code class="r">attach(mtcars)
-</code></pre>
-
-<pre><code>## The following object is masked from package:ggplot2:
-## 
-##     mpg
-</code></pre>
-
-<pre><code class="r">summary(mpg)
+summary(mpg)
 plot(mpg, disp)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">plot(mpg, wt)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="figure/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">detach(mtcars)
 </code></pre>
@@ -151,7 +144,7 @@ plot(mpg, disp)
        )
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="assets/fig/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
+<p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="figure/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
 
 <ul>
 <li>Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator &lt;&lt;- instead of the standard one &lt;-. It will save the object to the global environment outside of the <code>with()</code> call. </li>
@@ -400,16 +393,12 @@ dat1 &lt;- read.csv(f)
 <li><code>qplot()</code> 是 <code>ggplot2</code> 作圖套件的一個基本作圖函式，基本用法類似，但較美觀?</li>
 </ul>
 
-<pre><code class="r">plot(x = mtcars$mpg, y = mtcars$wt)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
-
-<pre><code class="r">library(ggplot2)
+<pre><code class="r">#plot(x = mtcars$mpg, y = mtcars$wt)
+library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-11-2.png" alt="plot of chunk unnamed-chunk-11"></p>
+<p><img src="figure/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
 
     
   </article>
@@ -424,8 +413,9 @@ qplot(mpg, wt, data=mtcars)
   </hgroup>
   
   <article data-timings="">
-    <p><a href="http://data.taipei/opendata/">臺北市政府資料開放平台</a>
-<a href="http://data.tycg.gov.tw/opendata">桃園市政府資料開放平台</a></p>
+    <p><a href="http://data.taipei/opendata/">臺北市政府資料開放平台</a></p>
+
+<p><a href="http://data.tycg.gov.tw/opendata">桃園市政府資料開放平台</a></p>
 
 <pre><code class="r">traffic &lt;- read.csv(&quot;~/dsR/data/traffic.csv&quot;, header = TRUE, 
                     fileEncoding = &quot;big5&quot;, 
@@ -483,9 +473,9 @@ sum(is.na(traffic))
   </hgroup>
   
   <article data-timings="">
-    <h3>個人作業 <a href="80%">1</a></h3>
+    <h3>個人作業 1 (80%)</h3>
 
-<h3>小組作業 <a href="20%">2</a></h3>
+<h3>小組作業 2 (20%)</h3>
 
     
   </article>
