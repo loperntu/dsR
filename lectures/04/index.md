@@ -228,7 +228,9 @@ names(iris.simple)[1] <- "sepal.length"
 
 
 ```r
-students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),                   c(3,2,2,1,0,-1),c("H", "G", "G", "R", "S", "G"))
+students <- data.frame(c("Cedric","Fred","George","Cho","Draco","Ginny"),
+                       c(3,2,2,1,0,-1),
+                       c("H", "G", "G", "R", "S", "G"))
 names(students) <- c("name", "year", "house") # name the columns
 class(students)	# "data.frame"
 class(students$year)	# "numeric"
@@ -241,22 +243,59 @@ dim(students)
 
 
 
-
 ---
-## Factor
-- The factor class is for categorical data, which are commonly seen in data frame.
-- Factors can be ordered (like childrens' grade levels) or unordered (like gender)
+## In-class Exercise 
+
+`mtcars` 是個很好的練習用例子。
+
 
 ```r
-factor(c("female", "female", "male", NA, "female"))
-# The "levels" are the values the categorical data can take
-# Note that missing data does not enter the levels
-levels(factor(c("male", "male", "female", NA, "female"))) # "female" "male"
+#mtcars             # The built-in data frame
+#help(mtcars)
+dim(mtcars)         # The dimensions(rows and columns)
+nrow(mtcars)        # Number of rows
+ncol(mtcars)        # Number of columns
+names(mtcars)       # The column names
+rownames(mtcars)    # The row names
+summary(mtcars)     # A summary of each column
+```
+
+
+---
+## 因子 Factor
+
+- 複習一下統計學中「變數」的分類
+<img style='border: 1px solid;' width=40% src='./assets/img/var.png'></img>
+- 在 R 中，分類和有序的變數稱作「因子」(factor). 在 data frame 中常看到。
+- Factors 可以視為是一種特殊的向量類型。用 `factor()` 來產生，用 `levels()` 來取得 levels (values the categorical data can take)。
+
+
+```r
+gender <- c("female", "female", "male", "female")
+gender.2 <- factor(gender)
+levels(gender.2)
 # If a factor vector has length 1, its levels will have length 1, too
 length(factor("male")) 
+```
 
-data(infert) # "Infertility after Spontaneous and Induced Abortion"
-levels(infert$education) # "0-5yrs"  "6-11yrs" "12+ yrs"
+
+---
+## 因子 Factor
+
+
+
+```r
+# 變成有序因子
+honor <- c("cum laude","summa cum laude", "magna cum laude", 
+           "cum laude", "magna cum laude","summa cum laude")
+honor.fac <- factor(honor, levels =c("cum laude", "magna cum laude", 
+                                     "summa cum laude"), ordered = TRUE); honor.fac
+```
+
+```
+## [1] cum laude       summa cum laude magna cum laude cum laude      
+## [5] magna cum laude summa cum laude
+## Levels: cum laude < magna cum laude < summa cum laude
 ```
 
 
@@ -294,39 +333,15 @@ cc <- read.csv('http://opengeocode.org/download/CCurls.txt')
 str(cc)
 ```
 
-```
-## 'data.frame':	249 obs. of  5 variables:
-##  $ ISO.3166.1.A2                  : Factor w/ 248 levels "AD","AE","AF",..: 232 38 77 13 157 3 15 6 62 11 ...
-##  $ Government.URL                 : Factor w/ 232 levels "","ab.gov.ag",..: 226 19 35 6 59 192 3 37 42 4 ...
-##  $ National.Statistics.Census..URL: Factor w/ 213 levels "","ab.gov.ag/article_details.php?id=4792&category=114",..: 23 178 190 3 86 33 7 99 130 23 ...
-##  $ Geological.Information.URL     : Factor w/ 117 levels "","bakosurtanal.go.id",..: 113 96 98 22 1 1 1 1 1 113 ...
-##  $ Post.Office.URL                : Factor w/ 155 levels "","aasfn.sm/english/english.htm",..: 150 123 130 7 35 4 120 49 116 151 ...
-```
-
 - `url` does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the `RCurl` package,
 
 
 ```r
 # Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
 library(RCurl)
-```
-
-```
-## Loading required package: bitops
-```
-
-```r
 url <- 'https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD'
 df <- read.csv(text = getURL(url))
 str(df)
-```
-
-```
-## 'data.frame':	4 obs. of  1 variable:
-##  $ X.: logi  NA NA NA NA
-```
-
-```r
 # sort(table(df$Product))
 ```
 

@@ -89,7 +89,7 @@ Week | Date   | Topic         | Lab
 
 - <span style="color:blue; font-weight:bold"> Week.3 </span>: [In-class exercise and homework](exercise.homework/week3/week3.html) / [Rmd 檔](exercise.homework/week3/week3.Rmd)
 - <span style="color:blue; font-weight:bold"> Week.4 </span>: [In-class exercise and homework](exercise.homework/week4/week4.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
-- <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html)
+- <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html) / [Homework](exercise.homework/week5/week5_HW.html)[Rmd 檔](exercise.homework/week5/week5_HW.Rmd)
 
 ## 課程教材
 

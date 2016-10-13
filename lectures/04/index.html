@@ -314,7 +314,9 @@ names(iris.simple)[1] &lt;- &quot;sepal.length&quot;
 <li>基本統計 <code>mean(), median(), sum(), min(), max(), sd(), ...</code></li>
 </ul>
 
-<pre><code class="r">students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),                   c(3,2,2,1,0,-1),c(&quot;H&quot;, &quot;G&quot;, &quot;G&quot;, &quot;R&quot;, &quot;S&quot;, &quot;G&quot;))
+<pre><code class="r">students &lt;- data.frame(c(&quot;Cedric&quot;,&quot;Fred&quot;,&quot;George&quot;,&quot;Cho&quot;,&quot;Draco&quot;,&quot;Ginny&quot;),
+                       c(3,2,2,1,0,-1),
+                       c(&quot;H&quot;, &quot;G&quot;, &quot;G&quot;, &quot;R&quot;, &quot;S&quot;, &quot;G&quot;))
 names(students) &lt;- c(&quot;name&quot;, &quot;year&quot;, &quot;house&quot;) # name the columns
 class(students) # &quot;data.frame&quot;
 class(students$year)    # &quot;numeric&quot;
@@ -331,23 +333,19 @@ dim(students)
 
 <slide class="" id="slide-14" style="background:;">
   <hgroup>
-    <h2>Factor</h2>
+    <h2>In-class Exercise</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>The factor class is for categorical data, which are commonly seen in data frame.</li>
-<li>Factors can be ordered (like childrens&#39; grade levels) or unordered (like gender)</li>
-</ul>
+    <p><code>mtcars</code> 是個很好的練習用例子。</p>
 
-<pre><code class="r">factor(c(&quot;female&quot;, &quot;female&quot;, &quot;male&quot;, NA, &quot;female&quot;))
-# The &quot;levels&quot; are the values the categorical data can take
-# Note that missing data does not enter the levels
-levels(factor(c(&quot;male&quot;, &quot;male&quot;, &quot;female&quot;, NA, &quot;female&quot;))) # &quot;female&quot; &quot;male&quot;
-# If a factor vector has length 1, its levels will have length 1, too
-length(factor(&quot;male&quot;)) 
-
-data(infert) # &quot;Infertility after Spontaneous and Induced Abortion&quot;
-levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs&quot;
+<pre><code class="r">#mtcars             # The built-in data frame
+#help(mtcars)
+dim(mtcars)         # The dimensions(rows and columns)
+nrow(mtcars)        # Number of rows
+ncol(mtcars)        # Number of columns
+names(mtcars)       # The column names
+rownames(mtcars)    # The row names
+summary(mtcars)     # A summary of each column
 </code></pre>
 
   </article>
@@ -355,6 +353,50 @@ levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs
 </slide>
 
 <slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>因子 Factor</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>複習一下統計學中「變數」的分類
+<img style='border: 1px solid;' width=40% src='./assets/img/var.png'></img></li>
+<li>在 R 中，分類和有序的變數稱作「因子」(factor). 在 data frame 中常看到。</li>
+<li>Factors 可以視為是一種特殊的向量類型。用 <code>factor()</code> 來產生，用 <code>levels()</code> 來取得 levels (values the categorical data can take)。</li>
+</ul>
+
+<pre><code class="r">gender &lt;- c(&quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;)
+gender.2 &lt;- factor(gender)
+levels(gender.2)
+# If a factor vector has length 1, its levels will have length 1, too
+length(factor(&quot;male&quot;)) 
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>因子 Factor</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r"># 變成有序因子
+honor &lt;- c(&quot;cum laude&quot;,&quot;summa cum laude&quot;, &quot;magna cum laude&quot;, 
+           &quot;cum laude&quot;, &quot;magna cum laude&quot;,&quot;summa cum laude&quot;)
+honor.fac &lt;- factor(honor, levels =c(&quot;cum laude&quot;, &quot;magna cum laude&quot;, 
+                                     &quot;summa cum laude&quot;), ordered = TRUE); honor.fac
+</code></pre>
+
+<pre><code>## [1] cum laude       summa cum laude magna cum laude cum laude      
+## [5] magna cum laude summa cum laude
+## Levels: cum laude &lt; magna cum laude &lt; summa cum laude
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
   <hgroup>
     <h2>In-class Exercise</h2>
   </hgroup>
@@ -364,7 +406,7 @@ levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h1>Preparing/Obtaining Data</h1>
   </hgroup>
@@ -390,7 +432,7 @@ levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>Loading datasets from the Internet</h2>
   </hgroup>
@@ -399,42 +441,23 @@ levels(infert$education) # &quot;0-5yrs&quot;  &quot;6-11yrs&quot; &quot;12+ yrs
 str(cc)
 </code></pre>
 
-<pre><code>## &#39;data.frame&#39;:    249 obs. of  5 variables:
-##  $ ISO.3166.1.A2                  : Factor w/ 248 levels &quot;AD&quot;,&quot;AE&quot;,&quot;AF&quot;,..: 232 38 77 13 157 3 15 6 62 11 ...
-##  $ Government.URL                 : Factor w/ 232 levels &quot;&quot;,&quot;ab.gov.ag&quot;,..: 226 19 35 6 59 192 3 37 42 4 ...
-##  $ National.Statistics.Census..URL: Factor w/ 213 levels &quot;&quot;,&quot;ab.gov.ag/article_details.php?id=4792&amp;category=114&quot;,..: 23 178 190 3 86 33 7 99 130 23 ...
-##  $ Geological.Information.URL     : Factor w/ 117 levels &quot;&quot;,&quot;bakosurtanal.go.id&quot;,..: 113 96 98 22 1 1 1 1 1 113 ...
-##  $ Post.Office.URL                : Factor w/ 155 levels &quot;&quot;,&quot;aasfn.sm/english/english.htm&quot;,..: 150 123 130 7 35 4 120 49 116 151 ...
-</code></pre>
-
 <ul>
 <li><code>url</code> does not support Hypertext Transfer Protocol Secure (HTTPS) except for a few exceptions on Windows, which is often a must to access Web services that handle sensitive data. 所以 use the <code>RCurl</code> package,</li>
 </ul>
 
 <pre><code class="r"># Curl supports a wide variety of protocols and URI schemes and handles cookies, authentication, redirects, timeouts, and even more. 改成 youbike
 library(RCurl)
-</code></pre>
-
-<pre><code>## Loading required package: bitops
-</code></pre>
-
-<pre><code class="r">url &lt;- &#39;https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD&#39;
+url &lt;- &#39;https://data.consumerfinance.gov/api/views/x94z-ydhh/rows.csv?accessType=DOWNLOAD&#39;
 df &lt;- read.csv(text = getURL(url))
 str(df)
-</code></pre>
-
-<pre><code>## &#39;data.frame&#39;:    4 obs. of  1 variable:
-##  $ X.: logi  NA NA NA NA
-</code></pre>
-
-<pre><code class="r"># sort(table(df$Product))
+# sort(table(df$Product))
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Preprocessing</h2>
   </hgroup>
@@ -448,7 +471,7 @@ str(df)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:;">
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Missing values</h2>
   </hgroup>
@@ -478,7 +501,7 @@ any(is.na(missing_dat))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Reading big files with <code>data.table</code></h2>
   </hgroup>
@@ -496,7 +519,7 @@ students[year==2] # get rows with year == 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
     <h2>R scripts and Programming</h2>
   </hgroup>
@@ -521,7 +544,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:;">
+<slide class="" id="slide-24" style="background:;">
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
@@ -536,7 +559,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:;">
+<slide class="" id="slide-25" style="background:;">
   <hgroup>
     <h2>Review</h2>
   </hgroup>
@@ -556,7 +579,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:;">
+<slide class="" id="slide-26" style="background:;">
   <hgroup>
     <h2>Structure of a Data Science Product</h2>
   </hgroup>
@@ -576,7 +599,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:;">
+<slide class="" id="slide-27" style="background:;">
   <hgroup>
     <h2>Data Carrer Paths</h2>
   </hgroup>
@@ -591,7 +614,7 @@ print(&#39;oh,my first&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:;">
+<slide class="" id="slide-28" style="background:;">
   <hgroup>
     <h2>Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span></h2>
   </hgroup>
@@ -685,80 +708,92 @@ print(&#39;oh,my first&#39;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Factor'>
+        data-slide=14 title='In-class Exercise'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='In-class Exercise'>
+        data-slide=15 title='因子 Factor'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Preparing/Obtaining Data'>
+        data-slide=16 title='因子 Factor'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Loading datasets from the Internet'>
+        data-slide=17 title='In-class Exercise'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='Preprocessing'>
+        data-slide=18 title='Preparing/Obtaining Data'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Missing values'>
+        data-slide=19 title='Loading datasets from the Internet'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Reading big files with <code>data.table</code>'>
+        data-slide=20 title='Preprocessing'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='R scripts and Programming'>
+        data-slide=21 title='Missing values'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='大綱'>
+        data-slide=22 title='Reading big files with <code>data.table</code>'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Review'>
+        data-slide=23 title='R scripts and Programming'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='Structure of a Data Science Product'>
+        data-slide=24 title='大綱'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='Data Carrer Paths'>
+        data-slide=25 title='Review'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span>'>
+        data-slide=26 title='Structure of a Data Science Product'>
          26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Data Carrer Paths'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Lab: <span style="color:green; font-weight:bold">準總統的語言行為</span>'>
+         28
       </a>
     </li>
   </ul>

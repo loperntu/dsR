@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Week5: Homework</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Week5: Homework">
+  <meta name="author" content="姓名 / 學號 / 系所 /">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Week5: Homework</h1>
+    <h2></h2>
+    <p>姓名 / 學號 / 系所 /<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>作業一 (100 pt)</h1>
+  </hgroup>
+  <article data-timings="">
+    <h3>(個人作業)</h3>
+
+<blockquote>
+<p>安裝、載入與觀察以下資料，回答接下來的問題。</p>
+</blockquote>
+
+<pre><code class="r"># install &#39;LanguageR&#39;
+library(languageR)
+ncol(english)
+nrow(english)
+# list observed variables and observations (words)
+colnames(english)
+rownames(english)
+
+# view / edit data (caution: this will modify the 
+# data frame (via Data editor); no undo available!) 
+# fix(english)
+
+# it&#39;s safer to store the modified data frame in 
+# a different variable
+# e2 &lt;- edit(english)
+
+# show individual observations (by row number of subject name)
+english[1:5,]
+english[c(1,3,7),]
+
+# this might help the proper display (can write into .Rprofile as initial setup, 
+# check ?Startup)
+options(width=65, digits=2)
+
+# observations for a single variable form a 
+# vector (numeric or factor)
+english$Word
+english$WrittenFrequency
+
+# combine vectors of identical length into new data set
+eng1 &lt;- data.frame(word=english$Word, pos=english$WordCategory, frequency=english$WrittenFrequency)
+
+eng1[1:10,]
+
+# if all vectors are variables from a single
+# data set, we can use the following command to preserve row names
+eng2 &lt;- english[, c(&quot;Word&quot;, &quot;WordCategory&quot;, &quot;WrittenFrequency&quot;)]
+eng2[1:10,]
+</code></pre>
+
+<blockquote>
+<p>問題：將 <code>eng2</code> 中 <code>WrittenFrequency</code> 小於 1 的詞抽取出來，連同該詞頻率儲存成一個 csv 檔案（檔名為 <code>low-words.csv</code>）。</p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h1>作業二 (20pt) 自己的問卷自己分析</h1>
+  </hgroup>
+  <article data-timings="">
+    <h3>(團體作業)</h3>
+
+<ul>
+<li>自製問卷 (typeform 或 google doc) 與內容，存成 csv 檔。</li>
+<li>讀入 R，用你們學到的東西進行 (各種) 探索與分析。 </li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='作業一 (100 pt)'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='作業二 (20pt) 自己的問卷自己分析'>
+         2
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,293 +1,311 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Linguistic Analysis and Data Science</title>
+  <title>Introducing Data Science with R</title>
   <meta charset="utf-8">
-  <meta name="description" content="Linguistic Analysis and Data Science">
-  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="../../libraries/frameworks/io2012/js/slides" 
-    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  <script src="../../libraries/widgets/nvd3/js/d3.v2.min.js"></script>
-<script src="../../libraries/widgets/nvd3/js/nv.d3.min.js"></script>
-
+  
 
 </head>
 <body style="opacity: 0">
   <slides class="layout-widescreen">
     
     <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/lopen.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lope.png">
+  </aside>
   <hgroup class="auto-fadein">
-    <h1>Linguistic Analysis and Data Science</h1>
-    <h2>lecture 05</h2>
-    <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.5</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
   </hgroup>
-    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
 </slide>
     
 
     <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:#FFFAF0;">
+    <slide class="" id="slide-1" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
+  
   <article data-timings="">
     <ol>
-<li>Exploratory Data Analysis</li>
-<li>Crash course for R</li>
+<li>__<code>Basic R__</code>  (80min)</li>
+<li>A glace at a data science example (20min)</li>
+<li>Lab session (50min)</li>
 </ol>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-2" style="background:;">
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>資料探索分析</h2>
+    <h2>列表 List</h2>
   </hgroup>
+  
   <article data-timings="">
     <ul>
-<li><p><strong>前處理</strong>完之後才開始進入分析工作。</p></li>
-<li><p>資料探索分析 (exploratory data analysis) 是資料科學分析歷程很重要的一環，目的是<span style="color:blue; font-weight:bold">適當的來來回回檢視資料以取得合理的假說</span>。</p></li>
-<li><p>這個過程涉及到 <strong>資料操控</strong> (data manipulation)、<strong>資料視覺化</strong> (data visualization) 技巧與<strong>統計分析</strong> (statistics)。</p></li>
+<li>可以由不同類型的數據組合在一起。list 中的每個元素也可以有不同長度。</li>
+<li><strong>create, access, manipulate</strong></li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-3" style="background:;">
-  <hgroup>
-    <h2>數值性資料的例子</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><a href="LDP35_ExploratoryDataAnalysis.pdf">numeric.EDA</a>：下次介紹</p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-4" style="background:;">
-  <hgroup>
-    <h2>那文本性資料呢？</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>給定文本資料，除了轉成 <code>數據資料</code> (結構性資料) 之外，我們還想要知道如何從文本中挖掘出<span style="color:blue; font-weight:bold">語意</scan>。</p></li>
-<li><p>文本語意可以用來幫助回答各種不同的 (text analytics) 問題，如作者（群）的</p>
-
-<ul>
-<li>個性、年紀、性別、社會階層、個人習語 (idiolect)風格</li>
-<li>意圖、主張、意見、價值、偏好、情緒、語言行為 (speech act, e.g., 求愛與霸凌)</li>
-</ul></li>
-<li><p><strong>文本分析＋社群網路分析＋各式感測器 ＝ 無所遁逃於天地之間</strong>。（嘆/氣的同時可看到新的可能,e.g., <code>鴨鴨走</code>,<code>質子信</code>）</p></li>
-<li><p>具體來說，「語言/文本分析」和「語言處理」可以提供什麼角度？</p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>文本分析想像力練習 (分組做)</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>三組同學派代表來文本接龍，然後討論出至少一個要探究的方向。</li>
-</ul>
-
-<p><img src="assets/fig/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-2.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-3.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-4.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-5.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-6.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-7.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-8.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-9.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-10.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /><img src="assets/fig/unnamed-chunk-1-11.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" style="display: block; margin: auto;" /></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>自然語言處理可以告訴妳的</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><a href="">boson nlp</a>
-<a href="http://www.ltp-cloud.com/">語言雲</a><a href="http://www.52ml.net/10673.html">說明</a></p>
-
-<p><img style='border: 1px solid;' width=80% src='./assets/img/ltp.png'></img></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>語言資源可以告訴妳的</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>詞彙語意知識 <a href="">WordNet/FrameNet</a>、語法知識 <a href="">Treebank</a>、概念/知識本體 (ontologies) <a href="">SUMO/DOLCE/Hanzi</a>、常識(common sense) <a href="">ConceptNET</a>，等等。</li>
-</ul>
-
-<p><img style='border: 1px solid;' width=50% src='./assets/img/cwn.png'></img></p>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-8" style="background:;">
-  <hgroup>
-    <h2>文本/語言分析可以告訴妳的</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>文本中的溝通系統日趨多元複雜 (multimodality)</p>
-
-<ul>
-<li><span style="color:green; font-weight:bold"> 表情符號 Emoji </span> 也滲入了文本。</li>
-<li>語氣詞的語意愈來愈重要。例：不同的笑（嗯）法，意思也不盡相同。</li>
-</ul>
-
-<pre><code>ha ha
-ha ha ha
-he he he
-heh heh
-hee hee hee ha ha ha hoooooo hoo
+<pre><code class="r"># create
+v1 &lt;- c(1:10)
+v2 &lt;- c(&quot;life&quot;, &quot;is&quot;, &quot;short&quot;)
+m1 &lt;- matrix(c(1:9), nrow=3)
+f1 &lt;- factor(c(&quot;positive&quot;, &quot;negative&quot;, &quot;negative&quot;, &quot;neutral&quot;, &quot;positive&quot;))
+name &lt;- c(&quot;shukai&quot;, &quot;shikai&quot;, &quot;yuyun&quot;)
+R &lt;- c(60, 90, 92)
+PYTHON &lt;- c(60, 95, 93)
+piano &lt;- c(&quot;great&quot;, &quot;ok&quot;,&quot;ok&quot;)
+df1 &lt;- data.frame(name, R, PYTHON, piano)
+mylist &lt;- list(v1,v2,m1,f1, df1)
+# 命名(注意語法！)
+mylist &lt;- list(num = v1, char = v2, mat = m1, fac = f1, daframe = df1)
 </code></pre>
 
-<ul>
-<li>詞彙、語法、言談語用、修辭層次</li>
-</ul></li>
-</ul>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Text Linguistics 也有這樣的東西</h2>
+    <h2>列表 List</h2>
   </hgroup>
+  
   <article data-timings="">
-    <p><a href="http://grammar.about.com/od/tz/g/Text-Linguistics.htm">http://grammar.about.com/od/tz/g/Text-Linguistics.htm</a></p>
+    <pre><code class="r">## access: three ways: [[index]], [[element.name]], list$element.name
+mylist[[1]]
+</code></pre>
 
-<ul>
-<li>大眾心理學的東西參考就好
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
 
-<ul>
-<li><a href="http://www.storm.mg/lifestyle/60285">常說「所以說～」還拉高尾音的人，個性歇斯底里</a></li>
-</ul></li>
-</ul>
+<pre><code class="r">mylist[[&quot;num&quot;]]
+</code></pre>
 
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+<pre><code class="r">mylist$num
+</code></pre>
+
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>政治人物的語言分析（bonus 同學請準備上台）</h2>
+    <h2>基本繪圖</h2>
   </hgroup>
+  
   <article data-timings="">
-    <p>以下是 Obama &quot;YES, WE CAN&quot; 演說中顯著的語言特徵 (Carter and Goddard, 2016)，你看出什麼端倪嗎？</p>
+    <pre><code class="r">library(ggplot2)
+qplot(x=Sepal.Length, y=Petal.Length, data=iris)
+</code></pre>
 
-<ul>
-<li><strong>Abstract nouns and nominalisation</strong>
+<p><img src="assets/fig/unnamed-chunk-24-1.png" alt="plot of chunk unnamed-chunk-24"></p>
 
-<ul>
-<li><em>&#39;America can change.&#39;</em></li>
-<li><em>&#39;the heartache and the hope, the struggle and the progress&#39;.</em></li>
-</ul></li>
-<li><strong>Voice</strong>: the passive voice is sometimes used without agents being mentioned; but when referring to liberation the active voice is used.
-
-<ul>
-<li><em>&#39;we were told that we can&#39;t&#39;.</em></li>
-<li><em>&#39;women&#39;s voices were silenced and their hopes dismissed&#39;.</em></li>
-<li><em>&#39;she touched her finger to the screen and cast her vote&#39;.</em></li>
-</ul></li>
-</ul>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
-  <article data-timings="">
-    <ul>
-<li><strong>Noun plus postmodifying structure</strong>: providing a more formal and detached overview
-
-<ul>
-<li><em>&#39;despair in the dustbowl&#39;</em></li>
-<li><em>&#39;depression across the land&#39;.</em></li>
-</ul></li>
-<li><strong>Personal pronouns</strong>
-
-<ul>
-<li><em>&#39;Yes, we can&#39;.</em></li>
-<li><em>&#39;.. that&#39;s on my mind tonight&#39;</em></li>
-</ul></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Exploratory Textual Data Analysis</h2>
+    <h2>資料的輸入輸出 Data I/O</h2>
   </hgroup>
+  
   <article data-timings="">
     <ul>
-<li>Textual statistics (local and global)</li>
-<li>Textual data transformatio: from textual information to numerical vectors</li>
-<li>Corpus-based analysis and manual annotation (e.g., conversation structure) </li>
+<li><p><code>read.table()</code> 是最基本的資料輸入函式。至少有幾個參數要了解：<code>file, header, sep, stringAsFactors</code></p>
+
+<ul>
+<li><strong>file</strong>: 相對路徑或絕對路徑，用 <code>/</code> 或是 <code>\\</code> 來表示。(e.g., OSX <code>&quot;~/dsR/data&quot;</code>, Windows <code>&quot;C:\\dsR\\data&quot;</code>)</li>
+<li><strong>header</strong>: 邏輯值。設成 TRUE，會將第一個 row 當成變數名。</li>
+<li><strong>sep</strong>: 分隔符號。預設為空格。</li>
+<li><strong>stringAsFactors</strong>: 預設是將字串的資料類型轉換成 factor 變數。想要字串被當成字串，則設成 FALSE.</li>
+</ul></li>
 </ul>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>推薦一本教科書</h2>
+    <h2>In-class Exercise:</h2>
   </hgroup>
+  
+  <article data-timings="">
+    <p><a href="http://data.taipei/opendata/">臺北市政府資料開放平台</a>
+<a href="http://data.tycg.gov.tw/opendata">桃園市政府資料開放平台</a></p>
+
+<pre><code class="r">traffic &lt;- read.csv(&quot;~/dsR/data/traffic.csv&quot;, header = TRUE, fileEncoding = &quot;big5&quot;, stringsAsFactors = FALSE)
+
+write.csv(type_month,file = &quot;traffic2.csv&quot;,row.names = F, fileEncoding=&quot;utf-8&quot;)
+sum(is.na(traffic))
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>文字編碼</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>在 windows 環境下讀取含有中文字以 utf8 編碼的檔案，有兩種建議做法</li>
+</ul>
+
+<pre><code class="r"># A
+dat1 &lt;- read.csv(&quot;data/ubike-sample-data-utf8.csv&quot;, fileEncoding=&quot;utf8&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟檔案 &#39;data/
+## ubike-sample-data-utf8.csv&#39; ：No such file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟連結
+</code></pre>
+
+<pre><code class="r"># B
+f &lt;- file(&quot;data/ubike-sample-data-utf8.csv&quot;, encoding=&quot;utf8&quot; )
+dat1 &lt;- read.csv(f)
+</code></pre>
+
+<pre><code>## Warning in open.connection(file, &quot;rt&quot;): 無法開啟檔案 &#39;data/ubike-sample-
+## data-utf8.csv&#39; ：No such file or directory
+</code></pre>
+
+<pre><code>## Error in open.connection(file, &quot;rt&quot;): 無法開啟連結
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Textual data preprocessing</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>使用 <code>jiebaR</code> (0.81 for R version 3.2.4)</li>
+</ul>
+
+<pre><code class="r">library(jiebaR)
+##  Using default settings to initialize a worker.
+cutter = worker()
+segment( &quot;給我六個小時砍樹，我會花前四個小時磨斧&quot;, cutter)
+</code></pre>
+
+<pre><code>## [1] &quot;給我&quot; &quot;六個&quot; &quot;小時&quot; &quot;砍樹&quot; &quot;我會&quot; &quot;花前&quot; &quot;四個&quot; &quot;小時&quot; &quot;磨斧&quot;
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>複習時間</h2>
+  </hgroup>
+  
   <article data-timings="">
     <blockquote>
-<p>想要多瞭解 <code>語言/文本分析</code>， 圖片搜尋 <code>how to analyse texts linguistically</code></p>
+<p><code>Rmarkdown</code> 等各種問題</p>
 </blockquote>
 
-<p><img style='border: 1px solid;' width=40% src='./assets/img/prediTM.png'></img></p>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:;">
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Homework Bonus (20151022)</h2>
+    <h2>Homework：自己的問卷自己分析</h2>
   </hgroup>
+  
   <article data-timings="">
-    <p>這次你們自己選文本，自己找梗發揮。BTW, 可以參考 <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf"><code>RMarkdown cheatsheet</code></a></p>
+    <ul>
+<li>開始小組作業</li>
+</ul>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -304,80 +322,56 @@ hee hee hee ha ha ha hoooooo hoo
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='資料探索分析'>
+        data-slide=2 title='列表 List'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='數值性資料的例子'>
+        data-slide=3 title='列表 List'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='那文本性資料呢？'>
+        data-slide=4 title='基本繪圖'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='文本分析想像力練習 (分組做)'>
+        data-slide=5 title='資料的輸入輸出 Data I/O'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='自然語言處理可以告訴妳的'>
+        data-slide=6 title='In-class Exercise:'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='語言資源可以告訴妳的'>
+        data-slide=7 title='文字編碼'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='文本/語言分析可以告訴妳的'>
+        data-slide=8 title='Textual data preprocessing'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Text Linguistics 也有這樣的東西'>
+        data-slide=9 title='複習時間'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='政治人物的語言分析（bonus 同學請準備上台）'>
+        data-slide=10 title='Homework：自己的問卷自己分析'>
          10
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='NA'>
-         11
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Exploratory Textual Data Analysis'>
-         12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='推薦一本教科書'>
-         13
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='Homework Bonus (20151022)'>
-         14
       </a>
     </li>
   </ul>
@@ -389,21 +383,12 @@ hee hee hee ha ha ha hoooooo hoo
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
-<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
-<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
-<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
 
-  <script>  
-  $(function (){ 
-    $("#example").popover(); 
-    $("[rel='tooltip']").tooltip(); 
-  });  
-  </script>  
-  
   <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -416,14 +401,18 @@ hee hee hee ha ha ha hoooooo hoo
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script> -->
-  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
 </script>
-<script src='../../libraries/widgets/nvd3/js/d3.v2.js'></script>
-  <script src='../../libraries/widgets/nvd3/js/nv.d3.min.js'></script>
-  
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
    
   </html>
+

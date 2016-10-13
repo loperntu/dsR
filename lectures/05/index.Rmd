@@ -28,12 +28,107 @@ github      : {user: loperntu, repo: dsR}
 
 
 ---
-##
+## 列表 List 
+
+- 可以由不同類型的數據組合在一起。list 中的每個元素也可以有不同長度。
+- **create, access, manipulate**
+
+```{r, eval=FALSE}
+# create
+v1 <- c(1:10)
+v2 <- c("life", "is", "short")
+m1 <- matrix(c(1:9), nrow=3)
+f1 <- factor(c("positive", "negative", "negative", "neutral", "positive"))
+name <- c("shukai", "shikai", "yuyun")
+R <- c(60, 90, 92)
+PYTHON <- c(60, 95, 93)
+piano <- c("great", "ok","ok")
+df1 <- data.frame(name, R, PYTHON, piano)
+mylist <- list(v1,v2,m1,f1, df1)
+# 命名(注意語法！)
+mylist <- list(num = v1, char = v2, mat = m1, fac = f1, daframe = df1)
+```
+
+
+
+---
+## 列表 List 
+
+```{r}
+## access: three ways: [[index]], [[element.name]], list$element.name
+mylist[[1]]
+mylist[["num"]]
+mylist$num
+```
+
+
+---
+## 基本繪圖 
 
 ```{r}
 library(ggplot2)
 qplot(x=Sepal.Length, y=Petal.Length, data=iris)
 ```
+
+
+
+---
+## 資料的輸入輸出 Data I/O
+
+- `read.table()` 是最基本的資料輸入函式。至少有幾個參數要了解：`file, header, sep, stringAsFactors`
+
+  - **file**: 相對路徑或絕對路徑，用 `/` 或是 `\\` 來表示。(e.g., OSX `"~/dsR/data"`, Windows `"C:\\dsR\\data"`)
+  - **header**: 邏輯值。設成 TRUE，會將第一個 row 當成變數名。
+  - **sep**: 分隔符號。預設為空格。
+  - **stringAsFactors**: 預設是將字串的資料類型轉換成 factor 變數。想要字串被當成字串，則設成 FALSE.
+  - **fill**
+
+
+
+---
+## In-class Exercise [1] 練習讀取外部檔案
+
+Personality
+
+
+
+
+
+---
+## 文字編碼
+
+- 在 windows 環境下讀取含有中文字以 utf8 編碼的檔案，有兩種建議做法
+```{r}
+# A
+dat1 <- read.csv("data/ubike-sample-data-utf8.csv", fileEncoding="utf8")
+
+# B
+f <- file("data/ubike-sample-data-utf8.csv", encoding="utf8" )
+dat1 <- read.csv(f)
+```
+
+
+
+
+
+---
+## In-class Exercise [2] 練習讀取外部檔案
+
+[臺北市政府資料開放平台](http://data.taipei/opendata/)
+[桃園市政府資料開放平台](http://data.tycg.gov.tw/opendata)
+
+```{r, eval=FALSE}
+traffic <- read.csv("~/dsR/data/traffic.csv", header = TRUE, fileEncoding = "big5", stringsAsFactors = FALSE)
+
+write.csv(ty,file = "traffic2.csv",row.names = F, fileEncoding="utf-8")
+sum(is.na(traffic))
+
+```
+
+
+
+
+
 
 
 
@@ -47,4 +142,22 @@ library(jiebaR)
 cutter = worker()
 segment( "給我六個小時砍樹，我會花前四個小時磨斧", cutter)
 ```
+
+
+
+---
+## 複習時間
+
+> `Rmarkdown` 等各種問題
+
+
+
+---
+## Homework (見課程網站)
+### 個人作業 [1] (80%)
+### 小組作業 [2] (20%)
+
+
+
+
 
