@@ -98,7 +98,7 @@ And some more advanced skills
 - 可以由不同類型的數據組合在一起。list 中的每個元素也可以有不同長度。
 - **create, access, manipulate**
 
-```{r, eval=FALSE}
+```{r, echo=TRUE, results='hide'}
 # create
 v1 <- c(1:10)
 v2 <- c("life", "is", "short")
@@ -119,7 +119,7 @@ mylist <- list(num = v1, char = v2, mat = m1, fac = f1, daframe = df1)
 ---
 ## 列表 List 
 
-```{r}
+```{r, echo=TRUE, results='hide'}
 ## access: three ways: [[index]], [[element.name]], list$element.name
 mylist[[1]]
 mylist[["num"]]
@@ -191,7 +191,7 @@ personality <- read.table(
 ### 「編碼」就是將位元組合變成人類可讀文字的規則。
 
 - 在 windows 環境下讀取含有中文字以 utf8 編碼的檔案，有兩種建議做法
-```{r}
+```{r, eval=FALSE}
 # A
 dat1 <- read.csv("data/ubike-sample-data-utf8.csv", fileEncoding="utf8")
 
@@ -209,7 +209,7 @@ dat1 <- read.csv(f)
 - `plot()` 是基本作圖函式。
 - `qplot()` 是 `ggplot2` 作圖套件的一個基本作圖函式，基本用法類似，但較美觀?
 
-```{r}
+```{r, echo=TRUE, results='hide'}
 plot(x = mtcars$mpg, y = mtcars$wt)
 library(ggplot2)
 qplot(mpg, wt, data=mtcars)
@@ -226,7 +226,9 @@ qplot(mpg, wt, data=mtcars)
 [桃園市政府資料開放平台](http://data.tycg.gov.tw/opendata)
 
 ```{r, eval=FALSE}
-traffic <- read.csv("~/dsR/data/traffic.csv", header = TRUE, fileEncoding = "big5", stringsAsFactors = FALSE)
+traffic <- read.csv("~/dsR/data/traffic.csv", header = TRUE, 
+                    fileEncoding = "big5", 
+                    stringsAsFactors = FALSE)
 
 write.csv(ty,file = "traffic2.csv",row.names = F, fileEncoding="utf-8")
 sum(is.na(traffic))

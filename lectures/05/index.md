@@ -36,30 +36,39 @@ summary(mtcars$mpg)
 plot(mtcars$mpg, mtcars$disp)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 ```r
 plot(mtcars$mpg, mtcars$wt)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-2.png)
 
 can be written as
 
 
 ```r
 attach(mtcars)
+```
+
+```
+## The following object is masked from package:ggplot2:
+## 
+##     mpg
+```
+
+```r
 summary(mpg)
 plot(mpg, disp)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
 
 ```r
 plot(mpg, wt)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-2.png)
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-2.png)
 
 ```r
 detach(mtcars)
@@ -80,7 +89,7 @@ with(mtcars, {
        )
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-2.png)
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-2.png)
 
 - Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator <<- instead of the standard one <-. It will save the object to the global environment outside of the `with()` call. 
 
@@ -147,26 +156,8 @@ mylist <- list(num = v1, char = v2, mat = m1, fac = f1, daframe = df1)
 ```r
 ## access: three ways: [[index]], [[element.name]], list$element.name
 mylist[[1]]
-```
-
-```
-## Error in eval(expr, envir, enclos): 找不到物件 'mylist'
-```
-
-```r
 mylist[["num"]]
-```
-
-```
-## Error in eval(expr, envir, enclos): 找不到物件 'mylist'
-```
-
-```r
 mylist$num
-```
-
-```
-## Error in eval(expr, envir, enclos): 找不到物件 'mylist'
 ```
 
 
@@ -241,30 +232,10 @@ personality <- read.table(
 ```r
 # A
 dat1 <- read.csv("data/ubike-sample-data-utf8.csv", fileEncoding="utf8")
-```
 
-```
-## Warning in file(file, "rt", encoding = fileEncoding): 無法開啟檔案 'data/
-## ubike-sample-data-utf8.csv' ：No such file or directory
-```
-
-```
-## Error in file(file, "rt", encoding = fileEncoding): 無法開啟連結
-```
-
-```r
 # B
 f <- file("data/ubike-sample-data-utf8.csv", encoding="utf8" )
 dat1 <- read.csv(f)
-```
-
-```
-## Warning in open.connection(file, "rt"): 無法開啟檔案 'data/ubike-sample-
-## data-utf8.csv' ：No such file or directory
-```
-
-```
-## Error in open.connection(file, "rt"): 無法開啟連結
 ```
 
 - 正體中文資料的編碼： mostly encoded with *utf-8* or *big5*
@@ -279,16 +250,16 @@ dat1 <- read.csv(f)
 
 ```r
 plot(x = mtcars$mpg, y = mtcars$wt)
-library(ggplot2)
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png)
 
 ```r
+library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-2.png)
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-2.png)
 
 
 
@@ -302,7 +273,9 @@ qplot(mpg, wt, data=mtcars)
 
 
 ```r
-traffic <- read.csv("~/dsR/data/traffic.csv", header = TRUE, fileEncoding = "big5", stringsAsFactors = FALSE)
+traffic <- read.csv("~/dsR/data/traffic.csv", header = TRUE, 
+                    fileEncoding = "big5", 
+                    stringsAsFactors = FALSE)
 
 write.csv(ty,file = "traffic2.csv",row.names = F, fileEncoding="utf-8")
 sum(is.na(traffic))

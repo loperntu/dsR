@@ -96,26 +96,33 @@
 plot(mtcars$mpg, mtcars$disp)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <pre><code class="r">plot(mtcars$mpg, mtcars$wt)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="assets/fig/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <p>can be written as</p>
 
 <pre><code class="r">attach(mtcars)
-summary(mpg)
+</code></pre>
+
+<pre><code>## The following object is masked from package:ggplot2:
+## 
+##     mpg
+</code></pre>
+
+<pre><code class="r">summary(mpg)
 plot(mpg, disp)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">plot(mpg, wt)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="assets/fig/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">detach(mtcars)
 </code></pre>
@@ -144,7 +151,7 @@ plot(mpg, disp)
        )
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="figure/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="assets/fig/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
 
 <ul>
 <li>Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator &lt;&lt;- instead of the standard one &lt;-. It will save the object to the global environment outside of the <code>with()</code> call. </li>
@@ -240,21 +247,8 @@ mylist &lt;- list(num = v1, char = v2, mat = m1, fac = f1, daframe = df1)
   <article data-timings="">
     <pre><code class="r">## access: three ways: [[index]], [[element.name]], list$element.name
 mylist[[1]]
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;mylist&#39;
-</code></pre>
-
-<pre><code class="r">mylist[[&quot;num&quot;]]
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;mylist&#39;
-</code></pre>
-
-<pre><code class="r">mylist$num
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;mylist&#39;
+mylist[[&quot;num&quot;]]
+mylist$num
 </code></pre>
 
     
@@ -378,25 +372,10 @@ data &lt;- read.table(choose.files()) # for Windows
 
 <pre><code class="r"># A
 dat1 &lt;- read.csv(&quot;data/ubike-sample-data-utf8.csv&quot;, fileEncoding=&quot;utf8&quot;)
-</code></pre>
 
-<pre><code>## Warning in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟檔案 &#39;data/
-## ubike-sample-data-utf8.csv&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Error in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟連結
-</code></pre>
-
-<pre><code class="r"># B
+# B
 f &lt;- file(&quot;data/ubike-sample-data-utf8.csv&quot;, encoding=&quot;utf8&quot; )
 dat1 &lt;- read.csv(f)
-</code></pre>
-
-<pre><code>## Warning in open.connection(file, &quot;rt&quot;): 無法開啟檔案 &#39;data/ubike-sample-
-## data-utf8.csv&#39; ：No such file or directory
-</code></pre>
-
-<pre><code>## Error in open.connection(file, &quot;rt&quot;): 無法開啟連結
 </code></pre>
 
 <ul>
@@ -422,15 +401,15 @@ dat1 &lt;- read.csv(f)
 </ul>
 
 <pre><code class="r">plot(x = mtcars$mpg, y = mtcars$wt)
-library(ggplot2)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
+<p><img src="assets/fig/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
 
-<pre><code class="r">qplot(mpg, wt, data=mtcars)
+<pre><code class="r">library(ggplot2)
+qplot(mpg, wt, data=mtcars)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-11-2.png" alt="plot of chunk unnamed-chunk-11"></p>
+<p><img src="assets/fig/unnamed-chunk-11-2.png" alt="plot of chunk unnamed-chunk-11"></p>
 
     
   </article>
@@ -448,7 +427,9 @@ library(ggplot2)
     <p><a href="http://data.taipei/opendata/">臺北市政府資料開放平台</a>
 <a href="http://data.tycg.gov.tw/opendata">桃園市政府資料開放平台</a></p>
 
-<pre><code class="r">traffic &lt;- read.csv(&quot;~/dsR/data/traffic.csv&quot;, header = TRUE, fileEncoding = &quot;big5&quot;, stringsAsFactors = FALSE)
+<pre><code class="r">traffic &lt;- read.csv(&quot;~/dsR/data/traffic.csv&quot;, header = TRUE, 
+                    fileEncoding = &quot;big5&quot;, 
+                    stringsAsFactors = FALSE)
 
 write.csv(ty,file = &quot;traffic2.csv&quot;,row.names = F, fileEncoding=&quot;utf-8&quot;)
 sum(is.na(traffic))
