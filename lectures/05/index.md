@@ -26,7 +26,7 @@ github      : {user: loperntu, repo: dsR}
 
 
 ---
-## 讀取 Data Frame 常用技巧: `attach() and detach()
+## 讀取 Data Frame 常用技巧: `attach()` and `detach()`
 
 - The `attach()` adds the data frame to the R search path. When a variable name is encountered, data frames in the search path are checked in order to locate the variable. The `detach()` removes the data frame from the search path.
 
@@ -36,30 +36,39 @@ summary(mtcars$mpg)
 plot(mtcars$mpg, mtcars$disp)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png)
 
 ```r
 plot(mtcars$mpg, mtcars$wt)
 ```
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-2.png)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-2.png)
 
 can be written as
 
 
 ```r
 attach(mtcars)
+```
+
+```
+## The following object is masked from package:ggplot2:
+## 
+##     mpg
+```
+
+```r
 summary(mpg)
 plot(mpg, disp)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png)
 
 ```r
 plot(mpg, wt)
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-2.png)
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-2.png)
 
 ```r
 detach(mtcars)
@@ -67,7 +76,7 @@ detach(mtcars)
 
 
 ---
-## 讀取 Data Frame 常用技巧: with()` and `within()`
+## 讀取 Data Frame 常用技巧: `with()` and `within()`
 
 - Alternatively, use `with()`. The statements within the {} brackets are evaluated with reference to the mtcars data frame. You don't have to worry about name conflicts here.
 
@@ -80,7 +89,7 @@ with(mtcars, {
        )
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-2.png)
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png)![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-2.png)
 
 - Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator <<- instead of the standard one <-. It will save the object to the global environment outside of the `with()` call. 
 
@@ -245,7 +254,7 @@ library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-11](assets/fig/unnamed-chunk-11-1.png)
 
 
 

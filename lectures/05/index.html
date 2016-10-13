@@ -84,7 +84,7 @@
   
   
   <hgroup>
-    <h2>讀取 Data Frame 常用技巧: `attach() and detach()</h2>
+    <h2>讀取 Data Frame 常用技巧: <code>attach()</code> and <code>detach()</code></h2>
   </hgroup>
   
   <article data-timings="">
@@ -96,26 +96,33 @@
 plot(mtcars$mpg, mtcars$disp)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <pre><code class="r">plot(mtcars$mpg, mtcars$wt)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
+<p><img src="assets/fig/unnamed-chunk-1-2.png" alt="plot of chunk unnamed-chunk-1"></p>
 
 <p>can be written as</p>
 
 <pre><code class="r">attach(mtcars)
-summary(mpg)
+</code></pre>
+
+<pre><code>## The following object is masked from package:ggplot2:
+## 
+##     mpg
+</code></pre>
+
+<pre><code class="r">summary(mpg)
 plot(mpg, disp)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">plot(mpg, wt)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
+<p><img src="assets/fig/unnamed-chunk-2-2.png" alt="plot of chunk unnamed-chunk-2"></p>
 
 <pre><code class="r">detach(mtcars)
 </code></pre>
@@ -129,7 +136,7 @@ plot(mpg, disp)
   
   
   <hgroup>
-    <h2>讀取 Data Frame 常用技巧: with()<code>and</code>within()`</h2>
+    <h2>讀取 Data Frame 常用技巧: <code>with()</code> and <code>within()</code></h2>
   </hgroup>
   
   <article data-timings="">
@@ -144,7 +151,7 @@ plot(mpg, disp)
        )
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="figure/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"><img src="assets/fig/unnamed-chunk-3-2.png" alt="plot of chunk unnamed-chunk-3"></p>
 
 <ul>
 <li>Note: if you need to create objects that will exist outside of the with() construct, use the special assignment operator &lt;&lt;- instead of the standard one &lt;-. It will save the object to the global environment outside of the <code>with()</code> call. </li>
@@ -398,7 +405,7 @@ library(ggplot2)
 qplot(mpg, wt, data=mtcars)
 </code></pre>
 
-<p><img src="figure/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
+<p><img src="assets/fig/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11"></p>
 
     
   </article>
@@ -494,13 +501,13 @@ sum(is.na(traffic))
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='讀取 Data Frame 常用技巧: `attach() and detach()'>
+        data-slide=2 title='讀取 Data Frame 常用技巧: <code>attach()</code> and <code>detach()</code>'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='讀取 Data Frame 常用技巧: with()<code>and</code>within()`'>
+        data-slide=3 title='讀取 Data Frame 常用技巧: <code>with()</code> and <code>within()</code>'>
          3
       </a>
     </li>

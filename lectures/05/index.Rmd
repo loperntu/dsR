@@ -26,7 +26,7 @@ github      : {user: loperntu, repo: dsR}
 
 
 ---
-## 讀取 Data Frame 常用技巧: `attach() and detach()
+## 讀取 Data Frame 常用技巧: `attach()` and `detach()`
 
 - The `attach()` adds the data frame to the R search path. When a variable name is encountered, data frames in the search path are checked in order to locate the variable. The `detach()` removes the data frame from the search path.
 
@@ -48,7 +48,7 @@ detach(mtcars)
 
 
 ---
-## 讀取 Data Frame 常用技巧: with()` and `within()`
+## 讀取 Data Frame 常用技巧: `with()` and `within()`
 
 - Alternatively, use `with()`. The statements within the {} brackets are evaluated with reference to the mtcars data frame. You don't have to worry about name conflicts here.
 

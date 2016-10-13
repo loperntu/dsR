@@ -46,7 +46,7 @@ Answer 1
 ===============================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 dim(ChickWeight)
 ```
 
@@ -62,7 +62,7 @@ Answer 2
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 str(ChickWeight)
 ```
 
@@ -79,7 +79,7 @@ Answer 3
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 help(ChickWeight)
 ```
 
@@ -98,7 +98,7 @@ Answer 4
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 head(ChickWeight,20)
 ```
 
@@ -114,7 +114,7 @@ Answer 5
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 tail(ChickWeight, 50)
 ```
 
@@ -130,7 +130,7 @@ Answer 6
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 levels(ChickWeight$Chick)
 ```
 
@@ -146,7 +146,7 @@ Answer 7
 ======================
 type: sub-section
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=TRUE}
 ChickWeight[546, 3:4]
 ```
 
@@ -171,15 +171,15 @@ Answers
 type: sub-section
 
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 sum(ChickWeight[,1])
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 mean(ChickWeight$Time)
 ```
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 d1 <- mean(ChickWeight[ChickWeight$Diet==1, 1])
 d2 <- mean(ChickWeight[ChickWeight$Diet==2, 1])
 d3 <- mean(ChickWeight[ChickWeight$Diet==3, 1]) # answer
@@ -187,7 +187,7 @@ d4 <- mean(ChickWeight[ChickWeight$Diet==4, 1])
 ```
 
 
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE}
 t1 <- mean(ChickWeight[ChickWeight$Chick==1, 1])
 t2 <- mean(ChickWeight[ChickWeight$Chick==2, 1]) # answer
 ```
