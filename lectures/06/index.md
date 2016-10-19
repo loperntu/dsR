@@ -1,25 +1,124 @@
 ---
-title    : Linguistic Analysis and Data Science
-subtitle : lecture 06
-author   : 謝舒凱 Graduate Institute of Linguistics, NTU
-mode     : selfcontained # {standalone, draft}
-url      : {lib: "../../libraries", assets: "../../assets"}
+title       : 'Introducing Data Science with R'
+subtitle    : 'week.6'
+author      : '謝舒凱 Lab of Ontologies, Language Processing and e-Humanities'
+job         : 'GIL, National Taiwan University'
+logo        : lope.png
+biglogo     : lopen.png
+license     : by-sa
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
-lecnum   : "03"
-widgets     : [bootstrap, quiz, interactive, mathjax]  # {mathjax, shiny, bootstrap}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, quiz, bootstrap]    # {mathjax, quiz, bootstrap}
 ext_widgets: {rCharts: [libraries/widgets/nvd3]}
-knit     : slidify::knit2slides
-bibliography: /Users/shukai/LOPE_LexInfo/BIB/corpus.bib
-github      : {user: loperntu, repo: lads}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
+github      : {user: loperntu, repo: dsR}
+
+
 
 
 --- bg:#FFFAF0
 ## 大綱
 
-1. Exploratory Data Analysis
-2. Corpus and linguistic annotation
-2. Crash course for R: Visualization
+1. Logical Structure and Functions
+2. Exploratory Data Analysis [1] Graphics
+ 
+
+
+---
+## 流程控制
+
+---
+## 條件判斷
+
+---
+## 邏輯判斷式
+
+> <、>：小於、大於。
+<=、>=：小於等於、大於等於。
+==、!=：等於、不等於。
+A %in% B：A 是否在 B 中。
+&&、＆:交集，& 適用於向量式的邏輯判斷，&& 適用於單一值的邏輯判斷。
+||、|：聯集，| 適用狀況與 & 相同，|| 適用狀況與 && 相同。
+
+---
+## 條件判斷 `if` `else`
+
+
+```r
+x <- 20
+if(x < 10){
+  x <- x + 1
+}else{
+  x <- x - 1
+}
+```
+
+- 另一種寫法 `if(x < 10) x <- x + 1 else x <- x - 1`
+- 還有一個函數 `ifelse(test, yes, no)`
+
+```r
+ifelse(2 < 4, 'yes', 'noooo')
+```
+
+```
+## [1] "yes"
+```
+
+
+---
+## 迴圈
+
+- 常用的有 `for`, `while`
+
+> for(var in vector/list){statement}
+- 迴圈變數 (i, v,...) 當迴圈結束時，不會存在在 R 的環境中。
+
+
+---
+## `while` loop
+
+
+
+---
+## 無窮迴圈
+
+- 條件式結果永遠是 `1` (`TRUE`) 時，迴圈無法停止。
+
+
+```r
+x <- 0
+while(TRUE){
+  print(x)
+  x <- x+1
+}
+```
+
+
+
+
+---
+## 自訂函數
+
+- 使用內建或者安裝套件的函數 `function(parameter, ...)`
+- 也可以自訂函數，讓經常執行的程式碼重複使用。
+
+
+```r
+add_func <- function(x, y){
+  x + y
+}
+# add_func(2,6)
+```
+
+
+
+---
+## Exercise: 綜合題
+
+
 
 ---
 ## 我們現在在哪裡？
@@ -27,6 +126,7 @@ github      : {user: loperntu, repo: lads}
 <img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img>
 
 [pic.source](https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg)
+
 
 ---
 ## 文本資料探索分析: A missing part
@@ -41,52 +141,9 @@ github      : {user: loperntu, repo: lads}
 
 --- bg:#FFFAF0
 
-1. Exploratory Data Analysis
-2. __**Corpus and linguistic annotation**__
-2. Crash course for R: Visualization
-
----
-## 語料庫：概念
-
-- 語料庫 (Corpus) 是自然語言處理與文本解析的基礎建設。
-- 標記 (annotation) 是核心。It's linguistic in nature.
-
-> Good annotations support good applications
-
-
----
-## 語料庫：工具
-
-### 一般主要提供以下功能：
-  
-- Corpus building and indexing
-- Concordance
-- Frequency list
-- (Grammatical) Collocations (and colligations)
-- Keywords
-- Thesaurus
-- ngram
-- Visualization
-
----
-## 語料庫：網路服務
-
-- 較具特色的(商用)系統：[Word Sketch Engine](https://www.sketchengine.co.uk/)
-- 較具特色的(開放)系統 [COPENS](http://lopen.linguistics.ntu.edu.tw/copens) <- 敝帚自珍
-
-<img style='border: 1px solid;' width=80% src='./assets/img/wse.png'></img>
-
-
----
-## 語料庫練習
-
-- 我們用斷過詞的總統文告版本來練習看看。
-
----
-## 語料庫：較新的玩意 [I]
-
-- [collocation network: Graphcoll](http://www.extremetomato.com/projects/graphcoll/) 
-- [研究全文](https://benjamins.com/#catalog/journals/ijcl.20.2.01bre/fulltext)
+1. Logical Structure and Functions
+2. __`Exploratory Data Analysis [1] Graphics`__
+ 
 
 
 
@@ -115,12 +172,10 @@ ggram(c("monarchy", "democracy"), year_start = 1500, year_end = 2000,
       labs(y = NULL)
 ```
 
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
-
 ---
 ## 這個圖怎麼解釋
 
-<img src="assets/fig/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
 
 ---
 ## [Exercise] 愛人與太太的消長
@@ -133,52 +188,6 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
       geom = "area", geom_options = list(position = "stack")) + 
       labs(y = NULL)
 ```
-
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
-
-
----
-## 疑問
-### 這和 `tm` 套件的 `Corpus()` 差別？
-
-
-
----
-## 語料庫：標記、標記、標記（很重要的意思）
-
-
-- 大型的語料標記系統：[GATE](http://gate.ac.uk), [UIMA](http://www.anc.org/software/uimautils/)
-- 各個 lab 可能都有自己的想法 [蘿蔔標 lope.anno](http://140.112.147.121:8001/lope.anno/)
-- 語言訊息（語音語法語意語用）、概念、知識、情緒、<span style="color:green; font-weight:bold">什麼都可以標</span>
-
-
-
-
----
-## 標記的重要
-
-第一層意義：
-
-- 如果先標好了詞類訊息，語音合成就不會把當名詞的 contract 和當動詞的 contract 唸錯。
-- 如果先標好了詞類訊息，命名實體 (Named Entities) 辨識器就容易把 *highest-ranking general* 和 *the general opinion* 中的 general (頭銜/形容詞) 分開來。
-
-第二層意義：
-
-- 沒有標記，面對小型資料就容易受限。
-- 研究與應用的想像力因而受限。
-
-
----
-## 標記的重點知識
-
-- 標記語言選擇 `xml`, `json`
-- 標記標籤 (tagset) 的設計
-- 標記者的同意率量度 (inter-annotator agreement)
-
-
-
-
-
 
 
 --- bg:#FFFAF0
@@ -208,7 +217,7 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
 plot(cars)
 ```
 
-<img src="assets/fig/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 ---
 ## Advanced scatter plot
@@ -260,12 +269,12 @@ source: <http://blog.liang2.tw/2013-RConf-ggplot2-intro/>
 
 - `tm`, `wordcloud`, `RColorBrewer` 就可以做到。
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png)
 
 ---
 ## 也可以丟詞頻表
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10-1.png)
 
 
 ---
