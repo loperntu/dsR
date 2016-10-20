@@ -120,7 +120,7 @@
 <li><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
 <li><code>==</code>, <code>!=</code> 等於、不等於。</li>
 <li>A <code>%in%</code> B：A 是否在 B 中。</li>
-<li><code>&amp;&amp;</code>, <code>＆</code> 交集，<code>&amp;</code> 適用於向量式的邏輯判斷，<code>&amp;&amp;</code> 適用於單一值的邏輯判斷。</li>
+<li><code>&amp;&amp;</code>, <code>＆</code> 交集，<code>&amp;</code> 適用於向量的邏輯判斷，<code>&amp;&amp;</code> 適用於單一值的邏輯判斷。</li>
 <li><code>||</code>, <code>|</code> 聯集，<code>|</code> 適用狀況與 <code>&amp;</code> 相同，<code>||</code> 適用狀況與 <code>&amp;&amp;</code> 相同。</li>
 </ul>
 
@@ -174,11 +174,18 @@ if(x &lt; 10){
 </ul>
 
 <blockquote>
-<p>for(var in vector/list){statement}</p>
+<p>for(var in sequence){expression}</p>
 
 <ul>
 <li>迴圈變數 (i, v,...) 當迴圈結束時，不會存在在 R 的環境中。</li>
 </ul>
+
+<pre><code class="r">m &lt;- c(2,5,10)
+for(i in m){
+  m &lt;- sqrt(i)
+  cat(&quot;sqrt(&quot; ,i, &quot;): &quot;, m, &quot;\n&quot;)
+}
+</code></pre>
 
     
   </article>
@@ -193,7 +200,18 @@ if(x &lt; 10){
   </hgroup>
   
   <article data-timings="">
-    
+    <p><code>while(condition){expression}</code></p>
+
+<pre><code class="r">sum &lt;- 0
+i &lt;- 0
+while(i &lt;= 10){
+  sum &lt;- i + sum
+  print(sum)
+  i &lt;- i + 1
+}
+sum
+</code></pre>
+
     
   </article>
   <!-- Presenter Notes -->
@@ -227,6 +245,28 @@ while(TRUE){
   
   
   <hgroup>
+    <h2><code>apply</code> 函數家族</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>R 叫你<strong>活用函數來減少迴圈計算。</strong></li>
+<li>這個家族包括 <code>apply(), tapply(), lapply()</code> 等等， 能對於每一個變數的每個元素應用指定的函數。</li>
+</ul>
+
+<pre><code class="r">mm &lt;- matrix(1:12,3); mm
+apply(mm, MARGIN = 1, FUN = sum)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
     <h2>自訂函數</h2>
   </hgroup>
   
@@ -247,7 +287,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -261,7 +301,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-12" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -280,7 +320,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -315,7 +355,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -334,7 +374,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -351,7 +391,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -371,7 +411,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -386,14 +426,14 @@ while(TRUE){
 <pre><code class="r">plot(cars)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -409,7 +449,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -424,7 +464,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -442,7 +482,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -460,7 +500,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -490,7 +530,7 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -503,22 +543,7 @@ while(TRUE){
 <li><p><code>tm</code>, <code>wordcloud</code>, <code>RColorBrewer</code> 就可以做到。</p></li>
 </ul>
 
-<p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"></p>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>也可以丟詞頻表</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"></p>
+<p><img src="assets/fig/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"></p>
 
     
   </article>
@@ -526,6 +551,21 @@ while(TRUE){
 </slide>
 
 <slide class="" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>也可以丟詞頻表</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -547,7 +587,7 @@ wordcloud(doc, scale= c(2,0.5))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -570,7 +610,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -585,7 +625,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -604,7 +644,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -619,7 +659,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -636,7 +676,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -653,7 +693,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -678,7 +718,7 @@ ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_en
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -686,14 +726,14 @@ ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_en
   </hgroup>
   
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -713,7 +753,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-35" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -723,14 +763,14 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <article data-timings="">
     <ul>
 <li>(小組作業) 搞懂 2 張 cheat sheet: <strong>Data Wrangling with dplyr and tidyr</strong> and <strong>Data Visualization with ggplot2</strong> (from RStudio website), 應用以上知識在你們上次的作業（或者新的一份作業）。</li>
-<li>下次抽取組別上台分享。</li>
+<li>下次講解難題與抽取組別上台分享。</li>
 </ul>
 
 <p>可以參考：</p>
 
 <ul>
 <li><a href="https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/">Hands-on dplyr tutorial for faster data manipulation in R</a> <code>多注意 R-bloggers 等社群發展</code></li>
-<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a> <code>利用 vignette 來學習</code></li>
+<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a> <code>多利用 vignette 來學習</code></li>
 </ul>
 
     
@@ -738,7 +778,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-35" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-36" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -808,164 +848,170 @@ Atmajitsinh Gohil. 2015. <em>R Data Visualization Cookbook</em>. </p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='自訂函數'>
+        data-slide=9 title='<code>apply</code> 函數家族'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Exercise: 綜合題'>
+        data-slide=10 title='自訂函數'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='大綱'>
+        data-slide=11 title='Exercise: 綜合題'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Exploratory Data Analysis [1]'>
+        data-slide=12 title='大綱'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Exploratory **Textual **Data Analysis: A missing part'>
+        data-slide=13 title='Exploratory Data Analysis [1]'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='我們現在在哪裡？'>
+        data-slide=14 title='Exploratory **Textual **Data Analysis: A missing part'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Basic and Interactive Plots'>
+        data-slide=15 title='我們現在在哪裡？'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Scatter plot'>
+        data-slide=16 title='Basic and Interactive Plots'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='Advanced scatter plot'>
+        data-slide=17 title='Scatter plot'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='3D scatter 也可以'>
+        data-slide=18 title='Advanced scatter plot'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Map 也沒問題'>
+        data-slide=19 title='3D scatter 也可以'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='簡言之'>
+        data-slide=20 title='Map 也沒問題'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='重點來了：文本資料怎麼辦'>
+        data-slide=21 title='簡言之'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='Word Cloud'>
+        data-slide=22 title='重點來了：文本資料怎麼辦'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='也可以丟詞頻表'>
+        data-slide=23 title='Word Cloud'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='(中文) 字型與符碼選擇'>
+        data-slide=24 title='也可以丟詞頻表'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='文字雲也可以比較'>
+        data-slide=25 title='(中文) 字型與符碼選擇'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='用 correlation plot 來觀察文本差異'>
+        data-slide=26 title='文字雲也可以比較'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='詞組樹'>
+        data-slide=27 title='用 correlation plot 來觀察文本差異'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='再講一個 motion chart'>
+        data-slide=28 title='詞組樹'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='從多變量量化語言學角度下的文本視覺化'>
+        data-slide=29 title='再講一個 motion chart'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='語言大數據發揮創意的話可以看到很多東西'>
+        data-slide=30 title='從多變量量化語言學角度下的文本視覺化'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='用 R 玩看看'>
+        data-slide=31 title='語言大數據發揮創意的話可以看到很多東西'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='這個圖怎麼解釋'>
+        data-slide=32 title='用 R 玩看看'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='[Exercise] 愛人與太太的消長'>
+        data-slide=33 title='這個圖怎麼解釋'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Homework'>
+        data-slide=34 title='[Exercise] 愛人與太太的消長'>
          34
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=35 title='Reference'>
+        data-slide=35 title='Homework'>
          35
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=36 title='Reference'>
+         36
       </a>
     </li>
   </ul>

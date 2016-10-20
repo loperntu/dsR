@@ -38,7 +38,7 @@ github      : {user: loperntu, repo: dsR}
 - `<`, `>`, `<=`, `>=`
 - `==`, `!=` 等於、不等於。
 - A `%in%` B：A 是否在 B 中。
-- `&&`, `＆` 交集，`&` 適用於向量式的邏輯判斷，`&&` 適用於單一值的邏輯判斷。
+- `&&`, `＆` 交集，`&` 適用於向量的邏輯判斷，`&&` 適用於單一值的邏輯判斷。
 - `||`, `|` 聯集，`|` 適用狀況與 `&` 相同，`||` 適用狀況與 `&&` 相同。
 
 ---
@@ -71,12 +71,34 @@ ifelse(2 < 4, 'yes', 'noooo')
 
 - 常用的有 `for`, `while`
 
-> for(var in vector/list){statement}
+> for(var in sequence){expression}
 - 迴圈變數 (i, v,...) 當迴圈結束時，不會存在在 R 的環境中。
 
 
+```r
+m <- c(2,5,10)
+for(i in m){
+  m <- sqrt(i)
+  cat("sqrt(" ,i, "): ", m, "\n")
+}
+```
+
 ---
 ## `while` loop
+
+`while(condition){expression}`
+
+
+```r
+sum <- 0
+i <- 0
+while(i <= 10){
+  sum <- i + sum
+  print(sum)
+  i <- i + 1
+}
+sum
+```
 
 
 
@@ -95,7 +117,17 @@ while(TRUE){
 ```
 
 
+---
+## `apply` 函數家族
 
+- R 叫你**活用函數來減少迴圈計算。**
+- 這個家族包括 `apply(), tapply(), lapply()` 等等， 能對於每一個變數的每個元素應用指定的函數。
+
+
+```r
+mm <- matrix(1:12,3); mm
+apply(mm, MARGIN = 1, FUN = sum)
+```
 
 ---
 ## 自訂函數
@@ -181,7 +213,7 @@ add_func <- function(x, y){
 plot(cars)
 ```
 
-<img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 ---
 ## Advanced scatter plot
@@ -233,12 +265,12 @@ source: <http://blog.liang2.tw/2013-RConf-ggplot2-intro/>
 
 - `tm`, `wordcloud`, `RColorBrewer` 就可以做到。
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png)
 
 ---
 ## 也可以丟詞頻表
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10-1.png)
 
 
 ---
@@ -323,7 +355,7 @@ ggram(c("monarchy", "democracy"), year_start = 1500, year_end = 2000,
 ---
 ## 這個圖怎麼解釋
 
-<img src="assets/fig/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
+<img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 ---
 ## [Exercise] 愛人與太太的消長
@@ -344,11 +376,11 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
 ## Homework
 
 - (小組作業) 搞懂 2 張 cheat sheet: **Data Wrangling with dplyr and tidyr** and **Data Visualization with ggplot2** (from RStudio website), 應用以上知識在你們上次的作業（或者新的一份作業）。
-- 下次抽取組別上台分享。
+- 下次講解難題與抽取組別上台分享。
 
 可以參考：
 - [Hands-on dplyr tutorial for faster data manipulation in R](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/) `多注意 R-bloggers 等社群發展`
-- [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) `利用 vignette 來學習`
+- [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) `多利用 vignette 來學習`
 
 
 ---

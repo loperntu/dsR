@@ -38,7 +38,7 @@ github      : {user: loperntu, repo: dsR}
 - `<`, `>`, `<=`, `>=`
 - `==`, `!=` 等於、不等於。
 - A `%in%` B：A 是否在 B 中。
-- `&&`, `＆` 交集，`&` 適用於向量式的邏輯判斷，`&&` 適用於單一值的邏輯判斷。
+- `&&`, `＆` 交集，`&` 適用於向量的邏輯判斷，`&&` 適用於單一值的邏輯判斷。
 - `||`, `|` 聯集，`|` 適用狀況與 `&` 相同，`||` 適用狀況與 `&&` 相同。
 
 ---
@@ -65,12 +65,32 @@ ifelse(2 < 4, 'yes', 'noooo')
 
 - 常用的有 `for`, `while`
 
-> for(var in vector/list){statement}
+> for(var in sequence){expression}
 - 迴圈變數 (i, v,...) 當迴圈結束時，不會存在在 R 的環境中。
 
+```{r, echo=TRUE, results='hide'}
+m <- c(2,5,10)
+for(i in m){
+  m <- sqrt(i)
+  cat("sqrt(" ,i, "): ", m, "\n")
+}
+```
 
 ---
 ## `while` loop
+
+`while(condition){expression}`
+
+```{r, echo=TRUE, results='hide'}
+sum <- 0
+i <- 0
+while(i <= 10){
+  sum <- i + sum
+  print(sum)
+  i <- i + 1
+}
+sum
+```
 
 
 
@@ -89,7 +109,16 @@ while(TRUE){
 ```
 
 
+---
+## `apply` 函數家族
 
+- R 叫你**活用函數來減少迴圈計算。**
+- 這個家族包括 `apply(), tapply(), lapply()` 等等， 能對於每一個變數的每個元素應用指定的函數。
+
+```{r,echo=TRUE, results='hide'}
+mm <- matrix(1:12,3); mm
+apply(mm, MARGIN = 1, FUN = sum)
+```
 
 ---
 ## 自訂函數
@@ -347,7 +376,7 @@ ggram(c("情人", "太太"), year_start = 1500, year_end = 2000,
 ## Homework
 
 - (小組作業) 搞懂 2 張 cheat sheet: **Data Wrangling with dplyr and tidyr** and **Data Visualization with ggplot2** (from RStudio website), 應用以上知識在你們上次的作業（或者新的一份作業）。
-- 下次抽取組別上台分享。
+- 下次講解難題與抽取組別上台分享。
 
 可以參考：
 - [Hands-on dplyr tutorial for faster data manipulation in R](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/) `多注意 R-bloggers 等社群發展`
