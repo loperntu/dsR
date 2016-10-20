@@ -17,13 +17,12 @@ bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
 github      : {user: loperntu, repo: dsR}
 
 
-
-
 --- bg:#FFFAF0
 ## 大綱
 
-1. Logical Structure and Functions
-2. Exploratory Data Analysis [1] Graphics
+1. __``Logical Structure and Functions``__ (30 min)
+2. Exploratory Data Analysis [1] Graphics (60 min)
+3. Lab (60 min)
  
 
 
@@ -36,12 +35,11 @@ github      : {user: loperntu, repo: dsR}
 ---
 ## 邏輯判斷式
 
-> <、>：小於、大於。
-<=、>=：小於等於、大於等於。
-==、!=：等於、不等於。
-A %in% B：A 是否在 B 中。
-&&、＆:交集，& 適用於向量式的邏輯判斷，&& 適用於單一值的邏輯判斷。
-||、|：聯集，| 適用狀況與 & 相同，|| 適用狀況與 && 相同。
+- `<`, `>`, `<=`, `>=`
+- `==`, `!=` 等於、不等於。
+- A `%in%` B：A 是否在 B 中。
+- `&&`, `＆` 交集，`&` 適用於向量式的邏輯判斷，`&&` 適用於單一值的邏輯判斷。
+- `||`, `|` 聯集，`|` 適用狀況與 `&` 相同，`||` 適用狀況與 `&&` 相同。
 
 ---
 ## 條件判斷 `if` `else`
@@ -112,99 +110,49 @@ add_func <- function(x, y){
 ## Exercise: 綜合題
 
 
+--- bg:#FFFAF0
+## 大綱
+
+1. Logical Structure and Functions (30 min)
+2. __``Exploratory Data Analysis [1] Graphics (60 min)``__
+3. Lab (60 min)
+
+---
+## Exploratory Data Analysis [1]
+
+- 作圖與統計知識是兩把瑞士刀
+- 思考：
+  - 什麼樣資料適合用什麼樣的圖形表達？
+  - 適當的作圖工具（library）為何？
+  - 如何生動、產生互動？
+- 建議學習順序：了解基本函數 `plot()` >> `(lattice)` >> `ggplot2` >> **interactive plot** `rCharts`, `plotly`, `networkD3`, `dygraphs`... (視你的應用需求而定)
+
+> 講義見課程網站
+
+
+
+<!-- --- -->
+<!-- ## Data Manipulation Using `dplyr` -->
+
+<!-- - **split-apply-combine** without a loop -->
+
+
+
 
 
 ---
-## Data Manipulation Using `dplyr`
-
-- **split-apply-combine** without a loop
-
-
-
-
-
----
-## 我們現在在哪裡？
-
-<img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img>
-
-[pic.source](https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg)
-
-
----
-## 文本資料探索分析: A missing part
+## Exploratory **Textual **Data Analysis: A missing part
 
 - Textual statistics (local and global)
 - Textual data transformatio: from textual information to numerical vectors
 - Corpus-based analysis and manual annotation (e.g., conversation structure) 
 
-參考課程教材
-
-
-
---- bg:#FFFAF0
-
-1. Logical Structure and Functions
-2. __`Exploratory Data Analysis [1] Graphics`__
- 
-
-
-
-
 ---
-## 語料庫：較新的玩意 [II]
+## 我們現在在哪裡？
 
-[Google book ngram](https://books.google.com/ngrams/) 
+<img style='border: 1px solid;' width=80% src='./assets/img/tm001.jpg'></img>
 
-<img src="assets/img/gngram.png" alt="Drawing" style="width: 500px;"/>
-
-
----
-## 用 R 玩看看
-
-- [`ngramr`](https://github.com/seancarmody/ngramr): R package to query the Google Ngram Viewer 
-
-
-```{r, eval=FALSE}
-require(ngramr)
-require(ggplot2)
-ggram(c("monarchy", "democracy"), year_start = 1500, year_end = 2000, 
-      corpus = "eng_gb_2012", ignore_case = TRUE, 
-      geom = "area", geom_options = list(position = "stack")) + 
-      labs(y = NULL)
-```
-
----
-## 這個圖怎麼解釋
-
-```{r, echo=FALSE,fig.align='center',fig.width=10}
-require(ggplot2)
-ng <- c("((The United States is + The United States has) / The United States)",
-      "((The United States are + The United States have) / The United States)")
-ggram(ng, year_start = 1800, google_theme = TRUE) +
-  theme(legend.direction = "vertical")
-
-```
-
----
-## [Exercise] 愛人與太太的消長
-
-```{r, eval=FALSE,results='hide'}
-# rownames(corpuses) 
-ggram(c("情人", "太太"), year_start = 1500, year_end = 2000, 
-      corpus = "chi_sim_2012", ignore_case = TRUE, 
-      geom = "area", geom_options = list(position = "stack")) + 
-      labs(y = NULL)
-
-```
-
-
---- bg:#FFFAF0
-## 大綱
-
-1. Exploratory Data Analysis
-2. Corpus and linguistic annotation
-3. __**Crash course for R: Visualization**__
+[pic.source](https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg)
 
 
 
@@ -345,14 +293,65 @@ Visualization of textual data (Ludovic Lebart and Marie Piron)
 <img src="assets/img/dtm-vic.png" align="center" alt="Drawing" style="width: 600px;"/>
 
 
+---
+## 語言大數據發揮創意的話可以看到很多東西
+
+[Google book ngram](https://books.google.com/ngrams/) 
+
+<img src="assets/img/gngram.png" alt="Drawing" style="width: 500px;"/>
 
 
 ---
-## Homework Bonus (20151022)
+## 用 R 玩看看
 
-(預告) 期中 Hackathon 會是以政治領域資料為主的實作。
+- [`ngramr`](https://github.com/seancarmody/ngramr): R package to query the Google Ngram Viewer 
 
-- 可以選定媒體或社群文本中的「人物」，「主題」，或是「事件」，甚至是歷年來的大選前時段的新聞資料，建立一個文本語料庫。 
+
+```{r, eval=FALSE}
+require(ngramr)
+require(ggplot2)
+ggram(c("monarchy", "democracy"), year_start = 1500, year_end = 2000, 
+      corpus = "eng_gb_2012", ignore_case = TRUE, 
+      geom = "area", geom_options = list(position = "stack")) + 
+      labs(y = NULL)
+```
+
+---
+## 這個圖怎麼解釋
+
+```{r, echo=FALSE,fig.align='center',fig.width=10}
+require(ggplot2)
+ng <- c("((The United States is + The United States has) / The United States)",
+      "((The United States are + The United States have) / The United States)")
+ggram(ng, year_start = 1800, google_theme = TRUE) +
+  theme(legend.direction = "vertical")
+
+```
+
+---
+## [Exercise] 愛人與太太的消長
+
+```{r, eval=FALSE,results='hide'}
+# rownames(corpuses) 
+ggram(c("情人", "太太"), year_start = 1500, year_end = 2000, 
+      corpus = "chi_sim_2012", ignore_case = TRUE, 
+      geom = "area", geom_options = list(position = "stack")) + 
+      labs(y = NULL)
+
+```
+
+
+
+
+---
+## Homework
+
+- (小組作業) 搞懂 2 張 cheat sheet: **Data Wrangling with dplyr and tidyr** and **Data Visualization with ggplot2** (from RStudio website), 應用以上知識在你們上次的作業（或者新的一份作業）。
+- 下次抽取組別上台分享。
+
+可以參考：
+- [Hands-on dplyr tutorial for faster data manipulation in R](https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/) `多注意 R-bloggers 等社群發展`
+- [Introduction to dplyr](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html) `多利用 vignette 來學習`
 
 
 ---

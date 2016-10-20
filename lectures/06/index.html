@@ -70,8 +70,9 @@
   
   <article data-timings="">
     <ol>
-<li>Logical Structure and Functions</li>
-<li>Exploratory Data Analysis [1] Graphics</li>
+<li><strong><code>Logical Structure and Functions</code></strong> (30 min)</li>
+<li>Exploratory Data Analysis [1] Graphics (60 min)</li>
+<li>Lab (60 min)</li>
 </ol>
 
     
@@ -115,14 +116,13 @@
   </hgroup>
   
   <article data-timings="">
-    <blockquote>
-<p><、>：小於、大於。
-&lt;=、&gt;=：小於等於、大於等於。
-==、!=：等於、不等於。
-A %in% B：A 是否在 B 中。
-&amp;&amp;、＆:交集，&amp; 適用於向量式的邏輯判斷，&amp;&amp; 適用於單一值的邏輯判斷。
-||、|：聯集，| 適用狀況與 &amp; 相同，|| 適用狀況與 &amp;&amp; 相同。</p>
-</blockquote>
+    <ul>
+<li><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+<li><code>==</code>, <code>!=</code> 等於、不等於。</li>
+<li>A <code>%in%</code> B：A 是否在 B 中。</li>
+<li><code>&amp;&amp;</code>, <code>＆</code> 交集，<code>&amp;</code> 適用於向量式的邏輯判斷，<code>&amp;&amp;</code> 適用於單一值的邏輯判斷。</li>
+<li><code>||</code>, <code>|</code> 聯集，<code>|</code> 適用狀況與 <code>&amp;</code> 相同，<code>||</code> 適用狀況與 <code>&amp;&amp;</code> 相同。</li>
+</ul>
 
     
   </article>
@@ -261,17 +261,19 @@ while(TRUE){
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-11" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
-    <h2>我們現在在哪裡？</h2>
+    <h2>大綱</h2>
   </hgroup>
   
   <article data-timings="">
-    <p><img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img></p>
-
-<p><a href="https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg">pic.source</a></p>
+    <ol>
+<li>Logical Structure and Functions (30 min)</li>
+<li><strong><code>Exploratory Data Analysis [1] Graphics (60 min)</code></strong></li>
+<li>Lab (60 min)</li>
+</ol>
 
     
   </article>
@@ -282,7 +284,42 @@ while(TRUE){
   
   
   <hgroup>
-    <h2>文本資料探索分析: A missing part</h2>
+    <h2>Exploratory Data Analysis [1]</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>作圖與統計知識是兩把瑞士刀</li>
+<li>思考：
+
+<ul>
+<li>什麼樣資料適合用什麼樣的圖形表達？</li>
+<li>適當的作圖工具（library）為何？</li>
+<li>如何生動、產生互動？</li>
+</ul></li>
+<li>建議學習順序：了解基本函數 <code>plot()</code> &gt;&gt; <code>(lattice)</code> &gt;&gt; <code>ggplot2</code> &gt;&gt; <strong>interactive plot</strong> <code>rCharts</code>, <code>plotly</code>, <code>networkD3</code>, <code>dygraphs</code>... (視你的應用需求而定)</li>
+</ul>
+
+<blockquote>
+<p>講義見課程網站</p>
+</blockquote>
+
+<!-- --- -->
+
+<!-- ## Data Manipulation Using `dplyr` -->
+
+<!-- - **split-apply-combine** without a loop -->
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Exploratory **Textual **Data Analysis: A missing part</h2>
   </hgroup>
   
   <article data-timings="">
@@ -291,23 +328,6 @@ while(TRUE){
 <li>Textual data transformatio: from textual information to numerical vectors</li>
 <li>Corpus-based analysis and manual annotation (e.g., conversation structure) </li>
 </ul>
-
-<p>參考課程教材</p>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  
-  <article data-timings="">
-    <ol>
-<li>Logical Structure and Functions</li>
-<li><strong><code>Exploratory Data Analysis [1] Graphics</code></strong></li>
-</ol>
 
     
   </article>
@@ -318,13 +338,13 @@ while(TRUE){
   
   
   <hgroup>
-    <h2>語料庫：較新的玩意 [II]</h2>
+    <h2>我們現在在哪裡？</h2>
   </hgroup>
   
   <article data-timings="">
-    <p><a href="https://books.google.com/ngrams/">Google book ngram</a> </p>
+    <p><img style='border: 1px solid;' width=80% src='./assets/img/tm001.jpg'></img></p>
 
-<p><img src="assets/img/gngram.png" alt="Drawing" style="width: 500px;"/></p>
+<p><a href="https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg">pic.source</a></p>
 
     
   </article>
@@ -332,85 +352,6 @@ while(TRUE){
 </slide>
 
 <slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>用 R 玩看看</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <ul>
-<li><a href="https://github.com/seancarmody/ngramr"><code>ngramr</code></a>: R package to query the Google Ngram Viewer </li>
-</ul>
-
-<pre><code class="r">require(ngramr)
-require(ggplot2)
-ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_end = 2000, 
-      corpus = &quot;eng_gb_2012&quot;, ignore_case = TRUE, 
-      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
-      labs(y = NULL)
-</code></pre>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>這個圖怎麼解釋</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" /></p>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>[Exercise] 愛人與太太的消長</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <pre><code class="r"># rownames(corpuses) 
-ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2000, 
-      corpus = &quot;chi_sim_2012&quot;, ignore_case = TRUE, 
-      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
-      labs(y = NULL)
-</code></pre>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-18" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
-  
-  
-  <hgroup>
-    <h2>大綱</h2>
-  </hgroup>
-  
-  <article data-timings="">
-    <ol>
-<li>Exploratory Data Analysis</li>
-<li>Corpus and linguistic annotation</li>
-<li><strong><strong>Crash course for R: Visualization</strong></strong></li>
-</ol>
-
-    
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -430,7 +371,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -445,14 +386,14 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
 <pre><code class="r">plot(cars)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" /></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -468,7 +409,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -483,7 +424,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -501,7 +442,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -519,7 +460,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -549,7 +490,7 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -562,14 +503,14 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
 <li><p><code>tm</code>, <code>wordcloud</code>, <code>RColorBrewer</code> 就可以做到。</p></li>
 </ul>
 
-<p><img src="assets/fig/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"></p>
+<p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -577,14 +518,14 @@ ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2
   </hgroup>
   
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"></p>
+    <p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -606,7 +547,7 @@ wordcloud(doc, scale= c(2,0.5))
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -629,7 +570,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -644,7 +585,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-27" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -663,7 +604,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -678,7 +619,7 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -695,18 +636,101 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-30" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>語言大數據發揮創意的話可以看到很多東西</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><a href="https://books.google.com/ngrams/">Google book ngram</a> </p>
+
+<p><img src="assets/img/gngram.png" alt="Drawing" style="width: 500px;"/></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>用 R 玩看看</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><a href="https://github.com/seancarmody/ngramr"><code>ngramr</code></a>: R package to query the Google Ngram Viewer </li>
+</ul>
+
+<pre><code class="r">require(ngramr)
+require(ggplot2)
+ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_end = 2000, 
+      corpus = &quot;eng_gb_2012&quot;, ignore_case = TRUE, 
+      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
+      labs(y = NULL)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-32" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>這個圖怎麼解釋</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" /></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-33" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[Exercise] 愛人與太太的消長</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r"># rownames(corpuses) 
+ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2000, 
+      corpus = &quot;chi_sim_2012&quot;, ignore_case = TRUE, 
+      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
+      labs(y = NULL)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="" id="slide-34" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
-    <h2>Homework Bonus (20151022)</h2>
+    <h2>Homework</h2>
   </hgroup>
   
   <article data-timings="">
-    <p>(預告) 期中 Hackathon 會是以政治領域資料為主的實作。</p>
+    <ul>
+<li>(小組作業) 搞懂 2 張 cheat sheet: <strong>Data Wrangling with dplyr and tidyr</strong> and <strong>Data Visualization with ggplot2</strong> (from RStudio website), 應用以上知識在你們上次的作業（或者新的一份作業）。</li>
+<li>下次抽取組別上台分享。</li>
+</ul>
+
+<p>可以參考：</p>
 
 <ul>
-<li>可以選定媒體或社群文本中的「人物」，「主題」，或是「事件」，甚至是歷年來的大選前時段的新聞資料，建立一個文本語料庫。 </li>
+<li><a href="https://www.r-bloggers.com/hands-on-dplyr-tutorial-for-faster-data-manipulation-in-r/">Hands-on dplyr tutorial for faster data manipulation in R</a> <code>多注意 R-bloggers 等社群發展</code></li>
+<li><a href="https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html">Introduction to dplyr</a> <code>利用 vignette 來學習</code></li>
 </ul>
 
     
@@ -796,145 +820,145 @@ Atmajitsinh Gohil. 2015. <em>R Data Visualization Cookbook</em>. </p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='我們現在在哪裡？'>
+        data-slide=11 title='大綱'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='文本資料探索分析: A missing part'>
+        data-slide=12 title='Exploratory Data Analysis [1]'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='NA'>
+        data-slide=13 title='Exploratory **Textual **Data Analysis: A missing part'>
          13
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=14 title='語料庫：較新的玩意 [II]'>
+        data-slide=14 title='我們現在在哪裡？'>
          14
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='用 R 玩看看'>
+        data-slide=15 title='Basic and Interactive Plots'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='這個圖怎麼解釋'>
+        data-slide=16 title='Scatter plot'>
          16
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=17 title='[Exercise] 愛人與太太的消長'>
+        data-slide=17 title='Advanced scatter plot'>
          17
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=18 title='大綱'>
+        data-slide=18 title='3D scatter 也可以'>
          18
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=19 title='Basic and Interactive Plots'>
+        data-slide=19 title='Map 也沒問題'>
          19
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=20 title='Scatter plot'>
+        data-slide=20 title='簡言之'>
          20
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=21 title='Advanced scatter plot'>
+        data-slide=21 title='重點來了：文本資料怎麼辦'>
          21
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=22 title='3D scatter 也可以'>
+        data-slide=22 title='Word Cloud'>
          22
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=23 title='Map 也沒問題'>
+        data-slide=23 title='也可以丟詞頻表'>
          23
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=24 title='簡言之'>
+        data-slide=24 title='(中文) 字型與符碼選擇'>
          24
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=25 title='重點來了：文本資料怎麼辦'>
+        data-slide=25 title='文字雲也可以比較'>
          25
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=26 title='Word Cloud'>
+        data-slide=26 title='用 correlation plot 來觀察文本差異'>
          26
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=27 title='也可以丟詞頻表'>
+        data-slide=27 title='詞組樹'>
          27
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=28 title='(中文) 字型與符碼選擇'>
+        data-slide=28 title='再講一個 motion chart'>
          28
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=29 title='文字雲也可以比較'>
+        data-slide=29 title='從多變量量化語言學角度下的文本視覺化'>
          29
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=30 title='用 correlation plot 來觀察文本差異'>
+        data-slide=30 title='語言大數據發揮創意的話可以看到很多東西'>
          30
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=31 title='詞組樹'>
+        data-slide=31 title='用 R 玩看看'>
          31
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=32 title='再講一個 motion chart'>
+        data-slide=32 title='這個圖怎麼解釋'>
          32
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=33 title='從多變量量化語言學角度下的文本視覺化'>
+        data-slide=33 title='[Exercise] 愛人與太太的消長'>
          33
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=34 title='Homework Bonus (20151022)'>
+        data-slide=34 title='Homework'>
          34
       </a>
     </li>
