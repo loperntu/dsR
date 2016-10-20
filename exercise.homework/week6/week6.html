@@ -836,6 +836,9 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 1</h2>
 <div class="slideContent" >
+<pre><code class="r"># - lists can contain various types of data
+# - lists can have variouis lengths of data
+</code></pre>
 
 </div>
 
@@ -855,6 +858,22 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 2</h2>
 <div class="slideContent" >
+<pre><code class="r">str(sleep)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   20 obs. of  3 variables:
+ $ extra: num  0.7 -1.6 -0.2 -1.2 -0.1 3.4 3.7 0.8 0 2 ...
+ $ group: Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ ID   : Factor w/ 10 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+</code></pre>
+
+<pre><code class="r">str(phones) #answer
+</code></pre>
+
+<pre><code>List of 2
+ $ year : num [1:24] 50 51 52 53 54 55 56 57 58 59 ...
+ $ calls: num [1:24] 4.4 4.7 4.7 5.9 6.6 7.3 8.1 8.8 10.6 12 ...
+</code></pre>
 
 </div>
 
@@ -872,6 +891,23 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 3</h2>
 <div class="slideContent" >
+<pre><code class="r"># None! 
+str(sleep)
+</code></pre>
+
+<pre><code>&#39;data.frame&#39;:   20 obs. of  3 variables:
+ $ extra: num  0.7 -1.6 -0.2 -1.2 -0.1 3.4 3.7 0.8 0 2 ...
+ $ group: Factor w/ 2 levels &quot;1&quot;,&quot;2&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ ID   : Factor w/ 10 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 6 7 8 9 10 ...
+</code></pre>
+
+<pre><code class="r">str(phones)
+</code></pre>
+
+<pre><code>List of 2
+ $ year : num [1:24] 50 51 52 53 54 55 56 57 58 59 ...
+ $ calls: num [1:24] 4.4 4.7 4.7 5.9 6.6 7.3 8.1 8.8 10.6 12 ...
+</code></pre>
 
 </div>
 
@@ -889,6 +925,21 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 4</h2>
 <div class="slideContent" >
+<pre><code class="r">sleep[sleep$group==1,]
+</code></pre>
+
+<pre><code>   extra group ID
+1    0.7     1  1
+2   -1.6     1  2
+3   -0.2     1  3
+4   -1.2     1  4
+5   -0.1     1  5
+6    3.4     1  6
+7    3.7     1  7
+8    0.8     1  8
+9    0.0     1  9
+10   2.0     1 10
+</code></pre>
 
 </div>
 
@@ -906,6 +957,16 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 5</h2>
 <div class="slideContent" >
+<pre><code class="r">sleep[sleep$extra &lt; 0, ]
+</code></pre>
+
+<pre><code>   extra group ID
+2   -1.6     1  2
+3   -0.2     1  3
+4   -1.2     1  4
+5   -0.1     1  5
+15  -0.1     2  5
+</code></pre>
 
 </div>
 
@@ -923,6 +984,11 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 6</h2>
 <div class="slideContent" >
+<pre><code class="r">head(phones$year)
+</code></pre>
+
+<pre><code>[1] 50 51 52 53 54 55
+</code></pre>
 
 </div>
 
@@ -940,6 +1006,42 @@ require(MASS)
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answer 7</h2>
 <div class="slideContent" >
+<pre><code class="r">(ALL &lt;- list(sleep=sleep, phones=phones))
+</code></pre>
+
+<pre><code>$sleep
+   extra group ID
+1    0.7     1  1
+2   -1.6     1  2
+3   -0.2     1  3
+4   -1.2     1  4
+5   -0.1     1  5
+6    3.4     1  6
+7    3.7     1  7
+8    0.8     1  8
+9    0.0     1  9
+10   2.0     1 10
+11   1.9     2  1
+12   0.8     2  2
+13   1.1     2  3
+14   0.1     2  4
+15  -0.1     2  5
+16   4.4     2  6
+17   5.5     2  7
+18   1.6     2  8
+19   4.6     2  9
+20   3.4     2 10
+
+$phones
+$phones$year
+ [1] 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72
+[24] 73
+
+$phones$calls
+ [1]   4.4   4.7   4.7   5.9   6.6   7.3   8.1   8.8  10.6  12.0  13.5
+[12]  14.9  16.1  21.2 119.0 124.0 142.0 159.0 182.0 212.0  43.0  24.0
+[23]  27.0  29.0
+</code></pre>
 
 </div>
 
@@ -1008,6 +1110,17 @@ comments &lt;- c(&#39;hate!&#39;, &#39;awful~&#39;, &#39;AWFUL!!&#39;,&#39;not r
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Answers</h2>
 <div class="slideContent" >
+<pre><code class="r">reviews &lt;- list(movies=movies, like=like, comments=comments)
+
+length(reviews[[3]])
+</code></pre>
+
+<pre><code class="r">review_data &lt;- data.frame(
+  movies = c(rep(&#39;Titanic&#39;,7), rep(&#39;Minions&#39;,100)), like = like, 
+  comments = c(head(comments), rep(&#39;None&#39;,81), tail(comments,20)))
+
+review_data[review_data$like==&#39;good&#39;,]
+</code></pre>
 
 </div>
 
