@@ -83,7 +83,7 @@ Week | Date   | Topic         | Lab
 - [Week 04](lectures/04/index.html)
 - [Week 05](lectures/05/index.html) 
 - [Week 06](lectures/06/index.html) 
-- [Week 07](lectures/07/eda.html)[VisR_quick.R](VisR_quick.R)
+- [Week 07](lectures/07/eda.html) /  [VisR_quick.R](lectures/07/VisR_quick.R)
 
 ## 助教講義、習題與作業
 
