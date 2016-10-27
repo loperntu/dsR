@@ -44,11 +44,11 @@ qplot(wt, mpg, data=mtcars, color=factor(cyl))
 
 
 ## 也許用 iris 來看更清楚 用顏色來區分物種
-qplot(Sepal.Length, Sepal.Width, data=iris, color=Species) 
+qplot(Sepal.Length, Sepal.Width, data=iris, color=Species, shape=Species) 
 #再加上 shape=Species 呢？ 
 
 # use different aesthetic mappings
-qplot(Species, Sepal.Length, data=iris,  geom="violin")  #boxplot
+qplot(Species, Sepal.Length, data=iris, geom="violin")  #boxplot
 qplot(Species, Sepal.Length, data=iris,  geom=c("violin","jitter"), fill=Species)
 
 # use facets 繪製分面版 y~x
@@ -56,7 +56,7 @@ qplot(Species, Sepal.Length, data=iris,  geom=c("violin","jitter"), fill=Species
 # 若指定 x 變量 (.~x)  qplot() 會照指定變量分面，並將圖形沿著 x 軸排列。
 # 同時指定 x 和 y 時， 就得到二維矩陣。
 qplot(Sepal.Length, Sepal.Width, data=iris, geom=c("point","smooth"), 
-      facets=.~Species, color=Species)
+      facets=Species~., color=Species)
 
 qplot(mpg, wt, data=mtcars, facets=cyl~., geom=c("point", "smooth"))
 qplot(mpg, wt, data=mtcars, facets=cyl~., geom=c("point", "smooth")) + coord_flip() 
