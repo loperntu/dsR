@@ -39,7 +39,7 @@ data(hflights)
 head(hflights)
 ```
 
-- 第一步：`tbl_df()` creates a 「local data frame」, which is simply a wrapper for a data frame that prints nicely.
+- `tbl_df()` creates a 「local data frame」, which is simply a wrapper for a data frame that prints nicely.
 
 ```{r}
 # convert to local data frame
