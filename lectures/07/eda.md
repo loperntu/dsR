@@ -279,7 +279,8 @@ flights %>%
 
 > 先看看這個[plots to avoid](http://genomicsclass.github.io/book/pages/plots_to_avoid.html)
 
-- `plot()` - `qplot()` - `ggplot()`  見網站講義 (`VisR_quick.R`)
+- `plot()` - `qplot()` - `ggplot()`  
+- 見網站講義 (`VisR_quick.R`)
 
 
 ```r
@@ -373,14 +374,7 @@ diamonds %>%                      # Start with the 'diamonds' dataset
 
 
 ```r
-#library(downloader)
-#url <- "https://../../birth2006.csv"
-#filename <- "birth2006.csv"
-#if (!file.exists(filename)) download(url,filename)
-#birth <- read.csv("birth2006.csv")
-#tbl_df(birth)
-
-# 也可以直接下載後再載入
+# 檔案放在："https://github.com/loperntu/dsR/blob/gh-pages/lectures/07/birth2006.csv" 有 31.1 MB, 也可以直接下載後再讀入
 birth <- tbl_df(read.csv("birth2006.csv", row.names = 1))
 ```
 

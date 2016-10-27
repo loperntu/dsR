@@ -459,7 +459,8 @@ flights %&gt;%
 </blockquote>
 
 <ul>
-<li><code>plot()</code> - <code>qplot()</code> - <code>ggplot()</code>  見網站講義 (<code>VisR_quick.R</code>)</li>
+<li><code>plot()</code> - <code>qplot()</code> - <code>ggplot()</code><br/></li>
+<li>見網站講義 (<code>VisR_quick.R</code>)</li>
 </ul>
 
 <pre><code class="r">library(ggplot2)
@@ -556,14 +557,7 @@ qplot(Sepal.Length, Petal.Length, data = iris, color = Species, size = Petal.Wid
 
 <h1>1. (Individual, 100 pt)</h1>
 
-<pre><code class="r">#library(downloader)
-#url &lt;- &quot;https://../../birth2006.csv&quot;
-#filename &lt;- &quot;birth2006.csv&quot;
-#if (!file.exists(filename)) download(url,filename)
-#birth &lt;- read.csv(&quot;birth2006.csv&quot;)
-#tbl_df(birth)
-
-# 也可以直接下載後再載入
+<pre><code class="r"># 檔案放在：&quot;https://github.com/loperntu/dsR/blob/gh-pages/lectures/07/birth2006.csv&quot; 有 31.1 MB, 也可以直接下載後再讀入
 birth &lt;- tbl_df(read.csv(&quot;birth2006.csv&quot;, row.names = 1))
 </code></pre>
 
