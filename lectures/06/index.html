@@ -229,13 +229,6 @@ sum
 <li>條件式結果永遠是 <code>1</code> (<code>TRUE</code>) 時，迴圈無法停止。</li>
 </ul>
 
-<pre><code class="r">x &lt;- 0
-while(TRUE){
-  print(x)
-  x &lt;- x+1
-}
-</code></pre>
-
     
   </article>
   <!-- Presenter Notes -->
@@ -275,12 +268,6 @@ apply(mm, MARGIN = 1, FUN = sum)
 <li>使用內建或者安裝套件的函數 <code>function(parameter, ...)</code></li>
 <li>也可以自訂函數，讓經常執行的程式碼重複使用。</li>
 </ul>
-
-<pre><code class="r">add_func &lt;- function(x, y){
-  x + y
-}
-# add_func(2,6)
-</code></pre>
 
     
   </article>
@@ -423,10 +410,7 @@ apply(mm, MARGIN = 1, FUN = sum)
 <li>Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data. (try adding elements such as text, labels, and lines.)</li>
 </ul>
 
-<pre><code class="r">plot(cars)
-</code></pre>
-
-<p><img src="assets/fig/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" /></p>
+<p><img src="assets/fig/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" style="display: block; margin: auto;" /></p>
 
     
   </article>
@@ -543,7 +527,7 @@ apply(mm, MARGIN = 1, FUN = sum)
 <li><p><code>tm</code>, <code>wordcloud</code>, <code>RColorBrewer</code> 就可以做到。</p></li>
 </ul>
 
-<p><img src="assets/fig/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"></p>
+<p><img src="assets/fig/unnamed-chunk-52-1.png" alt="plot of chunk unnamed-chunk-52"></p>
 
     
   </article>
@@ -558,7 +542,7 @@ apply(mm, MARGIN = 1, FUN = sum)
   </hgroup>
   
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"></p>
+    <p><img src="assets/fig/unnamed-chunk-53-1.png" alt="plot of chunk unnamed-chunk-53"></p>
 
     
   </article>
@@ -598,10 +582,6 @@ wordcloud(doc, scale= c(2,0.5))
     <ul>
 <li>To construct a comparison cloud, we require the data to be in the form of a term matrix. The <code>tm</code> package provides us with the <code>TermDocumentMatrix()</code> function that constructs a term document matrix:</li>
 </ul>
-
-<pre><code class="r">colnames(data) &lt;- c(&quot;bush&quot;,&quot;obama&quot;)
-comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quot;Set1&quot;))
-</code></pre>
 
 <p><img src="assets/img/cloud.jpg" alt="Drawing" style="width: 400px;"/></p>
 
@@ -705,14 +685,6 @@ comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,&quo
 <li><a href="https://github.com/seancarmody/ngramr"><code>ngramr</code></a>: R package to query the Google Ngram Viewer </li>
 </ul>
 
-<pre><code class="r">require(ngramr)
-require(ggplot2)
-ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_end = 2000, 
-      corpus = &quot;eng_gb_2012&quot;, ignore_case = TRUE, 
-      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
-      labs(y = NULL)
-</code></pre>
-
     
   </article>
   <!-- Presenter Notes -->
@@ -726,7 +698,7 @@ ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_en
   </hgroup>
   
   <article data-timings="">
-    <p><img src="assets/fig/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" /></p>
+    <p><img src="assets/fig/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" style="display: block; margin: auto;" /></p>
 
     
   </article>
@@ -741,13 +713,7 @@ ggram(c(&quot;monarchy&quot;, &quot;democracy&quot;), year_start = 1500, year_en
   </hgroup>
   
   <article data-timings="">
-    <pre><code class="r"># rownames(corpuses) 
-ggram(c(&quot;情人&quot;, &quot;太太&quot;), year_start = 1500, year_end = 2000, 
-      corpus = &quot;chi_sim_2012&quot;, ignore_case = TRUE, 
-      geom = &quot;area&quot;, geom_options = list(position = &quot;stack&quot;)) + 
-      labs(y = NULL)
-</code></pre>
-
+    
     
   </article>
   <!-- Presenter Notes -->

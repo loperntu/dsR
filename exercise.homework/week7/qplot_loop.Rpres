@@ -1,0 +1,256 @@
+Introducing Data Science with R - Lab Session
+========================================================
+author: Yu-Yun Chang and Shih-Kai Hsieh
+date: Oct. 27, 2016
+width: 1440
+height: 900
+
+
+
+
+
+Lab Session Week 7 - Plots and Loops
+========================================================
+type: section
+
+
+
+
+Before we get started
+========================================================
+
+
+- install the package __MASS__ and load it in
+
+```{r}
+require(MASS)
+```
+
+
+- We would use __anorexia__ in this lab session
+
+```{r}
+str(anorexia)
+```
+
+
+
+Recap with quick questions
+========================================================
+type: section
+
+
+Question 1
+========================================
+type: sub-section
+
+- Differences between `plot()` and `qplot()`
+
+
+
+Answer 1
+===============================
+type: sub-section
+
+```{r, echo=TRUE, eval=TRUE}
+
+```
+
+
+Question 2
+======================
+type: sub-section
+
+- Draw a histgram for `Postwt'
+
+
+Answer 2
+======================
+type: sub-section
+
+- plot()
+```{r, echo=TRUE, eval=FALSE}
+hist(anorexia$Postwt)
+```
+
+- qplot()
+```{r, echo=TRUE, eval=FALSE}
+qplot(Postwt, data=anorexia)
+```
+    
+
+   
+> What are the differences of the two plots?
+
+
+
+
+Question 3
+======================
+type: sub-section
+
+- Based on Question 2, change the range of the x-axis to 65~110
+
+
+
+Answer 3
+======================
+type: sub-section
+
+- plot()
+```{r, echo=TRUE, eval=FALSE}
+hist(anorexia$Postwt, xlim=c(65,110))
+```
+
+- qplot()
+```{r, echo=TRUE, eval=FALSE}
+qplot(Postwt, data=anorexia, xlim=c(65,110))
+```
+
+
+
+
+Question 4
+======================
+type: sub-section
+
+- Based on Question 2, add colors to the graph based on `Treat` (use `qplot()`)
+
+
+Answer 4
+======================
+type: sub-section
+
+
+```{r, echo=TRUE, eval=TRUE}
+qplot(Postwt, data=anorexia, color=Treat, fill=Treat)
+```
+
+> What are the differences between `color` and `fill`?
+
+
+Question 5
+======================
+type: sub-section
+
+- Plot out a point graph showing the distribution of `Prewt` and `Postwt`
+- Change the point type into different shapes based on `Treat`
+- Provide a legend to the graph to show the point types of `Treat`
+- Change the color of the 3 point types as well
+
+
+Answer 5
+======================
+type: sub-section
+
+
+- plot()
+```{r}
+plot(anorexia$Prewt, anorexia$Postwt, pch=c(0,1,2), col=c('red','green','blue'))
+legend('topright',c('CBT','Cont','FT'), pch = c(0,1,2), col=c('red','green','blue'))
+```
+
+- qplot()
+```{r, echo=TRUE, eval=TRUE}
+qplot(Prewt, Postwt, data=anorexia, shape=Treat, color=Treat)
+```
+
+
+Question 6
+======================
+type: sub-section
+
+- Based on Question 5, add a smoother to the plot (use `qplot()`)
+
+
+Answer 6
+======================
+type: sub-section
+
+
+
+- qplot()
+```{r, echo=TRUE, eval=TRUE}
+qplot(Prewt, Postwt, data=anorexia, shape=Treat, color=Treat, geom = c("point", "smooth"))
+```
+
+
+
+
+
+Exercises
+======================
+type: section
+
+
+Before we get started ...
+=====================
+type: sub-section
+
+Copy and paste the below information.
+
+```{r}
+movies <- c('Titanic', 'Minions')
+like <- c(rep('bad',5), rep('good',2), rep('good', 100))
+comments <- c('hate!', 'awful~', 'AWFUL!!','not recommended', 
+              'the music is not good', 'love the actors', 
+              rep('soooooo cute!!!!', 20))
+```
+
+
+
+
+Questions
+=====================
+type: sub-section
+
+- Create a list, `reviews`. Name the variables within `reviews` as __movies__, __like__, and __comments__
+- How many people have sent their comments on the movies?
+
+![](images/reviews.png)
+
+
+
+
+Questions
+=====================
+type: sub-section
+
+
+A total of 107 people sent their reviews to the two movies. The first 7 elements of __like__ are for the movie "Titanic", and the rest is for "Minions". 
+
+In addition, the first 6 elements of __comments__ are given by the first 6 "Titanic" reviewers, and the rest of 20 elements is provided by the last 20 "Minions" reviewers.
+
+- Create a dataframe `review_data`, and convert the list `reviews` into a dataframe (with the information given above).
+- Extract the rows with `good` reviews.
+
+
+
+Questions
+=====================
+type: sub-section
+
+![](images/rev1.png)
+![](images/rev2.png)
+![](images/rev3.png)
+![](images/rev4.png)
+
+
+Answers
+=====================
+type: sub-section
+
+
+```{r, echo=TRUE, eval=TRUE}
+reviews <- list(movies=movies, like=like, comments=comments)
+
+length(reviews[[3]])
+```
+
+```{r, echo=TRUE, eval=TRUE}
+review_data <- data.frame(
+  movies = c(rep('Titanic',7), rep('Minions',100)), like = like, 
+  comments = c(head(comments), rep('None',81), tail(comments,20)))
+
+review_data[review_data$like=='good',]
+```
