@@ -82,7 +82,8 @@ Week | Date   | Topic         | Lab
 - [Week 03](lectures/03/index.html)
 - [Week 04](lectures/04/index.html)
 - [Week 05](lectures/05/index.html) 
-- [Week 06](lectures/06/index.html) / [lecture:plotting](lectures/06/LDP34_BasicPlotting.pdf)
+- [Week 06](lectures/06/index.html) 
+- [Week 07](lectures/07/eda.html)[VisR_quick.R](VisR_quick.R)
 
 ## 助教講義、習題與作業
 
@@ -92,6 +93,7 @@ Week | Date   | Topic         | Lab
 - <span style="color:blue; font-weight:bold"> Week.4 </span>: [In-class exercise and homework](exercise.homework/week4/week4.html) / [Rmd 檔](exercise.homework/week4/week4.Rmd)
 - <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html) / [Homework](exercise.homework/week5/week5_HW.html)[Rmd 檔](exercise.homework/week5/week5_HW.Rmd)
 - <span style="color:blue; font-weight:bold"> Week.6 </span>: [Lab](exercise.homework/week6/week6.html)
+- <span style="color:blue; font-weight:bold"> Week.7 </span>: [Lab](exercise.homework/week7/week7.html)
 
 ## 課程教材
 
