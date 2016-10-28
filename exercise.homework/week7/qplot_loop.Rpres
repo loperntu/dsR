@@ -1,6 +1,6 @@
 Introducing Data Science with R - Lab Session
 ========================================================
-author: Yu-Yun Chang and Shih-Kai Hsieh
+author: Yu-Yun Chang and Shih-Kai Lin
 date: Oct. 27, 2016
 width: 1440
 height: 900
@@ -20,10 +20,11 @@ Before we get started
 ========================================================
 
 
-- install the package __MASS__ and load it in
+- install the package __MASS__ and __ggplot2__ 
 
 ```{r}
 require(MASS)
+require(ggplot2)
 ```
 
 
@@ -52,36 +53,38 @@ Answer 1
 ===============================
 type: sub-section
 
-```{r, echo=TRUE, eval=TRUE}
 
+```{r, echo=TRUE, eval=TRUE}
+# to produce complex plots in a simple fashionable way
 ```
+
+
+
 
 
 Question 2
 ======================
 type: sub-section
 
-- Draw a histgram for `Postwt'
+- Draw a histgram for `Postwt`
 
 
 Answer 2
 ======================
 type: sub-section
 
-- plot()
-```{r, echo=TRUE, eval=FALSE}
+What are the differences of the two plots? 
+          
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 hist(anorexia$Postwt)
 ```
 
-- qplot()
-```{r, echo=TRUE, eval=FALSE}
+***
+&nbsp;
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 qplot(Postwt, data=anorexia)
 ```
     
-
-   
-> What are the differences of the two plots?
-
 
 
 
@@ -97,13 +100,14 @@ Answer 3
 ======================
 type: sub-section
 
-- plot()
-```{r, echo=TRUE, eval=FALSE}
+&nbsp;
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 hist(anorexia$Postwt, xlim=c(65,110))
 ```
 
-- qplot()
-```{r, echo=TRUE, eval=FALSE}
+***
+&nbsp;
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 qplot(Postwt, data=anorexia, xlim=c(65,110))
 ```
 
@@ -119,14 +123,16 @@ type: sub-section
 
 Answer 4
 ======================
-type: sub-section
+type: sub-section 
 
 
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
+# What are the differences between `color` and `fill`?
+
 qplot(Postwt, data=anorexia, color=Treat, fill=Treat)
 ```
 
-> What are the differences between `color` and `fill`?
+
 
 
 Question 5
@@ -139,19 +145,21 @@ type: sub-section
 - Change the color of the 3 point types as well
 
 
-Answer 5
+Answer 5 - plot()
 ======================
 type: sub-section
 
-
-- plot()
-```{r}
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 plot(anorexia$Prewt, anorexia$Postwt, pch=c(0,1,2), col=c('red','green','blue'))
 legend('topright',c('CBT','Cont','FT'), pch = c(0,1,2), col=c('red','green','blue'))
 ```
 
-- qplot()
-```{r, echo=TRUE, eval=TRUE}
+
+Answer 5 - qplot()
+======================
+type: sub-section
+
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 qplot(Prewt, Postwt, data=anorexia, shape=Treat, color=Treat)
 ```
 
@@ -170,7 +178,7 @@ type: sub-section
 
 
 - qplot()
-```{r, echo=TRUE, eval=TRUE}
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
 qplot(Prewt, Postwt, data=anorexia, shape=Treat, color=Treat, geom = c("point", "smooth"))
 ```
 
@@ -187,28 +195,15 @@ Before we get started ...
 =====================
 type: sub-section
 
-Copy and paste the below information.
+- install the package __datasets__
 
 ```{r}
-movies <- c('Titanic', 'Minions')
-like <- c(rep('bad',5), rep('good',2), rep('good', 100))
-comments <- c('hate!', 'awful~', 'AWFUL!!','not recommended', 
-              'the music is not good', 'love the actors', 
-              rep('soooooo cute!!!!', 20))
+require(datasets)
 ```
 
-
-
-
-Questions
-=====================
-type: sub-section
-
-- Create a list, `reviews`. Name the variables within `reviews` as __movies__, __like__, and __comments__
-- How many people have sent their comments on the movies?
-
-![](images/reviews.png)
-
+- We would use __women__ in this lab session
+- Note: assign a new variable for `women` to avoid overwriting the original dataset
+- In this exercise, we would not only produce plots, but write `functions` and `ifelse` statements
 
 
 
@@ -217,23 +212,12 @@ Questions
 type: sub-section
 
 
-A total of 107 people sent their reviews to the two movies. The first 7 elements of __like__ are for the movie "Titanic", and the rest is for "Minions". 
-
-In addition, the first 6 elements of __comments__ are given by the first 6 "Titanic" reviewers, and the rest of 20 elements is provided by the last 20 "Minions" reviewers.
-
-- Create a dataframe `review_data`, and convert the list `reviews` into a dataframe (with the information given above).
-- Extract the rows with `good` reviews.
+- use `apply` function to calculate the average of each column 
+- write a function `BMI_cal` which calculates the BMI value, and add a new column `BMI` (Note: You'll need to check the formula of BMI for Height(in) and Weight(lbs).)
+- People with BMI values larger than 24 would be identified as "fat", and the rest would be tagged as "standard". Use `ifelse` function, and add a new column `Description` to record the information.
+- plot a bar plot for the column `Description`
 
 
-
-Questions
-=====================
-type: sub-section
-
-![](images/rev1.png)
-![](images/rev2.png)
-![](images/rev3.png)
-![](images/rev4.png)
 
 
 Answers
@@ -241,16 +225,25 @@ Answers
 type: sub-section
 
 
-```{r, echo=TRUE, eval=TRUE}
-reviews <- list(movies=movies, like=like, comments=comments)
-
-length(reviews[[3]])
+```{r, echo=TRUE, eval=FALSE}
+df <- women
+apply(df, MARGIN=2, mean)
 ```
 
-```{r, echo=TRUE, eval=TRUE}
-review_data <- data.frame(
-  movies = c(rep('Titanic',7), rep('Minions',100)), like = like, 
-  comments = c(head(comments), rep('None',81), tail(comments,20)))
+```{r, echo=TRUE, eval=FALSE}
+BMI_cal <- function(weight, height){ 
+  BMI = weight*703/(height)**2
+  return(BMI)
+}
+df$BMI <- BMI_cal(df$weight, df$height)
+```
 
-review_data[review_data$like=='good',]
+
+```{r, echo=TRUE, eval=FALSE}
+df$Description <- ifelse(df$BMI>24, "fat", "standard")
+```
+
+
+```{r, echo=TRUE, eval=FALSE}
+qplot(Description, data=df, geom='bar')
 ```
