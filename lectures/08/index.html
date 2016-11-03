@@ -120,6 +120,8 @@ alice.web[1:12]
 alice.web.meta &lt;- c(alice.web[1:12])
 alice.web.cont &lt;- c(alice.web[12:2790])
 length(alice.web.cont); length(alice.web)
+#alice.web.cont &lt;- paste(alice.web.cont, collapse=&quot; &quot;)
+#length(alice.web.cont)
 </code></pre>
 
     
@@ -138,6 +140,7 @@ length(alice.web.cont); length(alice.web)
     <pre><code class="r"># first lowercase the text
 alice.web.cont &lt;- tolower(alice.web.cont)
 alice.words &lt;- strsplit(alice.web.cont, &quot;\\W&quot;)
+# detect word boundaries.
 # str(alice.words) &gt;&gt;&gt;&gt; a list with one character vector with 39566 items
 # use unlist() to simplify the list to a vector if needed.
 alice.words &lt;- unlist(alice.words)
@@ -318,12 +321,7 @@ mixSeg &lt;- worker()
 #hmmSeg &lt;- worker(type = &quot;hmm&quot;)
 text2 &lt;- &quot;總有一天你會醒來，告訴我一切都是假的&quot;
 segment(text2, mixSeg)
-</code></pre>
-
-<pre><code>## Error in match.arg(what): &#39;arg&#39; must be NULL or a character vector
-</code></pre>
-
-<pre><code class="r"># 或是利用分詞運算子 &lt;=
+# 或是利用分詞運算子 &lt;=
 #mixSeg &lt;= text2
 #segment(&quot;.\\data\\test.txt&quot;, mixSeg)
 </code></pre>

@@ -55,6 +55,8 @@ alice.web[1:12]
 alice.web.meta <- c(alice.web[1:12])
 alice.web.cont <- c(alice.web[12:2790])
 length(alice.web.cont); length(alice.web)
+#alice.web.cont <- paste(alice.web.cont, collapse=" ")
+#length(alice.web.cont)
 ```
 
 
@@ -68,6 +70,7 @@ length(alice.web.cont); length(alice.web)
 # first lowercase the text
 alice.web.cont <- tolower(alice.web.cont)
 alice.words <- strsplit(alice.web.cont, "\\W")
+# detect word boundaries.
 # str(alice.words) >>>> a list with one character vector with 39566 items
 # use unlist() to simplify the list to a vector if needed.
 alice.words <- unlist(alice.words)
@@ -181,13 +184,6 @@ mixSeg <- worker()
 #hmmSeg <- worker(type = "hmm")
 text2 <- "總有一天你會醒來，告訴我一切都是假的"
 segment(text2, mixSeg)
-```
-
-```
-## Error in match.arg(what): 'arg' must be NULL or a character vector
-```
-
-```r
 # 或是利用分詞運算子 <=
 #mixSeg <= text2
 #segment(".\\data\\test.txt", mixSeg)
