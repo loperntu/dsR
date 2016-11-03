@@ -94,6 +94,7 @@ Week | Date   | Topic         | Lab
 - [Week 05](lectures/05/index.html) 
 - [Week 06](lectures/06/index.html) 
 - [Week 07](lectures/07/eda.html) /  [VisR_quick.R](lectures/07/VisR_quick.R)
+- [Week 08](lectures/08/index.html)/[tidytext](lectures/08/tidytext.r)
 
 ## 助教講義、習題與作業
 
@@ -104,6 +105,7 @@ Week | Date   | Topic         | Lab
 - <span style="color:blue; font-weight:bold"> Week.5 </span>: [In-class exercise and homework](exercise.homework/week5/week5.html) / [Homework](exercise.homework/week5/week5_HW.html)[Rmd 檔](exercise.homework/week5/week5_HW.Rmd)
 - <span style="color:blue; font-weight:bold"> Week.6 </span>: [Lab](exercise.homework/week6/week6.html)
 - <span style="color:blue; font-weight:bold"> Week.7 </span>: [Lab](exercise.homework/week7/week7.html)
+
 
 ## 課程教材
 

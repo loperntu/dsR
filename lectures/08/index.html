@@ -1,264 +1,329 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Linguistic Analysis and Data Science</title>
+  <title>Introducing Data Science with R</title>
   <meta charset="utf-8">
-  <meta name="description" content="Linguistic Analysis and Data Science">
-  <meta name="author" content="謝舒凱 Graduate Institute of Linguistics, NTU">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="../../libraries/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="../../libraries/highlighters/highlight.js/css/tomorrow.css" />
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="../../libraries/widgets/bootstrap/css/bootstrap.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/quiz/css/demo.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/interactive/css/aceeditor.css"></link>
-<link rel=stylesheet href="../../libraries/widgets/nvd3/css/nv.d3.css"></link>
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
 <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="../../libraries/frameworks/io2012/js/slides" 
-    src="../../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
-  <script src="../../libraries/widgets/nvd3/js/d3.v2.min.js"></script>
-<script src="../../libraries/widgets/nvd3/js/nv.d3.min.js"></script>
-
+  
 
 </head>
 <body style="opacity: 0">
   <slides class="layout-widescreen">
     
     <!-- LOGO SLIDE -->
-        <slide class="title-slide segue nobackground">
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/lopen.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lope.png">
+  </aside>
   <hgroup class="auto-fadein">
-    <h1>Linguistic Analysis and Data Science</h1>
-    <h2>lecture 08</h2>
-    <p>謝舒凱 Graduate Institute of Linguistics, NTU<br/></p>
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.8</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
   </hgroup>
-    <a href="https://github.com/loperntu/lads/zipball/gh-pages" class="example">
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
      Download
     </a>
   <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
 </slide>
     
 
     <!-- SLIDES -->
-    <slide class="" id="slide-1" style="background:#FFFAF0;">
+    <slide class="" id="slide-1" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
     <h2>大綱</h2>
   </hgroup>
+  
   <article data-timings="">
     <ol>
-<li><strong><strong>Statistics and Machine Learning 101</strong></strong></li>
-<li>Text classification using <code>RTextTools</code></li>
+<li><strong><code>Textual data manipulation</code></strong> (80 min)</li>
+<li>Group presentation (20 min)</li>
+<li>Lab (50 min)</li>
 </ol>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-2" style="background:#FFFAF0;">
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Review</h2>
+    <h2>字串處理常用函數 Character manipulation</h2>
   </hgroup>
+  
   <article data-timings="">
     <ul>
-<li><p>Preparing / Preprocessing text and data. Text is unstructured or partially structured data that must be prepared for analysis. We extract features from text. We define measures. Quantitative data are often messy or missing. They may require transformation prior to analysis. Data preparation consumes much of a data scientist’s time.</p></li>
-<li><p>Exploratory data analysis and Infographics (data visualization for the purpose of discovery. We look for groups in data, find outliers, identify common dimensions, patterns, and trends.)</p></li>
-<li><p><strong><strong>Prediction models</strong></strong> (Regression; Classification and Clustering; ) and <strong><strong>Evaluations</strong></strong>  (Recommender systems, collaborative filtering, association rules, optimization methods based on linguistic heuristics, as well as a myriad of methods for regression, classification, and clustering fall under the rubric of <strong>machine learning</strong>).</p></li>
+<li>In the area of text mining, character or string manipulation is the most important.</li>
+<li><code>nchar()</code>, <code>substr()</code>, <code>grep()</code>, <code>grepl()</code>, <code>gsub()</code>, <code>strsplit()</code>, <code>paste()</code></li>
 </ul>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>統計</h2>
+    <h2>Regular Expression</h2>
   </hgroup>
+  
   <article data-timings="">
-    <p><img style = 'border: 1px solid;' width = 70%; src='./assets/img/tm_sta.png'></img></p>
+    <p><a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf">RStudio REGEX cheat sheet</a> </p>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>文本統計 (Textual Statistics)</h2>
+    <h2><code>stringr</code>: Character String Processing Facilities</h2>
   </hgroup>
+  
   <article data-timings="">
-    <ul>
-<li>文本統計學的知識</li>
-<li>相似與關聯為例</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-5" style="background:;">
-  <hgroup>
-    <h2>機器學習</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>AI 的一個子領域。（參見林軒田老師的線上課程）</li>
-<li>監督式 supervised vs. 非監督式 unsupervised
+    <p><code>stringi</code> is an R package providing (but definitely not limiting to) equivalents of nearly all the character string processing functions known from base R. </p>
 
 <ul>
-<li>可以用中文斷詞問題來想</li>
-<li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">圖解法入門</a>：基本概念與決策樹</li>
-</ul></li>
+<li>string trimming, padding, and text wrapping,</li>
+<li>text collation (sorting and comparing), </li>
+<li>extracting and replacing substrings (characters, words, and sentences), </li>
+<li>text transliteration,</li>
+<li>others (random string generation; Unicode normalization; character encoding conversion and detection;)</li>
 </ul>
 
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>機器學習：效能評估的基本量度</h2>
+    <h2>中文斷詞／分詞</h2>
   </hgroup>
+  
   <article data-timings="">
     <ul>
-<li>Recall </li>
-<li>Precision </li>
-<li>F-score</li>
+<li><em>小花生了很久才出來*；*阿里巴巴創辦人馬雲端上新服務*； *可是她可是網路上最紅的人欸</em></li>
+<li>At least two R packages: <code>Rwordseg</code> and <code>JiebaR</code>.</li>
 </ul>
 
-<p><a href="http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html">http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html</a></p>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Annotation and Feature Engineering</h2>
+    <h2><code>JiebaR</code></h2>
   </hgroup>
+  
   <article data-timings="">
     <ul>
-<li>Study of recorded human communication</li>
-<li>Summary and quantitative analysis of communicated messages</li>
-<li>Researcher looks for patterns/themes in text; <span style="color:green; font-weight:bold">develops <code>code frame</code> to categorize text.</span></li>
-<li>Essentially, variables are extracted from text: Based on scientific method; establishes objectivity via inter-coder reliability.</li>
+<li>先使用 <code>worker()</code> 初始化分詞引擎。</li>
 </ul>
 
+<pre><code class="r">require(jiebaR)
+require(jiebaRD)
+mixSeg &lt;- worker()  
+#hmmSeg &lt;- worker(type = &quot;hmm&quot;)
+text2 &lt;- &quot;總有一天你會醒來，告訴我一切都是假的&quot;
+segment(text2, mixSeg)
+# 或是利用分詞運算子 &lt;=
+#mixSeg &lt;= text2
+#segment(&quot;.\\data\\test.txt&quot;, mixSeg)
+</code></pre>
+
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
   <hgroup>
-    <h2>Annotation and Feature Engineering: Pros and Cons</h2>
+    <h2><code>JiebaR</code>: 客製化 custimization</h2>
   </hgroup>
+  
   <article data-timings="">
-    <p>優點</p>
+    <pre><code class="r">mixSeg
+# $user
+# &quot;/Library/Frameworks/R.framework/Versions/3.2/Resources/library
+# /jiebaRD/dict/user.dict.utf8&quot;
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2><code>JiebaR</code>: POS tagging</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>(POS tagset: <a href="http://www.cnblogs.com/chenbjin/p/4341930.html">ICTCLAS 漢語詞性標註集</a>)</p>
+
+<pre><code class="r">pos.tagger &lt;- worker(&quot;tag&quot;)
+pos.tagger &lt;= text2
+</code></pre>
+
+<pre><code>##          l          r          v          v          v          r 
+## &quot;總有一天&quot;       &quot;你&quot;       &quot;會&quot;     &quot;醒來&quot;     &quot;告訴&quot;       &quot;我&quot; 
+##          i          n         uj 
+## &quot;一切都是&quot;       &quot;假&quot;       &quot;的&quot;
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2><code>JiebaR</code>: Keywords Extraction and Similarity Calculation</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><code>Simhash</code> algorithm</li>
+</ul>
+
+<pre><code class="r">key.extract &lt;- worker(type = &quot;keywords&quot;, topn = 1)
+key.extract &lt;= text2
+</code></pre>
+
+<pre><code>## 11.7392 
+##  &quot;告訴&quot;
+</code></pre>
+
+<pre><code class="r">sim &lt;- worker(type = &quot;simhash&quot;, topn = 2)
+sim &lt;= text2
+</code></pre>
+
+<pre><code>## $simhash
+## [1] &quot;432499495855464465&quot;
+## 
+## $keyword
+##    11.7392    11.7392 
+##     &quot;告訴&quot; &quot;總有一天&quot;
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>[Exercise.1]: 魯迅:阿 Q 正傳</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r">luxun &lt;- scan(&quot;http://www.gutenberg.org/files/25332/25332-0.txt&quot;,
+                what=&quot;char&quot;, sep=&quot;\n&quot;)
+# another lazy way
+require(gutenbergr)
+luxun &lt;- gutenberg_download(25332)
+luxun.seg &lt;- segment(luxun$text, mixSeg)
+write.table(luxun.seg, &#39;luxun.txt&#39;)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2><code>tidytext</code>: Text mining using dplyr, ggplot2, and other tidy tools</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>See <code>tidytext.r</code></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Homework</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>(individual, 100 pt)</p>
 
 <ul>
-<li>flexible; theoretically-motivated annotation/code frame effrots</li>
-<li>can apply to texts, speech, video, etc.</li>
-<li>可以用來解決一般機器學習系統 high precision low recall 的問題。把潛在的語意與情緒發掘出來。</li>
+<li>(10 pt) Download a Chinese novel (except 魯迅:阿 Q 正傳) from Gutenberg website, clean and preprocess the text (incl. using <code>jiebaR()</code> to segment the text). </li>
+<li>(50 pt) Create a sorted word-freq list. </li>
+<li>(20 pt) Add a POS column (using <code>jiebaR()</code> again) to the list and write it to a file.</li>
+<li>(20 pt) Extract all the <strong>pronouns</strong> (labeled as <code>r</code>), count the occurrences separately, make the table and plot.</li>
 </ul>
 
-<p>缺點</p>
+<p>(group, 50 pt)</p>
 
 <ul>
-<li>manually intensive</li>
-<li>thus can be expensive</li>
+<li>Now you should be able to understand (most of) the R <em>kernels</em> of the <a href="https://www.kaggle.com/mrisdal/2016-us-presidential-debates/kernels">2016 US Presidential Debates</a>. Try to make a new one by bringing new perspective.</li>
 </ul>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-9" style="background:;">
-  <hgroup>
-    <h2>手工標記資料</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><p>最簡單可以用 <strong>Excel</strong> 來做：</p>
-
-<ul>
-<li>One (or more) column(s) for text data； One column for topic label (as <code>gold standard</code>)</li>
-<li>通常至少有多於 3000 份標好的文件。</li>
-</ul></li>
-<li><p>大型的專案要考慮到永續、相容、交換等問題，建議使用標記系統。</p>
-
-<ul>
-<li>語料庫和語言處理社群 <code>GATE</code><br></li>
-<li>質性研究社群 <code>CAT (Coding Analysis Toolkit)</code></li>
-<li><a href="http://lopen.linguistics.ntu.edu.tw:8001/lope.anno/">lopetator</a></li>
-</ul></li>
-<li><p>labeling 和 annotation 的差異之後再談。</p></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-10" style="background:;">
-  <hgroup>
-    <h2>機器學習程式實作基本流程</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>[<code>create_matrix</code>] Import your hand-coded data into R</li>
-<li>[<code>create_corpus</code>] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data)</li>
-<li>[<code>train model(s)</code>] Choose machine learning algorithm(s) to train a model</li>
-<li>[<code>build classification model(s)</code>] Test on the (out-of-sample) test data; establish accuracy criteria 了解成效。</li>
-<li>[<code>apply classification model(s)</code>] Use model to classify novel data</li>
-<li>[<code>create analytics</code>] 把自動分錯的資料找出來 Manually label data that do not meet accuracy criteria</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-11" style="background:#FFFAF0;">
-  <article data-timings="">
-    <ol>
-<li>Statistics and Machine Learning 101</li>
-<li><strong><strong>Text classification using <code>RTextTools</code></strong></strong></li>
-</ol>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-12" style="background:;">
-  <hgroup>
-    <h2>文本分類</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li><code>RTextTools</code> 可自動化某些標記工作，與監督式文本自動分類。簡單，但是有記憶體問題，中文支援有問題。</li>
-<li>&quot;One-stop-shop for conducting supervised machine learning with textual data&quot; 邊看<a href="http://journal.r-project.org/archive/2013-1/collingwood-jurka-boydstun-etal.pdf">這篇</a>邊做看看. <a href="week9_RTextTools_congress.R">參考程式範例</a></li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-13" style="background:;">
-  <hgroup>
-    <h2>Kaggle for Midterm.Mini-Hackathon</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Kaggle: the home of data science <a href="kaggle.Rmd">連結</a></li>
-<li>本週自己再看看 kaggle 怎麼運作。 </li>
-</ul>
-
+    
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -275,74 +340,68 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Review'>
+        data-slide=2 title='字串處理常用函數 Character manipulation'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='統計'>
+        data-slide=3 title='Regular Expression'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='文本統計 (Textual Statistics)'>
+        data-slide=4 title='<code>stringr</code>: Character String Processing Facilities'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='機器學習'>
+        data-slide=5 title='中文斷詞／分詞'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='機器學習：效能評估的基本量度'>
+        data-slide=6 title='<code>JiebaR</code>'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Annotation and Feature Engineering'>
+        data-slide=7 title='<code>JiebaR</code>: 客製化 custimization'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Annotation and Feature Engineering: Pros and Cons'>
+        data-slide=8 title='<code>JiebaR</code>: POS tagging'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='手工標記資料'>
+        data-slide=9 title='<code>JiebaR</code>: Keywords Extraction and Similarity Calculation'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='機器學習程式實作基本流程'>
+        data-slide=10 title='[Exercise.1]: 魯迅:阿 Q 正傳'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='NA'>
+        data-slide=11 title='<code>tidytext</code>: Text mining using dplyr, ggplot2, and other tidy tools'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='文本分類'>
+        data-slide=12 title='Homework'>
          12
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Kaggle for Midterm.Mini-Hackathon'>
-         13
       </a>
     </li>
   </ul>
@@ -354,21 +413,12 @@
   <![endif]-->
 </body>
   <!-- Load Javascripts for Widgets -->
-  <script src="../../libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../../libraries/widgets/bootstrap/js/bootbox.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/jquery.quiz.js"></script>
-<script src="../../libraries/widgets/quiz/js/mustache.min.js"></script>
-<script src="../../libraries/widgets/quiz/js/quiz-app.js"></script>
-<script src="../../libraries/widgets/interactive/js/ace/js/ace.js"></script>
-<script src="../../libraries/widgets/interactive/js/interactive.js"></script>
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
 
-  <script>  
-  $(function (){ 
-    $("#example").popover(); 
-    $("[rel='tooltip']").tooltip(); 
-  });  
-  </script>  
-  
   <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -381,14 +431,18 @@
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script> -->
-  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
 </script>
-<script src='../../libraries/widgets/nvd3/js/d3.v2.js'></script>
-  <script src='../../libraries/widgets/nvd3/js/nv.d3.min.js'></script>
-  
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
   <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="../../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
    
   </html>
+

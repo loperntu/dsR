@@ -17,6 +17,13 @@ bibliography: /Users/shukai/LOPE_LexInfo/BIB/myRef.bib
 github      : {user: loperntu, repo: dsR}
 
 
+# ```{r global_options, include=FALSE}
+# library(knitr)
+# knitr::opts_chunk$set(cache=TRUE, fig.width=12, fig.height=8, 
+#                       fig.path='Figs/',echo=TRUE, warning=FALSE, 
+#                       message=FALSE, results = "hide")
+# 
+# ```
 
 
 --- bg:#FFFAF0
@@ -110,6 +117,13 @@ sum
 - 條件式結果永遠是 `1` (`TRUE`) 時，迴圈無法停止。
 
 
+```r
+x <- 0
+while(TRUE){
+  print(x)
+  x <- x+1
+}
+```
 
 
 ---
@@ -131,6 +145,12 @@ apply(mm, MARGIN = 1, FUN = sum)
 - 也可以自訂函數，讓經常執行的程式碼重複使用。
 
 
+```r
+add_func <- function(x, y){
+  x + y
+}
+# add_func(2,6)
+```
 
 
 
@@ -197,7 +217,12 @@ apply(mm, MARGIN = 1, FUN = sum)
 
 - Scatter plots are used primarily to conduct a quick analysis of the relationships among different variables in our data. (try adding elements such as text, labels, and lines.)
 
-<img src="assets/fig/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" style="display: block; margin: auto;" />
+
+```r
+plot(cars)
+```
+
+<img src="figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 ---
 ## Advanced scatter plot
@@ -249,12 +274,25 @@ source: <http://blog.liang2.tw/2013-RConf-ggplot2-intro/>
 
 - `tm`, `wordcloud`, `RColorBrewer` 就可以做到。
 
-![plot of chunk unnamed-chunk-52](assets/fig/unnamed-chunk-52-1.png)
+
+```
+## Loading required package: RColorBrewer
+```
+
+```
+## Loading required package: tm
+```
+
+```
+## Loading required package: NLP
+```
+
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
 
 ---
 ## 也可以丟詞頻表
 
-![plot of chunk unnamed-chunk-53](assets/fig/unnamed-chunk-53-1.png)
+![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
 
 
 ---
@@ -278,6 +316,10 @@ wordcloud(doc, scale= c(2,0.5))
 - To construct a comparison cloud, we require the data to be in the form of a term matrix. The `tm` package provides us with the `TermDocumentMatrix()` function that constructs a term document matrix:
 
 
+```r
+colnames(data) <- c("bush","obama")
+comparison.cloud(data,max.words = 250, title.size = 2,colors = brewer.pal(3,"Set1"))
+```
 <img src="assets/img/cloud.jpg" alt="Drawing" style="width: 400px;"/>
 
 
@@ -323,16 +365,49 @@ Visualization of textual data (Ludovic Lebart and Marie Piron)
 
 
 
+```r
+require(ngramr)
+require(ggplot2)
+ggram(c("monarchy", "democracy"), year_start = 1500, year_end = 2000, 
+      corpus = "eng_gb_2012", ignore_case = TRUE, 
+      geom = "area", geom_options = list(position = "stack")) + 
+      labs(y = NULL)
+```
 
 ---
 ## 這個圖怎麼解釋
 
-<img src="assets/fig/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" style="display: block; margin: auto;" />
+
+```
+## Loading required package: ggplot2
+```
+
+```
+## 
+## Attaching package: 'ggplot2'
+```
+
+```
+## The following object is masked from 'package:NLP':
+## 
+##     annotate
+```
+
+```
+## Error in eval(expr, envir, enclos): 沒有這個函數 "ggram"
+```
 
 ---
 ## [Exercise] 愛人與太太的消長
 
 
+```r
+# rownames(corpuses) 
+ggram(c("情人", "太太"), year_start = 1500, year_end = 2000, 
+      corpus = "chi_sim_2012", ignore_case = TRUE, 
+      geom = "area", geom_options = list(position = "stack")) + 
+      labs(y = NULL)
+```
 
 
 
