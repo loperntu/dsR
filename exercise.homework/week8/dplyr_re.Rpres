@@ -1,0 +1,211 @@
+Introducing Data Science with R - Lab Session
+========================================================
+author: Shih-Kai Lin
+date: Nov. 03, 2016
+width: 1440
+height: 900
+
+
+
+
+
+Lab Session Week 8 - dplyr and regular expression
+========================================================
+type: section
+
+
+
+
+Recap with quick questions
+========================================================
+type: section
+
+
+Question 1
+========================================
+type: sub-section
+- how do you call %>%?
+- the function of it?
+
+
+
+Answer 1
+===============================
+type: sub-section
+
+
+```{r, echo=TRUE, eval=TRUE}
+# 1. then
+# 2. pipeline style of coding
+```
+
+
+
+
+
+Question 2
+======================
+type: sub-section
+
+- the function of
+- 1. filter
+- 2. arrange
+- 3. select
+- 4. group_by
+
+
+Answer 2
+======================
+type: sub-section
+
+          
+```{r, echo=TRUE, eval=TRUE}
+# 1. filter out specific rows
+# 2. sort the order of rows
+# 3. select out specific cols
+# 4. group observations according to some column
+```
+
+    
+
+
+
+Question 3
+======================
+type: sub-section
+
+- Type the following strings:
+```{r}
+text <- c("This is me.", "That is her.", "this's it!", 
+          "Oh my gosh.", "What is it?")
+```
+
+Search for sentences that starts with the letter 't' or 'T'
+
+
+Answer 3
+======================
+type: sub-section
+
+```{r, echo=TRUE, eval=TRUE}
+text <- c("This is me.", "That is her.", "this's it!", 
+          "Oh my gosh.", "What is it?")
+
+grep('^t', text, ignore.case=T, value=T)
+```
+
+
+
+
+Question 4
+======================
+type: sub-section
+
+- What's the difference if the 'value' is set to 'F'?
+
+
+Answer 4
+======================
+type: sub-section 
+
+
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
+grep('^t', text, ignore.case=T, value=T)
+grep('^t', text, ignore.case=T, value=F)
+```
+
+
+
+
+Question 5
+======================
+type: sub-section
+
+- What do the following codes do?
+
+```{r, eval=FALSE}
+grep('!$', text, value=T)
+```
+
+
+
+
+
+Answer 5
+======================
+type: sub-section
+
+```{r, echo=TRUE, eval=TRUE, fig.align='center'}
+# find the string ends with '!'
+```
+
+
+
+Exercises
+======================
+type: section
+
+
+
+Before we get started
+========================================================
+
+
+- install the package __nycflights13__ and __tidyverse__ 
+
+```{r}
+require(nycflights13)
+require(tidyverse)
+```
+
+
+- We would use __flights__ in this lab session
+
+```{r,eval=FALSE}
+View(flights)
+```
+
+
+
+Questions
+=====================
+type: sub-section
+
+
+1. Sort flight to find the most delayed flight. Find the flight that left earliest. Show the result with tailnum
+
+2. Find the flights which were delayed by at least an hour, but made up over 30 minutes in flight.
+
+3. How many flights have a missing dep_time? What other variables are missing? What might these rows represent?
+
+4. Count the occurence of each carrier according to Q3, and show the result with a bar plot 
+
+
+
+
+Answers
+=====================
+type: sub-section
+
+
+```{r, echo=TRUE, eval=FALSE}
+flights %>% arrange(desc(dep_delay)) %>% head(1) %>% .$tailnum
+flights %>% arrange(dep_delay) %>% head(1) %>% .$tailnum
+```
+
+```{r, echo=TRUE, eval=FALSE}
+flights%>%filter(dep_delay>=60 & arr_delay<=30)
+```
+
+
+```{r, echo=TRUE, eval=FALSE}
+flights%>%filter(is.na(dep_time))%>%nrow()
+# dep_delay, arr_time, arr_delay, air_time
+# should be canceled
+```
+
+
+```{r, echo=TRUE, eval=FALSE}
+result<-flights%>%filter(is.na(dep_time))%>%group_by(carrier)
+qplot(data=result,x=carrier,geom="bar")
+```

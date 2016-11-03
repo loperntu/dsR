@@ -7,8 +7,11 @@ require(jiebaR)
 require(ggplot2)
 
 
-
-
+################ Text mining with R ##################
+## tm
+## quanteda
+## tidy text 
+######################################################
 
 # Emily Dickinson
 text <- c("Because I could not stop for Death -",

@@ -35,8 +35,102 @@ github      : {user: loperntu, repo: dsR}
 
 - In the area of text mining, character or string manipulation is the most important.
 - `nchar()`, `substr()`, `grep()`, `grepl()`, `gsub()`, `strsplit()`, `paste()`
+- [自學互助同樂會](https://paper.dropbox.com/doc/dsR-2016-17.-NTU-in-class-Exercise-shared-sheet-mC0isSwShE7cygCynOTgx)
 
 
+
+
+---
+## Textual data cleaning and transformation: An exmaple
+
+- Separate content from metadata
+```{r, eval=FALSE}
+alice.web <- scan("http://www.gutenberg.org/files/11/11.txt", 
+                  what="char", sep="\n")
+# Explore first the alice.web, you'll get a lot of boilerplate metadata 
+# so need to know where does the novel begin and end.
+# e.g., head(), str(), length() >>> 2790
+alice.web[1:12]
+alice.web.meta <- c(alice.web[1:12])
+alice.web.cont <- c(alice.web[12:2790])
+length(alice.web.cont); length(alice.web)
+```
+
+
+
+
+---
+## Tokenize/split the text
+
+```{r, eval=FALSE}
+# first lowercase the text
+alice.web.cont <- tolower(alice.web.cont)
+alice.words <- strsplit(alice.web.cont, "\\W")
+# str(alice.words) >>>> a list with one character vector with 39566 items
+# use unlist() to simplify the list to a vector if needed.
+alice.words <- unlist(alice.words)
+```
+
+
+---
+## Remove the blanks
+
+```{r, eval=FALSE}
+# figure out which items in the vector are not blanks 
+not.blanks.alice <- which(alice.words != "") # get a list of positions
+# With the non-blanks identified, you can overwrite alice.words like this
+alice.words <- alice.words[not.blanks.alice]
+# A shorthand version
+#alice.words <- alice.words[which(alice.words != "")]
+```
+
+
+---
+##  Calculate the number of word tokens/types
+
+```{r, eval=FALSE}
+# calculate the count of the occurecnes of rabbit into rabbit.hits
+rabbit.hits <- length(alice.words[which(alice.words == "rabbit")]) 
+# calculate the count of total words into total.words
+total.words <- length(alice.words)
+# now divide
+rabbit.hits/total.words
+## calculate the number of unique word types using unique()
+length(unique(alice.words))
+```
+
+
+---
+## Vocabulary size and other distributional properties ("global statistics")
+
+```{r, eval=FALSE}
+# build a contingency table of word types and their corresponding 
+# frequencies.
+alice.freq <- table(alice.words)
+alice.freq[1:100]
+# sorted from most frequent to least frequent words
+sorted.alice.freqs <- sort(alice.freq,decreasing = T)
+# check whether the frequencies of the words correspond to Zipf's law.
+plot(sorted.alice.freqs[1:200])
+```
+
+
+---
+## Distribution plots
+- showing where words occur across a text, i.e., where the words appear and how they behave over the course of a text.
+
+```{r, eval=FALSE}
+# First we need an integer vector (n.time) containing the positions 
+# of every word in the book.
+n.time <- seq(1:length(alice.words))
+# Then we need to locate the position of every occurrence of "rabbit"
+# in the alice.words object.
+rabbit <- which(alice.words == "rabbit") 
+w.count.v <- rep(NA,length(n.time))
+w.count.v[rabbit] <- 1
+plot(w.count.v, main="Dispersion Plot of `rabbit' in Alice",
+     xlab="Novel Time", ylab="rabbit", type="h", ylim=c(0,1), yaxt='n')
+```
 
 ---
 ## Regular Expression
@@ -47,6 +141,7 @@ github      : {user: loperntu, repo: dsR}
 ---
 ## `stringr`: Character String Processing Facilities
 
+- `stringr` and `stringi`
 `stringi` is an R package providing (but definitely not limiting to) equivalents of nearly all the character string processing functions known from base R. 
 
 - string trimming, padding, and text wrapping,
@@ -139,6 +234,7 @@ write.table(luxun.seg, 'luxun.txt')
 ---
 ## `tidytext`: Text mining using dplyr, ggplot2, and other tidy tools
 
+預習！文本分析必讀新書 [Tidy Text Mining with R](http://tidytextmining.com/)
 See `tidytext.r`
 
 

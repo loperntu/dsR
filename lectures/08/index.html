@@ -91,6 +91,7 @@
     <ul>
 <li>In the area of text mining, character or string manipulation is the most important.</li>
 <li><code>nchar()</code>, <code>substr()</code>, <code>grep()</code>, <code>grepl()</code>, <code>gsub()</code>, <code>strsplit()</code>, <code>paste()</code></li>
+<li><a href="https://paper.dropbox.com/doc/dsR-2016-17.-NTU-in-class-Exercise-shared-sheet-mC0isSwShE7cygCynOTgx">自學互助同樂會</a></li>
 </ul>
 
     
@@ -99,6 +100,151 @@
 </slide>
 
 <slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Textual data cleaning and transformation: An exmaple</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Separate content from metadata</li>
+</ul>
+
+<pre><code class="r">alice.web &lt;- scan(&quot;http://www.gutenberg.org/files/11/11.txt&quot;, 
+                  what=&quot;char&quot;, sep=&quot;\n&quot;)
+# Explore first the alice.web, you&#39;ll get a lot of boilerplate metadata 
+# so need to know where does the novel begin and end.
+# e.g., head(), str(), length() &gt;&gt;&gt; 2790
+alice.web[1:12]
+alice.web.meta &lt;- c(alice.web[1:12])
+alice.web.cont &lt;- c(alice.web[12:2790])
+length(alice.web.cont); length(alice.web)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Tokenize/split the text</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r"># first lowercase the text
+alice.web.cont &lt;- tolower(alice.web.cont)
+alice.words &lt;- strsplit(alice.web.cont, &quot;\\W&quot;)
+# str(alice.words) &gt;&gt;&gt;&gt; a list with one character vector with 39566 items
+# use unlist() to simplify the list to a vector if needed.
+alice.words &lt;- unlist(alice.words)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Remove the blanks</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r"># figure out which items in the vector are not blanks 
+not.blanks.alice &lt;- which(alice.words != &quot;&quot;) # get a list of positions
+# With the non-blanks identified, you can overwrite alice.words like this
+alice.words &lt;- alice.words[not.blanks.alice]
+# A shorthand version
+#alice.words &lt;- alice.words[which(alice.words != &quot;&quot;)]
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Calculate the number of word tokens/types</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r"># calculate the count of the occurecnes of rabbit into rabbit.hits
+rabbit.hits &lt;- length(alice.words[which(alice.words == &quot;rabbit&quot;)]) 
+# calculate the count of total words into total.words
+total.words &lt;- length(alice.words)
+# now divide
+rabbit.hits/total.words
+## calculate the number of unique word types using unique()
+length(unique(alice.words))
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Vocabulary size and other distributional properties (&quot;global statistics&quot;)</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r"># build a contingency table of word types and their corresponding 
+# frequencies.
+alice.freq &lt;- table(alice.words)
+alice.freq[1:100]
+# sorted from most frequent to least frequent words
+sorted.alice.freqs &lt;- sort(alice.freq,decreasing = T)
+# check whether the frequencies of the words correspond to Zipf&#39;s law.
+plot(sorted.alice.freqs[1:200])
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Distribution plots</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>showing where words occur across a text, i.e., where the words appear and how they behave over the course of a text.</li>
+</ul>
+
+<pre><code class="r"># First we need an integer vector (n.time) containing the positions 
+# of every word in the book.
+n.time &lt;- seq(1:length(alice.words))
+# Then we need to locate the position of every occurrence of &quot;rabbit&quot;
+# in the alice.words object.
+rabbit &lt;- which(alice.words == &quot;rabbit&quot;) 
+w.count.v &lt;- rep(NA,length(n.time))
+w.count.v[rabbit] &lt;- 1
+plot(w.count.v, main=&quot;Dispersion Plot of `rabbit&#39; in Alice&quot;,
+     xlab=&quot;Novel Time&quot;, ylab=&quot;rabbit&quot;, type=&quot;h&quot;, ylim=c(0,1), yaxt=&#39;n&#39;)
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -113,7 +259,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -121,14 +267,14 @@
   </hgroup>
   
   <article data-timings="">
-    <p><code>stringi</code> is an R package providing (but definitely not limiting to) equivalents of nearly all the character string processing functions known from base R. </p>
-
-<ul>
-<li>string trimming, padding, and text wrapping,</li>
-<li>text collation (sorting and comparing), </li>
-<li>extracting and replacing substrings (characters, words, and sentences), </li>
-<li>text transliteration,</li>
-<li>others (random string generation; Unicode normalization; character encoding conversion and detection;)</li>
+    <ul>
+<li><p><code>stringr</code> and <code>stringi</code>
+<code>stringi</code> is an R package providing (but definitely not limiting to) equivalents of nearly all the character string processing functions known from base R. </p></li>
+<li><p>string trimming, padding, and text wrapping,</p></li>
+<li><p>text collation (sorting and comparing), </p></li>
+<li><p>extracting and replacing substrings (characters, words, and sentences), </p></li>
+<li><p>text transliteration,</p></li>
+<li><p>others (random string generation; Unicode normalization; character encoding conversion and detection;)</p></li>
 </ul>
 
     
@@ -136,7 +282,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -154,7 +300,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -172,7 +318,12 @@ mixSeg &lt;- worker()
 #hmmSeg &lt;- worker(type = &quot;hmm&quot;)
 text2 &lt;- &quot;總有一天你會醒來，告訴我一切都是假的&quot;
 segment(text2, mixSeg)
-# 或是利用分詞運算子 &lt;=
+</code></pre>
+
+<pre><code>## Error in match.arg(what): &#39;arg&#39; must be NULL or a character vector
+</code></pre>
+
+<pre><code class="r"># 或是利用分詞運算子 &lt;=
 #mixSeg &lt;= text2
 #segment(&quot;.\\data\\test.txt&quot;, mixSeg)
 </code></pre>
@@ -182,7 +333,7 @@ segment(text2, mixSeg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -201,7 +352,7 @@ segment(text2, mixSeg)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -226,7 +377,7 @@ pos.tagger &lt;= text2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -263,7 +414,7 @@ sim &lt;= text2
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -285,7 +436,7 @@ write.table(luxun.seg, &#39;luxun.txt&#39;)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-17" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -293,14 +444,15 @@ write.table(luxun.seg, &#39;luxun.txt&#39;)
   </hgroup>
   
   <article data-timings="">
-    <p>See <code>tidytext.r</code></p>
+    <p>預習！文本分析必讀新書 <a href="http://tidytextmining.com/">Tidy Text Mining with R</a>
+See <code>tidytext.r</code></p>
 
     
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
   
   
   <hgroup>
@@ -346,62 +498,98 @@ write.table(luxun.seg, &#39;luxun.txt&#39;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Regular Expression'>
+        data-slide=3 title='Textual data cleaning and transformation: An exmaple'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='<code>stringr</code>: Character String Processing Facilities'>
+        data-slide=4 title='Tokenize/split the text'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='中文斷詞／分詞'>
+        data-slide=5 title='Remove the blanks'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='<code>JiebaR</code>'>
+        data-slide=6 title='Calculate the number of word tokens/types'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='<code>JiebaR</code>: 客製化 custimization'>
+        data-slide=7 title='Vocabulary size and other distributional properties (&quot;global statistics&quot;)'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='<code>JiebaR</code>: POS tagging'>
+        data-slide=8 title='Distribution plots'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='<code>JiebaR</code>: Keywords Extraction and Similarity Calculation'>
+        data-slide=9 title='Regular Expression'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='[Exercise.1]: 魯迅:阿 Q 正傳'>
+        data-slide=10 title='<code>stringr</code>: Character String Processing Facilities'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='<code>tidytext</code>: Text mining using dplyr, ggplot2, and other tidy tools'>
+        data-slide=11 title='中文斷詞／分詞'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Homework'>
+        data-slide=12 title='<code>JiebaR</code>'>
          12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='<code>JiebaR</code>: 客製化 custimization'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='<code>JiebaR</code>: POS tagging'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='<code>JiebaR</code>: Keywords Extraction and Similarity Calculation'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='[Exercise.1]: 魯迅:阿 Q 正傳'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='<code>tidytext</code>: Text mining using dplyr, ggplot2, and other tidy tools'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Homework'>
+         18
       </a>
     </li>
   </ul>
