@@ -817,6 +817,16 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer 1</h2>
+<div class="slideContent" >
+<pre><code class="r"># 1. then
+# 2. pipeline style of coding
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Question 2</h2>
 <div class="slideContent" >
 <ul>
@@ -826,6 +836,18 @@ hljs.initHighlightingOnLoad();
 <li>3. select</li>
 <li>4. group_by</li>
 </ul>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer 2</h2>
+<div class="slideContent" >
+<pre><code class="r"># 1. filter out specific rows
+# 2. sort the order of rows
+# 3. select out specific cols
+# 4. group observations according to some column
+</code></pre>
 
 </div>
 
@@ -847,11 +869,44 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer 3</h2>
+<div class="slideContent" >
+<pre><code class="r">text &lt;- c(&quot;This is me.&quot;, &quot;That is her.&quot;, &quot;this&#39;s it!&quot;, 
+          &quot;Oh my gosh.&quot;, &quot;What is it?&quot;)
+
+grep(&#39;^t&#39;, text, ignore.case=T, value=T)
+</code></pre>
+
+<pre><code>[1] &quot;This is me.&quot;  &quot;That is her.&quot; &quot;this&#39;s it!&quot;  
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Question 4</h2>
 <div class="slideContent" >
 <ul>
 <li>What&#39;s the difference if the &#39;value&#39; is set to &#39;F&#39;?</li>
 </ul>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer 4</h2>
+<div class="slideContent" >
+<pre><code class="r">grep(&#39;^t&#39;, text, ignore.case=T, value=T)
+</code></pre>
+
+<pre><code>[1] &quot;This is me.&quot;  &quot;That is her.&quot; &quot;this&#39;s it!&quot;  
+</code></pre>
+
+<pre><code class="r">grep(&#39;^t&#39;, text, ignore.case=T, value=F)
+</code></pre>
+
+<pre><code>[1] 1 2 3
+</code></pre>
 
 </div>
 
@@ -864,6 +919,15 @@ hljs.initHighlightingOnLoad();
 </ul>
 
 <pre><code class="r">grep(&#39;!$&#39;, text, value=T)
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer 5</h2>
+<div class="slideContent" >
+<pre><code class="r"># find the string ends with &#39;!&#39;
 </code></pre>
 
 </div>
@@ -901,11 +965,85 @@ require(tidyverse)
 <h2>Questions</h2>
 <div class="slideContent" >
 <ol>
-<li><p>Sort flight to find the most delayed flight. Find the flight that left earliest. Show the result with tailnum</p></li>
-<li><p>Find the flights which were delayed by at least an hour, but made up over 30 minutes in flight.</p></li>
+<li><p>Sort varivable flight to find the flight has the largest arrival delay. Also, find the fligh has the smallest departure delay. Please show the result with tailnum.</p></li>
+<li><p>Find the flights which were dep_delayed by at least an hour, but made up over 30 minutes in arr_delay.</p></li>
 <li><p>How many flights have a missing dep_time? What other variables are missing? What might these rows represent?</p></li>
 <li><p>Count the occurence of each carrier according to Q3, and show the result with a bar plot </p></li>
 </ol>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answers</h2>
+<div class="slideContent" >
+<pre><code class="r">flights %&gt;% arrange(desc(dep_delay)) %&gt;% head(1) %&gt;% .$tailnum
+</code></pre>
+
+<pre><code>[1] &quot;N384HA&quot;
+</code></pre>
+
+<pre><code class="r">flights %&gt;% arrange(dep_delay) %&gt;% head(1) %&gt;% .$tailnum
+</code></pre>
+
+<pre><code>[1] &quot;N592JB&quot;
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answers</h2>
+<div class="slideContent" >
+<pre><code class="r">flights%&gt;%filter(dep_delay&gt;=60 &amp; arr_delay&lt;=30)
+</code></pre>
+
+<pre><code># A tibble: 239 × 19
+    year month   day dep_time sched_dep_time dep_delay arr_time
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;
+1   2013     1     3     1850           1745        65     2148
+2   2013     1     3     1950           1845        65     2228
+3   2013     1     3     2015           1915        60     2135
+4   2013     1     6     1019            900        79     1558
+5   2013     1     7     1543           1430        73     1758
+6   2013     1    11     1020            920        60     1311
+7   2013     1    12     1706           1600        66     1949
+8   2013     1    12     1953           1845        68     2154
+9   2013     1    19     1456           1355        61     1636
+10  2013     1    21     1531           1430        61     1843
+# ... with 229 more rows, and 12 more variables: sched_arr_time &lt;int&gt;,
+#   arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
+#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answers</h2>
+<div class="slideContent" >
+<pre><code class="r">flights%&gt;%filter(is.na(dep_time))%&gt;%nrow()
+</code></pre>
+
+<pre><code>[1] 8255
+</code></pre>
+
+<pre><code class="r"># dep_delay, arr_time, arr_delay, air_time
+# should be canceled
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answers</h2>
+<div class="slideContent" >
+<pre><code class="r">result&lt;-flights%&gt;%filter(is.na(dep_time))%&gt;%group_by(carrier)
+qplot(data=result,x=carrier,geom=&quot;bar&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" /></p>
 
 </div>
 
