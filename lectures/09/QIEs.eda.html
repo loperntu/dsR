@@ -52,41 +52,8 @@
 </ul>
 
 <pre><code class="r">require(dplyr)
-</code></pre>
-
-<pre><code>## Loading required package: dplyr
-</code></pre>
-
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.2.5
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;
-</code></pre>
-
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag
-</code></pre>
-
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union
-</code></pre>
-
-<pre><code class="r">require(tidytext)
-</code></pre>
-
-<pre><code>## Loading required package: tidytext
-</code></pre>
-
-<pre><code>## Warning: package &#39;tidytext&#39; was built under R version 3.2.5
-</code></pre>
-
-<pre><code class="r">require(ggplot2)
-</code></pre>
-
-<pre><code>## Loading required package: ggplot2
+require(tidytext)
+require(ggplot2)
 </code></pre>
 
 <pre><code class="bash">wc -l idioms_4word.txt
@@ -180,9 +147,10 @@ qienum &lt;-tbl_df(qie)
 qienum.nAnB
 </code></pre>
 
-<pre><code>## # A tibble: 729 × 10
+<pre><code>## Source: local data frame [729 x 10]
+## 
 ##      idioms  nAnB PTT_WomenTalk PTT_Hate PTT_Gossiping PTT_AllTogether
-##      &lt;fctr&gt; &lt;int&gt;         &lt;int&gt;    &lt;int&gt;         &lt;int&gt;           &lt;int&gt;
+##      (fctr) (int)         (int)    (int)         (int)           (int)
 ## 1  一言千金     1             0        0             0               0
 ## 2  三茶六飯     1             0        0             0               0
 ## 3  萬無一矢     1             0        0             0               0
@@ -193,17 +161,19 @@ qienum.nAnB
 ## 8  八索九丘     1             0        0             0               0
 ## 9  一彼一此     1             0        0             0               0
 ## 10 千奇萬怪     1             0        0             0               0
-## # ... with 719 more rows, and 4 more variables: China_text &lt;int&gt;,
-## #   Apple_text &lt;int&gt;, news_all &lt;int&gt;, pooled &lt;int&gt;
+## ..      ...   ...           ...      ...           ...             ...
+## Variables not shown: China_text (int), Apple_text (int), news_all (int),
+##   pooled (int)
 </code></pre>
 
 <pre><code class="r">qienum %&gt;%
   summarize(avg_mean = mean(pooled))
 </code></pre>
 
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## Source: local data frame [1 x 1]
+## 
 ##   avg_mean
-##      &lt;dbl&gt;
+##      (dbl)
 ## 1 154.9451
 </code></pre>
 

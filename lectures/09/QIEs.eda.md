@@ -13,51 +13,8 @@ output:
 
 ```r
 require(dplyr)
-```
-
-```
-## Loading required package: dplyr
-```
-
-```
-## Warning: package 'dplyr' was built under R version 3.2.5
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-```r
 require(tidytext)
-```
-
-```
-## Loading required package: tidytext
-```
-
-```
-## Warning: package 'tidytext' was built under R version 3.2.5
-```
-
-```r
 require(ggplot2)
-```
-
-```
-## Loading required package: ggplot2
 ```
 
 
@@ -126,9 +83,10 @@ qienum.nAnB
 ```
 
 ```
-## # A tibble: 729 × 10
+## Source: local data frame [729 x 10]
+## 
 ##      idioms  nAnB PTT_WomenTalk PTT_Hate PTT_Gossiping PTT_AllTogether
-##      <fctr> <int>         <int>    <int>         <int>           <int>
+##      (fctr) (int)         (int)    (int)         (int)           (int)
 ## 1  一言千金     1             0        0             0               0
 ## 2  三茶六飯     1             0        0             0               0
 ## 3  萬無一矢     1             0        0             0               0
@@ -139,8 +97,9 @@ qienum.nAnB
 ## 8  八索九丘     1             0        0             0               0
 ## 9  一彼一此     1             0        0             0               0
 ## 10 千奇萬怪     1             0        0             0               0
-## # ... with 719 more rows, and 4 more variables: China_text <int>,
-## #   Apple_text <int>, news_all <int>, pooled <int>
+## ..      ...   ...           ...      ...           ...             ...
+## Variables not shown: China_text (int), Apple_text (int), news_all (int),
+##   pooled (int)
 ```
 
 
@@ -151,9 +110,10 @@ qienum %>%
 ```
 
 ```
-## # A tibble: 1 × 1
+## Source: local data frame [1 x 1]
+## 
 ##   avg_mean
-##      <dbl>
+##      (dbl)
 ## 1 154.9451
 ```
 
@@ -170,7 +130,7 @@ qienum.nAnB %>%
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png)
 
 -------
 # 暖身挑戰
