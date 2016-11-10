@@ -176,9 +176,9 @@ require(jiebaRD)
 mixSeg <- worker()  
 #hmmSeg <- worker(type = "hmm")
 text2 <- "總有一天你會醒來，告訴我一切都是假的"
-segment(text2, mixSeg)
+#segment(text2, mixSeg)
 # 或是利用分詞運算子 <=
-#mixSeg <= text2
+mixSeg <= text2
 #segment(".\\data\\test.txt", mixSeg)
 ```
 
@@ -224,9 +224,13 @@ sim <= text2
 ```{r, eval=FALSE}
 luxun <- scan("http://www.gutenberg.org/files/25332/25332-0.txt",
                 what="char", sep="\n")
+
+
+
 # another lazy way
 require(gutenbergr)
 luxun <- gutenberg_download(25332)
+mixSeg <= luxun$text
 luxun.seg <- segment(luxun$text, mixSeg)
 write.table(luxun.seg, 'luxun.txt')
 ```
