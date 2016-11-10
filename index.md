@@ -85,6 +85,7 @@ Week | Date   | Topic         | Lab
 - [Week 06](lectures/06/index.html) 
 - [Week 07](lectures/07/eda.html) /  [VisR_quick.R](lectures/07/VisR_quick.R)
 - [Week 08](lectures/08/index.html)/[tidytext](lectures/08/tidytext.r)
+- [Week 09](lectures/09/QIEs.eda.html)
 
 ## 助教講義、習題與作業
 
@@ -96,7 +97,7 @@ Week | Date   | Topic         | Lab
 - <span style="color:blue; font-weight:bold"> Week.6 </span>: [Lab](exercise.homework/week6/week6.html)
 - <span style="color:blue; font-weight:bold"> Week.7 </span>: [Lab](exercise.homework/week7/week7.html)
 - <span style="color:blue; font-weight:bold"> Week.8 </span>: [Lab](exercise.homework/week8/week8.html)
-
+- <span style="color:blue; font-weight:bold"> Week.9 </span>: [Lab](exercise.homework/week9/dplyr_re_no.html)
 
 ## 課程教材
 
