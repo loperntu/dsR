@@ -926,52 +926,6 @@ tidy_books &lt;- austen_books() %&gt;% unnest_tokens(word,text)
 </div>
 
 </section>
-<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
-<h2>Answers</h2>
-<div class="slideContent" >
-<pre><code class="r">bing%&gt;%count(sentiment)
-</code></pre>
-
-<pre><code class="r">unique(tidy_books$book)
-</code></pre>
-
-<pre><code class="r">pos.word &lt;- bing%&gt;%filter(sentiment==&quot;positive&quot;)
-tidy_books%&gt;%
-  filter(book==&quot;Pride &amp; Prejudice&quot;)%&gt;%
-  semi_join(pos.word)%&gt;%
-  nrow()
-</code></pre>
-
-</div>
-
-</section>
-<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
-<h2>Answers</h2>
-<div class="slideContent" >
-<pre><code class="r">pos.word &lt;- bing%&gt;%filter(sentiment==&quot;positive&quot;)
-tidy_books%&gt;%
-  filter(book==&quot;Pride &amp; Prejudice&quot;)%&gt;%
-  semi_join(pos.word)%&gt;%
-  count(word,sort=T)
-</code></pre>
-
-<pre><code class="r">pos.word &lt;- bing%&gt;%filter(sentiment==&quot;positive&quot;)
-tidy_books%&gt;%
-  filter(book==&quot;Pride &amp; Prejudice&quot;)%&gt;%
-  semi_join(pos.word)%&gt;%
-  count(word,sort=T)%&gt;%
-  mutate(word = reorder(word,n))%&gt;%
-  top_n(20)%&gt;%
-  ggplot(aes(word, n)) +
-  geom_bar(stat = &quot;identity&quot;) +
-  labs(y = &quot;Contribution to sentiment&quot;,
-       x = NULL) +
-  coord_flip()
-</code></pre>
-
-</div>
-
-</section>
 
 
   </div>
