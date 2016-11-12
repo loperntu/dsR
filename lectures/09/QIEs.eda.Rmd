@@ -54,7 +54,7 @@ qie <- read.csv("../../../data/idioms/data1.csv")
 qienum <-tbl_df(qie)
 ```
 
-- 先以 `nAnB` 為例做探索資料分析
+- 先以 `nAnB` 為例做探索資料分析git
 
 ```{r}
 qienum.nAnB <- qienum %>%
@@ -81,6 +81,13 @@ qienum.nAnB %>%
   ggplot(aes(pooled)) +                     
     geom_histogram()
 ```
+
+
+
+
+
+
+
 
 -------
 # 暖身挑戰
