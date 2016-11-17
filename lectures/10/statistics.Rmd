@@ -21,12 +21,12 @@ require(dplyr)
 require(ggplot2)
 #https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
 # big5 data 用 file - reopen with encoding - save with encoding
-hedges <- read.table("../../data/txt/hedges.txt", header = T, fileEncoding="utf8")
+hedges <- read.table("../../../data/txt/hedges.txt", header = T, fileEncoding="utf8")
 
 attach(hedges)
 # Graphical Exploration
 str(hedges)
-
+View(hedges)
 
 ```
 ## 探索一個變數

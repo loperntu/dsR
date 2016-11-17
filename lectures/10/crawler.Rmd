@@ -36,6 +36,104 @@ doc <- GET("https://rent.591.com.tw/index.php?module=search&action=rslist&is_new
 content(doc, "text")
 ```
 
+
+
+```{R}
+# load httr package
+require(httr)
+require(jsonlite)
+
+# 把剛剛拿下來的網頁內容，從json格式轉成R容易處理的格式
+df <- fromJSON(content(doc, "text"))
+
+# 我們還要從df這個list中，找到需要的那一部分
+rent_data <- df[["main"]]
+
+```
+
+```{r}
+require(rvest)
+# 用rvest的read_html功能，讀取rent_data
+rent_html <- read_html(rent_data)
+
+# 用剛剛取得的css selector找尋節點
+name <- html_nodes(rent_html, ".address a")
+
+# 取出節點中需要的部分「title」
+name <- html_attr(name, "title")
+
+```
+
+
+```{r}
+# 用一樣的步驟抓取縣市、行政區、租屋面積和租金
+county <- html_nodes(rent_html, ".txt-sh-region")
+county <- html_text(county)
+
+town <- html_nodes(rent_html, ".txt-sh-section")
+town <- html_text(town)
+
+area <- html_nodes(rent_html, ".area")
+area <- html_text(area)
+
+price <- html_nodes(rent_html, ".price .fc-org")
+price <- html_text(price)
+
+# 最後把所有的資料存到一個檔案裡
+rent_df <- data.frame(
+  county = county,
+  town = town,
+  name = name,
+  area = area,
+  price = price
+)
+```
+
+```{r}
+require(stringr)
+# 清理價格資訊，把逗點跟「元」清掉
+rent_df$price <-  str_replace_all(rent_df$price, ",|元", "")
+
+# 再把price欄從「文字」轉成「數字」
+rent_df$price <- as.numeric(rent_df$price)
+
+```
+
+
+```{r}
+# 新成立type一欄，這一欄的資訊來自area欄
+# 我們用「/」切割type欄
+# 再取出後面的部分作為type欄的資訊
+rent_df$type <- 
+  sapply(str_split(rent_df$area, "/"), "[[", 2)
+
+
+# 新的area欄的資訊還ㄕ來自原本的area欄
+# 我們用「/」切割type欄
+# 取出前面的部分作為type欄的資訊
+rent_df$area <- sapply(str_split(rent_df$area, "/"), "[[", 1)
+
+
+# 接著把「坪」清掉
+rent_df$area <- str_replace_all(rent_df$area, "坪", "")
+
+# 再轉成數字格式
+rent_df$area <- as.numeric(rent_df$area)
+
+
+```
+
+
+```{r}
+# 新成立unit_price一欄
+# 這一欄的資料是price欄除以area欄
+
+rent_df$unit_price <- rent_df$price / rent_df$area
+
+# 再四捨五入到整數位的結果
+rent_df$unit_price <- round(rent_df$unit_price)
+
+```
 ---------
 
 # 蘋果日報即時新聞標題爬蟲
