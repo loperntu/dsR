@@ -1,0 +1,227 @@
+---
+title: "30 min Introduction to Statistics with R"
+output: html_notebook
+---
+
+
+(複習) EDA 的基礎：
+
+- data wrangling
+- visualization
+- statistics
+
+
+## 學習方法
+- 統計學教科書概念學習 + 習題的 R 實作。
+- 多利用說明文件瞭解相關函數內容。(e.g., `?sd`, `example(sd)`)
+
+
+```{r}
+require(dplyr)
+require(ggplot2)
+#https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
+# big5 data 用 file - reopen with encoding - save with encoding
+hedges <- read.table("../../data/txt/hedges.txt", header = T, fileEncoding="utf8")
+
+attach(hedges)
+# Graphical Exploration
+str(hedges)
+
+
+```
+## 探索一個變數
+
+### 量化數據
+敘述統計量：mean、sd、median
+
+```{r}
+summary(hedges)
+sd(HEDGES)
+```
+
+```{r}
+# Graphic exploration
+# histogram
+hist(HEDGES, main = "Hedges Histogram", xlab = "Num. of Hedges")
+# scatter plot
+plot(HEDGES ~ SEX, data = hedges)
+# boxplot
+boxplot(HEDGES)
+
+stripchart(HEDGES~SEX, method="jitter", xlim=c(0, 25),xlab="Num. of hedges", ylab="SEX")
+#stripchart(HEDGES~SEX, method="stack", xlim=c(0, 25),xlab="Num. of hedges", ylab="SEX")
+
+par(mfrow=c(1,2))
+hist(HEDGES[SEX=="M"], xlim=c(0, 25), ylim=c(0, 10), ylab="Frequency", main="")
+hist(HEDGES[SEX=="F"], xlim=c(0, 25), ylim=c(0, 10), ylab="Frequency", main="")
+par(mfrow=c(1, 1))
+
+# Do make use of dplyr
+group_by(hedges, SEX) %>%
+  summarise(平均不正面用語 = mean(HEDGES))
+```
+
+
+```{r}
+### ggplot2
+# histogram
+ggplot(data = hedges) + 
+  geom_histogram(aes(x = HEDGES))
+
+# density plot
+ggplot(data = hedges) + 
+  geom_density(aes(x = HEDGES), fill = "green")
+
+```
+
+### 質化數據
+分佈表格：table
+眾數：table + sort
+
+```{r}
+table(hedges$HEDGES, hedges$SEX)
+plot(table(hedges$HEDGES, hedges$SEX))
+dists<-prop.table(table(HEDGES, SEX), margin=2); dists
+
+```
+## 探索(兩個)變數之間的關係
+
+- `ftable`：質 v.s. 質
+- `bar chart` `box plot`：質 v.s. 量
+- `scatter plot`： 量 v.s. 量
+
+```{r}
+(FT <- ftable(Titanic, row.vars = 1:3))
+```
+
+
+(複習 RStudio cheat sheet) 繪圖之前的整理資料 `dplyr`, Regular Expression 相關函式/ `stringr`
+
+(複習 RStudio cheat sheet) `ggplot2`
+
+- 先把資料整理成 data.frame 送至 `ggplot()`
+- 各種繪圖工具利用 aes 定位欄位和對應的圖的元素: x座標、y座標、顏色、分群
+- 再一層一層的疊上繪圖要素: 點、線、各種文字與標題說明
+
+#### 質性 <> 量性: Bar chart
+
+#### 質性 <> 量性: Box plot
+
+#### 量性 <> 量性：Scatter Plot  
+
+進階做圖：美化 `ggthemes` 與互動 
+
+## 統計檢定
+
+```{r}
+shapiro.test(hedges$HEDGES) 
+# NOT normally distributed. Since of the p-value is > 0.05, 
+# the dataset is normally distributed)
+```
+
+
+```{r}
+## Independent var = categorical
+## Dependent var.  = categorical     >> chi-square
+##                 = not categorical >> t-test
+
+
+## Dependent variable :  HEDGE (non-categorical)
+## Independent variable: SEX (categorical)
+
+#H0: The distribution of the dependent variable HEDGES does not differ depending 
+#on the levels of the independent variable SEX; D = 0.
+
+#H1: The distribution of the dependent variable HEDGES differs depending on 
+#the levels of the independent variable SEX; D > 0.
+
+
+ks.test(HEDGES[SEX=="M"], HEDGES[SEX=="F"])
+
+# t-test
+t.test(HEDGES~SEX, hedges)
+
+# non-parametric corelation 
+cor.test(diamonds$price, diamonds$carat, method= "spearman")
+
+
+```
+
+## 迴歸分析
+
+流浪汪星人
+
+```{r}
+require(dplyr)
+require(ggplot2)
+#https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
+# big5 data 用 file - reopen with encoding - save with encoding
+dogs <- read.table("../../data/txt/dogs.txt", header = T, fileEncoding="utf8")
+qplot(computerR, adoptedR, data=dogs)
+
+```
+
+
+- 迴歸係數計算推論
+```{r}
+lm.model <- lm(adoptedR~computerR, data=dogs, x =TRUE)
+summary(lm.model)
+
+```
+
+```{r}
+#plot(computerR~adoptedR, data=dogs)
+ggplot(dogs, aes(x = computerR, y = adoptedR)) + 
+  geom_point() +
+  stat_smooth(method = "lm", col = "red")
+```
+
+- 簡單線性迴歸的 ANOVA 表格
+```{r}
+anova(lm.model)
+```
+
+- 殘差分析 (Residuals analysis)
+
+```{r}
+plot(lm.model)
+resid <- lm.model$residuals
+# using ggplot: https://rpubs.com/therimalaya/43190
+# check normality
+shapiro.test(resid)
+```
+
+- Correlation matrix 選取解釋變數
+
+```{r}
+dogs1 <- dogs[-c(1,5)]
+round(cor(dogs1),2); head(dogs1)
+```
+
+
+```{r}
+pairs(dogs1)
+# or using ggplot2 
+```
+
+```{r}
+#install.package('GGally')
+require(GGally)
+ggpairs(dogs1[, c(2, 4:6)])
+
+```
+
+-----
+
+# Week 10 Homework : 爬蟲程式自己來
+### Web Crawler/Web Scraping DIY with R
+
+- (indi.100pt) 小組先共同選擇一個來源（如報紙／人力網／租屋網／批踢踢等等），每個人抓取某部分內容做分析。
+
+- (group bonus.50pt) 把小組每個人做的部分兜起來說一個故事。
+
+參考中文簡介
+
+> - https://imdataman.github.io/how-to-make-data-news.html#/67
+> - https://github.com/ywchiu/rcrawler
+
