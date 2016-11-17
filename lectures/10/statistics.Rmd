@@ -99,9 +99,10 @@ dists<-prop.table(table(HEDGES, SEX), margin=2); dists
 
 (複習 RStudio cheat sheet) `ggplot2`
 
-- 先把資料整理成 data.frame 送至 `ggplot()`
-- 各種繪圖工具利用 aes 定位欄位和對應的圖的元素: x座標、y座標、顏色、分群
-- 再一層一層的疊上繪圖要素: 點、線、各種文字與標題說明
+- 先把資料整理成 data.frame 送至 `ggplot()` 產生畫布
+- 各種繪圖工具利用 aes (外觀設定：管理座標軸、顏色變化) 、geom (幾何圖形： 產生點、線、三角等圖形)，來定位欄位和對應的圖的元素: x座標、y座標、顏色、分群
+- 再一層一層的疊上繪圖要素: 點、線、各種文字與標題說明；
+改變繪圖座標的 coord 、佈景主題 theme 以及控制圖形輸出的 facet 。
 
 #### 質性 <> 量性: Bar chart
 
@@ -151,12 +152,16 @@ cor.test(diamonds$price, diamonds$carat, method= "spearman")
 
 流浪汪星人
 
+- `computerR`: 各縣市平均每100個家庭的電腦數目
+- `graduate`: 各縣市研究所畢業者人數
+
+
 ```{r}
 require(dplyr)
 require(ggplot2)
 #https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
 # big5 data 用 file - reopen with encoding - save with encoding
-dogs <- read.table("../../data/txt/dogs.txt", header = T, fileEncoding="utf8")
+dogs <- read.table("../../../data/txt/dogs.txt", header = T, fileEncoding="utf8")
 qplot(computerR, adoptedR, data=dogs)
 
 ```
@@ -216,7 +221,7 @@ ggpairs(dogs1[, c(2, 4:6)])
 # Week 10 Homework : 爬蟲程式自己來
 ### Web Crawler/Web Scraping DIY with R
 
-- (indi.100pt) 小組先共同選擇一個來源（如報紙／人力網／租屋網／批踢踢等等），每個人抓取某部分內容做分析。
+- (indi.100pt) 小組先共同選擇一個來源（如報紙／人力網／租屋網／批踢踢等等），每個人抓取某部分內容做分析。例如：抓取蘋果日報的即時新聞標題，建立當日各主題的詞頻表。
 
 - (group bonus.50pt) 把小組每個人做的部分兜起來說一個故事。
 
@@ -224,4 +229,5 @@ ggpairs(dogs1[, c(2, 4:6)])
 
 > - https://imdataman.github.io/how-to-make-data-news.html#/67
 > - https://github.com/ywchiu/rcrawler
-
+> - [jiebaR 中文分詞教程](https://jiebar.qinwf.com/)
+> - [使用自定義用戶詞庫](https://github.com/qinwf/jiebaR/wiki/%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%94%A8%E6%88%B7%E8%AF%8D%E5%BA%93) 

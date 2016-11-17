@@ -1,0 +1,131 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+https://imdataman.github.io/how-to-make-data-news.html
+
+# R如何幫助我完成資料新聞
+
+- 蒐集資料
+- 清理資料
+- 彙整資料
+- 繪製圖表
+
+
+# 問題：想知道「台北市各行政區的套房租金價位」
+## 蒐集資料
+
+R網路爬蟲會用到的package
+- httr：下載原始碼
+- jsonlite：處理json格式的資料
+- rvest：讀取原始碼並找尋資料
+
+```{r}
+# install httr package
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("rvest")
+# load httr package
+require(httr)
+
+# 用GET功能把591租屋網搜尋台北市租屋的結果拿下來
+doc <- GET("https://rent.591.com.tw/index.php?module=search&action=rslist&is_new_list=1&type=1&searchtype=1®ion=0&listview=txt&firstRow=40&totalRows=54040")
+
+# 用content功能觀察剛剛拿下來的網頁內容
+content(doc, "text")
+```
+
+---------
+
+# 蘋果日報即時新聞標題爬蟲
+
+## 抓取網頁原始碼
+
+
+```{r}
+require(rvest)
+newsurl <- "http://www.appledaily.com.tw/realtimenews/section/new/"
+apple <- read_html(newsurl, encoding="UTF-8")
+```
+
+## 抽取列表資訊
+
+```{r}
+apple %>% 
+  iconv(from = 'UTF-8', to = 'UTF-8')
+
+rddt = apple %>% 
+  html_nodes('.rtddt')
+
+time = rddt %>% 
+  html_nodes('time') %>% 
+  html_text()
+
+title = rddt %>% 
+  html_nodes('h1') %>% 
+  html_text() %>% 
+  iconv(from = 'UTF-8', to = 'UTF-8')
+
+category = rddt %>% 
+  html_nodes('h2') %>% 
+  html_text() %>% 
+  iconv(from = 'UTF-8', to = 'UTF-8')
+
+# 增加網路連結
+domain = "http://www.appledaily.com.tw"
+url = rddt %>% 
+  html_nodes('a') %>% 
+  html_attr('href')
+url <- gsub(domain, "", url)
+url = paste0(domain, url)
+```
+
+
+```{r}
+(news = data.frame(time=time, title=title, category=category, url=url))
+```
+
+
+## 抓取內文 取得內容
+
+```{r}
+news$url <- as.character(news$url) 
+news$content <- sapply(news$url, function(e){
+  read_html(e) %>% 
+  html_node('.trans') %>% 
+  html_text() %>% 
+  iconv(from='UTF-8', to='UTF-8')
+  } 
+  ) 
+
+```
+
+整理資料後做分析
+
+```{r}
+news[news$category=="生活",]
+
+```
+
+
+中文斷詞
+
+```{r}
+require(jiebaR)
+mixseg = worker()
+segment(code = as.character(news$title[1]), jiebar = mixseg)
+```
+
+
+計算詞頻
+
+```{r}
+word <- unlist(sapply(news$title, function(e) segment(code= as.character(e), jiebar = mixseg))) 
+tb <- table(word)
+head(tb,50)
+```
+
+
+
+

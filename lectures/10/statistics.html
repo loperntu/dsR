@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>30 min Introduction to Statistics with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="30 min Introduction to Statistics with R">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>30 min Introduction to Statistics with R</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  
+  <article data-timings="">
+    <p>(複習) EDA 的基礎：</p>
+
+<ul>
+<li>data wrangling</li>
+<li>visualization</li>
+<li>statistics</li>
+</ul>
+
+<h2>學習方法</h2>
+
+<ul>
+<li>統計學教科書概念學習 + 習題的 R 實作。</li>
+<li>多利用說明文件瞭解相關函數內容。(e.g., <code>?sd</code>, <code>example(sd)</code>)</li>
+</ul>
+
+<pre><code class="r">require(dplyr)
+</code></pre>
+
+<pre><code>## Loading required package: dplyr
+</code></pre>
+
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.2.5
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;
+</code></pre>
+
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+</code></pre>
+
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+</code></pre>
+
+<pre><code class="r">require(ggplot2)
+</code></pre>
+
+<pre><code>## Loading required package: ggplot2
+</code></pre>
+
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.2.5
+</code></pre>
+
+<pre><code class="r">#https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
+# big5 data 用 file - reopen with encoding - save with encoding
+hedges &lt;- read.table(&quot;../../data/txt/hedges.txt&quot;, header = T, fileEncoding=&quot;utf8&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟檔案 &#39;../../
+## data/txt/hedges.txt&#39; ：No such file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟連結
+</code></pre>
+
+<pre><code class="r">attach(hedges)
+</code></pre>
+
+<pre><code>## Error in attach(hedges): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r"># Graphical Exploration
+str(hedges)
+</code></pre>
+
+<pre><code>## Error in str(hedges): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<h2>探索一個變數</h2>
+
+<h3>量化數據</h3>
+
+<p>敘述統計量：mean、sd、median</p>
+
+<pre><code class="r">summary(hedges)
+</code></pre>
+
+<pre><code>## Error in summary(hedges): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r">sd(HEDGES)
+</code></pre>
+
+<pre><code>## Error in is.data.frame(x): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r"># Graphic exploration
+# histogram
+hist(HEDGES, main = &quot;Hedges Histogram&quot;, xlab = &quot;Num. of Hedges&quot;)
+</code></pre>
+
+<pre><code>## Error in hist(HEDGES, main = &quot;Hedges Histogram&quot;, xlab = &quot;Num. of Hedges&quot;): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r"># scatter plot
+plot(HEDGES ~ SEX, data = hedges)
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r"># boxplot
+boxplot(HEDGES)
+</code></pre>
+
+<pre><code>## Error in boxplot(HEDGES): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r">stripchart(HEDGES~SEX, method=&quot;jitter&quot;, xlim=c(0, 25),xlab=&quot;Num. of hedges&quot;, ylab=&quot;SEX&quot;)
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r">#stripchart(HEDGES~SEX, method=&quot;stack&quot;, xlim=c(0, 25),xlab=&quot;Num. of hedges&quot;, ylab=&quot;SEX&quot;)
+
+par(mfrow=c(1,2))
+hist(HEDGES[SEX==&quot;M&quot;], xlim=c(0, 25), ylim=c(0, 10), ylab=&quot;Frequency&quot;, main=&quot;&quot;)
+</code></pre>
+
+<pre><code>## Error in hist(HEDGES[SEX == &quot;M&quot;], xlim = c(0, 25), ylim = c(0, 10), ylab = &quot;Frequency&quot;, : 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r">hist(HEDGES[SEX==&quot;F&quot;], xlim=c(0, 25), ylim=c(0, 10), ylab=&quot;Frequency&quot;, main=&quot;&quot;)
+</code></pre>
+
+<pre><code>## Error in hist(HEDGES[SEX == &quot;F&quot;], xlim = c(0, 25), ylim = c(0, 10), ylab = &quot;Frequency&quot;, : 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r">par(mfrow=c(1, 1))
+
+# Do make use of dplyr
+group_by(hedges, SEX) %&gt;%
+  summarise(平均不正面用語 = mean(HEDGES))
+</code></pre>
+
+<pre><code>## Error in group_by_(.data, .dots = lazyeval::lazy_dots(...), add = add): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r">### ggplot2
+# histogram
+ggplot(data = hedges) + 
+  geom_histogram(aes(x = HEDGES))
+</code></pre>
+
+<pre><code>## Error in ggplot(data = hedges): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r"># density plot
+ggplot(data = hedges) + 
+  geom_density(aes(x = HEDGES), fill = &quot;green&quot;)
+</code></pre>
+
+<pre><code>## Error in ggplot(data = hedges): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<h3>質化數據</h3>
+
+<p>分佈表格：table
+眾數：table + sort</p>
+
+<pre><code class="r">table(hedges$HEDGES, hedges$SEX)
+</code></pre>
+
+<pre><code>## Error in table(hedges$HEDGES, hedges$SEX): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r">plot(table(hedges$HEDGES, hedges$SEX))
+</code></pre>
+
+<pre><code>## Error in table(hedges$HEDGES, hedges$SEX): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r">dists&lt;-prop.table(table(HEDGES, SEX), margin=2); dists
+</code></pre>
+
+<pre><code>## Error in table(HEDGES, SEX): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;dists&#39;
+</code></pre>
+
+<h2>探索(兩個)變數之間的關係</h2>
+
+<ul>
+<li><code>ftable</code>：質 v.s. 質</li>
+<li><code>bar chart</code> <code>box plot</code>：質 v.s. 量</li>
+<li><code>scatter plot</code>： 量 v.s. 量</li>
+</ul>
+
+<pre><code class="r">(FT &lt;- ftable(Titanic, row.vars = 1:3))
+</code></pre>
+
+<pre><code>##                    Survived  No Yes
+## Class Sex    Age                   
+## 1st   Male   Child            0   5
+##              Adult          118  57
+##       Female Child            0   1
+##              Adult            4 140
+## 2nd   Male   Child            0  11
+##              Adult          154  14
+##       Female Child            0  13
+##              Adult           13  80
+## 3rd   Male   Child           35  13
+##              Adult          387  75
+##       Female Child           17  14
+##              Adult           89  76
+## Crew  Male   Child            0   0
+##              Adult          670 192
+##       Female Child            0   0
+##              Adult            3  20
+</code></pre>
+
+<p>(複習 RStudio cheat sheet) 繪圖之前的整理資料 <code>dplyr</code>, Regular Expression 相關函式/ <code>stringr</code></p>
+
+<p>(複習 RStudio cheat sheet) <code>ggplot2</code></p>
+
+<ul>
+<li>先把資料整理成 data.frame 送至 <code>ggplot()</code></li>
+<li>各種繪圖工具利用 aes 定位欄位和對應的圖的元素: x座標、y座標、顏色、分群</li>
+<li>再一層一層的疊上繪圖要素: 點、線、各種文字與標題說明</li>
+</ul>
+
+<h4>質性 &lt;&gt; 量性: Bar chart</h4>
+
+<h4>質性 &lt;&gt; 量性: Box plot</h4>
+
+<h4>量性 &lt;&gt; 量性：Scatter Plot</h4>
+
+<p>進階做圖：美化 <code>ggthemes</code> 與互動 </p>
+
+<h2>統計檢定</h2>
+
+<pre><code class="r">shapiro.test(hedges$HEDGES) 
+</code></pre>
+
+<pre><code>## Error in stopifnot(is.numeric(x)): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r"># NOT normally distributed. Since of the p-value is &gt; 0.05, 
+# the dataset is normally distributed)
+</code></pre>
+
+<pre><code class="r">## Independent var = categorical
+## Dependent var.  = categorical     &gt;&gt; chi-square
+##                 = not categorical &gt;&gt; t-test
+
+
+## Dependent variable :  HEDGE (non-categorical)
+## Independent variable: SEX (categorical)
+
+#H0: The distribution of the dependent variable HEDGES does not differ depending 
+#on the levels of the independent variable SEX; D = 0.
+
+#H1: The distribution of the dependent variable HEDGES differs depending on 
+#the levels of the independent variable SEX; D &gt; 0.
+
+
+ks.test(HEDGES[SEX==&quot;M&quot;], HEDGES[SEX==&quot;F&quot;])
+</code></pre>
+
+<pre><code>## Error in ks.test(HEDGES[SEX == &quot;M&quot;], HEDGES[SEX == &quot;F&quot;]): 找不到物件 &#39;HEDGES&#39;
+</code></pre>
+
+<pre><code class="r"># t-test
+t.test(HEDGES~SEX, hedges)
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;hedges&#39;
+</code></pre>
+
+<pre><code class="r"># non-parametric corelation 
+cor.test(diamonds$price, diamonds$carat, method= &quot;spearman&quot;)
+</code></pre>
+
+<pre><code>## Warning in cor.test.default(diamonds$price, diamonds$carat, method =
+## &quot;spearman&quot;): Cannot compute exact p-value with ties
+</code></pre>
+
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  diamonds$price and diamonds$carat
+## S = 9.7086e+11, p-value &lt; 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.9628828
+</code></pre>
+
+<h2>迴歸分析</h2>
+
+<p>流浪汪星人</p>
+
+<ul>
+<li><code>computerR</code>: 各縣市平均每100個家庭的電腦數目</li>
+</ul>
+
+<pre><code class="r">require(dplyr)
+require(ggplot2)
+#https://www.dropbox.com/s/t8doe35f3o2we2m/dogs.txt?dl=0
+# big5 data 用 file - reopen with encoding - save with encoding
+dogs &lt;- read.table(&quot;../../data/txt/dogs.txt&quot;, header = T, fileEncoding=&quot;utf8&quot;)
+</code></pre>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟檔案 &#39;../../
+## data/txt/dogs.txt&#39; ：No such file or directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;, encoding = fileEncoding): 無法開啟連結
+</code></pre>
+
+<pre><code class="r">qplot(computerR, adoptedR, data=dogs)
+</code></pre>
+
+<pre><code>## Error in ggplot(data, aesthetics, environment = env): 找不到物件 &#39;dogs&#39;
+</code></pre>
+
+<ul>
+<li>迴歸係數計算推論</li>
+</ul>
+
+<pre><code class="r">lm.model &lt;- lm(adoptedR~computerR, data=dogs, x =TRUE)
+</code></pre>
+
+<pre><code>## Error in is.data.frame(data): 找不到物件 &#39;dogs&#39;
+</code></pre>
+
+<pre><code class="r">summary(lm.model)
+</code></pre>
+
+<pre><code>## Error in summary(lm.model): 找不到物件 &#39;lm.model&#39;
+</code></pre>
+
+<pre><code class="r">#plot(computerR~adoptedR, data=dogs)
+ggplot(dogs, aes(x = computerR, y = adoptedR)) + 
+  geom_point() +
+  stat_smooth(method = &quot;lm&quot;, col = &quot;red&quot;)
+</code></pre>
+
+<pre><code>## Error in ggplot(dogs, aes(x = computerR, y = adoptedR)): 找不到物件 &#39;dogs&#39;
+</code></pre>
+
+<ul>
+<li>簡單線性迴歸的 ANOVA 表格</li>
+</ul>
+
+<pre><code class="r">anova(lm.model)
+</code></pre>
+
+<pre><code>## Error in anova(lm.model): 找不到物件 &#39;lm.model&#39;
+</code></pre>
+
+<ul>
+<li>殘差分析 (Residuals analysis)</li>
+</ul>
+
+<pre><code class="r">plot(lm.model)
+</code></pre>
+
+<pre><code>## Error in plot(lm.model): 找不到物件 &#39;lm.model&#39;
+</code></pre>
+
+<pre><code class="r">resid &lt;- lm.model$residuals
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;lm.model&#39;
+</code></pre>
+
+<pre><code class="r"># using ggplot: https://rpubs.com/therimalaya/43190
+# check normality
+shapiro.test(resid)
+</code></pre>
+
+<pre><code>## Error: is.numeric(x) is not TRUE
+</code></pre>
+
+<ul>
+<li>Correlation matrix 選取解釋變數</li>
+</ul>
+
+<pre><code class="r">dogs1 &lt;- dogs[-c(1,5)]
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): 找不到物件 &#39;dogs&#39;
+</code></pre>
+
+<pre><code class="r">round(cor(dogs1),2); head(dogs1)
+</code></pre>
+
+<pre><code>## Error in is.data.frame(x): 找不到物件 &#39;dogs1&#39;
+</code></pre>
+
+<pre><code>## Error in head(dogs1): 找不到物件 &#39;dogs1&#39;
+</code></pre>
+
+<pre><code class="r">pairs(dogs1)
+</code></pre>
+
+<pre><code>## Error in pairs(dogs1): 找不到物件 &#39;dogs1&#39;
+</code></pre>
+
+<pre><code class="r"># or using ggplot2 
+</code></pre>
+
+<pre><code class="r">#install.package(&#39;GGally&#39;)
+require(GGally)
+</code></pre>
+
+<pre><code>## Loading required package: GGally
+</code></pre>
+
+<pre><code>## Warning: package &#39;GGally&#39; was built under R version 3.2.5
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;GGally&#39;
+</code></pre>
+
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     nasa
+</code></pre>
+
+<pre><code class="r">ggpairs(dogs1[, c(2, 4:6)])
+</code></pre>
+
+<pre><code>## Error in inherits(data, &quot;SharedData&quot;): 找不到物件 &#39;dogs1&#39;
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h1>Week 10 Homework : 爬蟲程式自己來</h1>
+  </hgroup>
+  
+  <article data-timings="">
+    <h3>Web Crawler/Web Scraping DIY with R</h3>
+
+<ul>
+<li><p>(indi.100pt) 小組先共同選擇一個來源（如報紙／人力網／租屋網／批踢踢等等），每個人抓取某部分內容做分析。</p></li>
+<li><p>(group bonus.50pt) 把小組每個人做的部分兜起來說一個故事。</p></li>
+</ul>
+
+<p>參考中文簡介</p>
+
+<ul class = "build incremental">
+<li><a href="https://imdataman.github.io/how-to-make-data-news.html#/67">https://imdataman.github.io/how-to-make-data-news.html#/67</a></li>
+<li><a href="https://github.com/ywchiu/rcrawler">https://github.com/ywchiu/rcrawler</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Week 10 Homework : 爬蟲程式自己來'>
+         2
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
