@@ -949,6 +949,19 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer1</h2>
+<div class="slideContent" >
+<pre><code class="r">require(datasets)
+require(tidyverse)
+mpg.auto &lt;- mtcars%&gt;%filter(am==0)%&gt;%select(mpg)
+mpg.manual &lt;- mtcars%&gt;%filter(am==1)%&gt;%select(mpg)
+t.test(mpg.auto,mpg.manual)
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
 <h2>Exercise2</h2>
 <div class="slideContent" >
 <pre><code class="r"># trees****
@@ -956,6 +969,25 @@ hljs.initHighlightingOnLoad();
 # [b] What are the median and variance values within column Volume?
 # [c] Within Girth column, extract values that are larger than 12.0 (not included). Scale the extracted values.
 # [d] Within Volume column, extract values that are smaller than 31.7 (included). Plot a scaled histgram and add a vertical red line to x-axis value equals 0.
+</code></pre>
+
+</div>
+
+</section>
+<section data-state="sub-section" data-transition="linear" data-transition-speed="default">
+<h2>Answer2</h2>
+<div class="slideContent" >
+<pre><code class="r">attach(trees)
+max(Height)
+
+median(Volume)
+var(Volume)
+
+scale(Girth[Girth &gt; 12.0])
+
+v &lt;- scale(Volume[Volume &lt;= 31.7])
+hist(v)
+abline(v=0, col=&#39;red&#39;)
 </code></pre>
 
 </div>
