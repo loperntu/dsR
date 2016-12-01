@@ -92,15 +92,20 @@ Week | Date   | Topic         | Lab
 ## Machine Learning
 
 - AI 的一個子領域。（參見林軒田老師的線上課程）
-- 監督式 supervised vs. 非監督式 unsupervised
+- supervised / unsupervised / reinforcement 
   - 可以用中文斷詞問題來想
   - [圖解法入門](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)：基本概念與決策樹
+  - [Essentials of Machine Learning Algorithms (with Python and R Codes)](https://www.analyticsvidhya.com/blog/2015/08/common-machine-learning-algorithms/)
+
+
 
 
 ---
 ## 整體架構流程 
 
 <img style = 'border: 1px solid;' width = 75%; src='./assets/img/ml.all.png'></img>
+
+
 
 
 ---
@@ -111,6 +116,40 @@ Week | Date   | Topic         | Lab
 - F-score
 
 <http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html>
+
+
+---
+## 效能評估(Performance measure)的基本量度
+
+<img style = 'border: 1px solid;' width = 75%; src='./assets/img/con.matrix.png'></img>
+
+
+
+---
+## 效能評估(Performance measure)的基本量度
+
+<img style = 'border: 1px solid;' width = 75%; src='./assets/img/accuracy.png'></img>
+
+---
+## 效能評估(Performance measure)的基本量度
+
+<img style = 'border: 1px solid;' width = 75%; src='./assets/img/measure.png'></img>
+
+
+
+
+---
+## 效能評估(Performance measure)的基本量度
+- ROC (Receiver Operating Characteristic) 曲線
+
+<img style = 'border: 1px solid;' width = 75%; src='./assets/img/roc1.png'></img>
+
+---
+## 效能評估(Performance measure)的基本量度
+
+<img style = 'border: 1px solid;' width = 75%; src='./assets/img/roc2.png'></img>
+
+
 
 ---
 ## Annotation and Feature Engineering 
