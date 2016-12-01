@@ -296,6 +296,11 @@ rent_df$unit_price &lt;- round(rent_df$unit_price)
 <h2>抓取網頁原始碼</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShydmVzdClcbm5ld3N1cmwgPC0gXCJodHRwOi8vd3d3LmFwcGxlZGFpbHkuY29tLnR3L3JlYWx0aW1lbmV3cy9zZWN0aW9uL25ldy9cIlxuYXBwbGUgPC0gcmVhZF9odG1sKG5ld3N1cmwsIGVuY29kaW5nPVwiVVRGLThcIilcbmBgYCJ9 -->
+<pre class="r"><code>require(rvest)
+newsurl &lt;- &quot;http://www.appledaily.com.tw/realtimenews/section/new/&quot;
+apple &lt;- read_html(newsurl, encoding=&quot;UTF-8&quot;)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>

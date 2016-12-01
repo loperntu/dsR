@@ -87,6 +87,7 @@ Week | Date   | Topic         | Lab
 - [Week 08](lectures/08/index.html)/[tidytext](lectures/08/tidytext.r)
 - [Week 09](lectures/09/QIEs.eda.Rmd)
 - [Week 10](lectures/10/statistics.Rmd)/[apple](lectures/10/crawler.Rmd)
+- [Week 12](lectures/12/week12.html)
 
 ## 助教講義、習題與作業
 

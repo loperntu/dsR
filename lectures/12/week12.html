@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introducing Data Science with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/lopen.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lope.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.12</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
+  </hgroup>
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li><strong><code>Data Modeling : Machine Learning</code></strong> </li>
+<li>Text Analytics and NLP</li>
+<li>Lab</li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>課堂回饋討論</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>個人 / 團體</li>
+</ul>
+
+<blockquote>
+<p>下次與各組討論組別作業；開始沒有作業的期末人生，由各組討論與分工的分享共筆取代。</p>
+</blockquote>
+
+<ul>
+<li>自學</li>
+</ul>
+
+<blockquote>
+<p><a href="http://www.cw.com.tw/article/article.action?id=5079254">哈勒凡：享受自學就不怕市場劇變</a>
+<a href="https://buzzorange.com/techorange/2016/02/02/plan-to-be-a-data-scientist-in-new-year/">人人都可成為資料科學大師！一整年的網路自學清單就在這了</a></p>
+</blockquote>
+
+<ul>
+<li><p>資料科學的<strong>基本能力</strong> 是什麼</p>
+
+<ul>
+<li>Efficient coding?</li>
+<li><a href="https://prezi.com/ffzlcg1luozx/data-science-vs-analytics-approaches-to-problem-solving/">Problem solving?</a></li>
+<li><a href="https://depts.washington.edu/hdsl/">Human-centered Design/engieneeting?</a></li>
+</ul></li>
+</ul>
+
+<blockquote>
+<p><a href="http://www.mastersindatascience.org/careers/data-scientist/">The Life of a Data Scientist</a></p>
+</blockquote>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>課程微調整</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <table><thead>
+<tr>
+<th>Week</th>
+<th align="center">Date</th>
+<th>Topic</th>
+<th>Lab</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>12</td>
+<td align="center">12/01</td>
+<td>Data Modeling: Machine Learning / NLP [1]</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td align="center">12/08</td>
+<td>Data Modeling: Machine Learning / NLP [2] / Proposal discussion</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td align="center">12/15</td>
+<td>Integrated Lab session (via <code>kaggle</code>) / Proposal due</td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td align="center">12/22</td>
+<td>Data Modeling: Machine Learning / NLP [3]</td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td align="center">12/29</td>
+<td>Reporting and Presenting Data</td>
+<td>Web application with Shiny/Dashboard</td>
+</tr>
+<tr>
+<td>17</td>
+<td align="center">01/04</td>
+<td>Term project competition/presentation</td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td align="center">01/11</td>
+<td>Selected projects presentation / <strong>Final term project and report due</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>邁向研究 and/or 解決實際問題</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <blockquote>
+<p>There is a massive disconnect between what is taught in universities and what is done on a daily basis at startups.</p>
+</blockquote>
+
+<ul>
+<li>選擇優秀組別作業投稿 <a href="http://group.dailyview.tw/">http://group.dailyview.tw/</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Review</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><p><strong>Preparing / Preprocessing text and data</strong>. </p>
+
+<ul>
+<li>Text is unstructured or partially structured data that must be prepared for analysis. We extract features from text. We define measures. </li>
+<li>Quantitative data are messy or missing, too They may require transformation prior to analysis. Data preparation consumes much of a data scientist’s time.</li>
+</ul></li>
+<li><p><strong>Exploratory data analysis and Infographics</strong> (data visualization for the purpose of discovery. We look for groups in data, find outliers, identify common dimensions, patterns, and trends.)</p></li>
+<li><p><strong>Prediction models</strong> (Regression; Classification and Clustering;) and Evaluations (Recommender systems, collaborative filtering, association rules, optimization methods based on linguistic heuristics, as well as a myriad of methods for regression, classification, and clustering fall under the rubric of machine learning).</p></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Machine Learning</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>AI 的一個子領域。（參見林軒田老師的線上課程）</li>
+<li>監督式 supervised vs. 非監督式 unsupervised
+
+<ul>
+<li>可以用中文斷詞問題來想</li>
+<li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">圖解法入門</a>：基本概念與決策樹</li>
+</ul></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>整體架構流程</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img style = 'border: 1px solid;' width = 75%; src='./assets/img/ml.all.png'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>機器學習：效能評估(Performance measure)的基本量度</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Recall </li>
+<li>Precision </li>
+<li>F-score</li>
+</ul>
+
+<p><a href="http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html">http://www.cnblogs.com/bluepoint2009/archive/2012/09/18/precision-recall-f_measures.html</a></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Annotation and Feature Engineering</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Study of recorded human communication</li>
+<li>Summary and quantitative analysis of communicated messages</li>
+<li>Researcher looks for patterns/themes in text; <span style="color:green; font-weight:bold">develops <code>code frame</code> to categorize text.</span></li>
+<li>Essentially, variables are extracted from text: Based on scientific method; establishes objectivity via inter-coder reliability.</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Annotation and Feature Engineering: Pros and Cons</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>優點</p>
+
+<ul>
+<li>flexible; theoretically-motivated annotation/code frame effrots</li>
+<li>can apply to texts, speech, video, etc.</li>
+<li>可以用來解決一般機器學習系統 high precision low recall 的問題。把潛在的語意與情緒發掘出來。</li>
+</ul>
+
+<p>缺點</p>
+
+<ul>
+<li>manually intensive</li>
+<li>thus can be expensive</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>手工標記資料</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><p>最簡單可以用 <strong>Excel</strong> 來做：</p>
+
+<ul>
+<li>One (or more) column(s) for text data； One column for topic label (as <code>gold standard</code>)</li>
+<li>通常至少有多於 3000 份標好的文件。</li>
+</ul></li>
+<li><p>大型的專案要考慮到永續、相容、交換等問題，建議使用標記系統。</p>
+
+<ul>
+<li>語料庫和語言處理社群 <code>GATE</code><br></li>
+<li>質性研究社群 <code>CAT (Coding Analysis Toolkit)</code></li>
+<li><a href="http://lopen.linguistics.ntu.edu.tw:8001/lope.anno/">lopetator</a></li>
+</ul></li>
+<li><p>labeling 和 annotation 的差異之後再談。</p></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>機器學習程式實作基本流程</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>[<code>create_matrix</code>] Import your hand-coded data into R</li>
+<li>[<code>create_corpus</code>] 把「不相關」的資料移除，建立訓練語料 (training dataset) 與測試語料 (test data)</li>
+<li>[<code>train model(s)</code>] Choose machine learning algorithm(s) to train a model</li>
+<li>[<code>build (classification) model(s)</code>] Test on the (out-of-sample) test data; establish accuracy criteria 了解成效。</li>
+<li>[<code>apply (classification) model(s)</code>] Use model to classify novel data</li>
+<li>[<code>create analytics</code>] 把自動分錯的資料找出來 Manually label data that do not meet accuracy criteria</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Machine Learning: The Best Method?</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img style = 'border: 1px solid;' width = 90%; src='./assets/img/ML.png'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>實作</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><p>為解決各種演算法的套件分散問題 (similar to <code>Scikit-Learn</code> library in Python) </p>
+
+<ul>
+<li><a href="https://mlr-org.github.io/mlr-tutorial/release/html/index.html"><code>mlr</code></a>, a recent package which is incredible at performing various machine learning tasks. </li>
+</ul></li>
+<li><p>The entire structure of this package relies on this premise:</p>
+
+<ul>
+<li>Create a Task (loading data) </li>
+<li>Make a Learner (choosing an algorithm)</li>
+<li>Train Them.</li>
+</ul></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>take up a classification problem.</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r">install.packages(&#39;mlr&#39;)
+listLearners(&quot;classif&quot;)[c(&quot;class&quot;,&quot;package&quot;)]
+library(mlr)
+data(iris)
+
+## Define the task
+task = makeClassifTask(id = &quot;tutorial&quot;, data = iris, target = &quot;Species&quot;)
+## Define the learner
+lrn = makeLearner(&quot;classif.lda&quot;)
+## Define the resampling strategy
+rdesc = makeResampleDesc(method = &quot;CV&quot;, stratify = TRUE)
+## Do the resampling
+r = resample(learner = lrn, task = task, resampling = rdesc, show.info = FALSE)
+## Get the mean misclassification error
+r$aggr
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>先用這個來練習看看</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><a href="https://www.analyticsvidhya.com/blog/2016/08/practicing-machine-learning-techniques-in-r-with-mlr-package/">印度牌的 kaggle</a></p>
+
+<pre><code class="r">train &lt;- read.csv(&quot;../../../data/csv/train_loan.csv&quot;, na.strings = c(&quot;&quot;,&quot; &quot;,NA))
+test &lt;- read.csv(&quot;../../../data/csv/test_loan.csv&quot;, na.strings = c(&quot;&quot;,&quot; &quot;,NA))
+# Exploring data
+summarizeColumns(train) # 和 str() 比較看看
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li>Data Modeling: Machine Learning</li>
+<li><strong><code>Text Analytics and NLP</code></strong></li>
+<li>Lab</li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>圖示</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img style='border: 1px solid;' width=60% src='./assets/img/tm001.jpg'></img></p>
+
+<p><a href="https://manoharswamynathan.files.wordpress.com/2015/04/r-text-mining-001.jpg">pic.source</a></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>文本資料探索分析: A missing part</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Textual statistics (local and global)</li>
+<li>Textual data transformatio: from textual information to numerical vectors</li>
+<li>Corpus-based analysis and manual annotation (e.g., conversation structure) </li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Text Analytics / Text Mining</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>a typical text analysis process:</p>
+
+<ul>
+<li>collecting raw text,</li>
+<li>representing text,</li>
+<li>using Term Frequency-Inverse Document Frequency (TFIDF) to compute the usefulness of each word in the texts,</li>
+<li>categorizing documents by topics using topic modeling,</li>
+<li>sentiment analysis, and</li>
+<li>gaining greater insights.</li>
+</ul>
+
+<p>如何能？！<strong>語言資源</strong> 與 <strong>自然語言處理</strong> ！！</p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>語料庫：概念</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>語料庫 (Corpus) 是自然語言處理與文本解析的基礎建設。
+a large collection of texts used for various purposes in Natural Language Processing (NLP).</li>
+<li>標記 (annotation) 是核心。It&#39;s linguistic in nature.</li>
+</ul>
+
+<blockquote>
+<p>Good annotations support good applications</p>
+</blockquote>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>語料庫：工具</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>一般主要提供以下功能：</p>
+
+<ul>
+<li>Corpus building and indexing</li>
+<li>Concordance</li>
+<li>Frequency list</li>
+<li>(Grammatical) Collocations (and colligations)</li>
+<li>Keywords</li>
+<li>Thesaurus</li>
+<li>ngram</li>
+<li>Visualization</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>語料庫：工具</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><a href="http://voyant-tools.org/?corpus=7fda0cccc3e3da40ce4f6b5c38347689">http://voyant-tools.org/?corpus=7fda0cccc3e3da40ce4f6b5c38347689</a></p>
+
+<p><img style = 'border: 1px solid;' width = 90%; src='./assets/img/voyant.png'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>語料庫：網路服務</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>較具特色的(商用)系統：<a href="https://www.sketchengine.co.uk/">Word Sketch Engine</a></li>
+<li>較具特色的(開放)系統 <a href="http://lopen.linguistics.ntu.edu.tw/copens">COPENS</a> &lt;- 敝帚自珍</li>
+</ul>
+
+<p><img style='border: 1px solid;' width=80% src='./assets/img/wse.png'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>NLP 變成是許多新創數據公司的最愛</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><img style='border: 1px solid;' width=60% src='./assets/img/current.nlp.png'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>NLP</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>先用一個網路服務來初步理解：<a href="http://bosonnlp.com/">BosonNLP</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li>Data Modeling: Machine Learning</li>
+<li>Text Analytics and NLP</li>
+<li><strong><code>Lab</code></strong></li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大數據時代的工具平台</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><a href="https://vdi.ntu.edu.tw/portal/webclient/index.html">台大虛擬桌面</a></li>
+<li><a href="https://studio.azureml.net/">Microsoft Azure Machine Learning Studio</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>閱讀、觀察與實作</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>沒有捷徑</li>
+<li>多做<a href="http://r-exercises.com/2016/11/27/string-manipulation-exercises/">練習</a></li>
+<li>(給有力氣自學的同學) <a href="https://plot.ly/r/github-getting-started-for-data-scientists/">https://plot.ly/r/github-getting-started-for-data-scientists/</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='大綱'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='課堂回饋討論'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='課程微調整'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='邁向研究 and/or 解決實際問題'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Review'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Machine Learning'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='整體架構流程'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='機器學習：效能評估(Performance measure)的基本量度'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Annotation and Feature Engineering'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Annotation and Feature Engineering: Pros and Cons'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='手工標記資料'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='機器學習程式實作基本流程'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Machine Learning: The Best Method?'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='實作'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='take up a classification problem.'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='先用這個來練習看看'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='大綱'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='圖示'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='文本資料探索分析: A missing part'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Text Analytics / Text Mining'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='語料庫：概念'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='語料庫：工具'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='語料庫：工具'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='語料庫：網路服務'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='NLP 變成是許多新創數據公司的最愛'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='NLP'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='大綱'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='大數據時代的工具平台'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='閱讀、觀察與實作'>
+         29
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
+
