@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introducing Data Science with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="謝舒凱 Lab of Ontologies, Language Processing and e-Humanities">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+      <slide class="nobackground">
+    <article class="flexbox vcenter">
+      <span>
+        <img width='300px' src="assets/img/lopen.png">
+      </span>
+    </article>
+  </slide>
+    <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/lope.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Introducing Data Science with R</h1>
+    <h2>week.13</h2>
+    <p>謝舒凱 Lab of Ontologies, Language Processing and e-Humanities<br/>GIL, National Taiwan University</p>
+  </hgroup>
+    <a href="https://github.com/loperntu/dsR/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li><strong><code>Data Modeling : Machine Learning [2]</code></strong> </li>
+<li>Text Analytics and NLP [2]</li>
+<li>Group discussion</li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>無痛學習機器學習</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p>先參考課程網站上的 <a href="">ref1</a> 與 <a href="">ref2</a></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Example: Decision trees and Random Forest</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">圖解法入門</a>：基本概念與決策樹</li>
+<li><a href="https://www.analyticsvidhya.com/blog/2015/08/common-machine-learning-algorithms/">Essentials of Machine Learning Algorithms (with Python and R Codes)</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>Feature Selection Methods</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>Filter and Wrapper methods</li>
+<li>A walkthrough example <a href="https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/">Feature selection methods with an example</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>實作</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>用 R 套件實作機器學習很直觀 <a href="https://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/">cheatsheet</a></li>
+<li><p>為解決各種演算法的套件分散問題 (similar to <code>Scikit-Learn</code> library in Python) </p>
+
+<ul>
+<li><a href="https://mlr-org.github.io/mlr-tutorial/release/html/index.html"><code>mlr</code></a>, a recent package which is incredible at performing various machine learning tasks. </li>
+<li>The entire structure of this package relies on this premise:</li>
+</ul></li>
+<li><p>Create a Task (loading data) </p>
+
+<ul>
+<li>Make a Learner (choosing an algorithm)</li>
+<li>Train Them.</li>
+</ul></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>take up a classification problem.</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <pre><code class="r">  install.packages(&#39;mlr&#39;)
+  listLearners(&quot;classif&quot;)[c(&quot;class&quot;,&quot;package&quot;)]
+  library(mlr)
+  data(iris)
+
+  ## Define the task
+  task = makeClassifTask(id = &quot;tutorial&quot;, data = iris, target = &quot;Species&quot;)
+  ## Define the learner
+  lrn = makeLearner(&quot;classif.lda&quot;)
+  ## Define the resampling strategy
+  rdesc = makeResampleDesc(method = &quot;CV&quot;, stratify = TRUE)
+  ## Do the resampling
+  r = resample(learner = lrn, task = task, resampling = rdesc, show.info = FALSE)
+  ## Get the mean misclassification error
+  r$aggr
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>先用這個來練習看看</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <p><a href="https://www.analyticsvidhya.com/blog/2016/08/practicing-machine-learning-techniques-in-r-with-mlr-package/">印度牌的 kaggle</a></p>
+
+<pre><code class="r">train &lt;- read.csv(&quot;../../../data/csv/train_loan.csv&quot;, na.strings = c(&quot;&quot;,&quot; &quot;,NA))
+test &lt;- read.csv(&quot;../../../data/csv/test_loan.csv&quot;, na.strings = c(&quot;&quot;,&quot; &quot;,NA))
+# Exploring data
+summarizeColumns(train) # 和 str() 比較看看
+</code></pre>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li>Data Modeling: Machine Learning [2]</li>
+<li><strong><code>Text Analytics and NLP [2]</code></strong></li>
+<li>Group discussion</li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>What is Text Analytics ?</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li>(<strong>WHAT</strong>): Text Analytics is the process of converting unstructured text data into meaningful data for analysis</li>
+<li>(<strong>WHY</strong>) : to measure customer opinions, product reviews, feedback, to provide search facility, sentimental analysis and entity modeling to support fact based decision making, etc. - (<strong>HOW</strong>): combining many linguistic, statistical, and machine learning techniques.</li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>What is Text Analytics ?</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <blockquote>
+<p>It involves lexical analysis, categorization, clustering, pattern recognition, tagging, annotation, information extraction, link and association analysis, visualization, and predictive analytics. Text Analytics determines key words, topics, category, semantics, tags from the millions of text data available in an organization in different files and formats. The term Text Analytics is roughly synonymous with text mining.</p>
+</blockquote>
+
+<p><img style='border: 1px solid;' width=50% src='./assets/img/Text-Analytics1.jpg'></img></p>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:#FFFAF0; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大綱</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ol>
+<li>Data Modeling: Machine Learning</li>
+<li>Text Analytics and NLP</li>
+<li><strong><code>Group discussion</code></strong></li>
+</ol>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:; background-repeat:no-repeat; background-position:center; ">
+  
+  
+  <hgroup>
+    <h2>大數據時代的工具平台</h2>
+  </hgroup>
+  
+  <article data-timings="">
+    <ul>
+<li><a href="https://vdi.ntu.edu.tw/portal/webclient/index.html">台大虛擬桌面</a></li>
+<li><a href="https://studio.azureml.net/">Microsoft Azure Machine Learning Studio</a></li>
+</ul>
+
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='大綱'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='無痛學習機器學習'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example: Decision trees and Random Forest'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Feature Selection Methods'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='實作'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='take up a classification problem.'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='先用這個來練習看看'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='大綱'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='What is Text Analytics ?'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='What is Text Analytics ?'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='大綱'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='大數據時代的工具平台'>
+         12
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
+

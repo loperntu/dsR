@@ -1,6 +1,6 @@
 ---
 title       : 'Introducing Data Science with R'
-subtitle    : 'week.12'
+subtitle    : 'week.13'
 author      : '謝舒凱 Lab of Ontologies, Language Processing and e-Humanities'
 job         : 'GIL, National Taiwan University'
 logo        : lope.png
