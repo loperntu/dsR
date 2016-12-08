@@ -48,13 +48,12 @@ github      : {user: loperntu, repo: dsR}
 - A walkthrough example [Feature selection methods with an example](https://www.analyticsvidhya.com/blog/2016/12/introduction-to-feature-selection-methods-with-an-example-or-how-to-select-the-right-variables/)
 
 
- 
 
 ---
 ## 實作
   
-  - 用 R 套件實作機器學習很直觀 [cheatsheet](https://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/)
-  - 為解決各種演算法的套件分散問題 (similar to `Scikit-Learn` library in Python) 
+- 用 R 套件實作機器學習很直觀 [cheatsheet](https://www.analyticsvidhya.com/blog/2015/09/full-cheatsheet-machine-learning-algorithms/)
+- 為解決各種演算法的套件分散問題 (similar to `Scikit-Learn` library in Python) 
 - [`mlr`](https://mlr-org.github.io/mlr-tutorial/release/html/index.html), a recent package which is incredible at performing various machine learning tasks. 
 
 - The entire structure of this package relies on this premise:
