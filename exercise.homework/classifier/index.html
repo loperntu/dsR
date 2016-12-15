@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introducing Data Science with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Introducing Data Science with R">
+  <meta name="author" content="Yu-Yun Chang">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Introducing Data Science with R</h1>
+    <h2>Lab Session - Classifier</h2>
+    <p>Yu-Yun Chang<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Supervised and unsupervised</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>supervised: given data with labels</li>
+<li>unsupervised: given data without labels</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Load the library and data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>install packages <span style="color:blue">e1071</span> and <span style="color:blue">MLmetrics</span></li>
+<li>these are packages for machine learning and evaluation</li>
+</ul>
+
+<pre><code class="r">require(e1071)
+require(MLmetrics)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Classifier: SVM</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>load in the file: <a href="https://ceiba.ntu.edu.tw/course/582551/data.txt">download here</a></li>
+<li>our target: 從 &quot;交往經驗&quot; 和 &quot;被暗戀人數&quot; 推測有機會成為網紅?</li>
+</ul>
+
+<pre><code class="r">df &lt;- read.table(&#39;data.txt&#39;, sep=&#39;\t&#39;, header=T)
+head(df, 4)
+</code></pre>
+
+<pre><code>##   編號   系級    年級      學號   姓名 身高 體重 交往經驗 告白失敗次數
+## 1    1 校外生  不知道  es_20227 林帛箴  100   60        7            1
+## 2    2 中文系  一年級 t05101308 于佳杏  100   61        8            1
+## 3    3 歷史系  四年級 b00203057 簡韻真  101   62        9            1
+## 4    4 哲學系  四年級 b02104031 高嘉苓  102   63       10            1
+##   被暗戀人數 是否為網紅 身價
+## 1          4          y  100
+## 2          5          y  100
+## 3          6          y  100
+## 4          7          y  100
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>SVM Procedure</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>select the <span style="color:blue">features</span> (columns)</li>
+<li>split the data into <span style="color:blue">trainset</span> (70-80%) and <span style="color:blue">testset</span> (20-30%)</li>
+<li>feed the <span style="color:blue">features</span> and <span style="color:blue">trainset</span> into the machine</li>
+<li>evaluate the performance of the machine with <span style="color:blue">testset</span> and <span style="color:blue">F-score</span> </li>
+</ul>
+
+<p><br></p>
+
+<blockquote>
+<p><img src="fscore.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="300px" style="display: block; margin: auto;" /></p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>our target: 從 &quot;交往經驗&quot; 和 &quot;被暗戀人數&quot; 推測有機會成為網紅?</h3>
+
+<ul>
+<li>features: &quot;交往經驗&quot; 和 &quot;被暗戀人數&quot;</li>
+<li><p>correct answers: &quot;是否為網紅&quot; (*Note that the data type should be a factor)</p></li>
+<li><p>1) extract the features</p></li>
+</ul>
+
+<pre><code class="r">feature &lt;- df[, c(8, 10, 11)]
+head(feature, 4)
+</code></pre>
+
+<pre><code>##   交往經驗 被暗戀人數 是否為網紅
+## 1        7          4          y
+## 2        8          5          y
+## 3        9          6          y
+## 4       10          7          y
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>2) split the data into <span style="color:blue">trainset</span> (70-80%) and <span style="color:blue">testset</span> (20-30%)</li>
+</ul>
+
+<pre><code class="r">index &lt;- 1:nrow(df)
+testindex &lt;- sample(index, trunc(length(index)*30/100))
+trainset &lt;- feature[-testindex,]
+testset &lt;- feature[testindex,]
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>3) feed the <span style="color:blue">features</span> and <span style="color:blue">trainset</span> into the machine</li>
+</ul>
+
+<pre><code class="r"># tune the svm to find out the best cost and gamma
+(tuned &lt;- tune.svm(是否為網紅~., data = trainset, cost=10^(-1:2), gamma=c(.5,1,2)))
+</code></pre>
+
+<pre><code>## 
+## Parameter tuning of &#39;svm&#39;:
+## 
+## - sampling method: 10-fold cross validation 
+## 
+## - best parameters:
+##  gamma cost
+##      1    1
+## 
+## - best performance: 0.2809524
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>3) feed the <span style="color:blue">features</span> and <span style="color:blue">trainset</span> into the machine</li>
+</ul>
+
+<pre><code class="r"># train the svm model
+model &lt;- svm(是否為網紅~., data = trainset, kernel=&#39;linear&#39;, cost = 1, gamma = 1)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>4) test the performance of the machine with <span style="color:blue">testset</span></li>
+</ul>
+
+<pre><code class="r"># delete the column with correct answers
+# use the trained model to predict the testset
+prediction &lt;- predict(model, testset[,-3])
+prediction
+</code></pre>
+
+<pre><code>## 45 86 87 15 40 22 16 24 13 14 55  4 19 36 56  9 66 76 73 48 20  1 61 67 33 
+##  n  n  n  n  y  n  n  n  n  n  n  n  n  y  n  n  n  n  n  n  n  n  n  n  n 
+## 75 62 
+##  n  n 
+## Levels: n y
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>5) construct a confusion matrix</li>
+</ul>
+
+<pre><code class="r">ConfusionMatrix(prediction, testset[,3])
+</code></pre>
+
+<pre><code>##       y_pred
+## y_true  n  y
+##      n 16  0
+##      y  9  2
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>SVM Step by Step</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>6) compute the F-score</li>
+</ul>
+
+<pre><code class="r">F1_Score(prediction, testset[,3])
+</code></pre>
+
+<pre><code>## [1] 0.7804878
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Your turn  :D</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>透過哪些 features 可以預測 F-score 最高的身價 svm 分類器</p></li>
+<li><p>請先將 &quot;身價&quot; 分為 6 類:</p>
+
+<ul>
+<li>0~50</li>
+<li>100~500</li>
+<li>1000~5000</li>
+<li>10000~20000</li>
+<li>500000</li>
+<li>5000000</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Tips</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>你可能會想要試著調整以下:
+
+<ul>
+<li>挑選不同 features 組合</li>
+<li>trainset 和 testset 的分配比例</li>
+<li>更改分類器 svm() 內的參數, 例如: kernels</li>
+</ul></li>
+</ul>
+
+<p><br>   </p>
+
+<ul class = "build incremental">
+<li>給不甘於上述, 想要晉升高階大平台者
+
+<ul>
+<li>查詢 e1071 套件內 tune.svm() 的使用方式調整 gamma 和 cost 值</li>
+<li>對於資料進行 10-fold cross-validation (可使用 caret 套件)</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Supervised and unsupervised'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Load the library and data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Classifier: SVM'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='SVM Procedure'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='SVM Step by Step'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='SVM Step by Step'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='SVM Step by Step'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='SVM Step by Step'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='SVM Step by Step'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='SVM Step by Step'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='SVM Step by Step'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Your turn  :D'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Tips'>
+         13
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
