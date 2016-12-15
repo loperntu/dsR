@@ -57,6 +57,54 @@
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
+    <h2>Supervised and unsupervised</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul class = "build incremental">
+<li>supervised: classifier</li>
+<li>unsupervised: cluster</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Classifiers</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We&#39;re going to introduce the usage of a classifier</li>
+<li>There are a lot of classfiers in machine learning:
+
+<ul>
+<li>Bayes</li>
+<li>Decision Tree</li>
+<li>Neural Network</li>
+<li>Support Vector Machine</li>
+<li class='..</li>'></ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Classifier: SVM</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>We&#39;re going to use Support Vector Machine (SVM) in this lab session</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
     <h2>Load the library and data</h2>
   </hgroup>
   <article data-timings="">
@@ -73,7 +121,7 @@ require(MLmetrics)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-3" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Classifier: SVM</h2>
   </hgroup>
@@ -103,7 +151,7 @@ head(df, 4)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-4" style="background:;">
+<slide class="" id="slide-7" style="background:;">
   <hgroup>
     <h2>SVM Procedure</h2>
   </hgroup>
@@ -125,7 +173,7 @@ head(df, 4)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-8" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -153,7 +201,7 @@ head(feature, 4)
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -172,7 +220,7 @@ testset &lt;- feature[testindex,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -201,7 +249,7 @@ testset &lt;- feature[testindex,]
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -218,7 +266,7 @@ model &lt;- svm(是否為網紅~., data = trainset, kernel=&#39;linear&#39;, cos
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -244,7 +292,7 @@ prediction
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -266,7 +314,7 @@ prediction
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>SVM Step by Step</h2>
   </hgroup>
@@ -285,7 +333,7 @@ prediction
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-12" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>Your turn  :D</h2>
   </hgroup>
@@ -304,7 +352,7 @@ prediction
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-13" style="background:;">
+<slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>Tips</h2>
   </hgroup>
@@ -346,37 +394,37 @@ prediction
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Load the library and data'>
+        data-slide=2 title='Supervised and unsupervised'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Classifier: SVM'>
+        data-slide=3 title='Classifiers'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='SVM Procedure'>
+        data-slide=4 title='Classifier: SVM'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='SVM Step by Step'>
+        data-slide=5 title='Load the library and data'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='SVM Step by Step'>
+        data-slide=6 title='Classifier: SVM'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='SVM Step by Step'>
+        data-slide=7 title='SVM Procedure'>
          7
       </a>
     </li>
@@ -406,14 +454,32 @@ prediction
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Your turn  :D'>
+        data-slide=12 title='SVM Step by Step'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Tips'>
+        data-slide=13 title='SVM Step by Step'>
          13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='SVM Step by Step'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Your turn  :D'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Tips'>
+         16
       </a>
     </li>
   </ul>
