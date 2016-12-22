@@ -1,7 +1,4 @@
-# files for processing the following code could be accessed here:
-# https://goo.gl/PrdJYO
-
-# build term-frequency matrix
+# build term-document matrix
 
 library(janeaustenr)
 library(tidyverse)
@@ -22,7 +19,7 @@ length(unique(tidy_books$word))
 tidy_books <- tidy_books %>% # calculate total term count
   group_by(word) %>%
   mutate(total = n()) %>%
-  ungroup() #%>%
+  ungroup() %>%
   filter(total >= 10) # remove rare words
 
 length(unique(tidy_books$word))
@@ -36,6 +33,24 @@ library("jiebaR")
 df <- read_csv("dsR/comments_prep.csv")
 stopchi <- as.data.frame(read_lines('dsR/stopword.txt',skip = 1))
 names(stopchi)<-'word'
+mixseg = worker()
+df$word <- sapply(df$commentbody,function(x) {
+  mixseg[x]
+})
+
+df <- df %>%
+  unnest(word) %>%
+  group_by(commentid,word) %>%
+  mutate(freq = n()) %>%
+  arrange(desc(freq)) %>%
+  ungroup()
+
+df<- df %>% 
+  anti_join(stopchi)
+
+tdm <- table(df$commentid,df$word) %>%
+  as.data.frame.matrix()
+
 
 # kmeans clustering using iris data
 #https://dotblogs.com.tw/dragon229/2013/02/04/89919

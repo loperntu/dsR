@@ -99,6 +99,7 @@ Week | Date   | Topic         | Lab
 - [Week 10](lectures/10/statistics.Rmd)/[apple](lectures/10/crawler.Rmd)
 - [Week 12](lectures/12/week12.html)
 - [Week 13](lectures/13/week13.html) / [ref1](lectures/13/ref1.pdf) / [ref2](http://www.slideshare.net/tw_dsconf/r-64232974)
+- [Week 15](lectures/15/week15.html)
 
 ## 助教講義、習題與作業
 
@@ -112,6 +113,7 @@ Week | Date   | Topic         | Lab
 - <span style="color:blue; font-weight:bold"> Week.8 </span>: [Lab](exercise.homework/week8/week8.html)
 - <span style="color:blue; font-weight:bold"> Week.9 </span>: [Lab](exercise.homework/week9/week9.html)
 - <span style="color:blue; font-weight:bold"> Week.10 </span>: [Lab](exercise.homework/week10/week10.html)
+- <span style="color:blue; font-weight:bold"> Week.14 </span>: [Classifier](exercise.homework/classifier/index.html) /  [Cluster](https://goo.gl/PrdJYO)
 
 ## 課程教材
 

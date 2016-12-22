@@ -102,6 +102,7 @@ Week | Date   | Topic         | Lab
 - <span style="color:blue; font-weight:bold"> Week.8 </span>: [Lab](exercise.homework/week8/week8.html)
 - <span style="color:blue; font-weight:bold"> Week.9 </span>: [Lab](exercise.homework/week9/week9.html)
 - <span style="color:blue; font-weight:bold"> Week.10 </span>: [Lab](exercise.homework/week10/week10.html)
+- <span style="color:blue; font-weight:bold"> Week.14 </span>: [Classifier](exercise.homework/classifier/index.html) /  [Cluster](https://goo.gl/PrdJYO)
 
 ## 課程教材
 

@@ -22,6 +22,35 @@ knit        : slidify::knit2slides
 
 --- 
 
+## Supervised and unsupervised
+
+> - supervised: classifier
+> - unsupervised: cluster
+
+
+
+--- 
+
+
+## Classifiers
+
+- We're going to introduce the usage of a classifier
+- There are a lot of classfiers in machine learning:
+  - Bayes
+  - Decision Tree
+  - Neural Network
+  - Support Vector Machine
+  - there is more ...
+
+
+---
+
+
+## Classifier: SVM
+
+- We're going to use Support Vector Machine (SVM) in this lab session
+
+---
 
 ## Load the library and data
 
@@ -159,13 +188,9 @@ F1_Score(prediction, testset[,3])
 
 - 透過哪些 features 可以預測 F-score 最高的身價 svm 分類器
 
-- 請先將 "身價" 分為 6 類:
-  - 0~50
-  - 100~500
-  - 1000~5000
-  - 10000~20000
-  - 500000
-  - 5000000
+- 請先將 "身價" 分為 2 類:
+  - 0~9999
+  - 10000~5000000
   
 
 ---
