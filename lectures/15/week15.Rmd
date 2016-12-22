@@ -34,8 +34,6 @@ github      : {user: loperntu, repo: dsR}
 - Random forest is a tree-based algorithm which involves building several trees (decision trees), then combining their output to improve generalization ability of the model.
 - The method of combining trees is known as an ensemble method (*bagging*). Ensembling is nothing but a combination of weak learners (individual trees) to produce a strong learner.
 
-> 生活中的例子
-
 - Its ability to solve—both regression and classification problems along with 
 robustness to correlated features and variable importance plot gives us enough head start to solve various problems.
     - In regression problems, the dependent variable is continuous. In classification problems, the dependent variable is categorical.
@@ -54,10 +52,14 @@ robustness to correlated features and variable importance plot gives us enough h
 
 
 ---
-## 基本概念
+## 再簡化說明
 
-- Information 信息、Entropy 熵與 Information Gain 信息增益
+> 隨機森林透過 bottstrap 取樣技術，從總數量 N 的原始訓練樣本集當中，可重複隨機選取 N 個樣本，由此獲得一組自助訓練資料集。對於每個資料集， 用決策樹方法建立一顆無剪枝處理的決策樹，進而獲得一組決策樹集合。再尋找最佳分裂的依據（固定為 m , m <= M 的特徵，亦即在每個節點只需要對大小為 m 的特徵子集合進行檢查）。預測時，根據所有決策樹對於新資料預測結果的平均值或是投票來決定。
 
+- Information 信息、Entropy 熵與 Information Gain 信息增益:
+這三個基本概念是決策樹的根本，是決策樹利用特徵來分類時，確定特徵選取順序的依據。
+
+[Ref](http://stackoverflow.com/questions/1859554/what-is-entropy-and-information-gain)
 
 ---
 ## 用例子複習一下 Decision trees
@@ -74,9 +76,10 @@ summary(weather)
 ## R package
 
 using the `rpart` to develop a decision tree. The rpart function looks like this:
-
 > rpart(formula, data, weights, subset, na.action = na.rpart, method, 
 model = FALSE, x = FALSE, y = TRUE, parms, control, cost, ...)
+
+
 
 
 
