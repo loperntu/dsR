@@ -89,6 +89,7 @@ Week | Date   | Topic         | Lab
 - [Week 10](lectures/10/statistics.Rmd)/[apple](lectures/10/crawler.Rmd)
 - [Week 12](lectures/12/week12.html)
 - [Week 13](lectures/13/week13.html) / [ref1](lectures/13/ref1.pdf) / [ref2](http://www.slideshare.net/tw_dsconf/r-64232974)
+- [Week 15](lectures/15/week15.html)
 
 ## 助教講義、習題與作業
 
